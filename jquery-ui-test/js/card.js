@@ -1,32 +1,6 @@
 let currentCard;
-const CARD_1_LEFT = {
-    text: 'Go shopping',
-    happiness: 10,
-    food: 30,
-    risk: 30,
-    money: -10
-}
-const CARD_1_RIGHT = {
-    text: 'Don\'t go shopping',
-    happiness: -10,
-    food: -10,
-    risk: -10,
-    money: 10
-}
-const CARD_2_LEFT = {
-    text: 'Visit Bob',
-    happiness: 50,
-    food: 0,
-    risk: 40,
-    money: 0
-}
-const CARD_2_RIGHT = {
-    text: 'Don\'t visit Bob',
-    happiness: -70,
-    food: 0,
-    risk: -10,
-    money: 0
-}
+let cardDataArray;
+let cardNum = 0;
 
 function Card(leftChoice, rightChoice, color) {
     this.leftChoice = leftChoice;
@@ -106,6 +80,7 @@ function Card(leftChoice, rightChoice, color) {
 
     /** Triggers resources to update. Creates a new card after fadeOut() finishes. */
     this.choiceMade = function () {
+        pickNextCard();
         if (this.side === 'left') {
             $('#chosen').text(this.leftChoice.text);
             $(document.body).trigger('update-resources', this.leftChoice);
@@ -114,16 +89,39 @@ function Card(leftChoice, rightChoice, color) {
             $(document.body).trigger('update-resources', this.rightChoice);
         }
         this.$card.promise().done(function () {
-            createCard(CARD_2_LEFT, CARD_2_RIGHT, 'lightblue');
+            createCard(cardDataArray[cardNum], randomColor());
         });
     }
 }
 
-function createCard(leftChoice, rightChoice, color) {
+/** Removes old card and message from html and creates new Card. */
+function createCard(cardData, color) {
     $('#card-container').html('');
-    currentCard = new Card(leftChoice, rightChoice, color);
+    $('#chosen').html('');
+    currentCard = new Card(cardData.left, cardData.right, color);
 }
 
+/** 
+ * Determines what the next card should be based on player choice 
+ * for the current card. Currently we're just looping through all cards.
+ */
+function pickNextCard() {
+    cardNum++;
+    if (cardNum >= cardDataArray.length) {
+        cardNum = 0;
+    }
+}
+
+/** Returns a random color. */
+function randomColor() {
+    let randNum = Math.floor(Math.random() * (16777215 + 1));
+    return '#' + randNum.toString(16);
+}
+
+/** When the page loads, gets JSON data and creates the first card. */
 $(document).ready(function () {
-    createCard(CARD_1_LEFT, CARD_1_RIGHT, 'lightgreen');
+    $.getJSON('cards-data.json', function (data) {
+        cardDataArray = data;
+        createCard(cardDataArray[cardNum], randomColor());
+    });
 });
