@@ -30,7 +30,6 @@ $('#money').progressbar({
 
 // Logic when event received
 $(document.body).on('update-resources', function (event, choice) {
-    console.log('Chosen: ', choice);
     updateProgressBars(choice);
 });
 
@@ -92,7 +91,6 @@ function changeFillColor($fill, choiceStat) {
 
 /** If game is over, displays a message. */
 function checkGameOver(statValue, message1, message2) {
-    console.log('stat: ' + statValue);
     if (statValue <= 0) {
         $('#game-over-message').append('<p>' + message1 + '</p>');
     } else if (statValue >= 100) {
