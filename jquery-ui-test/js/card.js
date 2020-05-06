@@ -110,6 +110,9 @@ function pickNextCard() {
     if (cardNum >= cardDataArray.length) {
         cardNum = 0;
     }
+
+    // Highlights the items which are useful to the card
+    highlightItem(cardNum);
 }
 
 /** Returns a random color. */
