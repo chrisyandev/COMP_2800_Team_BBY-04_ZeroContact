@@ -1,165 +1,478 @@
-header {
-    display: grid;
-    grid-template-rows: 100px 50px;
-    grid-template-areas:
-        "heading"
-        "navbar";
-}
-
-#heading {
-    font-family: Arial;
-    color: rgb(172, 23, 23);
-    background-color: rgb(50, 106, 190);
-    grid-area: heading;
-    padding: 20px;
-    margin: -8px;
-    height: 100%;
-
-}
-
-#navbar {
-    display: flex;
-    background-color: rgb(50, 106, 190);
-    justify-content: space-between;
-    padding: 10px;
-    margin: -8px;
-    height: 100%;
-    grid-area: navbar;
-}
-
-.links:link,
-.links:visited {
-    color: black;
-    font-family: Arial;
-    text-decoration: none;
-}
-
-.links:hover {
-    color: rgb(26, 223, 26);
-}
-
-.nav {
-    list-style: none;
-}
-
-#teamInfo {
-    display: grid;
-    grid-template-rows: repeat(6, 150px);
-    grid-template-columns: 10% 15% 80%;
-    grid-template-areas:
-        "team team team"
-        "pic1 gabe paragraph1"
-        "pic2 chris paragraph2"
-        "pic3 matt paragraph3"
-        "pic4 tim paragraph4"
-        "pic5 micheal paragraph5"
-    ;
-}
-
-#gabe {
-    grid-area: gabe;
+* {
     font-family: Arial;
 }
 
-#pic1 {
-    grid-area: pic1;
+body {
+    background-color: rgb(90, 201, 221);
 }
 
-#chris {
-    grid-area: chris;
+@media (min-width: 1025px) {
+
+    header {
+        display: grid;
+        grid-template-rows: 100px 50px;
+        grid-template-areas:
+            "heading"
+            "navbar";
+    }
+
+    #game-name {
+        color: rgb(172, 23, 23);
+        background-color: rgb(50, 106, 190);
+        grid-area: heading;
+        padding: 20px;
+        margin: -8px;
+
+    }
+
+    #navbar {
+        display: flex;
+        background-color: rgb(50, 106, 190);
+        justify-content: space-between;
+        padding: 10px;
+        margin: -8px;
+        grid-area: navbar;
+    }
+
+    .links:link,
+    .links:visited {
+        color: black;
+        text-decoration: none;
+    }
+
+    .links:hover {
+        color: rgb(26, 223, 26);
+    }
+
+    .nav {
+        list-style: none;
+    }
+
+    #team-info {
+        display: grid;
+        grid-template-rows: repeat(4, 200px);
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-areas:
+            "team team team team"
+            "pic1 gabe pic2 chris"
+            "pic3 matt pic4 tim"
+            "pic5 micheal micheal micheal"
+        ;
+        margin: 2%;
+        padding: 5%;
+    }
+
+    #gabe {
+        grid-area: gabe;
+    }
+
+    #pic1 {
+        grid-area: pic1;
+    }
+
+    #chris {
+        grid-area: chris;
+    }
+
+    #pic2 {
+        grid-area: pic2;
+    }
+
+    #tim {
+        grid-area: tim;
+    }
+
+    #pic4 {
+        grid-area: pic4;
+    }
+
+    #micheal {
+        grid-area: micheal;
+    }
+
+    #pic5 {
+        grid-area: pic5;
+    }
+
+    #culture {
+        grid-area: team;
+        max-width: 1250px;
+    }
+
+    #account {
+        display: grid;
+        grid-template-rows: repeat(3, 50px);
+        grid-template-columns: repeat(2, 250px);
+        grid-template-areas:
+            "username1 textbox1"
+            "password1 textbox2"
+            "blank submit"
+        ;
+
+        margin: 75px;
+    }
+
+    #login {
+        font-weight: bold;
+        float: left;
+    }
+
+    #signup {
+        position: relative;
+        float: left;
+        top: 300px;
+        right: 80px;
+    }
+
+    #username {
+        grid-area: username1;
+        margin-left: 130px;
+        margin-top: 15px;
+    }
+
+    #field1 {
+        grid-area: textbox1;
+    }
+
+    #password {
+        grid-area: password1;
+        margin-left: 130px;
+        margin-top: 15px;
+    }
+
+    #field2 {
+        grid-area: textbox2;
+    }
+
+    #submit {
+        border-radius: 4px;
+        grid-area: submit;
+    }
+
+    #newAccount {
+        display: grid;
+        grid-template-rows: repeat(3, 50px);
+        grid-template-columns: repeat(2, 250px);
+        grid-template-areas:
+            "username1 textbox1"
+            "password1 textbox2"
+            "blank submit"
+        ;
+
+        margin: 75px;
+    }
 }
 
-#pic2 {
-    grid-area: pic2;
+@media (min-width: 400px) and (max-width: 1024px) {
+    header {
+        display: grid;
+        grid-template-rows: 100px 50px;
+        grid-template-areas:
+            "heading"
+            "navbar";
+    }
+
+    #game-name {
+        color: rgb(172, 23, 23);
+        background-color: rgb(50, 106, 190);
+        grid-area: heading;
+        padding: 20px;
+        margin: -8px;
+    }
+
+    #navbar {
+        display: flex;
+        background-color: rgb(50, 106, 190);
+        justify-content: space-between;
+        padding: 10px;
+        margin: -8px;
+        grid-area: navbar;
+    }
+
+    .links:link,
+    .links:visited {
+        color: black;
+        text-decoration: none;
+    }
+
+    .links:hover {
+        color: rgb(26, 223, 26);
+    }
+
+    .nav {
+        list-style: none;
+    }
+
+    #team-info {
+        display: grid;
+        grid-template-rows: 40% repeat(5, 20%);
+        grid-template-columns: 50% 50%;
+        grid-template-areas:
+            "team team"
+            "pic1 gabe"
+            "pic2 chris"
+            "pic3 matt"
+            "pic4 tim"
+            "pic5 micheal"
+        ;
+        gap: 25px;
+    }
+
+    #gabe {
+        grid-area: gabe;
+    }
+
+    #pic1 {
+        grid-area: pic1;
+    }
+
+    #chris {
+        grid-area: chris;
+    }
+
+    #pic2 {
+        grid-area: pic2;
+    }
+
+    #tim {
+        grid-area: tim;
+    }
+
+    #pic4 {
+        grid-area: pic4;
+    }
+
+    #micheal {
+        grid-area: micheal;
+    }
+
+    #pic5 {
+        grid-area: pic5;
+    }
+
+    #culture {
+        grid-area: team;
+        max-width: 80%;
+    }
+
+    #account {
+        display: grid;
+        grid-template-rows: repeat(3, 50px);
+        grid-template-columns: repeat(2, 250px);
+        grid-template-areas:
+            "username1 textbox1"
+            "password1 textbox2"
+            "blank submit"
+        ;
+
+        margin: 75px;
+    }
+
+    #login {
+        font-weight: bold;
+        float: left;
+    }
+
+    #signup {
+        position: relative;
+        float: left;
+        top: 300px;
+        right: 80px;
+    }
+
+    #username {
+        grid-area: username1;
+        margin-left: 130px;
+        margin-top: 15px;
+    }
+
+    #field1 {
+        grid-area: textbox1;
+    }
+
+    #password {
+        grid-area: password1;
+        margin-left: 130px;
+        margin-top: 15px;
+    }
+
+    #field2 {
+        grid-area: textbox2;
+    }
+
+    #submit {
+        border-radius: 4px;
+        grid-area: submit;
+    }
+
+    #newAccount {
+        display: grid;
+        grid-template-rows: repeat(3, 50px);
+        grid-template-columns: repeat(2, 250px);
+        grid-template-areas:
+            "username1 textbox1"
+            "password1 textbox2"
+            "blank submit"
+        ;
+
+        margin: 75px;
+    }
 }
 
-#tim {
-    grid-area: tim;
-}
+@media (max-width: 399px) {
+    header {
+        display: grid;
+        grid-template-rows: 100px 100px;
+        grid-template-areas:
+            "heading"
+            "navbar";
+    }
 
-#pic4 {
-    grid-area: pic4;
-}
+    #game-name {
+        color: rgb(172, 23, 23);
+        background-color: rgb(50, 106, 190);
+        grid-area: heading;
+        padding: 20px;
+        margin: -8px;
+    }
 
-#micheal {
-    font-family: Arial;
-    grid-area: micheal;
-}
+    #navbar {
+        display: flex;
+        background-color: rgb(50, 106, 190);
+        justify-content: space-between;
+        flex-direction: column;
+        padding: 10px;
+        margin: -8px;
+        grid-area: navbar;
+    }
 
-#pic5 {
-    grid-area: pic5;
-}
+    .links:link,
+    .links:visited {
+        color: black;
+        text-decoration: none;
+    }
 
-#culture {
-    font-family: Arial;
-    grid-area: team;
-    max-width: 1250px;
-}
+    .links:hover {
+        color: rgb(26, 223, 26);
+    }
 
-#account {
-    display: grid;
-    grid-template-rows: repeat(3, 50px);
-    grid-template-columns: repeat(2, 250px);
-    grid-template-areas:
-       "username1 textbox1" 
-       "password1 textbox2"
-       "blank submit"
-       ;
-       
-    margin: 75px;
-}
+    .nav {
+        margin: 2px;
+        list-style: none;
+    }
 
-#login {
-    font-family: Arial;
-    font-weight: bold;
-    float: left;
-}
+    #team-info {
+        display: grid;
+        grid-template-rows: 40% repeat(5, 20%);
+        grid-template-columns: 50% 50%;
+        grid-template-areas:
+            "team team"
+            "pic1 gabe"
+            "pic2 chris"
+            "pic3 matt"
+            "pic4 tim"
+            "pic5 micheal"
+        ;
+        gap: 25px;
+    }
 
-#signup {
-    position: relative;
-    font-family: Arial;
-    float: left;
-    top: 300px;
-    right: 80px;
-}
+    #gabe {
+        grid-area: gabe;
+    }
 
-#username {
-    grid-area: username1;
-    font-family: Arial;
-    margin-left: 130px;
-    margin-top: 15px;
-}
+    #pic1 {
+        grid-area: pic1;
+    }
 
-#field1 {
-    grid-area: textbox1;
-}
+    #chris {
+        grid-area: chris;
+    }
 
-#password {
-    font-family: Arial;
-    grid-area: password1;
-    margin-left: 130px;
-    margin-top: 15px;
-}
+    #pic2 {
+        grid-area: pic2;
+    }
 
-#field2 {
-    grid-area: textbox2;
-}
+    #tim {
+        grid-area: tim;
+    }
 
-#submit {
-    font-family: Arial;
-    border-radius: 4px;
-    grid-area: submit;
-}
+    #pic4 {
+        grid-area: pic4;
+    }
 
-#newAccount {
-    display: grid;
-    grid-template-rows: repeat(3, 50px);
-    grid-template-columns: repeat(2, 250px);
-    grid-template-areas:
-       "username1 textbox1" 
-       "password1 textbox2"
-       "blank submit"
-       ;
-       
-    margin: 75px;
+    #micheal {
+        grid-area: micheal;
+    }
+
+    #pic5 {
+        grid-area: pic5;
+    }
+
+    #culture {
+        grid-area: team;
+        max-width: 80%;
+    }
+
+    #account {
+        display: grid;
+        grid-template-rows: repeat(3, 50px);
+        grid-template-columns: repeat(2, 250px);
+        grid-template-areas:
+            "username1 textbox1"
+            "password1 textbox2"
+            "blank submit"
+        ;
+
+        margin: 75px;
+    }
+
+    #login {
+        font-weight: bold;
+        float: left;
+    }
+
+    #signup {
+        position: relative;
+        float: left;
+        top: 300px;
+        right: 80px;
+    }
+
+    #username {
+        grid-area: username1;
+        margin-left: 130px;
+        margin-top: 15px;
+    }
+
+    #field1 {
+        grid-area: textbox1;
+    }
+
+    #password {
+        grid-area: password1;
+        margin-left: 130px;
+        margin-top: 15px;
+    }
+
+    #field2 {
+        grid-area: textbox2;
+    }
+
+    #submit {
+        border-radius: 4px;
+        grid-area: submit;
+    }
+
+    #newAccount {
+        display: grid;
+        grid-template-rows: repeat(3, 50px);
+        grid-template-columns: repeat(2, 250px);
+        grid-template-areas:
+            "username1 textbox1"
+            "password1 textbox2"
+            "blank submit"
+        ;
+
+        margin: 75px;
+    }
 }
