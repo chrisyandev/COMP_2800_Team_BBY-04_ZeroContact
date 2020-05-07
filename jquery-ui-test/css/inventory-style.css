@@ -15,7 +15,7 @@ html, body{
 }
 
 .inventory-drop-zone-hover{
-    background-color: rgba(23, 235, 23, 0.281);
+    background-color: rgba(23, 235, 23, 0.445);
 }
 
 #inventory-container {
@@ -49,6 +49,7 @@ html, body{
     background-color: lightgray;
     border-radius: 20px;
     box-shadow: 0 0 0px rgb(255, 243, 79);
+    text-align: center;
 }
 
 .inventory-item img {
@@ -85,7 +86,7 @@ html, body{
     height: 50%;
     top: 10%;
     left: 0;
-    background-color: rgba(185, 185, 185, 0.493);
+    background-color: rgba(185, 185, 185, 0.692);
 }
 
 #item-use-heading{
@@ -111,4 +112,12 @@ html, body{
     position: absolute;
     top: 0;
     right: 0;
+}
+
+#item-use-accept{
+    background-color: rgba(155, 255, 155, 0.788);
+}
+
+#item-use-decline{
+    background-color: rgba(255, 155, 155, 0.788);
 }

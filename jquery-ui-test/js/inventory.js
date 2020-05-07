@@ -3,26 +3,26 @@ let inventoryItems = [];
 
 // Expands the inventory when the button is clicked
 $(document).ready(() => {
+    /* Moved to inventory-main.js
+
     // Highlights the items which are useful to the card
     highlightItem(cardNum);
 
+    //-------------------------------------------------------------
+    // Inventory prompt functions
+
     $("#item-use-prompt").hide();
 
-    // Adds the event listener to the inventory expand button
-    $("#inventory-expand-button").on("click", () => {
-        let height = parseInt($("#inventory-container").css("height"));
-        let buttonText;
-        if (height == 150){
-            height = "75%";
-            buttonText = "Close";
-        } else{
-            height = "150px";
-            buttonText = "Open";
-        }
-        $("#inventory-container").height(height);
-        $("#inventory-expand-button").text(buttonText);
-        console.log(height);
-    });
+    $("#item-use-decline").on("click", function(){
+        $("#item-use-prompt").hide();
+    })
+
+    $("#item-use-close").on("click", function(){
+        $("#item-use-prompt").hide();
+    })
+
+    //-------------------------------------------------------------
+    // Inventory functions
 
     $(".inventory-drop-zone").droppable({
         accept: ".inventory-item",
@@ -38,6 +38,22 @@ $(document).ready(() => {
         out: function(){
             $(".inventory-drop-zone").css("background-color", "rgba(218, 218, 218, 0.281)")
         }
+    });*/
+
+    // Adds the event listener to the inventory expand button
+    $("#inventory-expand-button").on("click", () => {
+        let height = parseInt($("#inventory-container").css("height"));
+        let buttonText;
+        if (height == 150){
+            height = "75%";
+            buttonText = "Close";
+        } else{
+            height = "150px";
+            buttonText = "Open";
+        }
+        $("#inventory-container").height(height);
+        $("#inventory-expand-button").text(buttonText);
+        console.log(height);
     });
     
     // Turns the children of this container into sortable elements
@@ -60,25 +76,39 @@ $(document).ready(() => {
             if (overDropZone){
                 let index = $(ui.item).attr('data-id');
 
+                showPrompt(inventoryItems[index]);
+                $("#inventory-item-container").sortable("cancel");
                 // Uses the item according to its index in the array
-                inventoryItems[index].useItem();
-                
+                //inventoryItems[index].useItem();
             } 
         },
     });
 });
 
+// Shows the prompt to confirm the usage of an item
+function showPrompt(item){
+    $("#item-use-accept").off("click");
+    $("#item-use-prompt").show();
+
+    $("#item-use-heading").text("Confirm usage of: " + item.item + "?");
+
+    $("#item-use-accept").on("click", function(){
+        item.useItem();
+        $("#item-use-prompt").hide();
+    });
+}
+
 // Class for dynamically creating items
-function InventoryItem(imageName, type, use) {
+function InventoryItem(imageName, type, use, container, array) {
     // Item attributes
     this.quantity = 1;
-    this.index = inventoryItems.length;
+    this.index = array.length;
     this.rarity = "common";
     this.item = type;
     this.use = use;
 
     // HTML tags
-    this.$itemContainer = $('<div data-id="'+this.index+'" style="grid-column: 0" class="inventory-item"></div>');
+    this.$itemContainer = $('<div data-id="'+this.index+'" class="inventory-item"></div>');
     this.$itemImg = $("<img src='" + imageName + "'>");
     this.$itemDisplay = $("<h1>" + this.quantity + "</h1>");
 
@@ -105,10 +135,10 @@ function InventoryItem(imageName, type, use) {
     }
 
     // Disable selection of items
-    $("#inventory-item-container").disableSelection();
+    $(container).disableSelection();
 
     // Put the image container inside the inventory
-    $("#inventory-item-container").append(this.$itemContainer);
+    $(container).append(this.$itemContainer);
 }
 
 function highlightItem(use){
@@ -123,7 +153,7 @@ function highlightItem(use){
     }
 }
 
-function createItem(url, type, use){
+function createItem(url, type, use, container, array){
     let itemExists = false;
     for (let i = 0; i < inventoryItems.length; i++){
         if (type == inventoryItems[i].item){
@@ -132,14 +162,18 @@ function createItem(url, type, use){
         }
     }
     if (itemExists != true){
-        let item = new InventoryItem(url, type, use);
+        let item = new InventoryItem(url, type, use, container, array);
         inventoryItems.push(item);
     }
 }
 
 for (let i = 0; i < 5; i++){
-    createItem("https://clipartix.com/wp-content/uploads/2018/03/orange-clipart-2018-50.png", "orange", 0);
-    createItem("https://i.pinimg.com/originals/f1/b2/9e/f1b29ee56628bccf15df81d70c329643.png", "grapes", 1);
-    createItem("https://clipartix.com/wp-content/uploads/2018/09/yellow-clipart-2018-10.png", "bananas", 2);
-    createItem("https://clipartix.com/wp-content/uploads/2017/06/Teacher-apple-clipart-free-images-2.gif","apples", 3);
+    createItem("https://clipartix.com/wp-content/uploads/2018/03/orange-clipart-2018-50.png",
+             "Orange", 0, "#inventory-item-container", inventoryItems);
+    createItem("https://i.pinimg.com/originals/f1/b2/9e/f1b29ee56628bccf15df81d70c329643.png",
+             "Grapes", 1, "#inventory-item-container", inventoryItems);
+    createItem("https://clipartix.com/wp-content/uploads/2018/09/yellow-clipart-2018-10.png",
+             "Bananas", 2, "#inventory-item-container", inventoryItems);
+    createItem("https://clipartix.com/wp-content/uploads/2017/06/Teacher-apple-clipart-free-images-2.gif",
+            "Apples", 3, "#inventory-item-container", inventoryItems);
 }
