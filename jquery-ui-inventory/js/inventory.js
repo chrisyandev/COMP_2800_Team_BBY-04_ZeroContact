@@ -10,8 +10,8 @@ $(document).ready(() => {
 
         // Creates the last 2 items in the json file
         for (let i = 0; i < 3; i++){
-            createItem(itemDataArray[6], "#inventory-item-container", inventoryItems)
-            createItem(itemDataArray[7], "#inventory-item-container", inventoryItems);
+            createItem(itemDataArray[6], "#inventory-item-container", inventoryItems, true)
+            createItem(itemDataArray[7], "#inventory-item-container", inventoryItems, true);
         }
 
         // Highlights the items which are useful to the card
@@ -67,7 +67,7 @@ $(document).ready(() => {
                 // Uses the item according to its index in the array
                 showPrompt(inventoryItems[index]);
                 $("#inventory-item-container").sortable("cancel");
-                
+                $(".inventory-drop-zone").css("background-color", "rgba(218, 218, 218, 0.281)");
             } 
         },
     });
@@ -83,7 +83,6 @@ function showPrompt(item){
     $("#item-use-description").text("'"+ item.desc + "'");
 
     let effects = item.checkEffect();
-    console.log(effects);
 
     $("#item-use-effect").html("Using this item will affect your: <br>" +
                                 effects);
@@ -96,7 +95,7 @@ function showPrompt(item){
 }
 
 // Class for dynamically creating items
-function InventoryItem(imageName, type, use, risk, effect, text, container, array) {
+function InventoryItem(imageName, type, use, risk, effect, text, container, array, tooltipOn) {
     // Item attributes
     this.quantity = 1;
     this.imageUrl = imageName;
@@ -121,19 +120,23 @@ function InventoryItem(imageName, type, use, risk, effect, text, container, arra
     this.$itemContainer.append(this.$itemImg);
     this.$itemContainer.append(this.$itemDisplay);
 
+    this.$itemContainer.tooltip();
+
     // Functions
-    this.$itemContainer.on({
-        "mousedown touchstart": function() {
-          $(this).tooltip({
-              items: $(".inventory-item"),
-              content: type + " - " +text,
-            });
-          $(this).tooltip("open");
-        },
-        "mouseup touchend": function() {      
-           $(this).tooltip("disable");   
-        },
-      });
+    if (tooltipOn){
+        this.$itemContainer.on({
+            "mousedown touchstart": function() {
+              $(this).tooltip({
+                  items: $(".inventory-item"),
+                  content: type + " - " +text,
+                });
+              $(this).tooltip("open");
+            },
+            "mouseup touchend": function() {      
+               $(this).tooltip("disable");   
+            },
+          });
+    }
 
     this.useItem = function(){
         console.log("Used Item: " + this.item);
@@ -219,18 +222,18 @@ function isItemUseful(item, useCase){
 }
 
 // Creates an item in the inventory or increases its quantity if it already
-function createItem(itemData, container, array){
+function createItem(itemData, container, array, tooltipOn){
     let itemExists = false;
-    for (let i = 0; i < inventoryItems.length; i++){
-        if (itemData.itemName == inventoryItems[i].item){
-            inventoryItems[i].increaseQuantity(1);
+    for (let i = 0; i < array.length; i++){
+        if (itemData.itemName == array[i].item){
+            array[i].increaseQuantity(1);
             itemExists = true;
         }
     }
     if (itemExists != true){
         let item = new InventoryItem(itemData.itemSprite, itemData.itemName, 
                                      itemData.useableOn, itemData.infectionRisk,
-                                     itemData.statusEffect, itemData.itemText, container, array);
-        inventoryItems.push(item);
+                                     itemData.statusEffect, itemData.itemText, container, array, tooltipOn);
+        array.push(item);
     }
 }
