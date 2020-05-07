@@ -88,6 +88,6 @@ function changeFillColor($fill, choiceStat) {
 /** If game is over, displays a message. */
 function checkGameOver(statValue, message1, message2) {
     if (statValue <= 0) {
-        $('#game-over-message > p').text('Game Over');
+        console.log('game over');
     }
 }
