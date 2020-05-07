@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery UI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"
+        integrity="sha256-rByPlHULObEjJ6XQxW/flG2r+22R5dKiAoef+aXWfik=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/inventory-style.css">
+</head>
+
+<body>
+    <div id="stats-container">
+        <div id="happiness" class="progress-bar">
+            <span class="stat-name">Happiness</span>
+        </div>
+        <div id="food" class="progress-bar">
+            <span class="stat-name">Food</span>
+        </div>
+        <div id="risk" class="progress-bar">
+            <span class="stat-name">Risk</span>
+        </div>
+        <div id="money" class="progress-bar">
+            <span class="stat-name">Money</span>
+        </div>
+    </div>
+    <div id="card-container"></div>
+    <p id="chosen" class="large-font"></p>
+    <div id="game-over-message" class="large-font"></div>
+
+    <div class="inventory-drop-zone">
+        <h1>Drag item here to use it</h1>
+    </div>
+    <div id="inventory-container">
+        <button id="inventory-expand-button">Open</button>
+        <div id="inventory-item-container">
+        </div>
+    </div>
+
+    <div id="item-use-prompt">
+        <h2 id="item-use-heading">Use: </h2>
+        <p id="item-use-description"></p>
+        <p id="item-use-effect"></p>
+        <div id="item-use-button-container">
+            <button class="item-use-button" id="item-use-accept">Yes</button>
+            <button class="item-use-button" id="item-use-decline">No</button>
+        </div>
+        <button class="item-use-button" id="item-use-close">X</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"
+        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"
+        integrity="sha256-AAhU14J4Gv8bFupUUcHaPQfvrdNauRHMt+S4UVcaJb0=" crossorigin="anonymous"></script>
+    <script src="js/card.js"></script>
+    <script src="js/progress-bar.js"></script>
+    <script src="js/inventory.js"></script>
+    <script src="js/inventory-main.js"></script>
+</body>
+
+</html>
