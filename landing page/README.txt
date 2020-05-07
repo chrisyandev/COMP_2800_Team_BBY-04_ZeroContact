@@ -1,6 +1,4 @@
 Landing page being worked on here. 
 
-Working on right now:
-- Landing page
-- About us 
-- Favicon implementation
+In Progress:
+- Avatar pictures for each person
