@@ -1,6 +1,6 @@
 #card-container {
-    width: 400px;
-    height: 300px;
+    width: 280px;
+    height: 200px;
     outline: 2px solid #ccc;
     margin: auto;
     position: relative;
@@ -8,9 +8,8 @@
 
 .card {
     width: 200px;
-    height: 300px;
+    height: 200px;
     position: absolute;
-    background-color: green;
 }
 
 .large-font {
@@ -22,24 +21,61 @@
         -1px -1px 0 white;
 }
 
-#chosen {
-    text-align: center;
+.small-font {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Defines some space at the top of screen */
+#stats-spacer {
+    height: 90px;
+}
+
+#stats-container {
+    width: 65px;
+    height: 280px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -30%) rotate(-90deg);
+    transform-origin: center;
+}
+
+#stats-container > div {
+    display: grid;
+    margin: auto;
+    height: 280px;
+    width: 41px;
+    align-content: space-evenly;
+    grid-template-rows: 4;
+}
+
+#stats-overlay {
+    width: 65px;
+    height: 280px;
+    position: absolute;
+    z-index: 1;
 }
 
 .progress-bar {
-    outline: 2px solid lightseagreen;
-    position: relative;
-    margin: 10px;
-}
-
-.stat-name {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    height: 60px;
 }
 
 /* Automatically applied to progress bars */
 .ui-progressbar-value {
-    background-color: gray;
+    background-color: tan;
+}
+
+#event-text {
+    width: 280px;
+    height: 100px;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+}
+
+#event-text > span {
+    text-align: center;
+}
+
+#game-over-message {
+    text-align: center;
 }
