@@ -1,81 +1,261 @@
 [{
+        "event": "infected",
+        "text": "You don't sound so good... Are you feeling okay?",
+        "image": "images/man-with-mask.png",
+        "name": "Random person",
         "left": {
-            "text": "Go shopping",
-            "happiness": 10,
-            "food": 10,
-            "risk": 10,
-            "money": -10
+            "text": "I...",
+            "risk": 1.00,
+            "effect": {
+                "physical": -100,
+                "mental": -100,
+                "wealth": -100,
+                "supplies": -100
+            }
         },
         "right": {
-            "text": "Don't go shopping",
-            "happiness": -10,
-            "food": -10,
-            "risk": -10,
-            "money": 10
+            "text": "I...",
+            "risk": 1.00,
+            "effect": {
+                "physical": -100,
+                "mental": -100,
+                "wealth": -100,
+                "supplies": -100
+            }
         }
     },
     {
+        "event": "food",
+        "text": "I'm hungry. Can you get us some food?",
+        "image": "images/man-with-mask.png",
+        "name": "Little Timmy",
         "left": {
-            "text": "Visit Bob",
-            "happiness": 20,
-            "food": 0,
-            "risk": 20,
-            "money": 0
+            "text": "Canned soup!",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": -10,
+                "wealth": 10,
+                "supplies": -5
+            }
         },
         "right": {
-            "text": "Don't visit Bob",
-            "happiness": -30,
-            "food": 0,
-            "risk": -10,
-            "money": 0
+            "text": "Suber Eats!",
+            "risk": 0.02,
+            "effect": {
+                "physical": 0,
+                "mental": 10,
+                "wealth": -20,
+                "supplies": 0
+            }
         }
     },
     {
+        "event": "hangout",
+        "text": "We're going to hang out in the park",
+        "image": "images/man-with-mask.png",
+        "name": "Bill",
         "left": {
-            "text": "Go to work",
-            "happiness": 0,
-            "food": 0,
-            "risk": 20,
-            "money": 30
+            "text": "Not today, sorry.",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": -10,
+                "wealth": 10,
+                "supplies": -5
+            }
         },
         "right": {
-            "text": "Don't go to work",
-            "happiness": 10,
-            "food": 0,
-            "risk": -20,
-            "money": -30
+            "text": "Just this once...",
+            "risk": 0.02,
+            "effect": {
+                "physical": 0,
+                "mental": 15,
+                "wealth": -10,
+                "supplies": -5
+            }
         }
     },
     {
+        "event": "work",
+        "text": "My Cousin needs some more people for a job. Interested?",
+        "image": "images/man-with-mask.png",
+        "name": "Bill",
         "left": {
-            "text": "Play video games",
-            "happiness": 20,
-            "food": 0,
-            "risk": 0,
-            "money": 0
+            "text": "No thanks.",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": -5,
+                "wealth": -5,
+                "supplies": -5
+            }
         },
         "right": {
-            "text": "Don't play video games",
-            "happiness": -20,
-            "food": 0,
-            "risk": 0,
-            "money": 0
+            "text": "I need the money...",
+            "risk": 0.05,
+            "effect": {
+                "physical": -2,
+                "mental": 5,
+                "wealth": 25,
+                "supplies": -5
+            }
         }
     },
     {
+        "event": "home-entertainment",
+        "text": "We're really bored. If we got a WebFlix subscription, it would sure help pass the time",
+        "image": "images/man-with-mask.png",
+        "name": "Little Timmy",
         "left": {
-            "text": "Socialize online",
-            "happiness": 20,
-            "food": 0,
-            "risk": 0,
-            "money": 0
+            "text": "We can't afford it.",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": -10,
+                "wealth": 0,
+                "supplies": -5
+            }
         },
         "right": {
-            "text": "Don't socialize online",
-            "happiness": -20,
-            "food": 0,
-            "risk": 0,
-            "money": 0
+            "text": "Take my card!",
+            "risk": 0.00,
+            "effect": {
+                "physical": 2,
+                "mental": 10,
+                "wealth": -10,
+                "supplies": -5
+            }
+        }
+    },
+    {
+        "event": "appointment",
+        "text": "Your foot doesn't look so good. We should schedule an appointment for you to come in.",
+        "image": "images/man-with-mask.png",
+        "name": "Doctor Green",
+        "left": {
+            "text": "I'll pass.",
+            "risk": 0.00,
+            "effect": {
+                "physical": -10,
+                "mental": -10,
+                "wealth": 0,
+                "supplies": -5
+            }
+        },
+        "right": {
+            "text": "How does Wednesday sound?",
+            "risk": 0.05,
+            "effect": {
+                "physical": 2,
+                "mental": 10,
+                "wealth": 0,
+                "supplies": -5
+            }
+        }
+    },
+    {
+        "event": "hangout",
+        "text": "I haven't seen you in a while. Lets go out tonight! Please?",
+        "image": "images/man-with-mask.png",
+        "name": "Cindy Lou",
+        "left": {
+            "text": "Not tonight.",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": -10,
+                "wealth": 0,
+                "supplies": -5
+            }
+        },
+        "right": {
+            "text": "Where's my wallet...",
+            "risk": 0.05,
+            "effect": {
+                "physical": 0,
+                "mental": 20,
+                "wealth": -15,
+                "supplies": -5
+            }
+        }
+    },
+    {
+        "event": "appointment",
+        "text": "My dentist appointment is today and the car isn't working.",
+        "image": "images/man-with-mask.png",
+        "name": "Little Timmy",
+        "left": {
+            "text": "Tough luck.",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": -10,
+                "wealth": 0,
+                "supplies": 5
+            }
+        },
+        "right": {
+            "text": "We take the bus!",
+            "risk": 0.05,
+            "effect": {
+                "physical": 0,
+                "mental": 10,
+                "wealth": -5,
+                "supplies": -5
+            }
+        }
+    },
+    {
+        "event": "hangout",
+        "text": "Aren't you bored at home? Lets hang out! Drinks are on me.",
+        "image": "images/man-with-mask.png",
+        "name": "Bill",
+        "left": {
+            "text": "I don't know...",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": -10,
+                "wealth": 0,
+                "supplies": -5
+            }
+        },
+        "right": {
+            "text": "They better be cold!",
+            "risk": 0.04,
+            "effect": {
+                "physical": 0,
+                "mental": 15,
+                "wealth": 0,
+                "supplies": -5
+            }
+        }
+    },
+    {
+        "event": "food",
+        "text": "The pantry is looking a little empty. We should go to the grocery store.",
+        "image": "images/man-with-mask.png",
+        "name": "Granny",
+        "left": {
+            "text": "Not right now.",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": -10,
+                "wealth": 0,
+                "supplies": -5
+            }
+        },
+        "right": {
+            "text": "I'll go start the car.",
+            "risk": 0.04,
+            "effect": {
+                "physical": 0,
+                "mental": 0,
+                "wealth": -10,
+                "supplies": 50
+            }
         }
     }
 ]

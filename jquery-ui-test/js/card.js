@@ -1,16 +1,17 @@
 let currentCard;
 let cardDataArray;
-let cardNum = 0;
+let cardNum = 1;
 
-function Card(leftChoice, rightChoice, color) {
+// Dot size unit is pixels
+const MAX_DOT_SIZE = 24;
+
+function Card(leftChoice, rightChoice, image) {
     this.leftChoice = leftChoice;
     this.rightChoice = rightChoice;
-    this.color = color;
-    this.$card = $('<div class="card"></div>');
-    this.side = 'neither';
+    this.$card = $('<div class="card"><div id="card-text"><span class="white-monospace"></span></div></div>');
     this.origin;
 
-    this.$card.css('background-color', this.color);
+    this.$card.css('background', `url(${image}) black no-repeat`);
 
     /** Places card inside center of container. */
     $('#card-container').append(this.$card);
@@ -19,20 +20,34 @@ function Card(leftChoice, rightChoice, color) {
         at: 'center',
         of: this.$card.parent()
     });
+    // Stores the initial position
     this.origin = this.$card.position().left;
 
     // Needs the reference because the 'this' keyword inside 'draggable()' will not refer to Card
     const self = this;
 
-    /** Makes the div draggable. */
+    /** 
+     * Makes the div draggable.
+     * Text and dot size changes based on which size the card is on.
+     * If card reaches bounds, force mouse up and fade out card.
+     * Draggable's drag event is called every pixel dragged.
+     * Draggable's stop event is called after card reverts to the center.
+     */
     this.$card.draggable({
         containment: self.$card.parent(),
         scroll: false,
         revert: true,
         revertDuration: 150,
         drag: function () {
-            self.updateSide();
-            self.updateChoice();
+            let side = self.getSide();
+            if (side === 'left') {
+                self.updateChoice(leftChoice);
+                updateDots(leftChoice);
+            } else if (side === 'right') {
+                self.updateChoice(rightChoice);
+                updateDots(rightChoice);
+            }
+
             if (self.hasReachedBounds()) {
                 self.$card.fadeOut();
                 self.$card.mouseup();
@@ -40,7 +55,13 @@ function Card(leftChoice, rightChoice, color) {
             }
         },
         stop: function () {
-            self.$card.html('');
+            $('#card-text').slideUp({
+                duration: 200,
+                end: function () {
+                    $('#card-text > span').text('');
+                }
+            });
+            $('.dot').hide();
         }
     });
 
@@ -56,49 +77,49 @@ function Card(leftChoice, rightChoice, color) {
     }
 
     /** Determines which side the card is on based on origin. */
-    this.updateSide = function () {
+    this.getSide = function () {
         let cardPosition = this.$card.position().left;
         if (cardPosition < this.origin) {
-            this.side = 'left';
+            return 'left';
         } else if (cardPosition > this.origin) {
-            this.side = 'right';
+            return 'right';
         } else {
-            this.side = 'neither';
+            return 'neither';
         }
     }
 
     /** Changes text inside card based on side. */
-    this.updateChoice = function () {
-        if (this.side === 'left') {
-            this.$card.html('<p class="large-font">' + this.leftChoice.text + '</p>');
-        } else if (this.side === 'right') {
-            this.$card.html('<p class="large-font">' + this.rightChoice.text + '</p>');
-        } else {
-            this.$card.html('');
-        }
+    this.updateChoice = function (choice) {
+        $('#card-text').slideDown({
+            duration: 200,
+            start: function () {
+                $('#card-text').css('display', 'flex');
+                $('#card-text > span').text(choice.text);
+            }
+        });
     }
 
     /** Triggers resources to update. Creates a new card after fadeOut() finishes. */
     this.choiceMade = function () {
         pickNextCard();
-        if (this.side === 'left') {
-            $('#chosen').text(this.leftChoice.text);
+        let side = this.getSide();
+        if (side === 'left') {
             $(document.body).trigger('update-resources', this.leftChoice);
-        } else if (this.side === 'right') {
-            $('#chosen').text(this.rightChoice.text);
+        } else if (side === 'right') {
             $(document.body).trigger('update-resources', this.rightChoice);
         }
         this.$card.promise().done(function () {
-            createCard(cardDataArray[cardNum], randomColor());
+            createCard(cardDataArray[cardNum]);
         });
     }
 }
 
 /** Removes old card and message from html and creates new Card. */
-function createCard(cardData, color) {
+function createCard(cardData) {
     $('#card-container').html('');
-    $('#chosen').html('');
-    currentCard = new Card(cardData.left, cardData.right, color);
+    $('#event-text > span').text(cardData.text);
+    $('#name > span').text(cardData.name);
+    currentCard = new Card(cardData.left, cardData.right, cardData.image);
 }
 
 /** 
@@ -112,16 +133,51 @@ function pickNextCard() {
     }
 }
 
-/** Returns a random color. */
-function randomColor() {
-    let randNum = Math.floor(Math.random() * (16777215 + 1));
-    return '#' + randNum.toString(16);
+/** Sets the size of each dot. */
+function updateDots(choice) {
+    let dotPhysical = calculateDot(choice.effect.physical) + 'px';
+    $('#dot-physical').css({
+        'width': dotPhysical,
+        'height': dotPhysical
+    })
+    let dotMental = calculateDot(choice.effect.mental) + 'px';
+    $('#dot-mental').css({
+        'width': dotMental,
+        'height': dotMental
+    })
+    let dotWealth = calculateDot(choice.effect.wealth) + 'px';
+    $('#dot-wealth').css({
+        'width': dotWealth,
+        'height': dotWealth
+    })
+    let dotSupplies = calculateDot(choice.effect.supplies) + 'px';
+    $('#dot-supplies').css({
+        'width': dotSupplies,
+        'height': dotSupplies
+    })
+    $('.dot').show();
+}
+
+/**
+ * Helper method that calculates the dot size based on effect value.
+ * Makes sure the dot isn't too small by increasing dot size if not 0.
+ */
+function calculateDot(effect) {
+    const sizeIncrease = 3;
+    let dotSize = Math.abs(effect) / 100 * MAX_DOT_SIZE;
+    if (dotSize > 0) {
+        dotSize += sizeIncrease;
+    }
+    if (dotSize > MAX_DOT_SIZE) {
+        dotSize = MAX_DOT_SIZE;
+    }
+    return dotSize;
 }
 
 /** When the page loads, gets JSON data and creates the first card. */
 $(document).ready(function () {
     $.getJSON('cards-data.json', function (data) {
         cardDataArray = data;
-        createCard(cardDataArray[cardNum], randomColor());
+        createCard(cardDataArray[cardNum]);
     });
 });

@@ -1,30 +1,26 @@
 // Creates the progress bars. When progress bar changes, checks if game is over.
-$('#happiness').progressbar({
+$('#physical').progressbar({
     value: 50,
     change: function (event) {
-        let statValue = $(event.target).progressbar('value');
-        checkGameOver(statValue, 'You were too unhappy', 'You were too happy');
+        checkGameOver($(event.target).progressbar('value'));
     }
 });
-$('#food').progressbar({
+$('#mental').progressbar({
     value: 50,
     change: function (event) {
-        let statValue = $(event.target).progressbar('value');
-        checkGameOver(statValue, 'You ran out of food', 'You had too much food');
+        checkGameOver($(event.target).progressbar('value'));
     }
 });
-$('#risk').progressbar({
+$('#wealth').progressbar({
     value: 50,
     change: function (event) {
-        let statValue = $(event.target).progressbar('value');
-        checkGameOver(statValue, 'You took too few risks', 'You took too many risks');
+        checkGameOver($(event.target).progressbar('value'));
     }
 });
-$('#money').progressbar({
+$('#supplies').progressbar({
     value: 50,
     change: function (event) {
-        let statValue = $(event.target).progressbar('value');
-        checkGameOver(statValue, 'You ran out of money', 'You had too much money');
+        checkGameOver($(event.target).progressbar('value'));
     }
 });
 
@@ -35,21 +31,21 @@ $(document.body).on('update-resources', function (event, choice) {
 
 /** Updates the progress bars' fill. */
 function updateProgressBars(choice) {
-    let newHappiness = add($('#happiness').progressbar('value'), choice.happiness);
-    $('#happiness').progressbar('value', newHappiness);
-    changeFillColor($('#happiness').find('.ui-progressbar-value'), choice.happiness);
+    let newPhysical = add($('#physical').progressbar('value'), choice.effect.physical);
+    $('#physical').progressbar('value', newPhysical);
+    changeFillColor($('#physical').find('.ui-progressbar-value'), choice.effect.physical);
 
-    let newFood = add($('#food').progressbar('value'), choice.food);
-    $('#food').progressbar('value', newFood);
-    changeFillColor($('#food').find('.ui-progressbar-value'), choice.food);
+    let newFood = add($('#mental').progressbar('value'), choice.effect.mental);
+    $('#mental').progressbar('value', newFood);
+    changeFillColor($('#mental').find('.ui-progressbar-value'), choice.effect.mental);
 
-    let newRisk = add($('#risk').progressbar('value'), choice.risk);
-    $('#risk').progressbar('value', newRisk);
-    changeFillColor($('#risk').find('.ui-progressbar-value'), choice.risk);
+    let newRisk = add($('#wealth').progressbar('value'), choice.effect.wealth);
+    $('#wealth').progressbar('value', newRisk);
+    changeFillColor($('#wealth').find('.ui-progressbar-value'), choice.effect.wealth);
 
-    let newMoney = add($('#money').progressbar('value'), choice.money);
-    $('#money').progressbar('value', newMoney);
-    changeFillColor($('#money').find('.ui-progressbar-value'), choice.money);
+    let newMoney = add($('#supplies').progressbar('value'), choice.effect.supplies);
+    $('#supplies').progressbar('value', newMoney);
+    changeFillColor($('#supplies').find('.ui-progressbar-value'), choice.effect.supplies);
 }
 
 /** Helper method that makes sure result is between 0 and 100. */
@@ -83,7 +79,7 @@ function changeFillColor($fill, choiceStat) {
     }
     setTimeout(function() {
         $fill.css({
-            'background-color': 'gray',
+            'background-color': 'tan',
             'transition': 'background-color 0.2s ease'
         });
     }, 500);
@@ -92,8 +88,6 @@ function changeFillColor($fill, choiceStat) {
 /** If game is over, displays a message. */
 function checkGameOver(statValue, message1, message2) {
     if (statValue <= 0) {
-        $('#game-over-message').append('<p>' + message1 + '</p>');
-    } else if (statValue >= 100) {
-        $('#game-over-message').append('<p>' + message2 + '</p>');
+        console.log('game over');
     }
 }
