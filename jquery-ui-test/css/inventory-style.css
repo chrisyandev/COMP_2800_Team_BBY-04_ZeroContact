@@ -72,6 +72,15 @@ html, body{
     border-radius: 20px;
 }
 
+.inventory-item .tooltip {
+    position: fixed; /** depends on how it handles the e.pageX and e.pageY **/
+    width: 80px;
+    height: 30px;
+    background: #06F;
+    z-index: 10;
+    display: none; /**let the tooltip be not visable, when startup **/
+}
+
 /*-------------------------------------------------------------------------------*/
 /*   Item usage prompt styling*/
 /*-------------------------------------------------------------------------------*/
@@ -82,17 +91,32 @@ html, body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
     width: 100%;
     height: 50%;
     top: 10%;
     left: 0;
     background-color: rgba(185, 185, 185, 0.692);
+    opacity: 0;
 }
 
 #item-use-heading{
     font-size: 40px;
     color: white;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
+
+#item-use-description{
+    font-size: 30px;
+    color: white;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
+
+#item-use-effect{
+    font-size: 20px;
+    color: white;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    margin-bottom: 50px;
 }
 
 #item-use-button-container{

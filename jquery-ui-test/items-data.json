@@ -80,7 +80,7 @@
     {
         "itemName": "Banana",
         "itemText": "A yellow fruit.",
-        "itemSprite": "/example-directory/sprite.png",
+        "itemSprite": "https://clipartix.com/wp-content/uploads/2018/09/yellow-clipart-2018-10.png",
         "useableOn": ["Food"],
         "infectionRisk":-0.005,
         "statusEffect": {
@@ -93,7 +93,7 @@
     {
         "itemName": "Apple",
         "itemText": "A red fruit.",
-        "itemSprite": "/example-directory/sprite.png",
+        "itemSprite": "https://clipartix.com/wp-content/uploads/2017/06/Teacher-apple-clipart-free-images-2.gif",
         "useableOn": ["Food"],
         "infectionRisk":-0.005,
         "statusEffect": {

@@ -1,17 +1,16 @@
 $(document).ready(function(){
-    // Highlights the items which are useful to the card
-    highlightItem(cardNum);
-
     //-------------------------------------------------------------
     // Inventory prompt functions
-    $("#item-use-prompt").hide();
+    $("#item-use-prompt").hide()
 
     $("#item-use-decline").on("click", function(){
-        $("#item-use-prompt").hide();
+        $("#item-use-prompt").css("opacity", 0);
+        $("#item-use-prompt").hide()
     })
 
     $("#item-use-close").on("click", function(){
-        $("#item-use-prompt").hide();
+        $("#item-use-prompt").css("opacity", 0);
+        $("#item-use-prompt").hide()
     })
 
     //-------------------------------------------------------------

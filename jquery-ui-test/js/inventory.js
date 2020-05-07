@@ -1,44 +1,23 @@
 let overDropZone = false;
 let inventoryItems = [];
+let itemDataArray = [];
 
 // Expands the inventory when the button is clicked
 $(document).ready(() => {
-    /* Moved to inventory-main.js
+    // Gets data from the json file and puts it into an array
+    $.getJSON('items-data.json', function (data) {
+        itemDataArray = data;
 
-    // Highlights the items which are useful to the card
-    highlightItem(cardNum);
-
-    //-------------------------------------------------------------
-    // Inventory prompt functions
-
-    $("#item-use-prompt").hide();
-
-    $("#item-use-decline").on("click", function(){
-        $("#item-use-prompt").hide();
-    })
-
-    $("#item-use-close").on("click", function(){
-        $("#item-use-prompt").hide();
-    })
-
-    //-------------------------------------------------------------
-    // Inventory functions
-
-    $(".inventory-drop-zone").droppable({
-        accept: ".inventory-item",
-        tolerance: "touch",
-        drop: function(event, ui){
-            // Sets dropped to true if a draggable element is over the drop zone
-            overDropZone = true;
-        },
-        // When an inventory item hovers over and out of a droppable zone
-        over: function(){
-            $(".inventory-drop-zone").css("background-color", "rgba(23, 235, 23, 0.281)");
-        },
-        out: function(){
-            $(".inventory-drop-zone").css("background-color", "rgba(218, 218, 218, 0.281)")
+        // Creates the last 2 items in the json file
+        for (let i = 0; i < 3; i++){
+            createItem(itemDataArray[6], "#inventory-item-container", inventoryItems)
+            createItem(itemDataArray[7], "#inventory-item-container", inventoryItems);
         }
-    });*/
+
+        // Highlights the items which are useful to the card
+        let tempUseCases = ["Water", "Food", "Health"];
+        highlightItem(tempUseCases);
+    });
 
     // Adds the event listener to the inventory expand button
     $("#inventory-expand-button").on("click", () => {
@@ -53,7 +32,6 @@ $(document).ready(() => {
         }
         $("#inventory-container").height(height);
         $("#inventory-expand-button").text(buttonText);
-        console.log(height);
     });
     
     // Turns the children of this container into sortable elements
@@ -66,7 +44,17 @@ $(document).ready(() => {
         helper: "clone",
         items: "> div",
         start: function(event, ui){
-            $(".inventory-drop-zone").css("opacity", 1);
+            let index = $(ui.item).attr('data-id');
+            let item = inventoryItems[index];
+
+            if(item.useable == true){
+                $(".inventory-drop-zone").css("opacity", 1);
+                $(".inventory-drop-zone").show();
+            } else{
+                $(".inventory-drop-zone").css("opacity", 0);
+                $(".inventory-drop-zone").hide();
+            }
+            
             // Sets a flag for if this draggable is over the drop zone
             overDropZone = false;
         },
@@ -76,10 +64,10 @@ $(document).ready(() => {
             if (overDropZone){
                 let index = $(ui.item).attr('data-id');
 
+                // Uses the item according to its index in the array
                 showPrompt(inventoryItems[index]);
                 $("#inventory-item-container").sortable("cancel");
-                // Uses the item according to its index in the array
-                //inventoryItems[index].useItem();
+                
             } 
         },
     });
@@ -88,28 +76,42 @@ $(document).ready(() => {
 // Shows the prompt to confirm the usage of an item
 function showPrompt(item){
     $("#item-use-accept").off("click");
+    $("#item-use-prompt").css("opacity", 1);
     $("#item-use-prompt").show();
 
     $("#item-use-heading").text("Confirm usage of: " + item.item + "?");
+    $("#item-use-description").text("'"+ item.desc + "'");
+
+    let effects = item.checkEffect();
+    console.log(effects);
+
+    $("#item-use-effect").html("Using this item will affect your: <br>" +
+                                effects);
 
     $("#item-use-accept").on("click", function(){
         item.useItem();
-        $("#item-use-prompt").hide();
+        $("#item-use-prompt").css("opacity", 0);
+        $("#item-use-prompt").hide()
     });
 }
 
 // Class for dynamically creating items
-function InventoryItem(imageName, type, use, container, array) {
+function InventoryItem(imageName, type, use, risk, effect, text, container, array) {
     // Item attributes
     this.quantity = 1;
+    this.imageUrl = imageName;
     this.index = array.length;
+    this.risk = risk;
+    this.effect = effect;
     this.rarity = "common";
     this.item = type;
     this.use = use;
+    this.useable = false;
+    this.desc = text;
 
     // HTML tags
     this.$itemContainer = $('<div data-id="'+this.index+'" class="inventory-item"></div>');
-    this.$itemImg = $("<img src='" + imageName + "'>");
+    this.$itemImg = $("<img src='" + this.imageUrl + "'>");
     this.$itemDisplay = $("<h1>" + this.quantity + "</h1>");
 
     // Prevents creating a ghost image when dragging the image
@@ -119,6 +121,20 @@ function InventoryItem(imageName, type, use, container, array) {
     this.$itemContainer.append(this.$itemImg);
     this.$itemContainer.append(this.$itemDisplay);
 
+    // Functions
+    this.$itemContainer.on({
+        "mousedown touchstart": function() {
+          $(this).tooltip({
+              items: $(".inventory-item"),
+              content: type + " - " +text,
+            });
+          $(this).tooltip("open");
+        },
+        "mouseup touchend": function() {      
+           $(this).tooltip("disable");   
+        },
+      });
+
     this.useItem = function(){
         console.log("Used Item: " + this.item);
         if (this.quantity == 1){
@@ -127,11 +143,40 @@ function InventoryItem(imageName, type, use, container, array) {
         } else {
             this.increaseQuantity(-1);
         }
+
+        // Change resources
+        $(document.body).trigger('update-resources', this.effect);
     };
 
     this.increaseQuantity = function (num){
         this.quantity += num;
         this.$itemDisplay.text(this.quantity);
+    };
+
+    this.disableUse = function (){
+        this.useable = false;
+    };
+
+    this.enableUse = function (){
+        this.useable = true;
+    };
+
+    this.checkEffect = function(){
+        console.log(this.effect);
+        let effectString = "";
+        if (this.effect.affectHP != 0){
+            effectString += "Health Points <br>";
+        }
+        if (this.effect.affectMental != 0){
+            effectString += "Mental Health Points <br>";
+        }
+        if (this.effect.affectSupplies != 0){
+            effectString += "Supplies <br>";
+        }
+        if (this.effect.affectWealth != 0){
+            effectString += "Wealth <br>";
+        }
+        return(effectString);
     }
 
     // Disable selection of items
@@ -141,39 +186,51 @@ function InventoryItem(imageName, type, use, container, array) {
     $(container).append(this.$itemContainer);
 }
 
-function highlightItem(use){
+// Highlights all items in the array if it they are useful to the situation
+function highlightItem(tempUse){
     for (let i = 0; i < inventoryItems.length; i++){
-        if (inventoryItems[i].use == use){
+        // Checks if the item is useful or not
+        let isUseful = isItemUseful(inventoryItems[i], tempUse);
+        if (isUseful == true){
             inventoryItems[i].$itemContainer.css("box-shadow",
                 "0 0 20px rgb(255, 243, 79)");
+            inventoryItems[i].enableUse();
         } else {
             inventoryItems[i].$itemContainer.css("box-shadow",
             "0 0 0px rgb(255, 243, 79)");
+
+            inventoryItems[i].disableUse();
         }
     }
 }
 
-function createItem(url, type, use, container, array){
+// Checks the item against all the usecases if it is useful
+function isItemUseful(item, useCase){
+    let isUseful = false;
+    for (let i = 0; i < item.use.length; i++){
+        for (let x = 0; x < useCase.length; x++){
+            if (item.use[i] == useCase[x]){
+                isUseful = true;
+                break;
+            }
+        }
+    }
+    return(isUseful);
+}
+
+// Creates an item in the inventory or increases its quantity if it already
+function createItem(itemData, container, array){
     let itemExists = false;
     for (let i = 0; i < inventoryItems.length; i++){
-        if (type == inventoryItems[i].item){
+        if (itemData.itemName == inventoryItems[i].item){
             inventoryItems[i].increaseQuantity(1);
             itemExists = true;
         }
     }
     if (itemExists != true){
-        let item = new InventoryItem(url, type, use, container, array);
+        let item = new InventoryItem(itemData.itemSprite, itemData.itemName, 
+                                     itemData.useableOn, itemData.infectionRisk,
+                                     itemData.statusEffect, itemData.itemText, container, array);
         inventoryItems.push(item);
     }
-}
-
-for (let i = 0; i < 5; i++){
-    createItem("https://clipartix.com/wp-content/uploads/2018/03/orange-clipart-2018-50.png",
-             "Orange", 0, "#inventory-item-container", inventoryItems);
-    createItem("https://i.pinimg.com/originals/f1/b2/9e/f1b29ee56628bccf15df81d70c329643.png",
-             "Grapes", 1, "#inventory-item-container", inventoryItems);
-    createItem("https://clipartix.com/wp-content/uploads/2018/09/yellow-clipart-2018-10.png",
-             "Bananas", 2, "#inventory-item-container", inventoryItems);
-    createItem("https://clipartix.com/wp-content/uploads/2017/06/Teacher-apple-clipart-free-images-2.gif",
-            "Apples", 3, "#inventory-item-container", inventoryItems);
 }

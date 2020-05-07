@@ -112,7 +112,13 @@ function pickNextCard() {
     }
 
     // Highlights the items which are useful to the card
-    highlightItem(cardNum);
+    if (cardNum == 0){
+        let tempUseCases = ["Food"];
+        highlightItem(tempUseCases);
+    } else {
+        let tempUseCases = ["Nothing"];
+        highlightItem(tempUseCases);
+    }
 }
 
 /** Returns a random color. */
