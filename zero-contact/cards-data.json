@@ -1,8 +1,8 @@
 [{
         "event": "infected",
         "text": "You don't sound so good... Are you feeling okay?",
-        "image": "images/man-with-mask.png",
-        "name": "Random person",
+        "image": "images/doctor-green.png",
+        "name": "Doctor Green",
         "left": {
             "text": "I...",
             "risk": 1.00,
@@ -27,7 +27,7 @@
     {
         "event": "food",
         "text": "I'm hungry. Can you get us some food?",
-        "image": "images/man-with-mask.png",
+        "image": "images/little-timmy.png",
         "name": "Little Timmy",
         "left": {
             "text": "Canned soup!",
@@ -105,7 +105,7 @@
     {
         "event": "home-entertainment",
         "text": "We're really bored. If we got a WebFlix subscription, it would sure help pass the time",
-        "image": "images/man-with-mask.png",
+        "image": "images/little-timmy.png",
         "name": "Little Timmy",
         "left": {
             "text": "We can't afford it.",
@@ -131,7 +131,7 @@
     {
         "event": "appointment",
         "text": "Your foot doesn't look so good. We should schedule an appointment for you to come in.",
-        "image": "images/man-with-mask.png",
+        "image": "images/doctor-green.png",
         "name": "Doctor Green",
         "left": {
             "text": "I'll pass.",
@@ -157,7 +157,7 @@
     {
         "event": "hangout",
         "text": "I haven't seen you in a while. Lets go out tonight! Please?",
-        "image": "images/man-with-mask.png",
+        "image": "images/cindy-lou.png",
         "name": "Cindy Lou",
         "left": {
             "text": "Not tonight.",
@@ -183,7 +183,7 @@
     {
         "event": "appointment",
         "text": "My dentist appointment is today and the car isn't working.",
-        "image": "images/man-with-mask.png",
+        "image": "images/little-timmy.png",
         "name": "Little Timmy",
         "left": {
             "text": "Tough luck.",
@@ -235,7 +235,7 @@
     {
         "event": "food",
         "text": "The pantry is looking a little empty. We should go to the grocery store.",
-        "image": "images/man-with-mask.png",
+        "image": "images/granny.png",
         "name": "Granny",
         "left": {
             "text": "Not right now.",

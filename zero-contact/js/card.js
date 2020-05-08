@@ -11,7 +11,7 @@ function Card(leftChoice, rightChoice, image) {
     this.$card = $('<div class="card"><div id="card-text"><span class="white-monospace"></span></div></div>');
     this.origin;
 
-    this.$card.css('background', `url(${image}) black no-repeat`);
+    this.$card.css('background', `url(${image}) black no-repeat center center`);
 
     /** Places card inside center of container. */
     $('#card-container').append(this.$card);

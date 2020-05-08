@@ -18,10 +18,10 @@
 
 <body>
     <div id="wrapper">
-        <div id="stats-spacer">
-            <div id="stats-container">
-                <img src="images/stats-overlay.png" id="stats-overlay">
-                <div>
+        <div id="stats-spacer" class="dynamic-width">
+            <div id="stats-container" class="dynamic-height">
+                <img src="images/stats-overlay.png" id="stats-overlay" class="dynamic-height">
+                <div class="dynamic-height">
                     <div id="physical" class="progress-bar"></div>
                     <div class="dot-container">
                         <div id="dot-physical" class="dot"></div>
@@ -41,11 +41,11 @@
                 </div>
             </div>
         </div>
-        <div id="event-text" class="black-monospace"><span></span></div>
-        <div id="card-container"></div>
-        <div id="name"><span class="black-monospace"></span></div>
-        <div id="bottom"></div>
-        <div id="inventory-container">
+        <div id="event-text" class="black-monospace dynamic-width"><span></span></div>
+        <div id="card-container" class="dynamic-width"></div>
+        <div id="name" class="dynamic-width"><span class="black-monospace"></span></div>
+        <div id="bottom" class="dynamic-width"></div>
+        <div id="inventory-container" class="dynamic-width">
             <button id="inventory-expand-button">Open</button>
             <div id="inventory-item-container"></div>
         </div>
