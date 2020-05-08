@@ -1,0 +1,183 @@
+let currentCard;
+let cardDataArray;
+let cardNum = 1;
+
+// Dot size unit is pixels
+const MAX_DOT_SIZE = 24;
+
+function Card(leftChoice, rightChoice, image) {
+    this.leftChoice = leftChoice;
+    this.rightChoice = rightChoice;
+    this.$card = $('<div class="card"><div id="card-text"><span class="white-monospace"></span></div></div>');
+    this.origin;
+
+    this.$card.css('background', `url(${image}) black no-repeat`);
+
+    /** Places card inside center of container. */
+    $('#card-container').append(this.$card);
+    this.$card.position({
+        my: 'center',
+        at: 'center',
+        of: this.$card.parent()
+    });
+    // Stores the initial position
+    this.origin = this.$card.position().left;
+
+    // Needs the reference because the 'this' keyword inside 'draggable()' will not refer to Card
+    const self = this;
+
+    /** 
+     * Makes the div draggable.
+     * Text and dot size changes based on which size the card is on.
+     * If card reaches bounds, force mouse up and fade out card.
+     * Draggable's drag event is called every pixel dragged.
+     * Draggable's stop event is called after card reverts to the center.
+     */
+    this.$card.draggable({
+        containment: self.$card.parent(),
+        scroll: false,
+        revert: true,
+        revertDuration: 150,
+        drag: function () {
+            let side = self.getSide();
+            if (side === 'left') {
+                self.updateChoice(leftChoice);
+                updateDots(leftChoice);
+            } else if (side === 'right') {
+                self.updateChoice(rightChoice);
+                updateDots(rightChoice);
+            }
+
+            if (self.hasReachedBounds()) {
+                self.$card.fadeOut();
+                self.$card.mouseup();
+                self.choiceMade();
+            }
+        },
+        stop: function () {
+            $('#card-text').slideUp({
+                duration: 200,
+                end: function () {
+                    $('#card-text > span').text('');
+                }
+            });
+            $('.dot').hide();
+        }
+    });
+
+    /** Determines if card has reached left or right bound. */
+    this.hasReachedBounds = function () {
+        let cardPosition = this.$card.position().left;
+        let leftBound = 0;
+        let rightBound = this.$card.parent().width() - this.$card.width();
+        if (cardPosition <= leftBound || cardPosition >= rightBound) {
+            return true;
+        }
+        return false;
+    }
+
+    /** Determines which side the card is on based on origin. */
+    this.getSide = function () {
+        let cardPosition = this.$card.position().left;
+        if (cardPosition < this.origin) {
+            return 'left';
+        } else if (cardPosition > this.origin) {
+            return 'right';
+        } else {
+            return 'neither';
+        }
+    }
+
+    /** Changes text inside card based on side. */
+    this.updateChoice = function (choice) {
+        $('#card-text').slideDown({
+            duration: 200,
+            start: function () {
+                $('#card-text').css('display', 'flex');
+                $('#card-text > span').text(choice.text);
+            }
+        });
+    }
+
+    /** Triggers resources to update. Creates a new card after fadeOut() finishes. */
+    this.choiceMade = function () {
+        pickNextCard();
+        let side = this.getSide();
+        if (side === 'left') {
+            $(document.body).trigger('update-resources', this.leftChoice);
+        } else if (side === 'right') {
+            $(document.body).trigger('update-resources', this.rightChoice);
+        }
+        this.$card.promise().done(function () {
+            createCard(cardDataArray[cardNum]);
+        });
+    }
+}
+
+/** Removes old card and message from html and creates new Card. */
+function createCard(cardData) {
+    $('#card-container').html('');
+    $('#event-text > span').text(cardData.text);
+    $('#name > span').text(cardData.name);
+    currentCard = new Card(cardData.left, cardData.right, cardData.image);
+}
+
+/** 
+ * Determines what the next card should be based on player choice 
+ * for the current card. Currently we're just looping through all cards.
+ */
+function pickNextCard() {
+    cardNum++;
+    if (cardNum >= cardDataArray.length) {
+        cardNum = 0;
+    }
+}
+
+/** Sets the size of each dot. */
+function updateDots(choice) {
+    let dotPhysical = calculateDot(choice.effect.physical) + 'px';
+    $('#dot-physical').css({
+        'width': dotPhysical,
+        'height': dotPhysical
+    })
+    let dotMental = calculateDot(choice.effect.mental) + 'px';
+    $('#dot-mental').css({
+        'width': dotMental,
+        'height': dotMental
+    })
+    let dotWealth = calculateDot(choice.effect.wealth) + 'px';
+    $('#dot-wealth').css({
+        'width': dotWealth,
+        'height': dotWealth
+    })
+    let dotSupplies = calculateDot(choice.effect.supplies) + 'px';
+    $('#dot-supplies').css({
+        'width': dotSupplies,
+        'height': dotSupplies
+    })
+    $('.dot').show();
+}
+
+/**
+ * Helper method that calculates the dot size based on effect value.
+ * Makes sure the dot isn't too small by increasing dot size if not 0.
+ */
+function calculateDot(effect) {
+    const sizeIncrease = 3;
+    let dotSize = Math.abs(effect) / 100 * MAX_DOT_SIZE;
+    if (dotSize > 0) {
+        dotSize += sizeIncrease;
+    }
+    if (dotSize > MAX_DOT_SIZE) {
+        dotSize = MAX_DOT_SIZE;
+    }
+    return dotSize;
+}
+
+/** When the page loads, gets JSON data and creates the first card. */
+$(document).ready(function () {
+    $.getJSON('cards-data.json', function (data) {
+        cardDataArray = data;
+        createCard(cardDataArray[cardNum]);
+    });
+});

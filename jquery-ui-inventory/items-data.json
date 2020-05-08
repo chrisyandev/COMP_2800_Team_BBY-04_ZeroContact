@@ -1,0 +1,108 @@
+[
+    {
+    "itemName": "N-95 Mask",
+    "itemText": "Slightly reduces risk of exposure by covering face.",
+    "itemSprite": "/example-directory/sprite.png",
+    "useableOn": ["Hangout", "Food", "Appointment"],
+    "infectionRisk":-0.02,
+    "statusEffect": {
+        "affectHP": 0,
+        "affectMental": 0,
+        "affectWealth": 0,
+        "affectSupplies": 0
+        }
+    },
+    {
+        "itemName": "Hand Sanitizer",
+        "itemText": "Greatly reduces risk of exposure by allowing hands to be sterilized on the go.",
+        "itemSprite": "/example-directory/sprite.png",
+        "useableOn": ["Hangout", "Food", "Appointment"],
+        "infectionRisk":-0.04,
+        "statusEffect": {
+            "affectHP": 0,
+            "affectMental": 0,
+            "affectWealth": 0,
+            "affectSupplies": 0
+        }
+    },
+    {
+        "itemName": "Chocolate Chip Cookie",
+        "itemText": "Brings a bit of joy to a meal at home.",
+        "itemSprite": "/example-directory/sprite.png",
+        "useableOn": ["Food"],
+        "infectionRisk":0.00,
+        "statusEffect": {
+            "affectHP": 5,
+            "affectMental": 15,
+            "affectWealth": 0,
+            "affectSupplies": 5
+        }
+    },
+    {
+        "itemName": "Gift Card",
+        "itemText": "Helps pay for something when you need it.",
+        "itemSprite": "/example-directory/sprite.png",
+        "useableOn": ["Food", "Home Entertainment"],
+        "infectionRisk":0.00,
+        "statusEffect": {
+            "affectHP": 0,
+            "affectMental": 5,
+            "affectWealth": 20,
+            "affectSupplies": 0
+        }
+    },
+    {
+        "itemName": "Multivitamins",
+        "itemText": "Boosts the immune system, Makes you feel a little better.",
+        "itemSprite": "/example-directory/sprite.png",
+        "useableOn": ["Food", "Home Entertainment"],
+        "infectionRisk":-0.005,
+        "statusEffect": {
+            "affectHP": 5,
+            "affectMental": 5,
+            "affectWealth": 0,
+            "affectSupplies": 0
+        }
+    },
+    {
+        "itemName": "Toilet Paper",
+        "itemText": "Lets you feel proud you got some before other people did.",
+        "itemSprite": "/example-directory/sprite.png",
+        "useableOn": ["Food", "Home Entertainment"],
+        "infectionRisk":-0.005,
+        "statusEffect": {
+            "affectHP": 5,
+            "affectMental": 5,
+            "affectWealth": 0,
+            "affectSupplies": 10
+        }
+    },
+    {
+        "itemName": "Banana",
+        "itemText": "A yellow fruit.",
+        "itemSprite": "https://clipartix.com/wp-content/uploads/2018/09/yellow-clipart-2018-10.png",
+        "useableOn": ["Food"],
+        "infectionRisk":-0.005,
+        "statusEffect": {
+            "affectHP": 5,
+            "affectMental": 5,
+            "affectWealth": 0,
+            "affectSupplies": 10
+        }
+    },
+    {
+        "itemName": "Apple",
+        "itemText": "A red fruit.",
+        "itemSprite": "https://clipartix.com/wp-content/uploads/2017/06/Teacher-apple-clipart-free-images-2.gif",
+        "useableOn": ["Food"],
+        "infectionRisk":-0.005,
+        "statusEffect": {
+            "affectHP": 5,
+            "affectMental": 5,
+            "affectWealth": 0,
+            "affectSupplies": 10
+        }
+    }
+
+]
+

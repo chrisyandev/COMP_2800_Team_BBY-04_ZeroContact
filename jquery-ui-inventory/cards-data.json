@@ -1,0 +1,81 @@
+[{
+        "left": {
+            "text": "Go shopping",
+            "happiness": 10,
+            "food": 10,
+            "risk": 10,
+            "money": -10
+        },
+        "right": {
+            "text": "Don't go shopping",
+            "happiness": -10,
+            "food": -10,
+            "risk": -10,
+            "money": 10
+        }
+    },
+    {
+        "left": {
+            "text": "Visit Bob",
+            "happiness": 20,
+            "food": 0,
+            "risk": 20,
+            "money": 0
+        },
+        "right": {
+            "text": "Don't visit Bob",
+            "happiness": -30,
+            "food": 0,
+            "risk": -10,
+            "money": 0
+        }
+    },
+    {
+        "left": {
+            "text": "Go to work",
+            "happiness": 0,
+            "food": 0,
+            "risk": 20,
+            "money": 30
+        },
+        "right": {
+            "text": "Don't go to work",
+            "happiness": 10,
+            "food": 0,
+            "risk": -20,
+            "money": -30
+        }
+    },
+    {
+        "left": {
+            "text": "Play video games",
+            "happiness": 20,
+            "food": 0,
+            "risk": 0,
+            "money": 0
+        },
+        "right": {
+            "text": "Don't play video games",
+            "happiness": -20,
+            "food": 0,
+            "risk": 0,
+            "money": 0
+        }
+    },
+    {
+        "left": {
+            "text": "Socialize online",
+            "happiness": 20,
+            "food": 0,
+            "risk": 0,
+            "money": 0
+        },
+        "right": {
+            "text": "Don't socialize online",
+            "happiness": -20,
+            "food": 0,
+            "risk": 0,
+            "money": 0
+        }
+    }
+]
