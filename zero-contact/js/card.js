@@ -131,6 +131,15 @@ function pickNextCard() {
     if (cardNum >= cardDataArray.length) {
         cardNum = 0;
     }
+
+    // Highlights the items which are useful to the card
+    if (cardNum == 0){
+        let tempUseCases = ["Food"];
+        highlightItem(tempUseCases);
+    } else {
+        let tempUseCases = ["Nothing"];
+        highlightItem(tempUseCases);
+    }
 }
 
 /** Sets the size of each dot. */
