@@ -167,16 +167,16 @@ function InventoryItem(imageName, type, use, risk, effect, text, container, arra
     this.checkEffect = function(){
         console.log(this.effect);
         let effectString = "";
-        if (this.effect.affectHP != 0){
+        if (this.effect.physical != 0){
             effectString += "Health Points <br>";
         }
-        if (this.effect.affectMental != 0){
+        if (this.effect.mental != 0){
             effectString += "Mental Health Points <br>";
         }
-        if (this.effect.affectSupplies != 0){
+        if (this.effect.supplies != 0){
             effectString += "Supplies <br>";
         }
-        if (this.effect.affectWealth != 0){
+        if (this.effect.wealth != 0){
             effectString += "Wealth <br>";
         }
         return(effectString);
@@ -233,7 +233,7 @@ function createItem(itemData, container, array, tooltipOn){
     if (itemExists != true){
         let item = new InventoryItem(itemData.itemSprite, itemData.itemName, 
                                      itemData.useableOn, itemData.infectionRisk,
-                                     itemData.statusEffect, itemData.itemText, container, array, tooltipOn);
+                                     itemData.effect, itemData.itemText, container, array, tooltipOn);
         array.push(item);
     }
 }
