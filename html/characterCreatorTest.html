@@ -9,20 +9,20 @@
 
     <body>
         <script src="../js/characterCreator.js"></script>
-        <input id="create" type="button" value="Create Character" onclick = createCharacter()>
+        <input id="create" type="button" value="Create Character" onclick = loadCharacterPage()>
         <p>
             <!-- empty space-->
         </p>
         <div id="profile">
             <div id="main">
-                <img src= "#" alt="placeholder">
+                <img id="profilePicture" src= "https://cdn.cnn.com/cnnnext/dam/assets/150601174854-15-menswear-dog-0601-super-169.jpg" alt="placeholder">
                 <p id="name"></p> 
                 <p id="gender"></p> 
                 <p id="age"></p> 
                 <p id="family"></p>
                 <p id="familyLabel"></p>
             </div>
-            <input id="seeFamily" type="button" value="See members" onclick = seeNext()>
+            <input id="seeFamily" type="button" value="See Family" onclick = seeNext()>
             <div id="family">
                 <p id="familyDisplay">
                     <!-- info goes here -->

@@ -23,7 +23,7 @@ function family(name, gender, relation, age) {
 //Runtime------------------------------------------------------
 let player;
 
-function createCharacter() {
+function loadCharacterPage() {
     document.getElementById("create").value = "Next Character";
     let famSize = genNum(0, 4);
     generateProfile();
@@ -31,6 +31,9 @@ function createCharacter() {
     drawCharacter();
     addFamily(famSize);
     drawFamily(famSize);
+    document.getElementById("profile").style = "display: block";
+    document.getElementById("seeFamily").style = "display: block";
+    document.getElementById("saveInfo").style = "display: block";
 }
 //Creates main character
 function generateProfile() {
@@ -46,7 +49,7 @@ function drawCharacter() {
     document.getElementById("age").innerHTML = "Age: " + player.playerAge;
     document.getElementById("family").innerHTML = "Family Size: " + player.familySize;
     document.getElementById("familyLabel").innerHTML = "Family Members:";
-    document.getElementById("seeFamily").style = "display: block";
+    
 }
 //Generates famil members
 function createFamily() {
@@ -68,20 +71,25 @@ function addFamily(size) {
 }
 //Renders famil members onto the page
 function drawFamily(size) {
-    document.getElementById("familyDisplay").innerHTML = "";
-    console.log(player.familyMembers)
-    for (let i = 0; i < size; i++) {
-        document.getElementById("familyDisplay").innerHTML += "<br>Name: " + player.familyMembers[i].name + "<br>";
-        document.getElementById("familyDisplay").innerHTML += "Gender: " + player.familyMembers[i].gender + "<br>";
-        document.getElementById("familyDisplay").innerHTML += "Relation: " + player.familyMembers[i].relation + "<br>";
-        document.getElementById("familyDisplay").innerHTML += "Age: " + player.familyMembers[i].age + "<br>";
-        document.getElementById("familyDisplay").innerHTML += " ";
+    if (size == 0) {
+        document.getElementById("familyDisplay").innerHTML = "None.";
+    } else {
+        document.getElementById("familyDisplay").innerHTML = "";
+        console.log(player.familyMembers)
+        for (let i = 0; i < size; i++) {
+            document.getElementById("familyDisplay").innerHTML += "<br>Name: " + player.familyMembers[i].name + "<br>";
+            document.getElementById("familyDisplay").innerHTML += "Gender: " + player.familyMembers[i].gender + "<br>";
+            document.getElementById("familyDisplay").innerHTML += "Relation: " + player.familyMembers[i].relation + "<br>";
+            document.getElementById("familyDisplay").innerHTML += "Age: " + player.familyMembers[i].age + "<br>";
+            document.getElementById("familyDisplay").innerHTML += " ";
+        }
     }
 }
 
 let displayFlag = true;
+
 function seeNext() {
-    if(displayFlag) {
+    if (displayFlag) {
         displayFlag = !displayFlag;
         document.getElementById("familyDisplay").style = "display: block";
     } else {
@@ -92,8 +100,9 @@ function seeNext() {
 }
 
 function placeHolder() {
-    console.log("Goes somewhere");
+    console.log("Under Developement");
     console.log(player);
+    window.alert("Under Development.");
 }
 
 //Informtion Generation---------------------------------------------------------------
@@ -170,9 +179,9 @@ function genFamilyGender() {
             gender = "F";
         }
     } else if (genderCheck == 3) { //Spouse is the same gender at 10% chance
-        if (Math.round(Math.random()) < 0.1) {
+        if (Math.random() < 0.1) {
             gender = check;
-        } else if (Math.round(Math.random()) > 0.1 && check == "M") {
+        } else if (Math.random() > 0.1 && check == "M") {
             gender = "F";
         } else {
             gender = "M";
@@ -188,10 +197,10 @@ function genName() {
 }
 //--------------- TEMP ---------------------------------------------
 let nameList = [
-    "Adam", "Alex", "Aaron", "Ben", "Carl", "Dan", "David", 
-    "Edward", "Fred", "Frank", "George", "Hal", "Hank", "Ike", 
-    "John", "Jack", "Joe", "Larry", "Monte", "Matthew", "Mark", 
-    "Nathan", "Otto", "Paul", "Peter", "Roger", "Roger", "Steve", 
+    "Adam", "Alex", "Aaron", "Ben", "Carl", "Dan", "David",
+    "Edward", "Fred", "Frank", "George", "Hal", "Hank", "Ike",
+    "John", "Jack", "Joe", "Larry", "Monte", "Matthew", "Mark",
+    "Nathan", "Otto", "Paul", "Peter", "Roger", "Roger", "Steve",
     "Thomas", "Tim", "Ty", "Victor", "Walter", "Haise", "Hayato",
     "Ren", "Seyren", "Windsor", "Sakura", "Masamune", "Yukinari",
     "Luciela", "Len", "Fortuna", "Kotowari", "Rinne", "Seiran", "Yakumo",
@@ -206,7 +215,7 @@ let nameList = [
     "RX-93 v Gundam", "Feng", "Tokiyomi", "Kusunoki", "Loki", "Odin", "Amaterasu",
     "Izanagi", "Izanami", "Silverio Vendetta", "Mercurius", "Amakasu", "Masahiko",
     "Hiiragi", "Yoshiya", "Nakiri", "Kuubou", "Paradise", "Hajun", "Nobunaga",
-    "Nobuhime", "Oda", "Kaziklu Bey", "Lloyd", "Matsunaga", "Tsubame",
+    "Nobuhime", "Oda", "Kaziklu Bey", "Lloyd", "Matsunaga", "Tsubame", "Casual",
     "Anderson", "Ashwoon", "Aikin", "Bateman", "Bongard",
     "Bowers", "Boyd", "Cannon", "Cast", "Deitz", "Dewalt",
     "Ebner", "Frick", "Hancock", "Haworth", "Hesch", "Hoffman",
