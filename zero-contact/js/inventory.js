@@ -4,6 +4,8 @@ let itemDataArray = [];
 
 // Expands the inventory when the button is clicked
 $(document).ready(() => {
+    $(".inventory-drop-zone").hide();
+
     // Gets data from the json file and puts it into an array
     $.getJSON('items-data.json', function (data) {
         itemDataArray = data;
@@ -65,6 +67,7 @@ $(document).ready(() => {
 
         stop: function(event, ui){
             $(".inventory-drop-zone").css("opacity", 0);
+            $(".inventory-drop-zone").hide();
             if (overDropZone){
                 let index = $(ui.item).attr('data-id');
 
