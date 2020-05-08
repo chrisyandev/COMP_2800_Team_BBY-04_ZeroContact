@@ -1,9 +1,12 @@
 * {
-    font-family: Arial;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
 }
 
 body {
-    background-color: rgb(90, 201, 221);
+        background-image: url("../images/city-bg.png");
+        background-repeat: no-repeat;
+        background-size: cover;
 }
 
 @media (min-width: 1025px) {
@@ -18,7 +21,7 @@ body {
 
     #game-name {
         color: rgb(172, 23, 23);
-        background-color: rgb(50, 106, 190);
+        background-color: rgb(64, 167, 199);
         grid-area: heading;
         padding: 20px;
         margin: -8px;
@@ -27,8 +30,8 @@ body {
 
     #navbar {
         display: flex;
-        background-color: rgb(50, 106, 190);
-        justify-content: space-between;
+        background-color: rgb(64, 167, 199);
+        justify-content: space-around;
         padding: 10px;
         margin: -8px;
         grid-area: navbar;
