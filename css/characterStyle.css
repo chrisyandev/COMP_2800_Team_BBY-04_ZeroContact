@@ -1,12 +1,18 @@
-#create {
-    margin-left: 30%;
+#top {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
 }
+
 #saveInfo {
-    margin-left: 55%;
+    float: right;
+    margin-right: 20%;
 }
 
 #profile {
-    margin-left: 30%;
+    float: left;
+    width: 75%;
+    margin-left: 25%;
     padding: 5%;
     border: 1px solid red;
     width: 30vw;
@@ -26,9 +32,25 @@
     display: none;
 }
 
+aside {
+    float: right;
+    width: 25%;
+    padding: 0 2.5%;
+}
+
 @media all and (max-width:400px) {
+    aside {
+        float: none;
+        width: 95%;
+        padding: 0 2.5%;
+    }
+
     #profile {
         margin-left: 5%;
         width: 76vw;
+    }
+
+    #profilePicture {
+        height: 35%;
     }
 }
