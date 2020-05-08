@@ -5,13 +5,14 @@ html, body{
 
 .inventory-drop-zone{
     position: fixed;
-    top: 0;
+    bottom: 0;
     opacity: 0;
     width: 100%;
-    height: 25%;
+    height: 40%;
     text-align: center;
     background-color: rgba(218, 218, 218, 0.281);
     font-size: 25px;
+    z-index: 3;
 }
 
 .inventory-drop-zone-hover{
@@ -19,18 +20,29 @@ html, body{
 }
 
 #inventory-container {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    top: 95%;
+    transform: translate(-50%, -50%);
     display: flex;
-    position: fixed;
-    height: 150px;
-    width: 100%;
-    bottom: 0px;
+    height: 20px;
+    width: 280px;
     flex-direction: column;
     transition: 0.3s;
 }
 
+#inventory-expand-button {
+    height: 50px;
+    background-color: #222034;
+    box-sizing: border-box;
+    color: #dddfcb;
+    border-color: #dddfcb;
+}
+
 #inventory-item-container{
     display: grid;
-    padding: 0px 50px;
+    padding: 0px 0px;
     justify-content: space-around;
     grid-gap: 10px;
     float: left;
@@ -93,11 +105,12 @@ html, body{
     justify-content: center;
     text-align: center;
     width: 100%;
-    height: 75%;
+    height: 100%;
     top: 10%;
     left: 0;
     background-color: rgba(185, 185, 185, 0.692);
     opacity: 0;
+    z-index: 3;
 }
 
 #item-use-heading{

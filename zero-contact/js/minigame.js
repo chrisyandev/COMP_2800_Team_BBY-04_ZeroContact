@@ -47,7 +47,7 @@ function StoreShelf(rows, columns){
 function createShelfItem(itemData, container, array, tooltipOn){
     let item = new InventoryItem(itemData.itemSprite, itemData.itemName, 
                                 itemData.useableOn, itemData.infectionRisk,
-                                itemData.statusEffect, itemData.itemText, container, array, tooltipOn);
+                                itemData.effect, itemData.itemText, container, array, tooltipOn);
 
     let randTime = (Math.random()*20000 + 5000);
     let timer = setTimeout(function(){

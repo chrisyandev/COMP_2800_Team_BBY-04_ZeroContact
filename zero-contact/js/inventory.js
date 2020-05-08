@@ -4,6 +4,8 @@ let itemDataArray = [];
 
 // Expands the inventory when the button is clicked
 $(document).ready(() => {
+    $(".inventory-drop-zone").hide();
+
     // Gets data from the json file and puts it into an array
     $.getJSON('items-data.json', function (data) {
         itemDataArray = data;
@@ -23,14 +25,18 @@ $(document).ready(() => {
     $("#inventory-expand-button").on("click", () => {
         let height = parseInt($("#inventory-container").css("height"));
         let buttonText;
-        if (height == 150){
+        let topValue;
+        if (height == 20){
             height = "75%";
             buttonText = "Close";
+            topValue = "60%"
         } else{
-            height = "150px";
+            height = "20px";
             buttonText = "Open";
+            topValue = "95%";
         }
         $("#inventory-container").height(height);
+        $("#inventory-container").css("top", topValue);
         $("#inventory-expand-button").text(buttonText);
     });
     
@@ -61,6 +67,7 @@ $(document).ready(() => {
 
         stop: function(event, ui){
             $(".inventory-drop-zone").css("opacity", 0);
+            $(".inventory-drop-zone").hide();
             if (overDropZone){
                 let index = $(ui.item).attr('data-id');
 
@@ -167,16 +174,16 @@ function InventoryItem(imageName, type, use, risk, effect, text, container, arra
     this.checkEffect = function(){
         console.log(this.effect);
         let effectString = "";
-        if (this.effect.affectHP != 0){
+        if (this.effect.physical != 0){
             effectString += "Health Points <br>";
         }
-        if (this.effect.affectMental != 0){
+        if (this.effect.mental != 0){
             effectString += "Mental Health Points <br>";
         }
-        if (this.effect.affectSupplies != 0){
+        if (this.effect.supplies != 0){
             effectString += "Supplies <br>";
         }
-        if (this.effect.affectWealth != 0){
+        if (this.effect.wealth != 0){
             effectString += "Wealth <br>";
         }
         return(effectString);
@@ -204,6 +211,24 @@ function highlightItem(tempUse){
 
             inventoryItems[i].disableUse();
         }
+    }
+
+    // For loop for detecting whether to make the open button glow
+    let highlightOpenBtn = false;
+    for (let i = 0; i < inventoryItems.length; i++){
+        let isUsable = inventoryItems[i].useable;
+        if (isUsable == true){
+            highlightOpenBtn = true;
+            break;
+        }
+    }
+
+    if (highlightOpenBtn == true){
+        $("#inventory-expand-button").css("box-shadow",
+                "0 0 20px rgb(255, 243, 79)");
+    } else{
+        $("#inventory-expand-button").css("box-shadow",
+                "0 0 0px rgb(255, 243, 79)");
     }
 }
 
@@ -233,7 +258,7 @@ function createItem(itemData, container, array, tooltipOn){
     if (itemExists != true){
         let item = new InventoryItem(itemData.itemSprite, itemData.itemName, 
                                      itemData.useableOn, itemData.infectionRisk,
-                                     itemData.statusEffect, itemData.itemText, container, array, tooltipOn);
+                                     itemData.effect, itemData.itemText, container, array, tooltipOn);
         array.push(item);
     }
 }
