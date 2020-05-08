@@ -1,0 +1,32 @@
+#create {
+    margin-left: 30%;
+}
+#saveInfo {
+    margin-left: 55%;
+}
+
+#profile {
+    margin-left: 30%;
+    padding: 5%;
+    border: 1px solid red;
+    width: 30vw;
+}
+
+#main p {
+    font-size: 120%;
+}
+
+#seeFamily {
+    display: none;
+}
+#familyDisplay {
+    display: none;
+}
+
+
+@media all and (max-width:400px) {
+    #profile {
+        margin-left: 5%;
+        width: 76vw;
+    }
+}
