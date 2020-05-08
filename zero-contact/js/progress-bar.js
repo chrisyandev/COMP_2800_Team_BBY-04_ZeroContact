@@ -25,27 +25,27 @@ $('#supplies').progressbar({
 });
 
 // Logic when event received
-$(document.body).on('update-resources', function (event, choice) {
-    updateProgressBars(choice);
+$(document.body).on('update-resources', function (event, effect) {
+    updateProgressBars(effect);
 });
 
 /** Updates the progress bars' fill. */
-function updateProgressBars(choice) {
-    let newPhysical = add($('#physical').progressbar('value'), choice.effect.physical);
+function updateProgressBars(effect) {
+    let newPhysical = add($('#physical').progressbar('value'), effect.physical);
     $('#physical').progressbar('value', newPhysical);
-    changeFillColor($('#physical').find('.ui-progressbar-value'), choice.effect.physical);
+    changeFillColor($('#physical').find('.ui-progressbar-value'), effect.physical);
 
-    let newFood = add($('#mental').progressbar('value'), choice.effect.mental);
+    let newFood = add($('#mental').progressbar('value'), effect.mental);
     $('#mental').progressbar('value', newFood);
-    changeFillColor($('#mental').find('.ui-progressbar-value'), choice.effect.mental);
+    changeFillColor($('#mental').find('.ui-progressbar-value'), effect.mental);
 
-    let newRisk = add($('#wealth').progressbar('value'), choice.effect.wealth);
+    let newRisk = add($('#wealth').progressbar('value'), effect.wealth);
     $('#wealth').progressbar('value', newRisk);
-    changeFillColor($('#wealth').find('.ui-progressbar-value'), choice.effect.wealth);
+    changeFillColor($('#wealth').find('.ui-progressbar-value'), effect.wealth);
 
-    let newMoney = add($('#supplies').progressbar('value'), choice.effect.supplies);
+    let newMoney = add($('#supplies').progressbar('value'),effect.supplies);
     $('#supplies').progressbar('value', newMoney);
-    changeFillColor($('#supplies').find('.ui-progressbar-value'), choice.effect.supplies);
+    changeFillColor($('#supplies').find('.ui-progressbar-value'), effect.supplies);
 }
 
 /** Helper method that makes sure result is between 0 and 100. */
