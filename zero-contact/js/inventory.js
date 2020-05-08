@@ -23,14 +23,18 @@ $(document).ready(() => {
     $("#inventory-expand-button").on("click", () => {
         let height = parseInt($("#inventory-container").css("height"));
         let buttonText;
-        if (height == 150){
+        let topValue;
+        if (height == 20){
             height = "75%";
             buttonText = "Close";
+            topValue = "60%"
         } else{
-            height = "150px";
+            height = "20px";
             buttonText = "Open";
+            topValue = "95%";
         }
         $("#inventory-container").height(height);
+        $("#inventory-container").css("top", topValue);
         $("#inventory-expand-button").text(buttonText);
     });
     
@@ -204,6 +208,24 @@ function highlightItem(tempUse){
 
             inventoryItems[i].disableUse();
         }
+    }
+
+    // For loop for detecting whether to make the open button glow
+    let highlightOpenBtn = false;
+    for (let i = 0; i < inventoryItems.length; i++){
+        let isUsable = inventoryItems[i].useable;
+        if (isUsable == true){
+            highlightOpenBtn = true;
+            break;
+        }
+    }
+
+    if (highlightOpenBtn == true){
+        $("#inventory-expand-button").css("box-shadow",
+                "0 0 20px rgb(255, 243, 79)");
+    } else{
+        $("#inventory-expand-button").css("box-shadow",
+                "0 0 0px rgb(255, 243, 79)");
     }
 }
 
