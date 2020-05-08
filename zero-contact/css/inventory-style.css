@@ -19,13 +19,24 @@ html, body{
 }
 
 #inventory-container {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    top: 95%;
+    transform: translate(-50%, -50%);
     display: flex;
-    position: fixed;
-    height: 150px;
-    width: 100%;
-    bottom: 0px;
+    height: 20px;
+    width: 280px;
     flex-direction: column;
     transition: 0.3s;
+}
+
+#inventory-expand-button {
+    height: 50px;
+    background-color: #222034;
+    box-sizing: border-box;
+    color: #dddfcb;
+    border-color: #dddfcb;
 }
 
 #inventory-item-container{
@@ -93,7 +104,7 @@ html, body{
     justify-content: center;
     text-align: center;
     width: 100%;
-    height: 75%;
+    height: 60%;
     top: 10%;
     left: 0;
     background-color: rgba(185, 185, 185, 0.692);

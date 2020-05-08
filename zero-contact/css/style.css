@@ -4,6 +4,10 @@ body {
     background-size: cover;
 }
 
+#wrapper {
+    position: relative;
+}
+
 /* Defines some space at the top of screen */
 #stats-spacer {
     height: 110px;
