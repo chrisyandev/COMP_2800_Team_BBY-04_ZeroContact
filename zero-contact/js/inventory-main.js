@@ -1,3 +1,5 @@
+let itemDataArray = [];
+
 $(document).ready(function(){
     //-------------------------------------------------------------
     // Inventory prompt functions
@@ -31,4 +33,40 @@ $(document).ready(function(){
             $(".inventory-drop-zone").css("background-color", "rgba(218, 218, 218, 0.281)")
         }
     });
+
+    //----------------------------------------------------------------
+    // Create initial inventory items
+    
+
+    // Gets data from the json file and puts it into an array
+    $.getJSON('items-data.json', function (data) {
+        itemDataArray = data;
+
+        // Gets the array of collected items from the minigame
+        let items = sessionStorage.getItem('collectedItems');
+        let collectedItems = JSON.parse(items);
+        console.log(collectedItems);
+        console.log(itemDataArray);
+
+        /* Creates the last 2 items in the json file
+        for (let i = 0; i < 3; i++){
+            createItem(itemDataArray[6], "#inventory-item-container", inventoryItems, true, 1);
+            createItem(itemDataArray[7], "#inventory-item-container", inventoryItems, true, 1);
+        }
+        */
+
+        // Creates the items within the collected items
+        for (let i = 0; i < collectedItems.length; i++){
+            let itemCreateData = findItemData(collectedItems, i);
+            let itemCreateNum = collectedItems[i].quantity;
+            createItem(itemCreateData, "#inventory-item-container", inventoryItems, true,
+                        itemCreateNum);
+
+        }
+
+        // Highlights the items which are useful to the card
+        let tempUseCases = ["Water", "Food", "Health"];
+        highlightItem(tempUseCases);
+    });
+
 });
