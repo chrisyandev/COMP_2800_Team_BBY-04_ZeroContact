@@ -78,6 +78,15 @@ body {
         grid-area: pic2;
     }
 
+    #matt {
+        grid-area: matt;
+    }
+
+    #pic3 {
+        grid-area: pic3;
+    }
+
+
     #tim {
         grid-area: tim;
     }
@@ -232,6 +241,14 @@ body {
 
     #pic2 {
         grid-area: pic2;
+    }
+
+    #matt {
+        grid-area: matt;
+    }
+
+    #pic3 {
+        grid-area: pic3;
     }
 
     #tim {
@@ -390,6 +407,14 @@ body {
 
     #pic2 {
         grid-area: pic2;
+    }
+
+    #matt {
+        grid-area: matt;
+    }
+
+    #pic3 {
+        grid-area: pic3;
     }
 
     #tim {
