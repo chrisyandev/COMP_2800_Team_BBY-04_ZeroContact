@@ -1,0 +1,146 @@
+body {
+    background-image: url("../images/city-bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Defines some space at the top of screen */
+#stats-spacer {
+    height: 110px;
+    width: 280px;
+    margin: auto;
+    background-color: #222034;
+}
+
+#stats-container {
+    width: 65px;
+    height: 280px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -25%) rotate(-90deg);
+    transform-origin: center;
+}
+
+#stats-container>div {
+    display: grid;
+    margin-left: 12px;
+    height: 280px;
+    align-content: space-around;
+    grid-template-rows: 4;
+    grid-template-columns: 41px auto;
+}
+
+#stats-overlay {
+    width: 65px;
+    height: 280px;
+    position: absolute;
+    z-index: 1;
+}
+
+.dot-container {
+    margin-left: 15px;
+    width: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dot {
+    background-color: white;
+    border-radius: 50%;
+}
+
+.progress-bar {
+    height: 60px;
+}
+
+/* Automatically applied to progress bars */
+.ui-progressbar-value {
+    background-color: tan;
+}
+
+#event-text {
+    width: 280px;
+    height: 100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    background-color: #dddfcb;
+}
+
+#event-text>span {
+    display: inline-block;
+    padding: 0 12px;
+    text-align: center;
+}
+
+#card-container {
+    width: 280px;
+    height: 200px;
+    margin: auto;
+    position: relative;
+    background-color: #dddfcb;
+}
+
+.card {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+}
+
+#card-text {
+    height: 50px;
+    background-color: black;
+    opacity: 0.7;
+    display: none;
+    align-items: center;
+}
+
+#card-text>span {
+    display: inline-block;
+    width: 100%;
+    margin: 0 10px;
+    text-align: center;
+}
+
+#name {
+    height: 50px;
+    width: 280px;
+    margin: auto;
+    background-color: #dddfcb;
+    display: flex;
+    align-items: center;
+}
+
+#name>span {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+#bottom {
+    height: 50px;
+    width: 280px;
+    margin: auto;
+    background-color: #222034;
+}
+
+.large-font {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2em;
+    text-shadow: -1px 1px 0 white,
+        1px 1px 0 white,
+        1px -1px 0 white,
+        -1px -1px 0 white;
+}
+
+.white-monospace {
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+}
+
+.black-monospace {
+    font-family: 'Courier New', Courier, monospace;
+    color: black;
+    font-weight: bold;
+}
