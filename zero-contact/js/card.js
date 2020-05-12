@@ -2,9 +2,6 @@ let currentCard;
 let cardDataArray;
 let cardNum = 1;
 
-// Dot size unit is pixels
-const MAX_DOT_SIZE = 24;
-
 function Card(leftChoice, rightChoice, image) {
     this.leftChoice = leftChoice;
     this.rightChoice = rightChoice;
@@ -64,7 +61,7 @@ function Card(leftChoice, rightChoice, image) {
                     $('#card-text > span').text('');
                 }
             });
-            //$('.dot').hide();
+            $('.dot').hide();
         }
     });
 
@@ -182,12 +179,14 @@ function updateDots(choice) {
  */
 function calculateDot(effect) {
     const sizeIncrease = 3;
-    let dotSize = Math.abs(effect) / 100 * MAX_DOT_SIZE;
+    let dotToScreenRatio = (24 / 685); // Makes dot scale to screen size
+    const maxDotSize = dotToScreenRatio * $(window).height();
+    let dotSize = Math.abs(effect) / 100 * maxDotSize;
     if (dotSize > 0) {
         dotSize += sizeIncrease;
     }
-    if (dotSize > MAX_DOT_SIZE) {
-        dotSize = MAX_DOT_SIZE;
+    if (dotSize > maxDotSize) {
+        dotSize = maxDotSize;
     }
     return dotSize;
 }
