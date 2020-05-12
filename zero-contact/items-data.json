@@ -2,7 +2,7 @@
     {
     "itemName": "N-95 Mask",
     "itemText": "Slightly reduces risk of exposure by covering face.",
-    "itemSprite": "/example-directory/sprite.png",
+    "itemSprite": "images/N95_Mask.png",
     "useableOn": ["Hangout", "Food", "Appointment"],
     "infectionRisk":-0.02,
     "effect": {
@@ -15,7 +15,7 @@
     {
         "itemName": "Hand Sanitizer",
         "itemText": "Greatly reduces risk of exposure by allowing hands to be sterilized on the go.",
-        "itemSprite": "/example-directory/sprite.png",
+        "itemSprite": "images/Hand_Sanitizer.png",
         "useableOn": ["Hangout", "Food", "Appointment"],
         "infectionRisk":-0.04,
         "effect": {
@@ -28,7 +28,7 @@
     {
         "itemName": "Chocolate Chip Cookie",
         "itemText": "Brings a bit of joy to a meal at home.",
-        "itemSprite": "/example-directory/sprite.png",
+        "itemSprite": "images/Cookie.png",
         "useableOn": ["Food"],
         "infectionRisk":0.00,
         "effect": {
@@ -41,7 +41,7 @@
     {
         "itemName": "Gift Card",
         "itemText": "Helps pay for something when you need it.",
-        "itemSprite": "/example-directory/sprite.png",
+        "itemSprite": "images/Envelope.png",
         "useableOn": ["Food", "Home Entertainment"],
         "infectionRisk":0.00,
         "effect": {
@@ -54,7 +54,7 @@
     {
         "itemName": "Multivitamins",
         "itemText": "Boosts the immune system, Makes you feel a little better.",
-        "itemSprite": "/example-directory/sprite.png",
+        "itemSprite": "images/Multivitamins.png",
         "useableOn": ["Food", "Home Entertainment"],
         "infectionRisk":-0.005,
         "effect": {
@@ -67,7 +67,7 @@
     {
         "itemName": "Toilet Paper",
         "itemText": "Lets you feel proud you got some before other people did.",
-        "itemSprite": "/example-directory/sprite.png",
+        "itemSprite": "images/Paper.png",
         "useableOn": ["Food", "Home Entertainment"],
         "infectionRisk":-0.005,
         "effect": {
@@ -78,9 +78,9 @@
         }
     },
     {
-        "itemName": "Banana",
-        "itemText": "A yellow fruit.",
-        "itemSprite": "https://clipartix.com/wp-content/uploads/2018/09/yellow-clipart-2018-10.png",
+        "itemName": "Honey",
+        "itemText": "Bees really love this.",
+        "itemSprite": "images/Honey.png",
         "useableOn": ["Food"],
         "infectionRisk":-0.005,
         "effect": {
@@ -93,7 +93,7 @@
     {
         "itemName": "Apple",
         "itemText": "A red fruit.",
-        "itemSprite": "https://clipartix.com/wp-content/uploads/2017/06/Teacher-apple-clipart-free-images-2.gif",
+        "itemSprite": "images/Apple.png",
         "useableOn": ["Food"],
         "infectionRisk":-0.005,
         "effect": {

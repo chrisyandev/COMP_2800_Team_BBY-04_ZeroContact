@@ -1,6 +1,6 @@
 let itemArray = [];
 let shelfItemArray = [];
-let maxTime = 50000;
+let maxTime = 25000;
 let minTime = 5000;
 
 $(document).ready(function(){
@@ -21,12 +21,12 @@ $(document).ready(function(){
         let yIncrement = columnDimensions + 1;
 
         // Maximum number of rows and columns of shelves
-        let maxRows = (2 * xIncrement);
-        let maxColumns = (2 * yIncrement);
+        let maxRows = (6 * xIncrement);
+        let maxColumns = (6 * yIncrement);
         for (let x = 2; x < maxRows; x += xIncrement ){
             // Creates columns of shelves
             for (let y = 2; y < maxColumns; y += yIncrement){
-                let shelf = new StoreShelf(rowDimensions, columnDimensions, x, y);
+                let shelf = new StoreShelf(rowDimensions, columnDimensions, x, y, itemDataArray.length);
             }
         }
 
@@ -50,7 +50,7 @@ $(document).ready(function(){
         let row = 1;
         let timer = setInterval(function(){
             row++;
-            if(row > 7){
+            if(row > 18){
                 row = 1;
             }
             let shopperCoord = "" + 3 + row;
@@ -76,7 +76,7 @@ $(document).ready(function(){
 });
 
 // A class for storeshelf items for collecting items
-function StoreShelf(rows, columns, xCoord, yCoord, itemX, itemY){
+function StoreShelf(rows, columns, xCoord, yCoord, maxItems){
     // Shelf attributes
     this.rows = rows;
     this.columns = columns;
@@ -102,9 +102,9 @@ function StoreShelf(rows, columns, xCoord, yCoord, itemX, itemY){
     for (let x = 0; x < columns; x++){
         for(let y = 0; y < rows; y++){
             // Which items to create in the shelves
-            let num = Math.round((Math.random()*1) + 6);
+            let num = Math.round((Math.random()* (maxItems-1)));
 
-            // The amount of items in one shelf
+            // The amount of items in one shelf slot
             let itemNum = Math.round((Math.random()*2)+1);
             createShelfItem(itemDataArray[num], this.$shelfContainer, itemArray, false, itemNum,
                             x + xCoord, y + yCoord);

@@ -6,8 +6,8 @@ html, body{
 
 .game-grid{
     display: grid;
-    grid-template-rows: repeat(8, 120px);
-    grid-template-columns: repeat(8, 120px);
+    grid-template-rows: repeat(16, 120px);
+    grid-template-columns: repeat(16, 120px);
     width: 340px;
     height: 400px;
     /*padding: 0 50px;*/
@@ -93,6 +93,7 @@ html, body{
     height: 25px;
     background-color: rgb(226, 226, 226);
     padding: 25px;
+    font-size: 20px;
 }
 
 .results-item h3{
