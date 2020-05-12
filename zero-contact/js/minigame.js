@@ -1,7 +1,12 @@
 let itemArray = [];
 let shelfItemArray = [];
+let shopperArray = [];
 let maxTime = 25000;
 let minTime = 5000;
+let xLimit = 25;
+let yLimit = 19;
+let validXSpawn = [1, 5, 9, 13, 17, 21, 25];
+let validYSpawn = [1, 4, 7, 10, 13, 16, 19];
 
 $(document).ready(function(){
     $("#end-results-screen").hide();
@@ -14,7 +19,7 @@ $(document).ready(function(){
 
         // Number of rows and columns of shelves
         let rowDimensions = 2;
-        let columnDimensions = 2;
+        let columnDimensions = 3;
 
         // How much to space each row and column
         let xIncrement = rowDimensions + 1;
@@ -23,6 +28,7 @@ $(document).ready(function(){
         // Maximum number of rows and columns of shelves
         let maxRows = (6 * xIncrement);
         let maxColumns = (6 * yIncrement);
+
         for (let x = 2; x < maxRows; x += xIncrement ){
             // Creates columns of shelves
             for (let y = 2; y < maxColumns; y += yIncrement){
@@ -47,33 +53,208 @@ $(document).ready(function(){
             }
         }, 1000);
 
-        let row = 1;
-        let timer = setInterval(function(){
-            row++;
-            if(row > 18){
-                row = 1;
-            }
-            let shopperCoord = "" + 3 + row;
-            let gridArea =  "4 / " + row;
-            
-            $(".shopper-container").css({
-                "grid-area": gridArea + " / span 1 / span 1",
-            });
-
-            shelfItemArray.forEach(function(item){
-                if (shopperCoord === item.position){
-                    console.log(item.position);
-                    console.log(shopperCoord);
-                    console.log("yes");
-                    removeShelfItem(item, item.itemData, false, item.quantity);
-
-                }
-            });
-
-        }, 1000);
+        // Create 2 shopper entites at the edge of the store
+        let shopper3 = new Shopper(yLimit, 1, "row", 100, 1);
+        moveShopper(shopper3);
+        let shopper4 = new Shopper(1, xLimit, "column", 100, -1);
+        moveShopper(shopper4);
         
+        // Create a number of shopper entities in the store
+        for (let i = 0; i < 30; i++){
+            // Randomize the arguements of the shopper entities
+            let startY = Math.round(Math.random()*(validYSpawn.length-1));
+            let startX = Math.round(Math.random()*(validXSpawn.length-1));
+
+            startY = validYSpawn[startY];
+            startX = validXSpawn[startX];
+
+            let randDirectionNum = Math.round((Math.random()*1)+1);
+            let randStepNum = Math.round((Math.random()*1)+1);
+            let randTime = Math.round(Math.random()*1500+500);
+
+            let shopperDirection = ""
+            if (randDirectionNum == 1){
+                shopperDirection = "row";
+            } else{
+                shopperDirection = "column";
+            }
+
+            let shopperStep = 0;
+            if (randStepNum == 1){
+                shopperStep = 1;
+            } else{
+                shopperStep = -1;
+            }
+
+            let shopper = new Shopper(startY, startX, shopperDirection, randTime, shopperStep);
+            moveShopper(shopper);
+            shopperArray.push(shopper);
+        }
     });
 });
+
+function moveShopper(shopper){
+    // Moves the shopper entities
+    shopper.moveTimer = setInterval(function(){
+        shopper.animateMove();
+    }, shopper.moveRate / 2);
+
+    shopper.updateTimer = setInterval(function(){
+        shopper.animateReset();
+        let value;
+
+        if (shopper.direction === "row"){
+            value = shopper.getY();
+            value += shopper.step;
+
+            if(value > shopper.limit && shopper.step > 0){
+                shopper.setY(shopper.yStart);
+            } else{
+                if(value < shopper.limit && shopper.step < 0){
+                    shopper.setY(shopper.yStart);
+                } else{
+                    shopper.setY(value);
+                }
+            }
+
+        } else{
+            value = shopper.getX();
+            value += shopper.step;
+
+            if(value > shopper.limit && shopper.step > 0){
+                shopper.setX(shopper.xStart);
+            } else{
+                if(value < shopper.limit && shopper.step < 0){
+                    shopper.setX(shopper.xStart);
+                } else{
+                    shopper.setX(value);
+                }
+            }
+        }
+
+        let randLaneOffset = Math.round(Math.random()*1+1);
+        if (randLaneOffset === 1){
+            shopper.setLaneOffset(1);
+        } else{
+            shopper.setLaneOffset(-1);
+        }
+
+        shopper.updatePosition();
+        shopper.updateAffectLane();
+
+        shelfItemArray.forEach(function(item){
+            if (shopper.affectLane === item.position){
+                //console.log(item.position);
+                //console.log(shopper.affectLane);
+                //console.log("yes");
+                removeShelfItem(item, item.itemData, false, item.quantity);
+            }
+        });
+
+    }, shopper.moveRate);
+}
+
+function Shopper(xStart, yStart, direction, moveRate, step){
+    // The point at which the shopper should loop back to the start
+    if (step > 0 && direction === "row"){
+        this.xStart = yStart;
+        this.yStart = 1;
+        this.limit = xLimit;
+    } else{
+        if (step < 0 && direction === "row"){
+            this.xStart = yLimit;
+            this.yStart = xLimit;
+            this.limit = 1;
+        }
+    }
+    if (step > 0 && direction === "column"){
+        this.xStart = 1;
+        this.yStart = xStart;
+        this.limit = yLimit;
+    } else{
+        if (step < 0 && direction === "column"){
+            this.xStart = yLimit;
+            this.yStart = xLimit;
+            this.limit = 1;
+        }
+    }
+
+    this.xValue = xStart;
+    this.yValue = yStart;
+    this.step = step;
+    this.laneOffset = 1;
+
+    // Indicates how fast the shopper should move
+    this.moveRate = moveRate;
+
+    // Which direction the shopper should move in
+    this.direction = direction;
+
+    this.$shopperContainer = $("<div class='shopper-container'></div>");
+
+    // Functions
+    this.getX = function(){
+        return(this.xValue);
+    }
+
+    this.getY = function() {
+        return(this.yValue);
+    }
+
+    this.setX = function(value){
+        this.xValue = value;
+    }
+
+    this.setY = function(value){
+        this.yValue = value;
+    }
+
+    this.setLaneOffset = function(value){
+        this.laneOffset = value;
+    }
+
+    this.updatePosition = function(){
+        this.$shopperContainer.css({
+            "grid-area": this.xValue + " / " + this.yValue + " / span 1 / span 1",
+        });
+    }
+
+    // Indicates the lane the shopper should take items from
+    this.updateAffectLane = function(){
+        if (direction == "column"){
+            this.affectLane = "" + this.xValue + (this.yValue + this.laneOffset);
+        } else{
+            this.affectLane = (this.xValue + this.laneOffset) + "" + this.yValue;
+        }
+    }
+
+    this.animateReset = function(){
+        this.$shopperContainer.css({
+            top: "0px",
+            left: "0px",
+            transition: "0s"
+        });
+    }
+
+    this.animateMove = function(){
+        if (direction == "column"){
+            this.$shopperContainer.css({
+                top: (this.step * 120) + "px",
+                transition: (this.moveRate / 2) + "ms ease-in-out"
+            });
+        } else{
+            this.$shopperContainer.css({
+                left: (this.step * 120) + "px",
+                transition: (this.moveRate / 2) + "ms ease-in-out"
+            });
+        }
+    }
+
+    this.updatePosition();
+    this.updateAffectLane();
+
+    $("#inventory-grid-container").append(this.$shopperContainer);
+}
 
 // A class for storeshelf items for collecting items
 function StoreShelf(rows, columns, xCoord, yCoord, maxItems){
@@ -99,8 +280,8 @@ function StoreShelf(rows, columns, xCoord, yCoord, maxItems){
     });
 
     // Creates an item for every row and column in the shelf
-    for (let x = 0; x < columns; x++){
-        for(let y = 0; y < rows; y++){
+    for (let x = 0; x < rows; x++){
+        for(let y = 0; y < columns; y++){
             // Which items to create in the shelves
             let num = Math.round((Math.random()* (maxItems-1)));
 
@@ -126,14 +307,6 @@ function createShelfItem(itemData, container, array, tooltipOn, quantity, gridRo
     item.itemData = itemData;
     shelfItemArray.push(item);
 
-    /*
-    // A timer for how long the item stays on the shelf
-    let randTime = (Math.random()*(maxTime-minTime) + minTime);
-    let timer = setTimeout(function(){
-        removeShelfItem(item, itemData, false, quantity);
-    }, randTime);
-    */
-
     // Clears the timer to remove the item and collects it
     item.$itemContainer.on("click touchend",function(){
         removeShelfItem(item, itemData, true, quantity);
@@ -142,7 +315,7 @@ function createShelfItem(itemData, container, array, tooltipOn, quantity, gridRo
 
 // A function to remove shelf items
 function removeShelfItem(item, itemData, itemReceived, quantity){
-    console.log(itemData.itemName + " remove!");
+    //console.log(itemData.itemName + " remove!");
     item.$itemContainer.off("click touchend");
     item.$itemDisplay.remove();
     item.$itemImg.remove();
@@ -190,6 +363,16 @@ function endGame(){
     sessionStorage.clear();
     sessionStorage.setItem("collectedItems", JSON.stringify(itemArray));
     
+    for (let i = 0; i < shopperArray.length; i++){
+        clearInterval(shopperArray[i].moveTimer);
+        clearInterval(shopperArray[i].updateTimer);
+        shopperArray[i].$shopperContainer.remove();
+    }
+
+    for (let i = 0; i < shelfItemArray.length; i++){
+        removeShelfItem(shelfItemArray[i], shelfItemArray[i].itemData, false, shelfItemArray[i].quantity);
+    }
+
 }
 
 // Creates an item in the results items list
