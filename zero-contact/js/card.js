@@ -8,10 +8,13 @@ const MAX_DOT_SIZE = 24;
 function Card(leftChoice, rightChoice, image) {
     this.leftChoice = leftChoice;
     this.rightChoice = rightChoice;
-    this.$card = $('<div class="card"><div id="card-text"><span class="white-monospace"></span></div></div>');
+    this.$card = $('<div id="card"><div id="card-text"><span class="white-monospace"></span></div></div>');
     this.origin;
 
-    this.$card.css('background', `url(${image}) black no-repeat center center`);
+    this.$card.css({
+        'background': `url(${image}) black no-repeat center center`,
+        'background-size': 'cover'
+    });
 
     /** Places card inside center of container. */
     $('#card-container').append(this.$card);
@@ -61,16 +64,22 @@ function Card(leftChoice, rightChoice, image) {
                     $('#card-text > span').text('');
                 }
             });
-            $('.dot').hide();
+            //$('.dot').hide();
         }
     });
 
-    /** Determines if card has reached left or right bound. */
+    /** 
+     * Determines if card has reached left or right bound.
+     * Since cardPosition won't reach rightBound exactly,
+     * we check how small the difference is.
+     */
     this.hasReachedBounds = function () {
         let cardPosition = this.$card.position().left;
         let leftBound = 0;
         let rightBound = this.$card.parent().width() - this.$card.width();
-        if (cardPosition <= leftBound || cardPosition >= rightBound) {
+        console.log('Current Position: ', cardPosition);
+        console.log('Right Bound: ', rightBound);
+        if (cardPosition <= leftBound || (rightBound - cardPosition) < 2) {
             return true;
         }
         return false;

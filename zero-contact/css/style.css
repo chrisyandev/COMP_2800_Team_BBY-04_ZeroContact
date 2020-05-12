@@ -28,10 +28,10 @@ body {
 
 #stats-container>div {
     display: grid;
-    margin-left: 12px;
+    margin-left: 18%;
     align-content: space-around;
     grid-template-rows: 4;
-    grid-template-columns: 41px auto;
+    grid-template-columns: 41px;
 }
 
 #stats-overlay {
@@ -40,12 +40,22 @@ body {
     z-index: 1;
 }
 
-.dot-container {
-    margin-left: 15px;
-    width: 24px;
-    display: flex;
-    justify-content: center;
+#dots-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    justify-items: center;
     align-items: center;
+    grid-template-columns: repeat(4, 1fr);
+    width: 280px;
+    height: 45px;
+}
+
+.dot-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .dot {
@@ -72,7 +82,7 @@ body {
 
 #event-text>span {
     display: inline-block;
-    padding: 0 12px;
+    padding: 0 15px;
     text-align: center;
 }
 
@@ -83,9 +93,9 @@ body {
     background-color: #dddfcb;
 }
 
-.card {
-    width: 200px;
-    height: 200px;
+#card {
+    height: 100%;
+    width: 71%;
     position: absolute;
 }
 
@@ -144,20 +154,19 @@ body {
     font-weight: bold;
 }
 
-.dynamic-width {
+.set-width {
     width: 280px;
 }
 
-.dynamic-height {
+.set-height {
     height: 280px;
 }
 
-@media(max-width: 280px) {
-    .dynamic-width {
-        width: 100vw;
+@media(min-height: 650px) {
+    .black-monospace {
+        font-size: 1.2em;
     }
-
-    .dynamic-height {
-        height: 100vw;
+    .white-monospace {
+        font-size: 1.2em;
     }
 }
