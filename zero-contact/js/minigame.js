@@ -1,5 +1,6 @@
 let itemArray = [];
-let maxTime = 25000;
+let shelfItemArray = [];
+let maxTime = 50000;
 let minTime = 5000;
 
 $(document).ready(function(){
@@ -10,11 +11,23 @@ $(document).ready(function(){
         itemDataArray = data;
 
         // Creates the last 2 items in the json file
-        for (let i = 0; i < 5; i++){
-            let shelf = new StoreShelf(3,3);
-            let shelf2 = new StoreShelf(3,3);
-            let shelf3 = new StoreShelf(2,2);
-            let shelf4 = new StoreShelf(4,3);
+
+        // Number of rows and columns of shelves
+        let rowDimensions = 2;
+        let columnDimensions = 2;
+
+        // How much to space each row and column
+        let xIncrement = rowDimensions + 1;
+        let yIncrement = columnDimensions + 1;
+
+        // Maximum number of rows and columns of shelves
+        let maxRows = (2 * xIncrement);
+        let maxColumns = (2 * yIncrement);
+        for (let x = 2; x < maxRows; x += xIncrement ){
+            // Creates columns of shelves
+            for (let y = 2; y < maxColumns; y += yIncrement){
+                let shelf = new StoreShelf(rowDimensions, columnDimensions, x, y);
+            }
         }
 
         // Adds drag scrolling to the container and allows items to be clicked
@@ -33,18 +46,45 @@ $(document).ready(function(){
                 endGame();
             }
         }, 1000);
+
+        let row = 1;
+        let timer = setInterval(function(){
+            row++;
+            if(row > 7){
+                row = 1;
+            }
+            let shopperCoord = "" + 3 + row;
+            let gridArea =  "4 / " + row;
+            
+            $(".shopper-container").css({
+                "grid-area": gridArea + " / span 1 / span 1",
+            });
+
+            shelfItemArray.forEach(function(item){
+                if (shopperCoord === item.position){
+                    console.log(item.position);
+                    console.log(shopperCoord);
+                    console.log("yes");
+                    removeShelfItem(item, item.itemData, false, item.quantity);
+
+                }
+            });
+
+        }, 1000);
         
     });
 });
 
 // A class for storeshelf items for collecting items
-function StoreShelf(rows, columns){
+function StoreShelf(rows, columns, xCoord, yCoord, itemX, itemY){
     // Shelf attributes
     this.rows = rows;
     this.columns = columns;
     this.itemWidth = 100;
     this.itemHeight = 100;
     this.gridGap = 20;
+    this.gridRow = xCoord + " / span " + (rows);
+    this.gridColumn = yCoord + " / span " + (columns);
 
     this.$shelfContainer = $("<div class='store-shelf-container'></div>");
 
@@ -52,6 +92,8 @@ function StoreShelf(rows, columns){
         "grid-template-rows": "repeat("+this.rows+"," + this.itemWidth + "px)",
         "grid-template-columns": "repeat("+this.columns+"," + this.itemHeight + "px)",
         "grid-gap": 20 + "px",
+        "grid-row": this.gridRow,
+        "grid-column": this.gridColumn,
         "width": this.columns*this.itemWidth+((this.columns-1)*this.gridGap) + "px",
         "height": this.rows*this.itemHeight+((this.rows-1)*this.gridGap) + "px",
     });
@@ -64,7 +106,8 @@ function StoreShelf(rows, columns){
 
             // The amount of items in one shelf
             let itemNum = Math.round((Math.random()*2)+1);
-            createShelfItem(itemDataArray[num], this.$shelfContainer, itemArray, false, itemNum);
+            createShelfItem(itemDataArray[num], this.$shelfContainer, itemArray, false, itemNum,
+                            x + xCoord, y + yCoord);
         }
     }
     $("#inventory-grid-container").append(this.$shelfContainer);
@@ -72,21 +115,27 @@ function StoreShelf(rows, columns){
 };
 
 // A function to create shelf items
-function createShelfItem(itemData, container, array, tooltipOn, quantity){
+function createShelfItem(itemData, container, array, tooltipOn, quantity, gridRow, gridColumn){
     let item = new InventoryItem(itemData.itemSprite, itemData.itemName, 
                                 itemData.useableOn, itemData.infectionRisk,
                                 itemData.effect, itemData.itemText, container,
                                 array, tooltipOn, quantity);
 
+    item.position = "" + gridRow + gridColumn;
+
+    item.itemData = itemData;
+    shelfItemArray.push(item);
+
+    /*
     // A timer for how long the item stays on the shelf
     let randTime = (Math.random()*(maxTime-minTime) + minTime);
     let timer = setTimeout(function(){
         removeShelfItem(item, itemData, false, quantity);
     }, randTime);
+    */
 
     // Clears the timer to remove the item and collects it
     item.$itemContainer.on("click touchend",function(){
-        clearTimeout(timer);
         removeShelfItem(item, itemData, true, quantity);
     });
 };

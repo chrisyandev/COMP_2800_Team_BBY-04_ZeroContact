@@ -110,6 +110,8 @@ function InventoryItem(imageName, type, use, risk, effect, text, container, arra
     this.use = use;
     this.useable = false;
     this.desc = text;
+    this.position;
+    this.itemData;
 
     // HTML tags
     this.$itemContainer = $('<div data-id="'+this.index+'" class="inventory-item"></div>');
