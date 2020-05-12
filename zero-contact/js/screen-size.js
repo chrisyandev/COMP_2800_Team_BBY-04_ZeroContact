@@ -30,6 +30,7 @@ const progressBarHeightRatio = 41 / 510;
 
 $(document).ready(function () {
     resizeAll();
+    $(window).resize(resizeAll);
 });
 
 function resizeAll() {
@@ -66,6 +67,12 @@ function resizeAll() {
     $.each(progressBars, function (index, bar) {
         setHeight($(bar), progressBarWidthRatio * $(window).height());
         setWidth($(bar), progressBarHeightRatio * $(window).height());
+    });
+    
+    $('#card').position({
+        my: 'center',
+        at: 'center',
+        of: $('#card-container')
     });
 }
 
