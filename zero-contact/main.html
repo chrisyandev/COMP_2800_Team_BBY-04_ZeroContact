@@ -3,23 +3,59 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <title>Zero Contact</title>
+
     <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
     <link rel="manifest" href="favicons/site.webmanifest">
-    <title>Zero Contact</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"
         integrity="sha256-rByPlHULObEjJ6XQxW/flG2r+22R5dKiAoef+aXWfik=" crossorigin="anonymous" />
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/inventory-game-style.css">
     <link rel="stylesheet" href="css/inventory-style.css">
+    <link rel="stylesheet" href="css/achievements.css">
 </head>
 
 <body>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Achievements</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="achievements-list" class="list-group">
+                        <span class="list-group-item list-group-item-action flex-column align-items-start active">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 id="survived-until" class="mb-1">You survived until Day --</h5>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- --------------- -->
+
     <div id="wrapper">
-        <div id="stats-spacer" class="set-width">
+        <div id="stats-spacer" class="set-width" data-toggle="modal" data-target="#exampleModalCenter">
             <div id="dots-container">
                 <div class="dot-wrapper">
                     <div id="dot-physical" class="dot"></div>
@@ -47,7 +83,12 @@
         <div id="event-text" class="black-monospace set-width"><span></span></div>
         <div id="card-container" class="set-width"></div>
         <div id="name" class="set-width"><span class="black-monospace"></span></div>
-        <div id="bottom" class="set-width"></div>
+        <div id="bottom" class="set-width">
+            <div id="info">
+                <div id="player-name">John Doe</div>
+                <div id="day">Day 1</div>
+            </div>
+        </div>
         <div id="inventory-container" class="set-width">
             <button id="inventory-expand-button">Open</button>
             <div id="inventory-item-container"></div>
@@ -73,11 +114,19 @@
         integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"
         integrity="sha256-AAhU14J4Gv8bFupUUcHaPQfvrdNauRHMt+S4UVcaJb0=" crossorigin="anonymous"></script>
-    <script src="js/screen-size.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+
     <script src="js/card.js"></script>
     <script src="js/progress-bar.js"></script>
     <script src="js/inventory.js"></script>
     <script src="js/inventory-main.js"></script>
+    <script src="js/achievements.js"></script>
+    <script src="js/screen-size.js"></script>
 </body>
 
 </html>

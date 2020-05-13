@@ -1,3 +1,4 @@
+let day = 1;
 let currentCard;
 let cardDataArray;
 let cardNum = 1;
@@ -137,6 +138,10 @@ function pickNextCard() {
     if (cardNum >= cardDataArray.length) {
         cardNum = 0;
     }
+
+    // We should check if next card is on a new day or not before incrementing Day
+    day++;
+    $('#day').text('Day ' + day);
 
     // Highlights the items which are useful to the card
     if (cardNum == 0){

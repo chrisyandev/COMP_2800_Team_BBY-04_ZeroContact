@@ -1,6 +1,6 @@
 {
     "userid": "12345ABC",
-    "highscore": 0,
+    "highscore": 1,
     "achievements": [{
         "name": "Survive 5 days",
         "type": "survive",

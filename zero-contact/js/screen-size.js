@@ -52,7 +52,7 @@ function resizeAll() {
     setHeight($bottom, bottomRatio * $(window).height());
     setWidth($bottom, WIDTH_RATIO * $(window).height());
 
-    setWidth($inventoryContainer, WIDTH_RATIO * $(window).height());
+    setWidth($inventoryContainer, WIDTH_RATIO * $(window).height() / 3);
 
     setHeight($statsContainer, WIDTH_RATIO * $(window).height());
     setWidth($statsContainer, statsContainerRatio * $(window).height());
