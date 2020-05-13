@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"
         integrity="sha256-rByPlHULObEjJ6XQxW/flG2r+22R5dKiAoef+aXWfik=" crossorigin="anonymous" />
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/inventory-game-style.css">
     <link rel="stylesheet" href="css/inventory-style.css">
     <link rel="stylesheet" href="css/achievements.css">
@@ -26,9 +26,9 @@
 
 <body>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal fade" id="achievements-window-wrapper" tabindex="-1" role="dialog"
+        aria-labelledby="achievementsWindow" aria-hidden="true">
+        <div id="achievements-window" class=" modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">Achievements</h5>
@@ -45,9 +45,33 @@
                         </span>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                <div class="modal-body">
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Survived Until Day</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Jack</td>
+                                <td>10</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Bob</td>
+                                <td>8</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Joe</td>
+                                <td>5</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -55,7 +79,7 @@
     <!-- --------------- -->
 
     <div id="wrapper">
-        <div id="stats-spacer" class="set-width" data-toggle="modal" data-target="#exampleModalCenter">
+        <div id="stats-spacer" class="set-width" data-toggle="modal" data-target="#achievements-window-wrapper">
             <div id="dots-container">
                 <div class="dot-wrapper">
                     <div id="dot-physical" class="dot"></div>
