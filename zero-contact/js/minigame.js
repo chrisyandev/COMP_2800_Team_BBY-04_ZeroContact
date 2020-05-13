@@ -40,6 +40,7 @@ $(document).ready(function(){
         $("#inventory-grid-container").kinetic();
 
         // Sets the clock timer text every second
+        /*
         let start = new Date;
         let limit = Math.round(maxTime / 1000);
         $("#clock-timer").text("25 Seconds");
@@ -52,12 +53,17 @@ $(document).ready(function(){
                 endGame();
             }
         }, 1000);
+        */
+        
 
         // Create 2 shopper entites at the edge of the store
-        let shopper3 = new Shopper(yLimit, 1, "row", 100, 1);
+        let shopper3 = new Shopper(yLimit, 1, "row", 1000, 1);
         moveShopper(shopper3);
-        let shopper4 = new Shopper(1, xLimit, "column", 100, -1);
+        shopperArray.push(shopper3);
+
+        let shopper4 = new Shopper(1, xLimit, "column", 1000, -1);
         moveShopper(shopper4);
+        shopperArray.push(shopper4);
         
         // Create a number of shopper entities in the store
         for (let i = 0; i < 30; i++){

@@ -6,12 +6,22 @@ html, body{
 
 .game-grid{
     display: grid;
+    position: relative;
     grid-template-rows: repeat(19, 120px);
     grid-template-columns: repeat(25, 120px);
     width: 400px;
-    height: 400px;
+    height: 500px;
     overflow: hidden;
     outline: 10px double black;
+    top: -75px;
+}
+
+#canvas{
+    position: relative;
+    z-index: 3;
+    width: 180px;
+    height: 180px;
+    top: 0px;
 }
 
 #minigame-container{
@@ -20,6 +30,14 @@ html, body{
     justify-content: center;
     flex-direction: column;
     padding: 0 50px;
+}
+
+#minigame-message{
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
 }
 
 .store-shelf-container{  
