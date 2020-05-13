@@ -1,6 +1,7 @@
 let itemArray = [];
 let shelfItemArray = [];
 let shopperArray = [];
+let itemAnimationArray = [];
 let maxTime = 25000;
 let minTime = 5000;
 let xLimit = 25;
@@ -39,23 +40,6 @@ $(document).ready(function(){
         // Adds drag scrolling to the container and allows items to be clicked
         $("#inventory-grid-container").kinetic();
 
-        // Sets the clock timer text every second
-        /*
-        let start = new Date;
-        let limit = Math.round(maxTime / 1000);
-        $("#clock-timer").text("25 Seconds");
-        let clockTimer = setInterval(function(){
-            let timeElapsed = (limit - Math.round((new Date - start) / 1000));
-            $("#clock-timer").text(timeElapsed + " Second" + ((timeElapsed == 1) ? "":"s"));
-
-            if (timeElapsed == 0){
-                clearInterval(clockTimer);
-                endGame();
-            }
-        }, 1000);
-        */
-        
-
         // Create 2 shopper entites at the edge of the store
         let shopper3 = new Shopper(yLimit, 1, "row", 1000, 1);
         moveShopper(shopper3);
@@ -64,6 +48,7 @@ $(document).ready(function(){
         let shopper4 = new Shopper(1, xLimit, "column", 1000, -1);
         moveShopper(shopper4);
         shopperArray.push(shopper4);
+        console.log(shopper4.$shopperContainer.position());
         
         // Create a number of shopper entities in the store
         for (let i = 0; i < 30; i++){
@@ -81,6 +66,7 @@ $(document).ready(function(){
             let shopperDirection = ""
             if (randDirectionNum == 1){
                 shopperDirection = "row";
+
             } else{
                 shopperDirection = "column";
             }
@@ -150,10 +136,7 @@ function moveShopper(shopper){
 
         shelfItemArray.forEach(function(item){
             if (shopper.affectLane === item.position){
-                //console.log(item.position);
-                //console.log(shopper.affectLane);
-                //console.log("yes");
-                removeShelfItem(item, item.itemData, false, item.quantity);
+                removeShelfItem(item, item.itemData, false, item.quantity, shopper.$shopperContainer);
             }
         });
 
@@ -320,17 +303,89 @@ function createShelfItem(itemData, container, array, tooltipOn, quantity, gridRo
 };
 
 // A function to remove shelf items
-function removeShelfItem(item, itemData, itemReceived, quantity){
-    //console.log(itemData.itemName + " remove!");
-    item.$itemContainer.off("click touchend");
-    item.$itemDisplay.remove();
-    item.$itemImg.remove();
+function removeShelfItem(item, itemData, itemReceived, quantity, shopper){
+    if (item.$itemImg == null){
+        return;
+    }
+
+    let $inventory = $("#inventory-item-container");
 
     // Creates the item in the user's inventory if it is clicked on
     if (itemReceived){
+        console.log($inventory.offset());
+        console.log(item.$itemContainer.offset());
+        console.log($("#inventory-grid-container").scrollTop());
         trackItem(itemData, quantity);
-        createItem(itemData, "#inventory-item-container", inventoryItems, true, quantity);
+        createItem(itemData, $inventory, inventoryItems, true, quantity);
+
+        let itemAnimation = new ItemAnimation(item, $inventory.offset(),
+                                                item.$itemContainer.offset(), true);
+        itemAnimationArray.push(itemAnimation);
+    } else{
+        if(shopper != undefined){
+            let itemAnimation = new ItemAnimation(item, shopper.position(),
+            item.$itemContainer.position(), false);
+            itemAnimationArray.push(itemAnimation);
+        }
     }
+
+    item.$itemContainer.off("click touchend");
+    item.$itemDisplay.remove();
+    item.$itemImg.remove();
+    item.$itemImg = null;
+}
+
+function ItemAnimation(item, toPosition, fromPosition, inventoryItemReceived){
+    this.itemEntity = item.$itemContainer.clone();
+    this.toPos = toPosition;
+    this.fromPos = fromPosition;
+
+    if (inventoryItemReceived){
+        $("#minigame-container").append(this.itemEntity);
+
+        this.itemEntity.css({
+            "background-color": "lightgreen"
+        });
+
+        this.toPos.top -= 120;
+        this.toPos.left += 60;
+    } else{
+        $("#inventory-grid-container").append(this.itemEntity);
+
+        // Gets the scroll position of the minigame
+        let scrollY = $("#inventory-grid-container").scrollTop();
+        let scrollX = $("#inventory-grid-container").scrollLeft();
+
+        this.itemEntity.css({
+            "background-color": "red"
+        });
+
+        this.fromPos.top += scrollY;
+        this.fromPos.left += scrollX;
+        this.toPos.top += scrollY;
+        this.toPos.left += scrollX;
+    }
+
+    this.itemEntity.css({
+        "position":"absolute",
+        "pointer-events": "none",
+        "top": fromPosition.top,
+        "left": fromPosition.left,
+        "opacity": "1",
+        "zIndex": "5",
+    });
+
+    this.itemEntity.animate({
+        opacity: 0,
+        top: toPosition.top,
+        left: toPosition.left,
+    }, 500);
+
+    let clone = this.itemEntity;
+    this.timer = setTimeout(function(){
+        clone.remove();
+    }, 500);
+
 }
 
 // Tracks the items collected from the store shelves
@@ -377,6 +432,11 @@ function endGame(){
 
     for (let i = 0; i < shelfItemArray.length; i++){
         removeShelfItem(shelfItemArray[i], shelfItemArray[i].itemData, false, shelfItemArray[i].quantity);
+    }
+
+    for (let i = 0; i < itemAnimationArray.length; i++){
+        clearTimeout(itemAnimationArray[i].timer);
+        itemAnimationArray[i].itemEntity.remove();
     }
 
 }

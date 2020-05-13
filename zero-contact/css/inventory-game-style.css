@@ -8,7 +8,7 @@ html, body{
     display: grid;
     position: relative;
     grid-template-rows: repeat(19, 120px);
-    grid-template-columns: repeat(25, 120px);
+    grid-template-columns: repeat(22, 120px);
     width: 400px;
     height: 500px;
     overflow: hidden;
