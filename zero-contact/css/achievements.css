@@ -11,3 +11,7 @@
 ul.nav {
     margin-bottom: 10px;
 }
+
+.modal *, *::before, *::after {
+  box-sizing: border-box;
+}
