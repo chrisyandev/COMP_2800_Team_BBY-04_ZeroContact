@@ -4,7 +4,8 @@
   "description": "> A story-driven game where you survival as long as possible in pandemic quarantine by making choices in the day of a young adult's life.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -17,7 +18,9 @@
   },
   "homepage": "https://github.com/chrisyandev/COMP_2800_Team_BBY-04_ZeroContact#readme",
   "dependencies": {
+    "ejs": "^3.1.2",
     "express": "^4.17.1",
-    "mongodb": "^3.5.7"
+    "mongodb": "^3.5.7",
+    "nodemon": "^2.0.4"
   }
 }
