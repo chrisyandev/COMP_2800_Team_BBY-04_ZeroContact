@@ -1,22 +1,54 @@
 const express = require("express");
 const MongoClient = require("mongodb").MongoClient;
-const { DB_URL } = require("./credentials")
+const {
+  DB_URL
+} = require("./credentials")
 const connectionString = DB_URL;
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
 
 let app = express();
 
-MongoClient.connect(connectionString, {useUnifiedTopology: true}).then(client => {
+MongoClient.connect(connectionString, {
+    useUnifiedTopology: true
+  }).then(client => {
     console.log("Connected to database.");
     const db = client.db("zero-contact");
     const highScoreCollection = db.collection("high-scores");
 
-    app.use(express.urlencoded({extended: true}));
+    app.use(express.urlencoded({
+      extended: true
+    }));
     app.use(express.static("public"));
     app.use(express.json());
     app.set("view engine", "ejs");
 
     app.get("/", (req, res) => res.render("pages/zero-contact/main.ejs"));
-    
-    app.listen(3000);
-})
-.catch(console.error);
+
+    app.post('/signup', (req, res) => {
+      bcrypt.hash(req.body.password, saltRounds).then(function (hash) {
+        highScoreCollection.insertOne({
+            username: req.body.username,
+            password: hash
+          })
+          .then(result => {
+            console.log("Username " + req.body.username + " and password " + req.body.password + " were sent to server.");
+          })
+          .catch(error => console.error(error))
+      })
+
+      app.listen(3000);
+    })
+
+    app.post("/login", (req, res) => {
+      bcrypt.compare(req.body.password, db.highScoreCollection.find({username: req.body.username})).then(function (err, result) {
+        if (result == true) {
+          res.redirect("/zero-contact/main")
+        }
+        else {
+          console.log("Passwords don't match.");
+        }
+      })
+    })
+  })
+  .catch(console.error);
