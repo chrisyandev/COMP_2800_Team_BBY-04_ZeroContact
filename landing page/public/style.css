@@ -175,10 +175,11 @@ body {
     }
 
     footer {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
+        width: 100vw;
+        display: block;
+        overflow: hidden;
+        padding: 70px 0;
+        box-sizing: border-box;
         text-align: center;
         background-color: rgb(64, 167, 199);
 
@@ -208,7 +209,7 @@ body {
 
     #game-name {
         color: rgb(172, 23, 23);
-        background-color: rgb(50, 106, 190);
+        background-color: rgb(64, 167, 199);
         grid-area: heading;
         padding: 20px;
         margin: -8px;
@@ -216,7 +217,7 @@ body {
 
     #navbar {
         display: flex;
-        background-color: rgb(50, 106, 190);
+        background-color: rgb(64, 167, 199);
         justify-content: space-between;
         padding: 10px;
         margin: -8px;
@@ -361,10 +362,11 @@ body {
     }
     
     footer {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
+        width: 100vw;
+        display: block;
+        overflow: hidden;
+        padding: 70px 0;
+        box-sizing: border-box;
         text-align: center;
         background-color: rgb(64, 167, 199);
 
@@ -392,7 +394,7 @@ body {
 
     #game-name {
         color: rgb(172, 23, 23);
-        background-color: rgb(50, 106, 190);
+        background-color: rgb(64, 167, 199);
         grid-area: heading;
         padding: 20px;
         margin: -8px;
@@ -400,7 +402,7 @@ body {
 
     #navbar {
         display: flex;
-        background-color: rgb(50, 106, 190);
+        background-color: rgb(64, 167, 199);
         justify-content: space-between;
         flex-direction: column;
         padding: 10px;
@@ -547,10 +549,11 @@ body {
     }
     
     footer {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
+        width: 100vw;
+        display: block;
+        overflow: hidden;
+        padding: 70px 0;
+        box-sizing: border-box;
         text-align: center;
         background-color: rgb(64, 167, 199);
 
