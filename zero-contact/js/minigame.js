@@ -37,9 +37,36 @@ $(document).ready(function(){
             }
         }
 
-        // Adds drag scrolling to the container and allows items to be clicked
-        $("#inventory-grid-container").kinetic();
+        let $handIcon = $("#hand-swipe");
+        let timer = setTimeout(function(){
+            $handIcon.css({
+                opacity: 1,
+            });
+        }, 3000);
 
+        // Adds drag scrolling to the container and allows items to be clicked
+        $("#inventory-grid-container").kinetic({
+            stopped: function(){
+                timer = setTimeout(function(){
+                    $handIcon.css({
+                        opacity: 1,
+                    });
+                }, 3000);
+            },
+            moved: function(){
+                $handIcon.css({
+                    opacity: 0,
+                });
+                clearTimeout(timer);
+            },
+            maxvelocity: 10000,
+        });
+
+        let randX = Math.round(Math.random()*2000+500);
+        let randY = Math.round(Math.random()*2000+500);
+        $("#inventory-grid-container").kinetic("start", { velocity: randX, velocityY: randY });
+        $("#inventory-grid-container").kinetic('stop');
+        
         // Create 2 shopper entites at the edge of the store
         let shopper3 = new Shopper(yLimit, 1, "row", 1000, 1);
         moveShopper(shopper3);
@@ -51,7 +78,7 @@ $(document).ready(function(){
         console.log(shopper4.$shopperContainer.position());
         
         // Create a number of shopper entities in the store
-        for (let i = 0; i < 30; i++){
+        for (let i = 0; i < 60; i++){
             // Randomize the arguements of the shopper entities
             let startY = Math.round(Math.random()*(validYSpawn.length-1));
             let startX = Math.round(Math.random()*(validXSpawn.length-1));
@@ -61,7 +88,7 @@ $(document).ready(function(){
 
             let randDirectionNum = Math.round((Math.random()*1)+1);
             let randStepNum = Math.round((Math.random()*1)+1);
-            let randTime = Math.round(Math.random()*1500+500);
+            let randTime = Math.round(Math.random()*1500+250);
 
             let shopperDirection = ""
             if (randDirectionNum == 1){
@@ -84,256 +111,6 @@ $(document).ready(function(){
         }
     });
 });
-
-function moveShopper(shopper){
-    // Moves the shopper entities
-    shopper.moveTimer = setInterval(function(){
-        shopper.animateMove();
-    }, shopper.moveRate / 2);
-
-    shopper.updateTimer = setInterval(function(){
-        shopper.animateReset();
-        let value;
-
-        if (shopper.direction === "row"){
-            value = shopper.getY();
-            value += shopper.step;
-
-            if(value > shopper.limit && shopper.step > 0){
-                shopper.setY(shopper.yStart);
-            } else{
-                if(value < shopper.limit && shopper.step < 0){
-                    shopper.setY(shopper.yStart);
-                } else{
-                    shopper.setY(value);
-                }
-            }
-
-        } else{
-            value = shopper.getX();
-            value += shopper.step;
-
-            if(value > shopper.limit && shopper.step > 0){
-                shopper.setX(shopper.xStart);
-            } else{
-                if(value < shopper.limit && shopper.step < 0){
-                    shopper.setX(shopper.xStart);
-                } else{
-                    shopper.setX(value);
-                }
-            }
-        }
-
-        let randLaneOffset = Math.round(Math.random()*1+1);
-        if (randLaneOffset === 1){
-            shopper.setLaneOffset(1);
-        } else{
-            shopper.setLaneOffset(-1);
-        }
-
-        shopper.updatePosition();
-        shopper.updateAffectLane();
-
-        shelfItemArray.forEach(function(item){
-            if (shopper.affectLane === item.position){
-                removeShelfItem(item, item.itemData, false, item.quantity, shopper.$shopperContainer);
-            }
-        });
-
-    }, shopper.moveRate);
-}
-
-function Shopper(xStart, yStart, direction, moveRate, step){
-    // The point at which the shopper should loop back to the start
-    if (step > 0 && direction === "row"){
-        this.xStart = yStart;
-        this.yStart = 1;
-        this.limit = xLimit;
-    } else{
-        if (step < 0 && direction === "row"){
-            this.xStart = yLimit;
-            this.yStart = xLimit;
-            this.limit = 1;
-        }
-    }
-    if (step > 0 && direction === "column"){
-        this.xStart = 1;
-        this.yStart = xStart;
-        this.limit = yLimit;
-    } else{
-        if (step < 0 && direction === "column"){
-            this.xStart = yLimit;
-            this.yStart = xLimit;
-            this.limit = 1;
-        }
-    }
-
-    this.xValue = xStart;
-    this.yValue = yStart;
-    this.step = step;
-    this.laneOffset = 1;
-
-    // Indicates how fast the shopper should move
-    this.moveRate = moveRate;
-
-    // Which direction the shopper should move in
-    this.direction = direction;
-
-    this.$shopperContainer = $("<div class='shopper-container'></div>");
-
-    // Functions
-    this.getX = function(){
-        return(this.xValue);
-    }
-
-    this.getY = function() {
-        return(this.yValue);
-    }
-
-    this.setX = function(value){
-        this.xValue = value;
-    }
-
-    this.setY = function(value){
-        this.yValue = value;
-    }
-
-    this.setLaneOffset = function(value){
-        this.laneOffset = value;
-    }
-
-    this.updatePosition = function(){
-        this.$shopperContainer.css({
-            "grid-area": this.xValue + " / " + this.yValue + " / span 1 / span 1",
-        });
-    }
-
-    // Indicates the lane the shopper should take items from
-    this.updateAffectLane = function(){
-        if (direction == "column"){
-            this.affectLane = "" + this.xValue + (this.yValue + this.laneOffset);
-        } else{
-            this.affectLane = (this.xValue + this.laneOffset) + "" + this.yValue;
-        }
-    }
-
-    this.animateReset = function(){
-        this.$shopperContainer.css({
-            top: "0px",
-            left: "0px",
-            transition: "0s"
-        });
-    }
-
-    this.animateMove = function(){
-        if (direction == "column"){
-            this.$shopperContainer.css({
-                top: (this.step * 120) + "px",
-                transition: (this.moveRate / 2) + "ms ease-in-out"
-            });
-        } else{
-            this.$shopperContainer.css({
-                left: (this.step * 120) + "px",
-                transition: (this.moveRate / 2) + "ms ease-in-out"
-            });
-        }
-    }
-
-    this.updatePosition();
-    this.updateAffectLane();
-
-    $("#inventory-grid-container").append(this.$shopperContainer);
-}
-
-// A class for storeshelf items for collecting items
-function StoreShelf(rows, columns, xCoord, yCoord, maxItems){
-    // Shelf attributes
-    this.rows = rows;
-    this.columns = columns;
-    this.itemWidth = 100;
-    this.itemHeight = 100;
-    this.gridGap = 20;
-    this.gridRow = xCoord + " / span " + (rows);
-    this.gridColumn = yCoord + " / span " + (columns);
-
-    this.$shelfContainer = $("<div class='store-shelf-container'></div>");
-
-    this.$shelfContainer.css({
-        "grid-template-rows": "repeat("+this.rows+"," + this.itemWidth + "px)",
-        "grid-template-columns": "repeat("+this.columns+"," + this.itemHeight + "px)",
-        "grid-gap": 20 + "px",
-        "grid-row": this.gridRow,
-        "grid-column": this.gridColumn,
-        "width": this.columns*this.itemWidth+((this.columns-1)*this.gridGap) + "px",
-        "height": this.rows*this.itemHeight+((this.rows-1)*this.gridGap) + "px",
-    });
-
-    // Creates an item for every row and column in the shelf
-    for (let x = 0; x < rows; x++){
-        for(let y = 0; y < columns; y++){
-            // Which items to create in the shelves
-            let num = Math.round((Math.random()* (maxItems-1)));
-
-            // The amount of items in one shelf slot
-            let itemNum = Math.round((Math.random()*2)+1);
-            createShelfItem(itemDataArray[num], this.$shelfContainer, itemArray, false, itemNum,
-                            x + xCoord, y + yCoord);
-        }
-    }
-    $("#inventory-grid-container").append(this.$shelfContainer);
-    $("#inventory-grid-container").disableSelection();
-};
-
-// A function to create shelf items
-function createShelfItem(itemData, container, array, tooltipOn, quantity, gridRow, gridColumn){
-    let item = new InventoryItem(itemData.itemSprite, itemData.itemName, 
-                                itemData.useableOn, itemData.infectionRisk,
-                                itemData.effect, itemData.itemText, container,
-                                array, tooltipOn, quantity);
-
-    item.position = "" + gridRow + gridColumn;
-
-    item.itemData = itemData;
-    shelfItemArray.push(item);
-
-    // Clears the timer to remove the item and collects it
-    item.$itemContainer.on("click touchend",function(){
-        removeShelfItem(item, itemData, true, quantity);
-    });
-};
-
-// A function to remove shelf items
-function removeShelfItem(item, itemData, itemReceived, quantity, shopper){
-    if (item.$itemImg == null){
-        return;
-    }
-
-    let $inventory = $("#inventory-item-container");
-
-    // Creates the item in the user's inventory if it is clicked on
-    if (itemReceived){
-        console.log($inventory.offset());
-        console.log(item.$itemContainer.offset());
-        console.log($("#inventory-grid-container").scrollTop());
-        trackItem(itemData, quantity);
-        createItem(itemData, $inventory, inventoryItems, true, quantity);
-
-        let itemAnimation = new ItemAnimation(item, $inventory.offset(),
-                                                item.$itemContainer.offset(), true);
-        itemAnimationArray.push(itemAnimation);
-    } else{
-        if(shopper != undefined){
-            let itemAnimation = new ItemAnimation(item, shopper.position(),
-            item.$itemContainer.position(), false);
-            itemAnimationArray.push(itemAnimation);
-        }
-    }
-
-    item.$itemContainer.off("click touchend");
-    item.$itemDisplay.remove();
-    item.$itemImg.remove();
-    item.$itemImg = null;
-}
 
 function ItemAnimation(item, toPosition, fromPosition, inventoryItemReceived){
     this.itemEntity = item.$itemContainer.clone();
@@ -410,6 +187,8 @@ function endGame(){
     // Shows the end game prompt and creates the collected item within it
     $("#end-results-screen").show();
     $("#end-results-screen").css("opacity", 1);
+
+    $("#inventory-grid-container").kinetic('stop');
 
     // Conditon for when the user collected no items
     if (itemArray.length != 0){

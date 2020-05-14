@@ -1,4 +1,4 @@
-const TIME_LIMIT = 25;
+const TIME_LIMIT = 12;
 
 $(document).ready(function () {
     // Gets the canvas
@@ -30,8 +30,7 @@ $(document).ready(function () {
 function createTimer(ctx, radius, second) {
     drawClock(ctx, radius, second);
     drawPoints(ctx, radius);
-    // second
-    pos = (second*Math.PI/12);
+    pos = (second*Math.PI/6);
     drawHand(ctx, pos, radius*0.85, radius*0.05);
     drawNumber(ctx, radius, TIME_LIMIT - second);
 }
