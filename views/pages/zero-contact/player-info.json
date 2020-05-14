@@ -1,0 +1,35 @@
+{
+    "userid": "12345ABC",
+    "highscore": 1,
+    "achievements": [{
+        "name": "Survive 5 days",
+        "type": "survive",
+        "progress": 5,
+        "requirement": 5,
+        "completed": true
+    }, {
+        "name": "Survive 10 days",
+        "type": "survive",
+        "progress": 5,
+        "requirement": 10,
+        "completed": false
+    }, {
+        "name": "Use an item",
+        "type": "use-item",
+        "progress": 1,
+        "requirement": 1,
+        "completed": true
+    }, {
+        "name": "Eat 3 apples",
+        "type": "use-apple-item",
+        "progress": 1,
+        "requirement": 3,
+        "completed": false
+    }, {
+        "name": "Gather 10 supplies",
+        "type": "get-supply-item",
+        "progress": 0,
+        "requirement": 10,
+        "completed": false
+    }]
+}

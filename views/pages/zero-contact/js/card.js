@@ -1,17 +1,18 @@
+let day = 1;
 let currentCard;
 let cardDataArray;
 let cardNum = 1;
 
-// Dot size unit is pixels
-const MAX_DOT_SIZE = 24;
-
 function Card(leftChoice, rightChoice, image) {
     this.leftChoice = leftChoice;
     this.rightChoice = rightChoice;
-    this.$card = $('<div class="card"><div id="card-text"><span class="white-monospace"></span></div></div>');
+    this.$card = $('<div id="card"><div id="card-text"><span class="white-monospace"></span></div></div>');
     this.origin;
 
-    this.$card.css('background', `url(${image}) black no-repeat center center`);
+    this.$card.css({
+        'background': `url(${image}) black no-repeat center center`,
+        'background-size': 'cover'
+    });
 
     /** Places card inside center of container. */
     $('#card-container').append(this.$card);
@@ -65,12 +66,18 @@ function Card(leftChoice, rightChoice, image) {
         }
     });
 
-    /** Determines if card has reached left or right bound. */
+    /** 
+     * Determines if card has reached left or right bound.
+     * Since cardPosition won't reach rightBound exactly,
+     * we check how small the difference is.
+     */
     this.hasReachedBounds = function () {
         let cardPosition = this.$card.position().left;
         let leftBound = 0;
         let rightBound = this.$card.parent().width() - this.$card.width();
-        if (cardPosition <= leftBound || cardPosition >= rightBound) {
+        console.log('Current Position: ', cardPosition);
+        console.log('Right Bound: ', rightBound);
+        if (cardPosition <= leftBound || (rightBound - cardPosition) < 2) {
             return true;
         }
         return false;
@@ -132,6 +139,10 @@ function pickNextCard() {
         cardNum = 0;
     }
 
+    // We should check if next card is on a new day or not before incrementing Day
+    day++;
+    $('#day').text('Day ' + day);
+
     // Highlights the items which are useful to the card
     if (cardNum == 0){
         let tempUseCases = ["Food"];
@@ -173,12 +184,14 @@ function updateDots(choice) {
  */
 function calculateDot(effect) {
     const sizeIncrease = 3;
-    let dotSize = Math.abs(effect) / 100 * MAX_DOT_SIZE;
+    let dotToScreenRatio = (24 / 685); // Makes dot scale to screen size
+    const maxDotSize = dotToScreenRatio * $(window).height();
+    let dotSize = Math.abs(effect) / 100 * maxDotSize;
     if (dotSize > 0) {
         dotSize += sizeIncrease;
     }
-    if (dotSize > MAX_DOT_SIZE) {
-        dotSize = MAX_DOT_SIZE;
+    if (dotSize > maxDotSize) {
+        dotSize = maxDotSize;
     }
     return dotSize;
 }

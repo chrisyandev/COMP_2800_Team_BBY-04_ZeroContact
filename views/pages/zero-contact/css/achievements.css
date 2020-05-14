@@ -1,0 +1,9 @@
+.modal-dialog,
+.modal-content {
+    height: 80%;
+}
+
+.modal-body {
+    max-height: calc(100vh - 120px);
+    overflow-y: scroll;
+}
