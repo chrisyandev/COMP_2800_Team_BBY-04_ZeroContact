@@ -75,8 +75,6 @@ function Card(leftChoice, rightChoice, image) {
         let cardPosition = this.$card.position().left;
         let leftBound = 0;
         let rightBound = this.$card.parent().width() - this.$card.width();
-        console.log('Current Position: ', cardPosition);
-        console.log('Right Bound: ', rightBound);
         if (cardPosition <= leftBound || (rightBound - cardPosition) < 2) {
             return true;
         }
