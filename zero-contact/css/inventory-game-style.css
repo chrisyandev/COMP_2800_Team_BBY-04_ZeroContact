@@ -7,6 +7,13 @@ html, body{
     image-rendering: pixelated;
 }
 
+body{
+    background-image: url("/zero-contact/images/parking-lot.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
 .game-grid{
     display: grid;
     position: relative;
@@ -54,6 +61,7 @@ html, body{
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
     z-index: 4;
+    background-color: white;
 }
 
 .store-shelf-container{  
@@ -66,9 +74,9 @@ html, body{
     padding: 5px;
 }
 
-.inventory-container{
-    display: fixed;
-    position: absolute;
+#inventory-container{
+    position: relative;
+    z-index: 5;
 }
 
 .store-shelf-container .inventory-item{
@@ -115,7 +123,7 @@ html, body{
     position: absolute;
     top: 50%;
     pointer-events: none;
-    z-index: 1;
+    z-index: 3;
     opacity: 0;
     animation-name: swipeBounceAnimation;
     animation-duration: 0.5s;
@@ -128,6 +136,7 @@ html, body{
     width: 100%;
     height: 70%;
     pointer-events: none;
+    z-index: 3;
 }
 
 /* ------------------------------------------------------------------- */
@@ -231,10 +240,10 @@ html, body{
 }
 
 /* ------------------------------------------------------------------- */
-/* Media Queries (Phones) */
+/* Media Queries */
 /* ------------------------------------------------------------------- */
 
-@media only screen and (max-width: 400px){
+@media only screen and (max-width: 768px){
     .game-grid{
         width: 330px;
         height: 400px;
@@ -281,14 +290,14 @@ html, body{
 
 @media only screen and (min-width: 1024px){
     .game-grid{
-        top: -75px;
+        top: -100px;
         width: 800px;
-        height: 600px;
+        height: 480px;
     }
 
     #canvas{
-        width: 200px;
-        height: 200px;
+        width: 180px;
+        height: 180px;
     }
 
     #minigame-message{
@@ -296,8 +305,19 @@ html, body{
     }
 
     @keyframes clockBounceAnimation{
-        from {width: 200px; height:200px}
-        90% {width: 205px; height:205px}
-        to {width: 200px; height: 200px}
+        from {width: 180px; height:180px}
+        90% {width: 185px; height:185px}
+        to {width: 180px; height: 180px}
+    }
+}
+
+@media only screen and (min-width: 1024px) and (min-height: 1280px){
+    #minigame-message{
+        font-size: 24px;
+    }
+    .game-grid{
+        top: -100px;
+        width: 900px;
+        height: 800px;
     }
 }
