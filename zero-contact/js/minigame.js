@@ -190,6 +190,13 @@ function endGame(){
 
     $("#inventory-grid-container").kinetic('stop');
 
+    $("#hand-swipe").css({
+        "opacity": 0,
+        "display": "none"
+    });
+
+
+
     // Conditon for when the user collected no items
     if (itemArray.length != 0){
         for (let i = 0; i< itemArray.length; i++){

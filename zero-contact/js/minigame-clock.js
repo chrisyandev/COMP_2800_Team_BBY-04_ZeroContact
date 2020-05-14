@@ -16,10 +16,35 @@ $(document).ready(function () {
     let clockTimer = setInterval(function(){
         let timeElapsed = (Math.round((new Date - start) / 1000));
         if (timeElapsed == TIME_LIMIT){
+            $("#canvas").css({
+                "background-color": "transparent",
+                "border-radius": "100px",
+                "box-shadow": "0 0 0px rgb(156, 16, 16)",
+                "animation-name": "null",
+                "animation-duration": "0.0s",
+                "animation-iteration-count": "infinite",
+            });
+            
             clearInterval(clockTimer);
             drawNumber(ctx, radius, 0);
             endGame();
         } else{
+            if (timeElapsed >= TIME_LIMIT - 3 && timeElapsed < TIME_LIMIT){
+                $("#canvas").css({
+                    "background-color": "coral",
+                    "border-radius": "100px",
+                    "box-shadow": "0 0 30px rgb(156, 16, 16)",
+                    "animation-name": "clockBounceAnimation",
+                    "animation-duration": "0.5s",
+                    "animation-iteration-count": "infinite",
+                });
+
+                $(".game-grid").css({
+                    "box-shadow": "0 0 30px rgb(125, 25, 25)",
+                    "outline": "15px double rgb(125, 25, 25)",
+                });
+            }
+
             createTimer(ctx, radius, timeElapsed);
         }
 
