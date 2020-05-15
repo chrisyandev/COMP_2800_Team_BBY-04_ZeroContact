@@ -28,6 +28,7 @@ MongoClient.connect(connectionString, {
     app.get("/minigame", (req, res) => res.render("pages/zero-contact/minigame.ejs"));
     app.get("/signup", (req, res) => res.render("pages/landing-page/signup.ejs"));
     app.get("/login", (req, res) => res.render("pages/landing-page/login.ejs"));
+    app.get("/delete", (req, res) => res.render("pages/landing-page/home.ejs"));
 
     app.get("/leaderboard", (req, res) => {
         usersCollection.find().sort({days: -1}).toArray().then((highscores) => {
@@ -108,17 +109,15 @@ MongoClient.connect(connectionString, {
         }).catch((error) => console.error(error)) 
     })
 
-    app.put("/login", (req, res) => {
-        usersCollection.findOneAndUpdate(
+    app.post("/delete", (req, res) => {
+        console.log(req.body)
+        usersCollection.deleteOne(
             {username: req.body.username},
-            {
-                $set: {
-                    days:0
-                }
-            }
         ).then(
-            res.render("pages/landing-page/profile.ejs", {username: req.body.username})
+            res.redirect("/")
+            
         )
+        console.log("User Deleted.")
     })
 
     app.listen(3000);
