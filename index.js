@@ -30,6 +30,13 @@ MongoClient.connect(connectionString, {
     app.get("/signup", (req, res) => res.render("pages/landing-page/signup.ejs"));
     app.get("/login", (req, res) => res.render("pages/landing-page/login.ejs"));
 
+    app.get("/leaderboard", (req, res) => {
+        highScoreCollection.find().sort({days: -1}).toArray().then((highscores) => {
+            console.log(highscores)
+            res.render("pages/landing-page/leaderboard.ejs", {highscores: highscores})
+        }).catch (error => console.error(error));
+    })
+
 
     app.post('/signup', (req, res) => {
       bcrypt.genSalt(saltRounds).then(salt => {
@@ -51,7 +58,7 @@ MongoClient.connect(connectionString, {
       }).toArray().then((user) => {
           console.log(user)
           console.log("Attempting login")
-          if (!user) {
+          if (user.length == 0) {
               res.redirect("/");
               console.log("User not found")
           } else {
@@ -59,13 +66,43 @@ MongoClient.connect(connectionString, {
                   console.log(result);
                   
                   if (result == true) {
-                      res.render("pages/zero-contact/main.ejs", {username: req.body.username})
+                      res.render("pages/landing-page/profile.ejs", {username: req.body.username})
                   } else {
                     console.error(err);
                   }
               }) 
             }
       }).catch((error) => console.error(error))
+    })
+
+    app.post("/game", (req, res) => {
+        console.log(req.body.username)
+        res.render("pages/zero-contact/main.ejs", {username: req.body.username})
+    })
+
+    app.put("/longest-days", (req, res) => {
+        highScoreCollection.find({
+            username: req.body.username
+        }).toArray().then((user) => {
+            if (user.length == 0) {
+                console.log("No user found")
+                highScoreCollection.insertOne({
+                    username: req.body.username,
+                    days: req.body.days
+                })
+            } else {
+                if (user[0].days < req.body.days) {
+                    highScoreCollection.findOneAndUpdate(
+                        {username: req.body.username},
+                        {
+                            $set: {
+                                days: req.body.days
+                            }
+                        }
+                    )
+                }
+            }
+        }).catch((error) => console.error(error)) 
     })
     app.listen(3000);
   })

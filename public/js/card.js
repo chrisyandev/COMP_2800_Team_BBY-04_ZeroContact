@@ -77,8 +77,6 @@ function Card(leftChoice, rightChoice, image) {
         let cardPosition = this.$card.position().left;
         let leftBound = 0;
         let rightBound = this.$card.parent().width() - this.$card.width();
-        console.log('Current Position: ', cardPosition);
-        console.log('Right Bound: ', rightBound);
         if (cardPosition <= leftBound || (rightBound - cardPosition) < 2) {
             return true;
         }
@@ -88,9 +86,9 @@ function Card(leftChoice, rightChoice, image) {
     /** Determines which side the card is on based on origin. */
     this.getSide = function () {
         let cardPosition = this.$card.position().left;
-        if (cardPosition < this.origin) {
+        if (cardPosition < this.origin - 5) {
             return 'left';
-        } else if (cardPosition > this.origin) {
+        } else if (cardPosition > this.origin + 5) {
             return 'right';
         } else {
             return 'neither';
@@ -100,7 +98,7 @@ function Card(leftChoice, rightChoice, image) {
     /** Changes text inside card based on side. */
     this.updateChoice = function (choice) {
         $('#card-text').slideDown({
-            duration: 200,
+            duration: 150,
             start: function () {
                 $('#card-text').css('display', 'flex');
                 $('#card-text > span').text(choice.text);
@@ -144,6 +142,17 @@ function pickNextCard() {
     // We should check if next card is on a new day or not before incrementing Day
     day++;
     $('#day').text('Day ' + day);
+
+    fetch("/longest-days", {
+        method: "put",
+        headers: {"Content-Type": "application/json" },
+        body: JSON.stringify({
+            username: document.getElementById("user").innerHTML,
+            days: day
+        })
+    }).then(res => {
+        if (res.ok) return res.json()
+    })
 
     // Highlights the items which are useful to the card
     if (cardNum == 0){

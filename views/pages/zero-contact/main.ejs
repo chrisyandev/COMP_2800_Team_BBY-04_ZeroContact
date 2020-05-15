@@ -9,16 +9,15 @@
     <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
-    <link rel="manifest" href="favicons/site.webmanifest">
+    <link rel="manifest" href="favicons/webmanifest.json">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"
         integrity="sha256-rByPlHULObEjJ6XQxW/flG2r+22R5dKiAoef+aXWfik=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+        integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/custom-bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/inventory-game-style.css">
     <link rel="stylesheet" href="css/inventory-style.css">
     <link rel="stylesheet" href="css/achievements.css">
@@ -27,28 +26,86 @@
 <body>
     <p id="user"style="display: none"><%= username %></p>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal fade" id="achievements-window-wrapper" tabindex="-1" role="dialog"
+        aria-labelledby="achievementsWindow" aria-hidden="true">
+        <div id="achievements-window" class=" modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Achievements</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle"></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+                <!-- Tabs -->
+                <ul id="modal-tabs" class="nav nav-pills nav-fill">
+                    <li class="nav-item">
+                        <a class="list-group-item list-group-item-action active" data-toggle="list"
+                            href="#panel-profile" role="tab"><i class="fas fa-user fa-lg"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="list-group-item list-group-item-action" data-toggle="list"
+                            href="#panel-achievements" role="tab"><i
+                                class="fas fa-medal fa-lg"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="list-group-item list-group-item-action" data-toggle="list"
+                            href="#panel-leaderboard" role="tab"><i
+                                class="fas fa-crown fa-lg"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="list-group-item list-group-item-action" data-toggle="list"
+                            href="#panel-settings" role="tab"><i class="fas fa-cog fa-lg"></i></a>
+                    </li>
+                </ul>
                 <div class="modal-body">
-                    <div id="achievements-list" class="list-group">
-                        <span class="list-group-item list-group-item-action flex-column align-items-start active">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 id="survived-until" class="mb-1">You survived until Day --</h5>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="panel-profile" role="tabpanel">
+                            <p>No content</p>
+                        </div>
+                        <div class="tab-pane" id="panel-achievements" role="tabpanel">
+                            <div id="achievements-list" class="list-group">
+                                <span
+                                    class="list-group-item list-group-item-action flex-column align-items-start active">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 id="survived-until" class="mb-1">You survived
+                                            until Day --</h5>
+                                    </div>
+                                </span>
                             </div>
-                        </span>
+                        </div>
+                        <div class="tab-pane" id="panel-leaderboard" role="tabpanel">
+                            <table class="table table-dark">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Survived Until Day</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Jack</td>
+                                        <td>10</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>Bob</td>
+                                        <td>8</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>Joe</td>
+                                        <td>5</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane" id="panel-settings" role="tabpanel">
+                            <p>No content</p>
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>
@@ -56,7 +113,7 @@
     <!-- --------------- -->
 
     <div id="wrapper">
-        <div id="stats-spacer" class="set-width" data-toggle="modal" data-target="#exampleModalCenter">
+        <div id="stats-spacer" class="set-width" data-toggle="modal" data-target="#achievements-window-wrapper">
             <div id="dots-container">
                 <div class="dot-wrapper">
                     <div id="dot-physical" class="dot"></div>
@@ -118,9 +175,8 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
     </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha256-OFRAJNoaD8L3Br5lglV7VyLRf0itmoBzWUoM+Sji4/8=" crossorigin="anonymous"></script>
 
     <script src="js/card.js"></script>
     <script src="js/progress-bar.js"></script>

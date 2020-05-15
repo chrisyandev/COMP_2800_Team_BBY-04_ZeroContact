@@ -35,16 +35,16 @@ function updateProgressBars(effect) {
     $('#physical').progressbar('value', newPhysical);
     changeFillColor($('#physical').find('.ui-progressbar-value'), effect.physical);
 
-    let newFood = add($('#mental').progressbar('value'), effect.mental);
-    $('#mental').progressbar('value', newFood);
+    let newMental = add($('#mental').progressbar('value'), effect.mental);
+    $('#mental').progressbar('value', newMental);
     changeFillColor($('#mental').find('.ui-progressbar-value'), effect.mental);
 
-    let newRisk = add($('#wealth').progressbar('value'), effect.wealth);
-    $('#wealth').progressbar('value', newRisk);
+    let newWealth = add($('#wealth').progressbar('value'), effect.wealth);
+    $('#wealth').progressbar('value', newWealth);
     changeFillColor($('#wealth').find('.ui-progressbar-value'), effect.wealth);
 
-    let newMoney = add($('#supplies').progressbar('value'),effect.supplies);
-    $('#supplies').progressbar('value', newMoney);
+    let newSupplies = add($('#supplies').progressbar('value'),effect.supplies);
+    $('#supplies').progressbar('value', newSupplies);
     changeFillColor($('#supplies').find('.ui-progressbar-value'), effect.supplies);
 }
 
