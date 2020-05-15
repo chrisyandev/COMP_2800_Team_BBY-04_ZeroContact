@@ -2,7 +2,7 @@ const express = require("express");
 const MongoClient = require("mongodb").MongoClient;
 const { DB_URL } = require("./credentials")
 const connectionString = DB_URL;
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const saltRounds = 10;
 
 let app = express();
