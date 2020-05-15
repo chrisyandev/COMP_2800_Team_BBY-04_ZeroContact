@@ -3,6 +3,9 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
+    image-rendering: auto;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
 }
 
 #wrapper {

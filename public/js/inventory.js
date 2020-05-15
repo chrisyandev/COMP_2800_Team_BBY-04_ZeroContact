@@ -1,25 +1,10 @@
 let overDropZone = false;
 let inventoryItems = [];
-let itemDataArray = [];
+
 
 // Expands the inventory when the button is clicked
 $(document).ready(() => {
     $(".inventory-drop-zone").hide();
-
-    // Gets data from the json file and puts it into an array
-    $.getJSON('items-data.json', function (data) {
-        itemDataArray = data;
-
-        // Creates the last 2 items in the json file
-        for (let i = 0; i < 3; i++){
-            createItem(itemDataArray[6], "#inventory-item-container", inventoryItems, true)
-            createItem(itemDataArray[7], "#inventory-item-container", inventoryItems, true);
-        }
-
-        // Highlights the items which are useful to the card
-        let tempUseCases = ["Water", "Food", "Health"];
-        highlightItem(tempUseCases);
-    });
 
     // Adds the event listener to the inventory expand button
     $("#inventory-expand-button").on("click", () => {
@@ -80,6 +65,17 @@ $(document).ready(() => {
     });
 });
 
+function findItemData(collectedItems, i){
+    for (let k = 0; k < itemDataArray.length; k++){
+        let collectedItemName = collectedItems[i].itemData.itemName;
+        let itemDataName = itemDataArray[k].itemName;
+        if (collectedItemName == itemDataName){
+            itemCreateData = itemDataArray[k];
+            return(itemCreateData);
+        }
+    }
+}
+
 // Shows the prompt to confirm the usage of an item
 function showPrompt(item){
     $("#item-use-accept").off("click");
@@ -102,9 +98,9 @@ function showPrompt(item){
 }
 
 // Class for dynamically creating items
-function InventoryItem(imageName, type, use, risk, effect, text, container, array, tooltipOn) {
+function InventoryItem(imageName, type, use, risk, effect, text, container, array, tooltipOn, quantity) {
     // Item attributes
-    this.quantity = 1;
+    this.quantity = quantity;
     this.imageUrl = imageName;
     this.index = array.length;
     this.risk = risk;
@@ -114,6 +110,8 @@ function InventoryItem(imageName, type, use, risk, effect, text, container, arra
     this.use = use;
     this.useable = false;
     this.desc = text;
+    this.position;
+    this.itemData;
 
     // HTML tags
     this.$itemContainer = $('<div data-id="'+this.index+'" class="inventory-item"></div>');
@@ -247,18 +245,20 @@ function isItemUseful(item, useCase){
 }
 
 // Creates an item in the inventory or increases its quantity if it already
-function createItem(itemData, container, array, tooltipOn){
+function createItem(itemData, container, array, tooltipOn, quantity){
     let itemExists = false;
     for (let i = 0; i < array.length; i++){
         if (itemData.itemName == array[i].item){
-            array[i].increaseQuantity(1);
+            array[i].increaseQuantity(quantity);
             itemExists = true;
+            break;
         }
     }
     if (itemExists != true){
         let item = new InventoryItem(itemData.itemSprite, itemData.itemName, 
                                      itemData.useableOn, itemData.infectionRisk,
-                                     itemData.effect, itemData.itemText, container, array, tooltipOn);
+                                     itemData.effect, itemData.itemText, container,
+                                     array, tooltipOn, quantity);
         array.push(item);
     }
 }

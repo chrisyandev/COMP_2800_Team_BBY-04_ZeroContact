@@ -77,6 +77,13 @@ MongoClient.connect(connectionString, {
 
     app.post("/game", (req, res) => {
         console.log(req.body.username)
+        console.log(req.body);
+        console.log("yes");
+        res.render("pages/zero-contact/main.ejs", {username: req.body.username})
+    })
+
+    app.post("/minigame", (req, res) => {
+        console.log(req.body.username)
         res.render("pages/zero-contact/main.ejs", {username: req.body.username})
     })
 

@@ -21,7 +21,7 @@ html, body{
 
 #inventory-container {
     position: absolute;
-    z-index: 2;
+    z-index: 3;
     left: 50%;
     top: 95%;
     transform: translate(33%, -50%);
