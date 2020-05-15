@@ -5,6 +5,7 @@ let cardNum = 1;
 
 let userref = document.getElementById("user").innerHTML;
 console.log(userref);
+
 function Card(leftChoice, rightChoice, image) {
     this.leftChoice = leftChoice;
     this.rightChoice = rightChoice;
@@ -110,9 +111,15 @@ function Card(leftChoice, rightChoice, image) {
     this.choiceMade = function () {
         let side = this.getSide();
         if (side === 'left') {
-            $(document.body).trigger('update-resources', this.leftChoice.effect);
+            $(document.body).trigger('update-resources', {
+                effect: this.leftChoice.effect,
+                event: 'card-swiped'
+            });
         } else if (side === 'right') {
-            $(document.body).trigger('update-resources', this.rightChoice.effect);
+            $(document.body).trigger('update-resources', {
+                effect: this.rightChoice.effect,
+                event: 'card-swiped'
+            });
         }
         this.$card.promise().done(function () {
             createCard(cardDataArray[cardNum]);
