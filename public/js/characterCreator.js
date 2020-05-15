@@ -25,7 +25,8 @@ let player;
 
 function loadCharacterPage() {
     document.getElementById("create").value = "Next Character";
-    let famSize = genNum(0, 4);
+    //Placeholder
+    let famSize = 1;
     generateProfile();
     player.familySize = famSize;
     drawCharacter();
@@ -33,7 +34,6 @@ function loadCharacterPage() {
     drawFamily(famSize);
     document.getElementById("profile").style = "display: block";
     document.getElementById("seeFamily").style = "display: block";
-    document.getElementById("saveInfo").style = "display: block";
 }
 //Creates main character
 function generateProfile() {
@@ -53,10 +53,10 @@ function drawCharacter() {
 }
 //Generates famil members
 function createFamily() {
-    let name = genName();
-    let age = genNum(0, 80);
-    let relate = genRelation(age, player.playerAge);
-    let gender = genFamilyGender();
+    let name = "Alan Smithee";
+    let age = 667;
+    let relate = "Creator";
+    let gender = "Anonymous";
     console.log(age + "/" + relate + "/" + gender);
     player.familyMembers.push(new family(
         name, gender, relate, age
@@ -98,12 +98,6 @@ function seeNext() {
     }
 
 }
-//Save info placeholder
-function placeHolder() {
-    console.log("Under Developement");
-    console.log(player);
-    window.alert("Under Development.");
-}
 
 //Informtion Generation---------------------------------------------------------------
 function genNum(base, range) {
@@ -111,49 +105,6 @@ function genNum(base, range) {
 }
 //Variable used to check family member's gender based on relationship
 let genderCheck = 0;
-
-function genRelation(familyAge, playersAge) {
-    let sameAge = [
-        "Brother", "Sister", "Cousin", "Spouse",
-    ];
-    let parents = [
-        "Father", "Mother",
-    ]
-    let grandParents = [
-        "Grandfather", "Grandmother",
-    ]
-    let children = [
-        "Son", "Daughter"
-    ]
-    let grandChildren = [
-        "Grandson", "GrandDaughter"
-    ]
-    let getRelate = 0;
-    let relate = ""
-    if (playersAge >= (familyAge - 18) && playersAge <= (familyAge + 18)) {
-        //Within 18 years of range
-        getRelate = Math.round(Math.random() * (sameAge.length - 1));
-        relate = sameAge[getRelate];
-    } else if (playersAge <= (familyAge - 19) && playersAge >= (familyAge - 38)) {
-        //Younger by 18, but not by 38
-        getRelate = Math.round(Math.random() * (parents.length - 1));
-        relate = parents[getRelate];
-    } else if (playersAge <= (familyAge - 39)) {
-        //Checks if player is younger by 39 years of age.
-        getRelate = Math.round(Math.random() * (grandParents.length - 1));
-        relate = grandParents[getRelate];
-    } else if (playersAge >= (familyAge + 19) && playersAge <= (familyAge + 38)) {
-        //checks if player is older by at least 19, but not by 39
-        getRelate = Math.round(Math.random() * (children.length - 1));
-        relate = children[getRelate];
-    } else if (playersAge >= (familyAge + 39)) {
-        //checks if player is older by 39
-        getRelate = Math.round(Math.random() * (grandChildren.length - 1));
-        relate = grandChildren[getRelate];
-    }
-    genderCheck = getRelate;
-    return relate;
-}
 
 function getGender() {
     let gender = "";
@@ -165,30 +116,6 @@ function getGender() {
     return gender;
 }
 
-function genFamilyGender() {
-    let gender = "";
-    let check = player.playerGender;
-    if (genderCheck == 0) { //Always a male gender
-        gender = "M";
-    } else if (genderCheck == 1) { //Always a female gender
-        gender = "F";
-    } else if (genderCheck == 2) { //Cousin can be either
-        if (Math.round(Math.random()) == 0) {
-            gender = "M";
-        } else {
-            gender = "F";
-        }
-    } else if (genderCheck == 3) { //Spouse is the same gender at 10% chance
-        if (Math.random() < 0.1) {
-            gender = check;
-        } else if (Math.random() > 0.1 && check == "M") {
-            gender = "F";
-        } else {
-            gender = "M";
-        }
-    }
-    return gender;
-}
 
 function genName() {
     let searchFirst = Math.round(Math.random() * nameList.length);

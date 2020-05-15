@@ -12,10 +12,10 @@
 #profile {
     float: left;
     width: 75%;
-    margin-left: 25%;
+    margin-left: 30%;
     padding: 5%;
     border: 1px solid red;
-    width: 30vw;
+    width: 26vw;
     display: none;
 }
 
@@ -38,7 +38,7 @@ aside {
     padding: 0 2.5%;
 }
 
-@media all and (max-width:400px) {
+@media all and (max-width:500px) {
     aside {
         float: none;
         width: 95%;
@@ -52,5 +52,19 @@ aside {
 
     #profilePicture {
         height: 35%;
+    }
+}
+
+@media all and (max-width: 501) and (min-width:849) {
+    #profile {
+        margin-left: 33%;
+        width: 40vw;
+    }
+}
+
+@media all and (min-width:850px) {
+    #profile {
+        margin-left: 33%;
+        width: 23vw;
     }
 }
