@@ -84,9 +84,9 @@ function Card(leftChoice, rightChoice, image) {
     /** Determines which side the card is on based on origin. */
     this.getSide = function () {
         let cardPosition = this.$card.position().left;
-        if (cardPosition < this.origin) {
+        if (cardPosition < this.origin - 5) {
             return 'left';
-        } else if (cardPosition > this.origin) {
+        } else if (cardPosition > this.origin + 5) {
             return 'right';
         } else {
             return 'neither';
@@ -96,7 +96,7 @@ function Card(leftChoice, rightChoice, image) {
     /** Changes text inside card based on side. */
     this.updateChoice = function (choice) {
         $('#card-text').slideDown({
-            duration: 200,
+            duration: 150,
             start: function () {
                 $('#card-text').css('display', 'flex');
                 $('#card-text > span').text(choice.text);

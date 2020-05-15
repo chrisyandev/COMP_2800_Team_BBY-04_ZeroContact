@@ -8,10 +8,10 @@
     overflow-y: scroll;
 }
 
-ul.nav {
-    margin-bottom: 10px;
-}
-
 .modal *, *::before, *::after {
   box-sizing: border-box;
+}
+
+#modal-tabs .list-group-item {
+    padding: 0.4rem 0.6rem;
 }

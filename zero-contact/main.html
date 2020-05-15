@@ -13,6 +13,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"
         integrity="sha256-rByPlHULObEjJ6XQxW/flG2r+22R5dKiAoef+aXWfik=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+        integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
 
     <link rel="stylesheet" href="css/custom-bootstrap.css">
     <link rel="stylesheet" href="css/main.css">
@@ -33,31 +35,32 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+                <!-- Tabs -->
+                <ul id="modal-tabs" class="nav nav-pills nav-fill">
+                    <li class="nav-item">
+                        <a class="list-group-item list-group-item-action active" data-toggle="list"
+                            href="#panel-profile" role="tab"><i class="fas fa-user fa-lg"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="list-group-item list-group-item-action" data-toggle="list"
+                            href="#panel-achievements" role="tab"><i
+                                class="fas fa-medal fa-lg"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="list-group-item list-group-item-action" data-toggle="list"
+                            href="#panel-leaderboard" role="tab"><i
+                                class="fas fa-crown fa-lg"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="list-group-item list-group-item-action" data-toggle="list"
+                            href="#panel-settings" role="tab"><i class="fas fa-cog fa-lg"></i></a>
+                    </li>
+                </ul>
                 <div class="modal-body">
-                    <!-- Tabs -->
-                    <ul class="navbar-expand-lg nav nav-pills">
-                        <li class="nav-item">
-                            <a class="list-group-item list-group-item-action active"
-                                data-toggle="list" href="#panel-profile" role="tab">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="list-group-item list-group-item-action" data-toggle="list"
-                                href="#panel-achievements" role="tab">Achievements</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="list-group-item list-group-item-action" data-toggle="list" href="#panel-leaderboard"
-                                role="tab">Leaderboard</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="list-group-item list-group-item-action" data-toggle="list" href="#panel-settings"
-                                role="tab">Settings</a>
-                        </li>
-                    </ul>
-
                     <!-- Tab panes -->
                     <div class="tab-content">
                         <div class="tab-pane active" id="panel-profile" role="tabpanel">
-                            
+                            <p>No content</p>
                         </div>
                         <div class="tab-pane" id="panel-achievements" role="tabpanel">
                             <div id="achievements-list" class="list-group">
@@ -98,7 +101,9 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="tab-pane" id="panel-settings" role="tabpanel">...</div>
+                        <div class="tab-pane" id="panel-settings" role="tabpanel">
+                            <p>No content</p>
+                        </div>
                     </div>
                 </div>
             </div>

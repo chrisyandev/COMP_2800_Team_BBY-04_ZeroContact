@@ -1,3 +1,9 @@
+// Wrapper contains all the content. We want to scale the wrapper and
+// its content to fill the screen height. This value is simply the
+// height of the wrapper initially when everything was in proportion
+// but the content did not scale to viewport size.
+const WRAPPER_HEIGHT = 530;
+
 // Set the width using WIDTH_RATIO for these
 const $statsSpacer = $('#stats-spacer');
 const $dotsContainer = $('#dots-container');
@@ -12,21 +18,21 @@ const $statsContainer = $('#stats-container');
 const $statsOverlay = $('#stats-overlay');
 const $statsContainerInner = $('#stats-container > div');
 
-const WIDTH_RATIO = 280 / 510;
+const WIDTH_RATIO = 280 / WRAPPER_HEIGHT;
 
 // Height ratios
-const statsSpacerRatio = 110 / 510;
-const dotsContainerRatio = 45 / 510;
-const eventTextRatio = 110 / 510;
-const cardContainerRatio = 200 / 510;
-const nameRatio = 50 / 510;
-const bottomRatio = 50 / 510;
-const statsContainerRatio = 65 / 510;
-const statsOverlayRatio = 65 / 510;
-const statsContainerInnerRatio = 53 / 510;
+const statsSpacerRatio = 110 / WRAPPER_HEIGHT;
+const dotsContainerRatio = 45 / WRAPPER_HEIGHT;
+const eventTextRatio = 110 / WRAPPER_HEIGHT;
+const cardContainerRatio = 200 / WRAPPER_HEIGHT;
+const nameRatio = 50 / WRAPPER_HEIGHT;
+const bottomRatio = 70 / WRAPPER_HEIGHT;
+const statsContainerRatio = 65 / WRAPPER_HEIGHT;
+const statsOverlayRatio = 65 / WRAPPER_HEIGHT;
+const statsContainerInnerRatio = 53 / WRAPPER_HEIGHT;
 
-const progressBarWidthRatio = 62 / 510;
-const progressBarHeightRatio = 41 / 510;
+const progressBarWidthRatio = 62 / WRAPPER_HEIGHT;
+const progressBarHeightRatio = 41 / WRAPPER_HEIGHT;
 
 $(document).ready(function () {
     resizeAll();
