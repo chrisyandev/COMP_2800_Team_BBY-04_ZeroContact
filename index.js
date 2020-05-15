@@ -9,7 +9,7 @@ const saltRounds = 10;
 
 let app = express();
 
-MongoClient.connect(connectionString, {
+MongoClient.connect(DB_URL, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     }).then(client => {
@@ -86,12 +86,36 @@ MongoClient.connect(connectionString, {
             }).catch((error) => console.error(error))
         })
 
+        //Rendering character creation irst from play
         app.post("/game", (req, res) => {
             console.log(req.body.username)
-            res.render("pages/zero-contact/main.ejs", {
+            res.render("pages/zero-contact/characterCreator.ejs", {
                 username: req.body.username
             })
         })
+
+        //Add here
+        app.get("/main", (req, res) => res.render("pages/zero-contact/characterCreator.ejs"));
+
+        app.post("/main", (req, res) => {
+            let usr = req.body.username;
+            //search username is db, set all new datas
+            usersCollection.updateMany({
+                username: usr
+            }, {
+                $set: {
+                    playerName: req.body.characterName,
+                    age: req.body.characterAge,
+                    gender: req.body.characterGender
+                }
+            })
+            console.log(usersCollection.find({
+                username: usr
+            }))
+            res.render("pages/zero-contact/main.ejs", {
+                username: usr
+            })
+        });
 
         app.put("/longest-days", (req, res) => {
             usersCollection.find({
@@ -131,11 +155,6 @@ MongoClient.connect(connectionString, {
 
         app.get("/", (req, res) => res.render("pages/landing-page/home.ejs"));
         app.get("/about", (req, res) => res.render("pages/landing-page/about.ejs"));
-        app.get("/game", (req, res) => res.render("pages/zero-contact/characterCreator.ejs"));
-        app.post("/game", (req, res) => {
-            //Send data here
-            res.render("pages/zero-contact/main.ejs")
-        });
         app.get("/minigame", (req, res) => res.render("pages/zero-contact/minigame.ejs"));
         app.get("/signup", (req, res) => res.render("pages/landing-page/signup.ejs"));
         app.get("/login", (req, res) => res.render("pages/landing-page/login.ejs"));

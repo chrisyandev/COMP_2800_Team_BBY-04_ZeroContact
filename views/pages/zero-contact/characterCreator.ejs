@@ -8,11 +8,11 @@
     </head>
 
     <body>
+        <script src="js/characterCreator.js"></script>
+        <script src="index.js"></script>
+        <p style="display: none"><%= username %></p>
 
-        <form action="/game" method="post">
-
-
-            <script src="js/characterCreator.js"></script>
+        <form action="/main" method="post">
             <div id="top">
                 <input id="create" type="button" value="Create Character" onclick=loadCharacterPage()>
             </div>
@@ -39,6 +39,12 @@
                 </div>
                 <br>
                 <input type="submit" value="Choose this profile">
+                <!--Username-->
+                <input style="display:none" type="text" value="<%= username %>" name="username">
+                <!--Randomly generated stuff-->
+                <input id="sendName" style="display:none" type="text" value="failedName" name="characterName">
+                <input id="sendAge" style="display:none" type="text" value="failedAge" name="characterAge">
+                <input id="sendGender" style="display:none" type="text" value="failedGender" name="characterGender">
             </div>
 
         </form>

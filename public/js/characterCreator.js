@@ -49,7 +49,10 @@ function drawCharacter() {
     document.getElementById("age").innerHTML = "Age: " + player.playerAge;
     document.getElementById("family").innerHTML = "Family Size: " + player.familySize;
     document.getElementById("familyLabel").innerHTML = "Family Members:";
-    
+
+    document.getElementById("sendName").value = "" + player.playerName;
+    document.getElementById("sendGender").value = "" + player.playerGender;
+    document.getElementById("sendAge").value = "" + player.playerAge;
 }
 //Generates famil members
 function createFamily() {
