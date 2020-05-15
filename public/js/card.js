@@ -3,6 +3,8 @@ let currentCard;
 let cardDataArray;
 let cardNum = 1;
 
+let userref = document.getElementById("user").innerHTML;
+console.log(userref);
 function Card(leftChoice, rightChoice, image) {
     this.leftChoice = leftChoice;
     this.rightChoice = rightChoice;
