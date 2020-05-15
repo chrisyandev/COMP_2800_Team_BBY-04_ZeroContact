@@ -1,32 +1,21 @@
 // Creates the progress bars. When progress bar changes, checks if game is over.
 $('#physical').progressbar({
-    value: 50,
-    change: function (event) {
-        checkGameOver($(event.target).progressbar('value'));
-    }
+    value: 50
 });
 $('#mental').progressbar({
-    value: 50,
-    change: function (event) {
-        checkGameOver($(event.target).progressbar('value'));
-    }
+    value: 50
 });
 $('#wealth').progressbar({
-    value: 50,
-    change: function (event) {
-        checkGameOver($(event.target).progressbar('value'));
-    }
+    value: 50
 });
 $('#supplies').progressbar({
-    value: 50,
-    change: function (event) {
-        checkGameOver($(event.target).progressbar('value'));
-    }
+    value: 50
 });
 
 // Logic when event received
 $(document.body).on('update-resources', function (event, effect) {
     updateProgressBars(effect);
+    $(document.body).trigger('pick-next-card', checkGameOver());
 });
 
 /** Updates the progress bars' fill. */
@@ -35,16 +24,16 @@ function updateProgressBars(effect) {
     $('#physical').progressbar('value', newPhysical);
     changeFillColor($('#physical').find('.ui-progressbar-value'), effect.physical);
 
-    let newFood = add($('#mental').progressbar('value'), effect.mental);
-    $('#mental').progressbar('value', newFood);
+    let newMental = add($('#mental').progressbar('value'), effect.mental);
+    $('#mental').progressbar('value', newMental);
     changeFillColor($('#mental').find('.ui-progressbar-value'), effect.mental);
 
-    let newRisk = add($('#wealth').progressbar('value'), effect.wealth);
-    $('#wealth').progressbar('value', newRisk);
+    let newWealth = add($('#wealth').progressbar('value'), effect.wealth);
+    $('#wealth').progressbar('value', newWealth);
     changeFillColor($('#wealth').find('.ui-progressbar-value'), effect.wealth);
 
-    let newMoney = add($('#supplies').progressbar('value'),effect.supplies);
-    $('#supplies').progressbar('value', newMoney);
+    let newSupplies = add($('#supplies').progressbar('value'),effect.supplies);
+    $('#supplies').progressbar('value', newSupplies);
     changeFillColor($('#supplies').find('.ui-progressbar-value'), effect.supplies);
 }
 
@@ -85,9 +74,19 @@ function changeFillColor($fill, choiceStat) {
     }, 500);
 }
 
-/** If game is over, displays a message. */
-function checkGameOver(statValue, message1, message2) {
-    if (statValue <= 0) {
-        console.log('game over');
+/** If stat is 0, game over */
+function checkGameOver() {
+    if ($('#physical').progressbar('value') <= 0) {
+        return true;
     }
+    if ($('#mental').progressbar('value') <= 0) {
+        return true;
+    }
+    if ($('#wealth').progressbar('value') <= 0) {
+        return true;
+    }
+    if ($('#supplies').progressbar('value') <= 0) {
+        return true;
+    }
+    return false;
 }

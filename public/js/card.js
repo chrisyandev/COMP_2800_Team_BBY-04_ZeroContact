@@ -3,6 +3,8 @@ let currentCard;
 let cardDataArray;
 let cardNum = 1;
 
+let userref = document.getElementById("user").innerHTML;
+console.log(userref);
 function Card(leftChoice, rightChoice, image) {
     this.leftChoice = leftChoice;
     this.rightChoice = rightChoice;
@@ -75,8 +77,6 @@ function Card(leftChoice, rightChoice, image) {
         let cardPosition = this.$card.position().left;
         let leftBound = 0;
         let rightBound = this.$card.parent().width() - this.$card.width();
-        console.log('Current Position: ', cardPosition);
-        console.log('Right Bound: ', rightBound);
         if (cardPosition <= leftBound || (rightBound - cardPosition) < 2) {
             return true;
         }
@@ -86,9 +86,9 @@ function Card(leftChoice, rightChoice, image) {
     /** Determines which side the card is on based on origin. */
     this.getSide = function () {
         let cardPosition = this.$card.position().left;
-        if (cardPosition < this.origin) {
+        if (cardPosition < this.origin - 5) {
             return 'left';
-        } else if (cardPosition > this.origin) {
+        } else if (cardPosition > this.origin + 5) {
             return 'right';
         } else {
             return 'neither';
@@ -98,7 +98,7 @@ function Card(leftChoice, rightChoice, image) {
     /** Changes text inside card based on side. */
     this.updateChoice = function (choice) {
         $('#card-text').slideDown({
-            duration: 200,
+            duration: 150,
             start: function () {
                 $('#card-text').css('display', 'flex');
                 $('#card-text > span').text(choice.text);
@@ -108,7 +108,6 @@ function Card(leftChoice, rightChoice, image) {
 
     /** Triggers resources to update. Creates a new card after fadeOut() finishes. */
     this.choiceMade = function () {
-        pickNextCard();
         let side = this.getSide();
         if (side === 'left') {
             $(document.body).trigger('update-resources', this.leftChoice.effect);
@@ -132,26 +131,41 @@ function createCard(cardData) {
 /** 
  * Determines what the next card should be based on player choice 
  * for the current card. Currently we're just looping through all cards.
+ * If game over, the next card changes to the "losing" card.
  */
-function pickNextCard() {
-    cardNum++;
-    if (cardNum >= cardDataArray.length) {
+$(document.body).on('pick-next-card', function (event, isGameOver) {
+    if (isGameOver) {
         cardNum = 0;
+        fetch("/longest-days", {
+            method: "put",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username: document.getElementById("user").innerHTML,
+                days: day
+            })
+        }).then(res => {
+            if (res.ok) return res.json()
+        })
+    } else {
+        cardNum++;
+        if (cardNum >= cardDataArray.length) {
+            cardNum = 1;
+        }
+        day++;
+        $('#day').text('Day ' + day);
     }
 
-    // We should check if next card is on a new day or not before incrementing Day
-    day++;
-    $('#day').text('Day ' + day);
-
     // Highlights the items which are useful to the card
-    if (cardNum == 0){
+    if (cardNum === 1) {
         let tempUseCases = ["Food"];
         highlightItem(tempUseCases);
     } else {
         let tempUseCases = ["Nothing"];
         highlightItem(tempUseCases);
     }
-}
+});
 
 /** Sets the size of each dot. */
 function updateDots(choice) {
