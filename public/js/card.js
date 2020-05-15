@@ -110,9 +110,9 @@ function Card(leftChoice, rightChoice, image) {
     this.choiceMade = function () {
         let side = this.getSide();
         if (side === 'left') {
-            $(document.body).trigger('update-resources', this.leftChoice.effect);
+            $(document.body).trigger('update-resources', this.leftChoice.effect, 'card-swiped');
         } else if (side === 'right') {
-            $(document.body).trigger('update-resources', this.rightChoice.effect);
+            $(document.body).trigger('update-resources', this.rightChoice.effect, 'card-swiped');
         }
         this.$card.promise().done(function () {
             createCard(cardDataArray[cardNum]);

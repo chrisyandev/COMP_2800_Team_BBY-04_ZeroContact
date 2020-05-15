@@ -13,9 +13,11 @@ $('#supplies').progressbar({
 });
 
 // Logic when event received
-$(document.body).on('update-resources', function (event, effect) {
+$(document.body).on('update-resources', function (e, effect, event) {
     updateProgressBars(effect);
-    $(document.body).trigger('pick-next-card', checkGameOver());
+    if (event === 'card-swiped') {
+        $(document.body).trigger('pick-next-card', checkGameOver());
+    }
 });
 
 /** Updates the progress bars' fill. */

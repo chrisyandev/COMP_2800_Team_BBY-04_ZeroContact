@@ -155,7 +155,7 @@ function InventoryItem(imageName, type, use, risk, effect, text, container, arra
         }
 
         // Change resources
-        $(document.body).trigger('update-resources', this.effect);
+        $(document.body).trigger('update-resources', this.effect, 'item-used');
     };
 
     this.increaseQuantity = function (num){
