@@ -3,11 +3,11 @@ const MongoClient = require("mongodb").MongoClient;
 const {
     DB_URL
 } = require("./credentials")
-const connectionString = DB_URL;
 
 let app = express();
 
-MongoClient.connect(connectionString, {
+MongoClient.connect(DB_URL, {
+        useNewUrlParser: true,
         useUnifiedTopology: true
     }).then(client => {
         console.log("Connected to database.");
@@ -27,7 +27,6 @@ MongoClient.connect(connectionString, {
         app.post("/game", (req, res) => {
             res.render("pages/zero-contact/main.ejs")
         })
-        //app.get("/game", (req, res) => res.render("pages/zero-contact/main.ejs"));
         app.get("/minigame", (req, res) => res.render("pages/zero-contact/minigame.ejs"));
         app.listen(3000);
     })
