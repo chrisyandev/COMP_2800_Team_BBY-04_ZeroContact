@@ -1,33 +1,4 @@
 function Shopper(xStart, yStart, direction, moveRate, step) {
-    // The point at which the shopper should loop back to the start
-    if (step > 0 && direction === "row") {
-        this.xStart = yStart;
-        this.yStart = 1;
-        this.limit = xLimit;
-    } else {
-        if (step < 0 && direction === "row") {
-            this.xStart = yLimit;
-            this.yStart = xLimit;
-            this.limit = 1;
-        }
-    }
-    if (step > 0 && direction === "column") {
-        this.xStart = 1;
-        this.yStart = xStart;
-        this.limit = yLimit;
-    } else {
-        if (step < 0 && direction === "column") {
-            this.xStart = yLimit;
-            this.yStart = xLimit;
-            this.limit = 1;
-        }
-    }
-
-    this.xValue = xStart;
-    this.yValue = yStart;
-    this.step = step;
-    this.laneOffset = 1;
-
     // Indicates how fast the shopper should move
     this.moveRate = moveRate;
 
@@ -35,6 +6,68 @@ function Shopper(xStart, yStart, direction, moveRate, step) {
     this.direction = direction;
 
     this.$shopperContainer = $("<div class='shopper-container'></div>");
+    
+    // The reset point of the shopper if it is moving right
+    if (step > 0 && direction === "row") {
+        this.xStart = yStart;
+        this.yStart = 1;
+        this.limit = xLimit;
+
+        // The sprite image of the shopper
+        this.$shopperContainer.css({
+            "background-image": "url('images/Character_Right.png')",
+            "width": "120px",
+            "height": "120px",
+        });
+    } else {
+        // The reset point of the shopper if it is moving left
+        if (step < 0 && direction === "row") {
+            this.xStart = yLimit;
+            this.yStart = xLimit;
+            this.limit = 1;
+
+            // The sprite image of the shopper
+            this.$shopperContainer.css({
+                "background-image": "url('images/Character_Left.png')",
+                "width": "120px",
+                "height": "120px",
+            });
+        }
+    }
+
+    if (step > 0 && direction === "column") {
+        // The reset point of the shopper if it is moving down
+        this.xStart = 1;
+        this.yStart = xStart;
+        this.limit = yLimit;
+
+        // The sprite image of the shopper
+        this.$shopperContainer.css({
+            "background-image": "url('images/Character_Down.png')",
+            "width": "120px",
+            "height": "120px",
+        });
+    } else {
+        
+        if (step < 0 && direction === "column") {
+            // The reset point of the shopper if it is moving up
+            this.xStart = yLimit;
+            this.yStart = xLimit;
+            this.limit = 1;
+
+            // The sprite image of the shopper
+            this.$shopperContainer.css({
+                "background-image": "url('images/Character_Up.png')",
+                "width": "120px",
+                "height": "120px",
+            });
+        }
+    }
+
+    this.xValue = xStart;
+    this.yValue = yStart;
+    this.step = step;
+    this.laneOffset = 1;
 
     // Setters and Getter Functions
     this.getX = function () {
