@@ -6,22 +6,34 @@ let inventoryItems = [];
 $(document).ready(() => {
     $(".inventory-drop-zone").hide();
 
+    $("#inventory-container").width((280/530) * $(window).height() / 2 + "px");
     // Adds the event listener to the inventory expand button
     $("#inventory-expand-button").on("click", () => {
         let height = parseInt($("#inventory-container").css("height"));
+        let width;
         let buttonText;
         let topValue;
+        let leftValue;
         if (height == 20){
             height = "75%";
+            leftValue = "0%";
+            width = "60%";
             buttonText = "Close";
             topValue = "60%"
         } else{
             height = "20px";
-            buttonText = "Open";
+            leftValue = "35%";
+            width = (280/530) * $(window).height() / 2 + "px";
+            buttonText = "Inventory";
             topValue = "95%";
         }
+
         $("#inventory-container").height(height);
-        $("#inventory-container").css("top", topValue);
+        $("#inventory-container").width(width);
+        $("#inventory-container").css({
+            "top": topValue,
+            "left": leftValue,
+        });
         $("#inventory-expand-button").text(buttonText);
     });
     

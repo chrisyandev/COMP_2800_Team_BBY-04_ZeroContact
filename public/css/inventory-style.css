@@ -22,7 +22,7 @@ html, body{
 #inventory-container {
     position: absolute;
     z-index: 3;
-    left: 50%;
+    left: 35%;
     top: 95%;
     transform: translate(33%, -50%);
     display: flex;

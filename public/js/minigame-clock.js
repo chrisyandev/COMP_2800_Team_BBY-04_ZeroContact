@@ -62,7 +62,8 @@ $(document).ready(function () {
     }, 1000);
 });
 
-// Creates all the components of the clock
+// Creates all the components of the clock 
+// Attribution: w3schools.com Canvas Clock
 function createTimer(ctx, radius, second) {
     drawClock(ctx, radius, second);
     drawPoints(ctx, radius);
@@ -72,6 +73,7 @@ function createTimer(ctx, radius, second) {
 }
 
 // Draws the base of the clock
+// Attribution: w3schools.com Canvas Clock
 function drawClock(ctx, radius, second) {
     ctx.beginPath();
     ctx.arc(0, 0, radius, 0, 2 * Math.PI);
@@ -96,6 +98,7 @@ function drawClock(ctx, radius, second) {
 }
 
 // Draws the number in the middle of the clock
+// Attribution: w3schools.com Canvas Clock
 function drawNumber(ctx, radius, second){
     ctx.fillStyle = "#ffffff";
     ctx.font = radius * 0.3 + "px arial";
@@ -106,6 +109,7 @@ function drawNumber(ctx, radius, second){
 }
 
 // Draws the little squares in the clock
+// Attribution: w3schools.com Canvas Clock
 function drawPoints(ctx, radius) {
     let ang;
     let num;
@@ -126,6 +130,7 @@ function drawPoints(ctx, radius) {
 }
 
 // Draws the hand
+// Attribution: w3schools.com Canvas Clock
 function drawHand(ctx, pos, length, width) {
     ctx.beginPath();
     ctx.lineWidth = width;

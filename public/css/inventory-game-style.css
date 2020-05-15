@@ -85,11 +85,6 @@ body{
     padding: 5px;
 }
 
-#inventory-container{
-    position: relative;
-    z-index: 5;
-}
-
 .store-shelf-container .inventory-item{
     box-shadow: 0 5px rgb(184, 119, 34);
     background-color: rgb(255, 195, 106);
