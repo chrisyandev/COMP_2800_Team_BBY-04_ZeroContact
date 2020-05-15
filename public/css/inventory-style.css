@@ -22,9 +22,8 @@ html, body{
 #inventory-container {
     position: absolute;
     z-index: 3;
-    left: 35%;
+    left: 48%;
     top: 95%;
-    transform: translate(33%, -50%);
     display: flex;
     height: 20px;
     flex-direction: column;

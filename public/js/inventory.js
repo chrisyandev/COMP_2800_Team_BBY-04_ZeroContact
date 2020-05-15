@@ -15,14 +15,14 @@ $(document).ready(() => {
         let topValue;
         let leftValue;
         if (height == 20){
-            height = "75%";
-            leftValue = "0%";
-            width = "60%";
+            height = "80%";
+            leftValue = "25%";
+            width = "50%";
             buttonText = "Close";
-            topValue = "60%"
+            topValue = "20%"
         } else{
             height = "20px";
-            leftValue = "35%";
+            leftValue = "48%";
             width = (280/530) * $(window).height() / 2 + "px";
             buttonText = "Inventory";
             topValue = "95%";
