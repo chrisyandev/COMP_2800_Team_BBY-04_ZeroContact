@@ -108,7 +108,6 @@ function Card(leftChoice, rightChoice, image) {
 
     /** Triggers resources to update. Creates a new card after fadeOut() finishes. */
     this.choiceMade = function () {
-        pickNextCard();
         let side = this.getSide();
         if (side === 'left') {
             $(document.body).trigger('update-resources', this.leftChoice.effect);
@@ -132,37 +131,41 @@ function createCard(cardData) {
 /** 
  * Determines what the next card should be based on player choice 
  * for the current card. Currently we're just looping through all cards.
+ * If game over, the next card changes to the "losing" card.
  */
-function pickNextCard() {
-    cardNum++;
-    if (cardNum >= cardDataArray.length) {
+$(document.body).on('pick-next-card', function (event, isGameOver) {
+    if (isGameOver) {
         cardNum = 0;
+        fetch("/longest-days", {
+            method: "put",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username: document.getElementById("user").innerHTML,
+                days: day
+            })
+        }).then(res => {
+            if (res.ok) return res.json()
+        })
+    } else {
+        cardNum++;
+        if (cardNum >= cardDataArray.length) {
+            cardNum = 1;
+        }
+        day++;
+        $('#day').text('Day ' + day);
     }
 
-    // We should check if next card is on a new day or not before incrementing Day
-    day++;
-    $('#day').text('Day ' + day);
-
-    fetch("/longest-days", {
-        method: "put",
-        headers: {"Content-Type": "application/json" },
-        body: JSON.stringify({
-            username: document.getElementById("user").innerHTML,
-            days: day
-        })
-    }).then(res => {
-        if (res.ok) return res.json()
-    })
-
     // Highlights the items which are useful to the card
-    if (cardNum == 0){
+    if (cardNum === 1) {
         let tempUseCases = ["Food"];
         highlightItem(tempUseCases);
     } else {
         let tempUseCases = ["Nothing"];
         highlightItem(tempUseCases);
     }
-}
+});
 
 /** Sets the size of each dot. */
 function updateDots(choice) {

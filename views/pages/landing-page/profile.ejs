@@ -30,7 +30,10 @@
                 <input style="display:none" type="text" value="<%= username %>" name="username">
         </form>
             <a href="/leaderboard"><p>Leaderboard</p></a>
-            <a href="/manage"><p>Manage Account</p></a>
+        <form action="/delete" method="POST">
+            <input type="submit" value="Delete Account [CANNOT BE UNDONE]">
+            <input style="display:none" type="text" value="<%= username %>" name="username">
+        </form>
         </section>
         
     </body>

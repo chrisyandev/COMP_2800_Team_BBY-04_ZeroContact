@@ -12,7 +12,6 @@ MongoClient.connect(connectionString, {
   }).then(client => {
     console.log("Connected to database.");
     const db = client.db("zero-contact");
-    const highScoreCollection = db.collection("high-scores");
     const usersCollection = db.collection("users");
 
     app.use(express.urlencoded({
@@ -29,9 +28,10 @@ MongoClient.connect(connectionString, {
     app.get("/minigame", (req, res) => res.render("pages/zero-contact/minigame.ejs"));
     app.get("/signup", (req, res) => res.render("pages/landing-page/signup.ejs"));
     app.get("/login", (req, res) => res.render("pages/landing-page/login.ejs"));
+    app.get("/delete", (req, res) => res.render("pages/landing-page/home.ejs"));
 
     app.get("/leaderboard", (req, res) => {
-        highScoreCollection.find().sort({days: -1}).toArray().then((highscores) => {
+        usersCollection.find().sort({days: -1}).toArray().then((highscores) => {
             console.log(highscores)
             res.render("pages/landing-page/leaderboard.ejs", {highscores: highscores})
         }).catch (error => console.error(error));
@@ -46,7 +46,8 @@ MongoClient.connect(connectionString, {
           console.log("hash " + hash)
           usersCollection.insertOne({
               username: req.body.username,
-              password: hash
+              password: hash,
+              days: 0
           })
       }).catch(err => console.error(err.message))
       res.render("pages/landing-page/login.ejs")
@@ -66,7 +67,10 @@ MongoClient.connect(connectionString, {
                   console.log(result);
                   
                   if (result == true) {
-                      res.render("pages/landing-page/profile.ejs", {username: req.body.username})
+                      res.render("pages/landing-page/profile.ejs", {
+                          username: req.body.username,
+                          user: user
+                    })
                   } else {
                     console.error(err);
                   }
@@ -84,22 +88,22 @@ MongoClient.connect(connectionString, {
 
     app.post("/minigame", (req, res) => {
         console.log(req.body.username)
-        res.render("pages/zero-contact/main.ejs", {username: req.body.username})
+        res.render("pages/zero-contact/minigame.ejs", {username: req.body.username})
     })
 
     app.put("/longest-days", (req, res) => {
-        highScoreCollection.find({
+        usersCollection.find({
             username: req.body.username
         }).toArray().then((user) => {
             if (user.length == 0) {
                 console.log("No user found")
-                highScoreCollection.insertOne({
+                usersCollection.insertOne({
                     username: req.body.username,
                     days: req.body.days
                 })
             } else {
                 if (user[0].days < req.body.days) {
-                    highScoreCollection.findOneAndUpdate(
+                    usersCollection.findOneAndUpdate(
                         {username: req.body.username},
                         {
                             $set: {
@@ -111,6 +115,18 @@ MongoClient.connect(connectionString, {
             }
         }).catch((error) => console.error(error)) 
     })
+
+    app.post("/delete", (req, res) => {
+        console.log(req.body)
+        usersCollection.deleteOne(
+            {username: req.body.username},
+        ).then(
+            res.redirect("/")
+            
+        )
+        console.log("User Deleted.")
+    })
+
     app.listen(3000);
   })
   .catch(console.error);
