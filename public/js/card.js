@@ -131,6 +131,7 @@ function createCard(cardData) {
 /** 
  * Determines what the next card should be based on player choice 
  * for the current card. Currently we're just looping through all cards.
+ * If game over, the next card changes to the "losing" card.
  */
 $(document.body).on('pick-next-card', function (event, isGameOver) {
     if (isGameOver) {

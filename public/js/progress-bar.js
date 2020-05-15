@@ -82,7 +82,7 @@ function checkGameOver() {
     if ($('#mental').progressbar('value') <= 0) {
         return true;
     }
-    if ($('#health').progressbar('value') <= 0) {
+    if ($('#wealth').progressbar('value') <= 0) {
         return true;
     }
     if ($('#supplies').progressbar('value') <= 0) {
