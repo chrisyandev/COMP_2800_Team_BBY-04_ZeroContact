@@ -29,6 +29,10 @@ MongoClient.connect(connectionString, {
     app.get("/signup", (req, res) => res.render("pages/landing-page/signup.ejs"));
     app.get("/login", (req, res) => res.render("pages/landing-page/login.ejs"));
     app.get("/delete", (req, res) => res.render("pages/landing-page/home.ejs"));
+    app.get("/error", (req, res) => res.render("pages/landing-page/error.ejs"));
+    app.get("/privacy-policy", (req, res) => res.render("pages/landing-page/privacy.ejs"));
+    app.get("/attributions", (req, res) => res.render("pages/landing-page/attributions.ejs"));
+    app.get("/contact-us", (req, res) => res.render("pages/landing-page/contact.ejs"));
 
     app.get("/leaderboard", (req, res) => {
         usersCollection.find().sort({days: -1}).toArray().then((highscores) => {
