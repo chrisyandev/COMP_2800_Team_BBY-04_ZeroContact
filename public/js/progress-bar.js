@@ -1,32 +1,21 @@
 // Creates the progress bars. When progress bar changes, checks if game is over.
 $('#physical').progressbar({
-    value: 50,
-    change: function (event) {
-        checkGameOver($(event.target).progressbar('value'));
-    }
+    value: 50
 });
 $('#mental').progressbar({
-    value: 50,
-    change: function (event) {
-        checkGameOver($(event.target).progressbar('value'));
-    }
+    value: 50
 });
 $('#wealth').progressbar({
-    value: 50,
-    change: function (event) {
-        checkGameOver($(event.target).progressbar('value'));
-    }
+    value: 50
 });
 $('#supplies').progressbar({
-    value: 50,
-    change: function (event) {
-        checkGameOver($(event.target).progressbar('value'));
-    }
+    value: 50
 });
 
 // Logic when event received
 $(document.body).on('update-resources', function (event, effect) {
     updateProgressBars(effect);
+    $(document.body).trigger('pick-next-card', checkGameOver());
 });
 
 /** Updates the progress bars' fill. */
@@ -85,9 +74,19 @@ function changeFillColor($fill, choiceStat) {
     }, 500);
 }
 
-/** If game is over, displays a message. */
-function checkGameOver(statValue, message1, message2) {
-    if (statValue <= 0) {
-        console.log('game over');
+/** If stat is 0, game over */
+function checkGameOver() {
+    if ($('#physical').progressbar('value') <= 0) {
+        return true;
     }
+    if ($('#mental').progressbar('value') <= 0) {
+        return true;
+    }
+    if ($('#health').progressbar('value') <= 0) {
+        return true;
+    }
+    if ($('#supplies').progressbar('value') <= 0) {
+        return true;
+    }
+    return false;
 }
