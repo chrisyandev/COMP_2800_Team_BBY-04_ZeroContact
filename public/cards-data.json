@@ -1,8 +1,8 @@
 [{
         "event": "infected",
-        "text": "You don't sound so good... Are you feeling okay?",
-        "image": "images/doctor-green.png",
-        "name": "Doctor Green",
+        "text": "HAHAHAHAHAHAHA",
+        "image": "images/carly.png",
+        "name": "Carly",
         "left": {
             "text": "I...",
             "risk": 1.00,
@@ -156,11 +156,11 @@
     },
     {
         "event": "hangout",
-        "text": "I haven't seen you in a while. Lets go out tonight! Please?",
+        "text": "Let's play a video game together.",
         "image": "images/cindy-lou.png",
         "name": "Cindy Lou",
         "left": {
-            "text": "Not tonight.",
+            "text": "Not today.",
             "risk": 0.00,
             "effect": {
                 "physical": 0,
@@ -170,12 +170,12 @@
             }
         },
         "right": {
-            "text": "Where's my wallet...",
-            "risk": 0.05,
+            "text": "Let's play Behemoth Hunter!",
+            "risk": 0.00,
             "effect": {
                 "physical": 0,
                 "mental": 20,
-                "wealth": -15,
+                "wealth": 0,
                 "supplies": -5
             }
         }
@@ -255,6 +255,32 @@
                 "mental": 0,
                 "wealth": -10,
                 "supplies": 50
+            }
+        }
+    },
+    {
+        "event": "hangout",
+        "text": "I haven't seen you in a while. Lets go out tonight! Please?",
+        "image": "images/blonde-woman.png",
+        "name": "Hadi Coates",
+        "left": {
+            "text": "Not tonight.",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": -10,
+                "wealth": 0,
+                "supplies": -5
+            }
+        },
+        "right": {
+            "text": "Where's my wallet...",
+            "risk": 0.05,
+            "effect": {
+                "physical": 0,
+                "mental": 20,
+                "wealth": -15,
+                "supplies": -5
             }
         }
     }
