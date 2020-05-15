@@ -13,28 +13,31 @@
         integrity="sha256-rByPlHULObEjJ6XQxW/flG2r+22R5dKiAoef+aXWfik=" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/inventory-game-style.css">
     <link rel="stylesheet" href="css/inventory-style.css">
+    <link rel="stylesheet" href="css/tutorial-popup-style.css">
 </head>
 <body>
     <div id="minigame-message">
-        <h1>Collect as many items as you can</h1>
+        <h1>Collect as many i<span id="dbl-click-handler">t</span>ems as you can</h1>
+        <div id="help-button-container">
+            <img src="images/help-button.png" alt="instructions-button">
+        </div>
     </div>
+
     <div id="handswipe-container">
         <img id="hand-swipe" src="images/swipe-icon.png">
     </div>
+
     <div id="minigame-container">
         <canvas id="canvas" width="128" height="128"></canvas>
         <div id="inventory-grid-container" class="game-grid">
             <div id="background-image">
-                
             </div>
         </div>
     </div>
-    
-    <!--
-    <div id="wrapper">
-        <img src="https://davetayls.me/jquery.kinetic/lib/wembley.jpg">
+
+    <div id="tutorial-container">
+
     </div>
-    -->
 
     <div id="end-results-screen">
         <h1>Game End!</h1>
@@ -64,5 +67,7 @@
     <script src="js/minigame-clock.js"></script>
     <script src="js/shopper.js"></script>
     <script src="js/shelf.js"></script>
+    <script src="js/tutorial-popup.js"></script>
+    <script src="js/tutorial.js"></script>
 </body>
 </html>

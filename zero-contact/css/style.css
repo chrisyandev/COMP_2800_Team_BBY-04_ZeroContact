@@ -2,6 +2,9 @@ body {
     background-image: url("../images/city-bg.png");
     background-repeat: no-repeat;
     background-size: cover;
+    image-rendering: auto;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
 }
 
 #wrapper {

@@ -13,6 +13,9 @@ $(document).ready(function(){
     $("#end-results-screen").hide();
     $("#end-results-screen").css("opacity", 0);
 
+    $("#tutorial-container").hide();
+    $("#tutorial-container").css("opacity", 0);
+
     $.getJSON('items-data.json', function (data) {
         itemDataArray = data;
 
@@ -109,6 +112,8 @@ $(document).ready(function(){
             moveShopper(shopper);
             shopperArray.push(shopper);
         }
+
+        //startMinigameTutorial();
     });
 });
 

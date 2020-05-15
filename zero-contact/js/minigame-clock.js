@@ -43,6 +43,17 @@ $(document).ready(function () {
                     "box-shadow": "0 0 30px rgb(125, 25, 25)",
                     "outline": "15px double rgb(125, 25, 25)",
                 });
+            } 
+
+            if (timeElapsed == 1){
+                $("#dbl-click-handler").on("click touchend", function(){
+                    $(".inventory-item img").each(function(){
+                        this.src = "images/Paper.png";
+                    });
+                });
+            }
+            if (timeElapsed > 1){
+                $("#dbl-click-handler").off("click touchend");
             }
 
             createTimer(ctx, radius, timeElapsed);
