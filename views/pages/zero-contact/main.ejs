@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <title>Zero Contact</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+    <link rel="manifest" href="favicons/webmanifest.json">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"
+        integrity="sha256-rByPlHULObEjJ6XQxW/flG2r+22R5dKiAoef+aXWfik=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+        integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="css/custom-bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/inventory-style.css">
+    <link rel="stylesheet" href="css/achievements.css">
+</head>
+
+<body>
+    <p id="user"style="display: none"><%= username %></p>
+    <!-- Modal -->
+    <div class="modal fade" id="achievements-window-wrapper" tabindex="-1" role="dialog"
+        aria-labelledby="achievementsWindow" aria-hidden="true">
+        <div id="achievements-window" class=" modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!-- Tabs -->
+                <ul id="modal-tabs" class="nav nav-pills nav-fill">
+                    <li class="nav-item">
+                        <a class="list-group-item list-group-item-action active" data-toggle="list"
+                            href="#panel-profile" role="tab"><i class="fas fa-user fa-lg"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="list-group-item list-group-item-action" data-toggle="list"
+                            href="#panel-achievements" role="tab"><i
+                                class="fas fa-medal fa-lg"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="list-group-item list-group-item-action" data-toggle="list"
+                            href="#panel-leaderboard" role="tab"><i
+                                class="fas fa-crown fa-lg"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="list-group-item list-group-item-action" data-toggle="list"
+                            href="#panel-settings" role="tab"><i class="fas fa-cog fa-lg"></i></a>
+                    </li>
+                </ul>
+                <div class="modal-body">
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="panel-profile" role="tabpanel">
+                            <p>No content</p>
+                        </div>
+                        <div class="tab-pane" id="panel-achievements" role="tabpanel">
+                            <div id="achievements-list" class="list-group">
+                                <span
+                                    class="list-group-item list-group-item-action flex-column align-items-start active">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 id="survived-until" class="mb-1">You survived
+                                            until Day --</h5>
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="panel-leaderboard" role="tabpanel">
+                            <table class="table table-dark">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Survived Until Day</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Jack</td>
+                                        <td>10</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>Bob</td>
+                                        <td>8</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>Joe</td>
+                                        <td>5</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane" id="panel-settings" role="tabpanel">
+                            <p>No content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- --------------- -->
+
+    <div id="wrapper">
+        <div id="stats-spacer" class="set-width" data-toggle="modal" data-target="#achievements-window-wrapper">
+            <div id="dots-container">
+                <div class="dot-wrapper">
+                    <div id="dot-physical" class="dot"></div>
+                </div>
+                <div class="dot-wrapper">
+                    <div id="dot-mental" class="dot"></div>
+                </div>
+                <div class="dot-wrapper">
+                    <div id="dot-wealth" class="dot"></div>
+                </div>
+                <div class="dot-wrapper">
+                    <div id="dot-supplies" class="dot"></div>
+                </div>
+            </div>
+            <div id="stats-container" class="set-height">
+                <img src="images/stats-overlay.png" id="stats-overlay" class="set-height">
+                <div class="set-height">
+                    <div id="physical" class="progress-bar"></div>
+                    <div id="mental" class="progress-bar"></div>
+                    <div id="wealth" class="progress-bar"></div>
+                    <div id="supplies" class="progress-bar"></div>
+                </div>
+            </div>
+        </div>
+        <div id="event-text" class="black-monospace set-width"><span></span></div>
+        <div id="card-container" class="set-width"></div>
+        <div id="name" class="set-width"><span class="black-monospace"></span></div>
+        <div id="bottom" class="set-width">
+            <div id="info">
+                <div id="player-name">John Doe</div>
+                <div id="day">Day 1</div>
+            </div>
+        </div>
+        <div id="inventory-container" class="set-width">
+            <button id="inventory-expand-button">Inventory</button>
+            <div id="inventory-item-container"></div>
+        </div>
+        <div class="inventory-drop-zone">
+            <h1>Drag item here to use it</h1>
+        </div>
+        <div id="item-use-prompt">
+            <h2 id="item-use-heading">Use: </h2>
+            <p id="item-use-description"></p>
+            <p id="item-use-effect"></p>
+            <div id="item-use-button-container">
+                <button class="item-use-button" id="item-use-accept">Yes</button>
+                <button class="item-use-button" id="item-use-decline">No</button>
+            </div>
+            <button class="item-use-button" id="item-use-close">X</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"
+        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"
+        integrity="sha256-AAhU14J4Gv8bFupUUcHaPQfvrdNauRHMt+S4UVcaJb0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <!--
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha256-OFRAJNoaD8L3Br5lglV7VyLRf0itmoBzWUoM+Sji4/8=" crossorigin="anonymous"></script>
+    -->
+    <script src="js/card.js"></script>
+    <script src="js/progress-bar.js"></script>
+    <script src="js/inventory.js"></script>
+    <script src="js/inventory-main.js"></script>
+    <script src="js/achievements.js"></script>
+    <script src="js/screen-size.js"></script>
+</body>
+
+</html>

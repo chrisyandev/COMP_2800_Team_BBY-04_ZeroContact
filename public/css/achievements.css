@@ -1,0 +1,17 @@
+.modal-dialog,
+.modal-content {
+    height: 90%;
+}
+
+.modal-body {
+    max-height: calc(100vh - 120px);
+    overflow-y: scroll;
+}
+
+.modal *, *::before, *::after {
+  box-sizing: border-box;
+}
+
+#modal-tabs .list-group-item {
+    padding: 0.4rem 0.6rem;
+}

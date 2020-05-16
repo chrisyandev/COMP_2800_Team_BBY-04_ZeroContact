@@ -1,0 +1,108 @@
+[
+    {
+    "itemName": "N-95 Mask",
+    "itemText": "Slightly reduces risk of exposure by covering face.",
+    "itemSprite": "images/N95_Mask.png",
+    "useableOn": ["Hangout", "Food", "Appointment"],
+    "infectionRisk":-0.02,
+    "effect": {
+        "physical": 0,
+        "mental": 0,
+        "wealth": 0,
+        "supplies": 0
+        }
+    },
+    {
+        "itemName": "Hand Sanitizer",
+        "itemText": "Greatly reduces risk of exposure by allowing hands to be sterilized on the go.",
+        "itemSprite": "images/Hand_Sanitizer.png",
+        "useableOn": ["Hangout", "Food", "Appointment"],
+        "infectionRisk":-0.04,
+        "effect": {
+            "physical": 0,
+            "mental": 0,
+            "wealth": 0,
+            "supplies": 0
+        }
+    },
+    {
+        "itemName": "Chocolate Chip Cookie",
+        "itemText": "Brings a bit of joy to a meal at home.",
+        "itemSprite": "images/Cookie.png",
+        "useableOn": ["Food"],
+        "infectionRisk":0.00,
+        "effect": {
+            "physical": 5,
+            "mental": 15,
+            "wealth": 0,
+            "supplies": 5
+        }
+    },
+    {
+        "itemName": "Gift Card",
+        "itemText": "Helps pay for something when you need it.",
+        "itemSprite": "images/Envelope.png",
+        "useableOn": ["Food", "Home Entertainment"],
+        "infectionRisk":0.00,
+        "effect": {
+            "physical": 0,
+            "mental": 5,
+            "wealth": 20,
+            "supplies": 0
+        }
+    },
+    {
+        "itemName": "Multivitamins",
+        "itemText": "Boosts the immune system, Makes you feel a little better.",
+        "itemSprite": "images/Multivitamins.png",
+        "useableOn": ["Food", "Home Entertainment"],
+        "infectionRisk":-0.005,
+        "effect": {
+            "physical": 5,
+            "mental": 5,
+            "wealth": 0,
+            "supplies": 0
+        }
+    },
+    {
+        "itemName": "Toilet Paper",
+        "itemText": "Lets you feel proud you got some before other people did.",
+        "itemSprite": "images/Paper.png",
+        "useableOn": ["Food", "Home Entertainment"],
+        "infectionRisk":-0.005,
+        "effect": {
+            "physical": 5,
+            "mental": 5,
+            "wealth": 0,
+            "supplies": 10
+        }
+    },
+    {
+        "itemName": "Honey",
+        "itemText": "Bees really love this.",
+        "itemSprite": "images/Honey.png",
+        "useableOn": ["Food"],
+        "infectionRisk":-0.005,
+        "effect": {
+            "physical": 5,
+            "mental": 5,
+            "wealth": 0,
+            "supplies": 10
+        }
+    },
+    {
+        "itemName": "Apple",
+        "itemText": "A red fruit.",
+        "itemSprite": "images/Apple.png",
+        "useableOn": ["Food"],
+        "infectionRisk":-0.005,
+        "effect": {
+            "physical": 5,
+            "mental": 5,
+            "wealth": 0,
+            "supplies": 10
+        }
+    }
+
+]
+
