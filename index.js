@@ -87,7 +87,7 @@ MongoClient.connect(DB_URL, {
         })
 
         //Rendering character creation irst from play
-        app.post("/game", (req, res) => {
+        app.post("/intro", (req, res) => {
             console.log(req.body.username)
             res.render("pages/zero-contact/characterCreator.ejs", {
                 username: req.body.username
@@ -95,9 +95,9 @@ MongoClient.connect(DB_URL, {
         })
 
         //Add here
-        app.get("/main", (req, res) => res.render("pages/zero-contact/characterCreator.ejs"));
+        app.get("/game", (req, res) => res.render("pages/zero-contact/characterCreator.ejs"));
 
-        app.post("/main", (req, res) => {
+        app.post("/game", (req, res) => {
             let usr = req.body.username;
             //search username is db, set all new datas
             usersCollection.updateMany({
