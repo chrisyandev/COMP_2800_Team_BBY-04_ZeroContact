@@ -1,17 +1,21 @@
 const TIME_LIMIT = 12;
 
+// Gets the canvas
+let canvas = document.getElementById("canvas");
+let ctx = canvas.getContext("2d");
+
 $(document).ready(function () {
-    // Gets the canvas
-    let canvas = document.getElementById("canvas");
-    let ctx = canvas.getContext("2d");
     radius = canvas.height / 2;
     ctx.translate(radius, radius);
     radius = radius * 0.90
 
     // Create the clock initially
+    createTimer(ctx, radius, 0);
+});
+
+function startClock(){
     let start = new Date;
     let timeElapsed = (Math.round((new Date - start) / 1000));
-    createTimer(ctx, radius, timeElapsed);
 
     let clockTimer = setInterval(function(){
         let timeElapsed = (Math.round((new Date - start) / 1000));
@@ -60,7 +64,7 @@ $(document).ready(function () {
         }
 
     }, 1000);
-});
+}
 
 // Creates all the components of the clock 
 // Attribution: w3schools.com Canvas Clock

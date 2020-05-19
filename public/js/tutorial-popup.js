@@ -2,11 +2,11 @@ function TutorialPopUp(properties){
     this.properties = properties;
     console.log(properties);
     this.index = 0;
-    this.$messageContainer = $("<div id='message-container'></div>");
+    this.$content = $("<img>");
     this.$topCloseButton = $('<button type="button" class="close" data-dismiss="modal">&times;</button>');
     this.$closeButton = $("<button id='close-container'></button>");
     this.$continueButton = $("<button id='tutorial-button' type='button' class='btn btn-default'>Continue</button>");
-    this.$skipButton = $("<button id='tutorial-button' type='button' class='btn btn-default' data-dismiss='modal'>Skip</button>");
+    this.$skipButton = $("<button id='skip-button' type='button' class='btn btn-default' data-dismiss='modal'>Skip</button>");
     this.$order = $("<h2></h2>");
     this.$message = $("<h1></h1>");
 
@@ -20,7 +20,7 @@ function TutorialPopUp(properties){
    
     $("#tutorial-body").append(this.$order);
     $("#tutorial-body").append(this.$message);
-    $("#tutorial-body").append(this.$continueButton);
+    $("#tutorial-body").append(this.$content);
     $("#tutorial-header").append(this.$topCloseButton);
     $("#tutorial-header").append(this.$order);
     $("#tutorial-footer").append(this.$skipButton);
@@ -62,7 +62,7 @@ function TutorialPopUp(properties){
     this.update();
 
     const self = this;
-    // Button click function
+    // Button click functions
     this.$continueButton.on("click", function(){
         if(self.index < self.properties.length-1){
             self.index += 1;
@@ -71,12 +71,19 @@ function TutorialPopUp(properties){
             endTutorial(self);
         }
     });
+    
+    this.$topCloseButton.on("click", function(){
+        endTutorial(self);
+    });
+
+    this.$skipButton.on("click", function(){
+        endTutorial(self);
+    });
+
 }
 
-function endTutorial(popup){
-    popup.$continueButton.remove();
-    popup.$messageContainer.remove();
-
+function endTutorial(){
     $("#tutorial-container").hide();
     $("#tutorial-container").css("opacity", 0);
+    startGame();
 }

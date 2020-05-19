@@ -19,154 +19,109 @@ $(document).ready(function(){
     $.getJSON('items-data.json', function (data) {
         itemDataArray = data;
 
-        // Creates the last 2 items in the json file
-
-        // Number of rows and columns of shelves
-        let rowDimensions = 2;
-        let columnDimensions = 3;
-
-        // How much to space each row and column
-        let xIncrement = rowDimensions + 1;
-        let yIncrement = columnDimensions + 1;
-
-        // Maximum number of rows and columns of shelves
-        let maxRows = (6 * xIncrement);
-        let maxColumns = (6 * yIncrement);
-
-        for (let x = 2; x < maxRows; x += xIncrement ){
-            // Creates columns of shelves
-            for (let y = 2; y < maxColumns; y += yIncrement){
-                let shelf = new StoreShelf(rowDimensions, columnDimensions, x, y, itemDataArray.length);
-            }
-        }
-
-        let $handIcon = $("#hand-swipe");
-        let timer = setTimeout(function(){
-            $handIcon.css({
-                opacity: 1,
-            });
-        }, 3000);
-
-        // Adds drag scrolling to the container and allows items to be clicked
-        $("#inventory-grid-container").kinetic({
-            stopped: function(){
-                timer = setTimeout(function(){
-                    $handIcon.css({
-                        opacity: 1,
-                    });
-                }, 3000);
-            },
-            moved: function(){
-                $handIcon.css({
-                    opacity: 0,
-                });
-                clearTimeout(timer);
-            },
-            maxvelocity: 10000,
-        });
-
-        let randX = Math.round(Math.random()*2000+500);
-        let randY = Math.round(Math.random()*2000+500);
-        $("#inventory-grid-container").kinetic("start", { velocity: randX, velocityY: randY });
-        $("#inventory-grid-container").kinetic('stop');
         
-        // Create 2 shopper entites at the edge of the store
-        let shopper3 = new Shopper(yLimit, 1, "row", 1000, 1);
-        moveShopper(shopper3);
-        shopperArray.push(shopper3);
-
-        let shopper4 = new Shopper(1, xLimit, "column", 1000, -1);
-        moveShopper(shopper4);
-        shopperArray.push(shopper4);
-        
-        // Create a number of shopper entities in the store
-        for (let i = 0; i < 60; i++){
-            // Randomize the arguements of the shopper entities
-            let startY = Math.round(Math.random()*(validYSpawn.length-1));
-            let startX = Math.round(Math.random()*(validXSpawn.length-1));
-
-            startY = validYSpawn[startY];
-            startX = validXSpawn[startX];
-
-            let randDirectionNum = Math.round((Math.random()*1)+1);
-            let randStepNum = Math.round((Math.random()*1)+1);
-            let randTime = Math.round(Math.random()*1500+250);
-
-            let shopperDirection = ""
-            if (randDirectionNum == 1){
-                shopperDirection = "row";
-
-            } else{
-                shopperDirection = "column";
-            }
-
-            let shopperStep = 0;
-            if (randStepNum == 1){
-                shopperStep = 1;
-            } else{
-                shopperStep = -1;
-            }
-
-            let shopper = new Shopper(startY, startX, shopperDirection, randTime, shopperStep);
-            moveShopper(shopper);
-            shopperArray.push(shopper);
-        }
 
         startMinigameTutorial();
     });
 });
 
-function ItemAnimation(item, toPosition, fromPosition, inventoryItemReceived){
-    this.itemEntity = item.$itemContainer.clone();
-    this.toPos = toPosition;
-    this.fromPos = fromPosition;
+function startGame(){
+    // Creates the last 2 items in the json file
 
-    if (inventoryItemReceived){
-        $("#minigame-container").append(this.itemEntity);
+    // Number of rows and columns of shelves
+    let rowDimensions = 2;
+    let columnDimensions = 3;
 
-        this.itemEntity.css({
-            "background-color": "lightgreen"
-        });
+    // How much to space each row and column
+    let xIncrement = rowDimensions + 1;
+    let yIncrement = columnDimensions + 1;
 
-        this.toPos.top -= 120;
-        this.toPos.left += 60;
-    } else{
-        $("#inventory-grid-container").append(this.itemEntity);
+    // Maximum number of rows and columns of shelves
+    let maxRows = (6 * xIncrement);
+    let maxColumns = (6 * yIncrement);
 
-        // Gets the scroll position of the minigame
-        let scrollY = $("#inventory-grid-container").scrollTop();
-        let scrollX = $("#inventory-grid-container").scrollLeft();
-
-        this.itemEntity.css({
-            "background-color": "red"
-        });
-
-        this.fromPos.top += scrollY;
-        this.fromPos.left += scrollX;
-        this.toPos.top += scrollY;
-        this.toPos.left += scrollX;
+    for (let x = 2; x < maxRows; x += xIncrement ){
+        // Creates columns of shelves
+        for (let y = 2; y < maxColumns; y += yIncrement){
+            let shelf = new StoreShelf(rowDimensions, columnDimensions, x, y, itemDataArray.length);
+        }
     }
 
-    this.itemEntity.css({
-        "position":"absolute",
-        "pointer-events": "none",
-        "top": fromPosition.top,
-        "left": fromPosition.left,
-        "opacity": "1",
-        "zIndex": "5",
+    // A notification to give to the user that they can swipe to move the screen
+    let $handIcon = $("#hand-swipe");
+    let timer = setTimeout(function(){
+        $handIcon.css({
+            opacity: 1,
+        });
+    }, 3000);
+
+    // Adds drag scrolling to the container and allows items to be clicked
+    $("#inventory-grid-container").kinetic({
+        stopped: function(){
+            timer = setTimeout(function(){
+                $handIcon.css({
+                    opacity: 1,
+                });
+            }, 3000);
+        },
+        moved: function(){
+            $handIcon.css({
+                opacity: 0,
+            });
+            clearTimeout(timer);
+        },
+        maxvelocity: 10000,
     });
 
-    this.itemEntity.animate({
-        opacity: 0,
-        top: toPosition.top,
-        left: toPosition.left,
-    }, 500);
+    let randX = Math.round(Math.random()*2000+500);
+    let randY = Math.round(Math.random()*2000+500);
+    $("#inventory-grid-container").kinetic("start", { velocity: randX, velocityY: randY });
+    $("#inventory-grid-container").kinetic('stop');
+    
+    // Create 2 shopper entites at the edge of the store
+    let shopper3 = new Shopper(yLimit, 1, "row", 1000, 1);
+    moveShopper(shopper3);
+    shopperArray.push(shopper3);
 
-    let clone = this.itemEntity;
-    this.timer = setTimeout(function(){
-        clone.remove();
-    }, 500);
+    let shopper4 = new Shopper(1, xLimit, "column", 1000, -1);
+    moveShopper(shopper4);
+    shopperArray.push(shopper4);
+    
+    // Create a number of shopper entities in the store
+    for (let i = 0; i < 60; i++){
+        // Randomize the arguements of the shopper entities
+        let startY = Math.round(Math.random()*(validYSpawn.length-1));
+        let startX = Math.round(Math.random()*(validXSpawn.length-1));
 
+        startY = validYSpawn[startY];
+        startX = validXSpawn[startX];
+
+        let randDirectionNum = Math.round((Math.random()*1)+1);
+        let randStepNum = Math.round((Math.random()*1)+1);
+        let randTime = Math.round(Math.random()*1500+250);
+
+        let shopperDirection = ""
+        if (randDirectionNum == 1){
+            shopperDirection = "row";
+
+        } else{
+            shopperDirection = "column";
+        }
+
+        let shopperStep = 0;
+        if (randStepNum == 1){
+            shopperStep = 1;
+        } else{
+            shopperStep = -1;
+        }
+
+        let shopper = new Shopper(startY, startX, shopperDirection, randTime, shopperStep);
+        moveShopper(shopper);
+        shopperArray.push(shopper);
+    }
+
+    // Starts the clock
+    startClock();
 }
 
 // Tracks the items collected from the store shelves

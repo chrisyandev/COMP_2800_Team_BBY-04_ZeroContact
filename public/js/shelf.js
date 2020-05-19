@@ -5,7 +5,7 @@ function StoreShelf(rows, columns, xCoord, yCoord, maxItems){
     this.columns = columns;
     this.itemWidth = 100;
     this.itemHeight = 100;
-    this.gridGap = 20;
+    this.gridGap = 25;
     this.gridRow = xCoord + " / span " + (rows);
     this.gridColumn = yCoord + " / span " + (columns);
 

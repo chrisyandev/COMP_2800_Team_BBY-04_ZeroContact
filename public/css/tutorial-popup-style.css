@@ -1,31 +1,30 @@
+/* ------------------------------------------------------------------- */
+/* Tutorial Screen styling */
+/* ------------------------------------------------------------------- */
+
 #tutorial-container{
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    padding-top: 100px;
+    background-color: rgba(0, 0, 0, 0.205);
 }
 
-#message-container{
-    display: flex;
-    flex-direction:column;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    background-color: white;
-    width: 500px;
+#tutorial-body{
     height: 250px;
-    z-index: 99;
-    font-family: 'Courier New', Courier, monospace;
 }
 
-#message-container h2{
-    position: absolute;
-    top: 0;
-    left: 10px;
+#skip-button{
+    float: left;
 }
 
-#message-container button{
-    position: absolute;
-    bottom: 20px;
+#tutorial-container img{
+    display: block;
+    width: 100%;
+}
+
+#tutorial-container h1{
+    text-align: center;
 }

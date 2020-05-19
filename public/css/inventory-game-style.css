@@ -8,16 +8,6 @@ html, body{
 }
 
 /* ------------------------------------------------------------------- */
-/* Tutorial Screen styling */
-/* ------------------------------------------------------------------- */
-
-#tutorial-container{
-    position: relative;
-    padding-top: 100px;
-    z-index: 99;
-}
-
-/* ------------------------------------------------------------------- */
 /* Game Screen styling */
 /* ------------------------------------------------------------------- */
 
@@ -130,8 +120,6 @@ body{
     position: relative;
     top: 0px;
     left: 0px;
-    /*background-color: black;*/
-    /*border-radius: 50px;*/
     width: 100px;
     height: 100px;
     background-size: cover;
@@ -184,9 +172,14 @@ body{
     word-wrap: break-word;
 }
 
-#end-results-screen h1, h2{
-    color: white;
-    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+#end-results-screen h1{
+    color: black;
+    font-weight: bold;
+}
+
+#end-results-screen h2{
+    color: black;
+    font-weight: bold;
 }
 
 #items-list-container{
@@ -208,10 +201,9 @@ body{
 }
 
 .results-item img{
-    width: 25px;
-    height: 25px;
+    width: 35px;
+    height: 35px;
     background-color: lightgrey;
-    padding: 25px;
 }
 
 .results-item h2{
