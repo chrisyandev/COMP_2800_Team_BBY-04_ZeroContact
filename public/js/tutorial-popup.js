@@ -4,26 +4,19 @@ function TutorialPopUp(properties){
     this.index = 0;
     this.$content = $("<img>");
     this.$topCloseButton = $('<button type="button" class="close" data-dismiss="modal">&times;</button>');
-    this.$closeButton = $("<button id='close-container'></button>");
-    this.$continueButton = $("<button id='tutorial-button' type='button' class='btn btn-default'>Continue</button>");
+    this.$backButton = $("<button id='tutorial-back-button' type='button' class='btn btn-default'>Back</button>");
+    this.$continueButton = $("<button id='tutorial-cont-button' type='button' class='btn btn-default'>Continue</button>");
     this.$skipButton = $("<button id='skip-button' type='button' class='btn btn-default' data-dismiss='modal'>Skip</button>");
     this.$order = $("<h2></h2>");
     this.$message = $("<h1></h1>");
-
-    // Append elements together
-    /*
-    this.$messageContainer.append(this.$order);
-    this.$messageContainer.append(this.$message);
-    this.$messageContainer.append(this.$continueButton);
-    $("#tutorial-body").append(this.$messageContainer);
-    */
-   
+    
     $("#tutorial-body").append(this.$order);
     $("#tutorial-body").append(this.$message);
     $("#tutorial-body").append(this.$content);
     $("#tutorial-header").append(this.$topCloseButton);
     $("#tutorial-header").append(this.$order);
     $("#tutorial-footer").append(this.$skipButton);
+    $("#tutorial-footer").append(this.$backButton);
     $("#tutorial-footer").append(this.$continueButton);
 
     /*$(properties[this.index].container).append(this.$messageContainer);*/
@@ -50,7 +43,7 @@ function TutorialPopUp(properties){
     }
 
     this.updateContent = function() {
-        this.content = this.properties[this.index].content;
+        this.$content.attr("src", this.properties[this.index].content);
     }
 
     this.update = function(){
@@ -62,6 +55,7 @@ function TutorialPopUp(properties){
     this.update();
 
     const self = this;
+
     // Button click functions
     this.$continueButton.on("click", function(){
         if(self.index < self.properties.length-1){
@@ -69,6 +63,22 @@ function TutorialPopUp(properties){
             self.update();
         } else{
             endTutorial(self);
+        }
+
+        if (self.index == self.properties.length-1){
+            self.$continueButton.text("Start");
+        } else{
+            self.$continueButton.text("Continue");
+        }
+    });
+    
+    this.$backButton.on("click", function(){
+        if(self.index > 0){
+            self.index -= 1;
+            self.update();
+        }
+        if (self.index != self.properties.length-1){
+            self.$continueButton.text("Continue");
         }
     });
     

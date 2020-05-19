@@ -13,7 +13,11 @@
 }
 
 #tutorial-body{
-    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 400px;
 }
 
 #skip-button{
@@ -21,7 +25,6 @@
 }
 
 #tutorial-container img{
-    display: block;
     width: 100%;
 }
 
