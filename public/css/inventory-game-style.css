@@ -7,6 +7,20 @@ html, body{
     image-rendering: pixelated;
 }
 
+/* ------------------------------------------------------------------- */
+/* Tutorial Screen styling */
+/* ------------------------------------------------------------------- */
+
+#tutorial-container{
+    position: relative;
+    padding-top: 100px;
+    z-index: 99;
+}
+
+/* ------------------------------------------------------------------- */
+/* Game Screen styling */
+/* ------------------------------------------------------------------- */
+
 body{
     background-image: url("/images/parking-lot.png");
     background-size: cover;

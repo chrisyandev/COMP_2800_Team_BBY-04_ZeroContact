@@ -11,18 +11,22 @@ function TutorialPopUp(properties){
     this.$message = $("<h1></h1>");
 
     // Append elements together
+    /*
     this.$messageContainer.append(this.$order);
     this.$messageContainer.append(this.$message);
     this.$messageContainer.append(this.$continueButton);
-
+    $("#tutorial-body").append(this.$messageContainer);
+    */
+   
+    $("#tutorial-body").append(this.$order);
+    $("#tutorial-body").append(this.$message);
+    $("#tutorial-body").append(this.$continueButton);
     $("#tutorial-header").append(this.$topCloseButton);
     $("#tutorial-header").append(this.$order);
-    $("#tutorial-body").append(this.$messageContainer);
     $("#tutorial-footer").append(this.$skipButton);
     $("#tutorial-footer").append(this.$continueButton);
 
     /*$(properties[this.index].container).append(this.$messageContainer);*/
-
 
     // Functions
     this.updateMessage = function(){
@@ -35,28 +39,13 @@ function TutorialPopUp(properties){
         this.$order.text(this.order);
     }
 
-    this.updateWidth = function(){
-        this.width = this.properties[this.index].width;
-        this.$messageContainer.css({
-            "width": this.width +"px",
-            "transform": "translate("+ (-this.width / 2) + "px"+", "+ (-this.height / 2) +"px)",
-        });
-    }
-
-    this.updateHeight = function(){
-        this.height = this.properties[this.index].height;
-        this.$messageContainer.css({
-            "height": this.height + "px",
-            "transform": "translate("+ (-this.width / 2) + "px"+", "+ (-this.height / 2) +"px)",
-        });
-    }
-
     this.updatePosition = function(){
         this.top = this.properties[this.index].top;
         this.left = this.properties[this.index].left;
-        this.$messageContainer.css({
-            "top": this.top + "vh",
-            "left": this.left + "vw",
+
+        $("#tutorial-container").css({
+            "padding-top": this.top + "vh",
+            "padding-left": this.left + "vw",
         });
     }
 
@@ -67,8 +56,6 @@ function TutorialPopUp(properties){
     this.update = function(){
         this.updateMessage();
         this.updateOrder();
-        this.updateHeight();
-        this.updateWidth();
         this.updatePosition();    
         this.updateContent();
     }
