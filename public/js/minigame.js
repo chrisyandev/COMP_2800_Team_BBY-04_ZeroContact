@@ -112,7 +112,7 @@ $(document).ready(function(){
             shopperArray.push(shopper);
         }
 
-        //startMinigameTutorial();
+        startMinigameTutorial();
     });
 });
 

@@ -3,9 +3,26 @@ function TutorialPopUp(properties){
     console.log(properties);
     this.index = 0;
     this.$messageContainer = $("<div id='message-container'></div>");
-    this.$continueButton = $("<button id='tutorial-button'>Continue</button>");
+    this.$topCloseButton = $('<button type="button" class="close" data-dismiss="modal">&times;</button>');
+    this.$closeButton = $("<button id='close-container'></button>");
+    this.$continueButton = $("<button id='tutorial-button' type='button' class='btn btn-default'>Continue</button>");
+    this.$skipButton = $("<button id='tutorial-button' type='button' class='btn btn-default' data-dismiss='modal'>Skip</button>");
     this.$order = $("<h2></h2>");
     this.$message = $("<h1></h1>");
+
+    // Append elements together
+    this.$messageContainer.append(this.$order);
+    this.$messageContainer.append(this.$message);
+    this.$messageContainer.append(this.$continueButton);
+
+    $("#tutorial-header").append(this.$topCloseButton);
+    $("#tutorial-header").append(this.$order);
+    $("#tutorial-body").append(this.$messageContainer);
+    $("#tutorial-footer").append(this.$skipButton);
+    $("#tutorial-footer").append(this.$continueButton);
+
+    /*$(properties[this.index].container).append(this.$messageContainer);*/
+
 
     // Functions
     this.updateMessage = function(){
@@ -43,12 +60,17 @@ function TutorialPopUp(properties){
         });
     }
 
+    this.updateContent = function() {
+        this.content = this.properties[this.index].content;
+    }
+
     this.update = function(){
         this.updateMessage();
         this.updateOrder();
         this.updateHeight();
         this.updateWidth();
         this.updatePosition();    
+        this.updateContent();
     }
     this.update();
 
@@ -62,12 +84,6 @@ function TutorialPopUp(properties){
             endTutorial(self);
         }
     });
-
-    // Append elements together
-    this.$messageContainer.append(this.$order);
-    this.$messageContainer.append(this.$message);
-    this.$messageContainer.append(this.$continueButton);
-    $(properties[this.index].container).append(this.$messageContainer);
 }
 
 function endTutorial(popup){
