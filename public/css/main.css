@@ -145,7 +145,7 @@ body {
     padding: 1vh 2vh;
     font-family: 'Courier New', Courier, monospace;
     color: white;
-    font-size: 2.8vh;
+    font-size: 2.7vh;
     top: 2px;
     bottom: 2px;
     display: flex;
@@ -169,14 +169,14 @@ body {
 .white-monospace {
     font-family: 'Courier New', Courier, monospace;
     color: white;
-    font-size: 3vh;
+    font-size: 2.8vh;
 }
 
 .black-monospace {
     font-family: 'Courier New', Courier, monospace;
     color: black;
     font-weight: bold;
-    font-size: 3vh;
+    font-size: 2.8vh;
 }
 
 .set-width {
@@ -185,4 +185,16 @@ body {
 
 .set-height {
     height: 280px;
+}
+
+@media (max-width: 380px) {
+
+    .white-monospace,
+    .black-monospace {
+        font-size: 2.6vh;
+    }
+
+    #info {
+        font-size: 2.5vh;
+    }
 }
