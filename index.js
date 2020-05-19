@@ -94,29 +94,6 @@ MongoClient.connect(DB_URL, {
             })
         })
 
-        //Add here
-        app.get("/game", (req, res) => res.render("pages/zero-contact/characterCreator.ejs"));
-
-        app.post("/game", (req, res) => {
-            let usr = req.body.username;
-            //search username is db, set all new datas
-            usersCollection.updateMany({
-                username: usr
-            }, {
-                $set: {
-                    playerName: req.body.characterName,
-                    age: req.body.characterAge,
-                    gender: req.body.characterGender
-                }
-            })
-            console.log(usersCollection.find({
-                username: usr
-            }))
-            res.render("pages/zero-contact/main.ejs", {
-                username: usr
-            })
-        });
-
         app.put("/longest-days", (req, res) => {
             usersCollection.find({
                 username: req.body.username
@@ -184,6 +161,55 @@ MongoClient.connect(DB_URL, {
                 }
             })
         })
+        //Display Character Creation
+        app.get("/game", (req, res) => res.render("pages/zero-contact/characterCreator.ejs"));
+        //Send Character creation to main
+        app.post("/game", (req, res) => {
+            let usr = req.body.username;
+            let genName = req.body.characterName;
+
+            //search username is db, set all new datas
+            usersCollection.updateMany({
+                username: usr
+            }, {
+                $set: {
+                    playerName: genName,
+                    age: req.body.characterAge,
+                    gender: req.body.characterGender
+                }
+            })
+
+            let fName = getFirstName(genName);
+            res.render("pages/zero-contact/main.ejs", {
+                username: usr,
+                playerNam: fName,
+            })
+        });
+
+        app.get("/user", (req, res) => {
+            // Req only has username
+            console.log(req.query.username);
+
+            usersCollection.findOne({ username: req.query.username }, function(err, document) {
+                retObj = {};
+
+                for (var prop in document) {
+                    retObj[prop] = document[prop];
+                }
+                
+                delete retObj["_id"];
+                delete retObj["password"]
+                
+                res.send(retObj);
+            })
+        });
+
         app.listen(3000);
     })
     .catch(console.error);
+
+//splitting name for spacing
+function getFirstName(name) {
+    let nameArray = name.split(" ");
+    return nameArray[0];
+}

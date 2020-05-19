@@ -141,9 +141,12 @@
         <div id="event-text" class="black-monospace set-width"><span></span></div>
         <div id="card-container" class="set-width"></div>
         <div id="name" class="set-width"><span class="black-monospace"></span></div>
+<!--Footer---------------------------------------------------------------------------->
         <div id="bottom" class="set-width">
             <div id="info">
-                <div id="player-name">John Doe</div>
+                <div id="player-name"><%= playerNam %></div>
+<!--Get Profile--------------------------------------------------------------------->           
+                    <input id="getProfile" type="button" value="Profile" onclick=getP()>              
                 <div id="day">Day 1</div>
             </div>
         </div>
@@ -166,6 +169,12 @@
         </div>
     </div>
 
+    <div id="profile">
+        <p id="characterName">1</p>
+        <p id="characterAge">2</p>
+        <p id="characterGender">3</p>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"
         integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
@@ -184,6 +193,41 @@
     <script src="js/inventory-main.js"></script>
     <script src="js/achievements.js"></script>
     <script src="js/screen-size.js"></script>
+
+    <script>
+        function getUserDetails(username) {
+            let result = $.ajax({
+                type: "GET",
+                url: "/user",
+                data: {
+                    username: username
+                },
+                async: false
+            });
+
+            return result.responseJSON;
+        }
+
+        let profileFlag = true;
+
+        function getP() {
+            if(profileFlag) {
+                document.getElementById("profile").style = "display: block";
+                profileFlag = !profileFlag;
+            } else {
+                document.getElementById("profile").style = "display: none";
+                profileFlag = !profileFlag;
+            }
+        }
+
+        let username = "<%= username %>";
+        let playerObj = getUserDetails(username);
+        console.log(playerObj);
+
+        document.getElementById("characterName").innerHTML = "Name: " + playerObj.playerName;
+        document.getElementById("characterAge").innerHTML = "Age: " + playerObj.age;
+        document.getElementById("characterGender").innerHTML = "Gender: " + playerObj.gender;
+    </script>
 </body>
 
 </html>

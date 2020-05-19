@@ -183,3 +183,9 @@ body {
 .set-height {
     height: 280px;
 }
+
+/* Profile stuff */
+
+#profile {
+    display: none;
+}
