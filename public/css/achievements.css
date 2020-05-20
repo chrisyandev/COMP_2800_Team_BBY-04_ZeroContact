@@ -37,6 +37,7 @@
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
     color: black;
+    font-size: calc(16px + 0.5vh);
 }
 
 #modal-tabs a.active {
