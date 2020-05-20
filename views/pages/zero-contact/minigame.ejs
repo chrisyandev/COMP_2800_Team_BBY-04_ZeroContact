@@ -52,25 +52,35 @@
         </div>
     </div>
     
+    <div class="modal fade" id="end-results-screen" role="dialog">
+        <div class="modal-dialog">
+            <div id="end-content" class="modal-content">
+                <div id="end-header" class="modal-header">
+                    <h1>Game End!</h1>
+                </div>
+                <div id="end-body" class="modal-body">
+                    <h2>Here are the items you got:</h2>
+                    <ul id="items-list-container" >
 
+                    </ul>
+                </div>
+                <div id="end-footer" class="modal-footer">
+                    <form action="/game" method="POST">
+                        <input id="continue-button" type="submit" value="Continue">
+                        <input style="display:none" type="text" value="<%= username %>" name="username">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--
     <div id="end-results-screen">
         <h1>Game End!</h1>
         <h2>Here are the items you got:</h2>
         <div id="items-list-container">
         </div>
-
-        <form action="/game" method="POST">
-            <input id="continue-button" type="submit" value="Continue">
-            <input style="display:none" type="text" value="<%= username %>" name="username">
-        </form>
-
-        <!--
-        <a href="/game">
-            <button id="continue-button">Continue</button>
-        </a>
-        -->
     </div>
-
+    -->
     <div id="inventory-container">
         <button id="inventory-expand-button">Inventory</button>
         <div id="inventory-item-container">

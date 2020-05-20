@@ -186,7 +186,8 @@ function endGame(){
 
 // Creates an item in the results items list
 function createListItem(item){
-    let $resultsItem = $("<div class='results-item'></div>");
+    let $resultsItem = $("<li class='results-item list-group-item'></li>");
+    /* let $resultsItem = $("<div class='results-item'></div>");*/
     let $resultsItemIcon = $("<img src="+item.itemData.itemSprite+">");
     let $resultsItemName = $("<h2>"+item.itemData.itemName+"</h2>");
     let $resultsItemNum = $("<h3>"+item.quantity+"</h3>");

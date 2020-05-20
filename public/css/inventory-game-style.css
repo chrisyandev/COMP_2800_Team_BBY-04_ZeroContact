@@ -153,6 +153,7 @@ body{
 /* End Results Screen styling */
 /* ------------------------------------------------------------------- */
 
+/*
 #end-results-screen{
     position: absolute;
     display: flex;
@@ -170,6 +171,11 @@ body{
     font-family: 'Courier New', Courier, monospace;
     font-size: 15px;
     word-wrap: break-word;
+}*/
+
+#end-results-screen{
+    padding-top: 200px;
+    background-color: rgba(0, 0, 0, 0.527);
 }
 
 #end-results-screen h1{
@@ -182,6 +188,7 @@ body{
     font-weight: bold;
 }
 
+/*
 #items-list-container{
     width: 70%;
     height: 50%;
@@ -189,6 +196,11 @@ body{
     background-color: white;
     padding: 20px;
     outline: 2px double black;
+}*/
+
+#items-list-container{
+    max-height: 500px;
+    overflow: auto;
 }
 
 .results-item{
@@ -196,21 +208,19 @@ body{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border: 2px solid black;
     overflow: wrap;
+    width: 90%;
 }
 
 .results-item img{
     width: 35px;
     height: 35px;
-    background-color: lightgrey;
 }
 
 .results-item h2{
-    flex-grow: 3;
+    flex-grow: 2;
     width: 50px;
     height: 25px;
-    background-color: rgb(226, 226, 226);
     padding: 25px;
     font-size: 18px;
 }
@@ -218,7 +228,6 @@ body{
 .results-item h3{
     flex-grow: 1;
     height: 25px;
-    background-color: rgb(236, 236, 236);
     padding: 25px 10px 25px 10px;
     font-size: 18px;
 }

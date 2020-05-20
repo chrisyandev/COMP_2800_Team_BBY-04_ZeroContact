@@ -30,7 +30,7 @@ function startClock(){
             });
             
             clearInterval(clockTimer);
-            drawNumber(ctx, radius, 0);
+            createTimer(ctx, radius, timeElapsed);
             endGame();
         } else{
             if (timeElapsed >= TIME_LIMIT - 3 && timeElapsed < TIME_LIMIT){

@@ -17,15 +17,11 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 400px;
+    height: 450px;
 }
 
 #skip-button{
     float: left;
-}
-
-#tutorial-container img{
-    width: 100%;
 }
 
 #tutorial-container h1{
