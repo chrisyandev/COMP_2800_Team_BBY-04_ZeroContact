@@ -3,6 +3,10 @@
     height: 90%;
 }
 
+/* 
+ * Sets modal height based on viewport height
+ * source: https://stackoverflow.com/questions/19140702/bootstrap-3-set-height-of-modal-window-according-to-screen-size
+ */
 #achievements-window-wrapper .modal-body {
     max-height: calc(100vh - 120px);
     overflow-y: scroll;
@@ -16,6 +20,10 @@
     padding: 0.4rem 0.6rem;
 }
 
+/* 
+ * Prevents scrollbar from disappearing.
+ * source: https://stackoverflow.com/questions/25070144/bootstrap-modal-removes-scroll-bar
+ */
 .modal-open {
     overflow: hidden;
     overflow-y: scroll;
