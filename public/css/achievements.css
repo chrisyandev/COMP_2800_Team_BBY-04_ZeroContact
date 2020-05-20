@@ -48,6 +48,11 @@
     font-size: calc(16px + 0.5vh);
 }
 
+i.fa-lg {
+    font-size: 1.33em;
+    vertical-align: middle;
+}
+
 #modal-tabs a.active {
     background-color: #222034;
     color: white;
