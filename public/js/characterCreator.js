@@ -4,34 +4,16 @@ function Character() {
     this.playerGender = "M";
     this.playerAge = 20;
     this.playerSprite = "placeholder";
-    this.health = 100;
-    this.mental = 100;
-    this.wealth = 100;
-    this.supplies = 100;
-    this.familySize = 0;
-    this.status = "pleaceholder"; //State of Health i.e. health, sick, terminal
-    this.familyMembers = [];
 }
 
-function family(name, gender, relation, age) {
-    this.name = name;
-    this.gender = gender;
-    this.relation = relation;
-    this.age = age;
-    this.status = "placeholder";
-}
 //Runtime------------------------------------------------------
 let player;
 
 function loadCharacterPage() {
     document.getElementById("create").value = "Next Character";
-    //Placeholder
-    let famSize = 1;
     generateProfile();
-    player.familySize = famSize;
     drawCharacter();
-    addFamily(famSize);
-    drawFamily(famSize);
+    genPandemic();
     document.getElementById("profile").style = "display: block";
     document.getElementById("seeFamily").style = "display: block";
 }
@@ -47,46 +29,11 @@ function drawCharacter() {
     document.getElementById("name").innerHTML = "Name: " + player.playerName;
     document.getElementById("gender").innerHTML = "Gender: " + player.playerGender;
     document.getElementById("age").innerHTML = "Age: " + player.playerAge;
-    document.getElementById("family").innerHTML = "Family Size: " + player.familySize;
-    document.getElementById("familyLabel").innerHTML = "Family Members:";
-
+    //loading values into inputs
     document.getElementById("sendName").value = "" + player.playerName;
     document.getElementById("sendGender").value = "" + player.playerGender;
     document.getElementById("sendAge").value = "" + player.playerAge;
-}
-//Generates famil members
-function createFamily() {
-    let name = "Alan Smithee";
-    let age = 667;
-    let relate = "Creator";
-    let gender = "Anonymous";
-    console.log(age + "/" + relate + "/" + gender);
-    player.familyMembers.push(new family(
-        name, gender, relate, age
-    ));
-}
-//Runs for as many times as there are family members
-function addFamily(size) {
-    console.log("-----")
-    for (let i = 0; i < size; i++) {
-        createFamily();
-    }
-}
-//Renders family members onto the page
-function drawFamily(size) {
-    if (size == 0) {
-        document.getElementById("familyDisplay").innerHTML = "None.";
-    } else {
-        document.getElementById("familyDisplay").innerHTML = "";
-        console.log(player.familyMembers)
-        for (let i = 0; i < size; i++) {
-            document.getElementById("familyDisplay").innerHTML += "<br>Name: " + player.familyMembers[i].name + "<br>";
-            document.getElementById("familyDisplay").innerHTML += "Gender: " + player.familyMembers[i].gender + "<br>";
-            document.getElementById("familyDisplay").innerHTML += "Relation: " + player.familyMembers[i].relation + "<br>";
-            document.getElementById("familyDisplay").innerHTML += "Age: " + player.familyMembers[i].age + "<br>";
-            document.getElementById("familyDisplay").innerHTML += " ";
-        }
-    }
+    document.getElementById("sendPandemicName").value = "" + player.playerAge;
 }
 
 let displayFlag = true;
@@ -121,11 +68,45 @@ function getGender() {
 
 
 function genName() {
-    let searchFirst = Math.round(Math.random() * nameList.length);
-    let searchSecond = Math.round(Math.random() * nameList.length);
+    let searchFirst = Math.round(Math.random() * (nameList.length - 1));
+    let searchSecond = Math.round(Math.random() * (nameList.length - 1));
     return nameList[searchFirst] + " " + nameList[searchSecond];
 }
-//--------------- TEMP ---------------------------------------------
+
+function genPandemic() {
+    let nameType = Math.random();
+    let wordLength = 0;
+
+    let panName = "";
+    //Two different types of naming
+    if(nameType > 0.5) {
+        wordLength = 4;
+        //[Letter][Number][Letter][Number]
+        for (let i = 0; i < wordLength; i ++) {
+            if(i % 2 == 0) {
+                panName += lettersUpper[Math.round(Math.random() * (lettersUpper.length - 1))];
+            } else {
+                panName += Math.round(Math.random() * 9)
+            }
+        }
+    } else {
+        wordLength = Math.round(Math.random() * 5) + 4;
+        //Start name with capital
+        panName += lettersUpper[Math.round(Math.random() * (lettersUpper.length - 1))];
+        //Attempting to add alternating vowels in an attempt to make a more realistic name
+        //Adding buffer to make less common letters appear less commonly
+        for(let i = 0; i < (wordLength - 1); i ++) {
+            if(i % 2 == 0) {
+                panName += vowels[Math.round(Math.random() * (vowels.length - 1))];
+            } else {
+                panName += lettersLower[Math.round(Math.random() * (lettersLower.length - 1))];
+            }
+        }
+    }
+
+    document.getElementById("pandemic").innerHTML = "Pandemic: " + panName;
+}
+//--------------- Dump ---------------------------------------------
 let nameList = [
     "Adam", "Alex", "Aaron", "Ben", "Carl", "Dan", "David",
     "Edward", "Fred", "Frank", "George", "Hal", "Hank", "Ike",
@@ -172,3 +153,9 @@ let nameList = [
     "Root", "Sandstrom", "Sawyer", "Schlicht", "Schmitt", "Schwager",
     "Schutz", "Schuster", "Tapia", "Thompson", "Tiernan", "Tisler"
 ];
+//Arrays for generating Pandemic name
+let lettersLower = "abcdefghijklmnopqrstuvwxyz".split('');
+
+let lettersUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
+
+let vowels = "aeiou".split('');

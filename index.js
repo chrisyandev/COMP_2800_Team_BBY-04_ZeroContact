@@ -86,14 +86,6 @@ MongoClient.connect(DB_URL, {
             }).catch((error) => console.error(error))
         })
 
-        //Rendering character creation irst from play
-        app.post("/intro", (req, res) => {
-            console.log(req.body.username)
-            res.render("pages/zero-contact/characterCreator.ejs", {
-                username: req.body.username
-            })
-        })
-
         app.put("/longest-days", (req, res) => {
             usersCollection.find({
                 username: req.body.username
@@ -161,6 +153,15 @@ MongoClient.connect(DB_URL, {
                 }
             })
         })
+
+        //Rendering character creation first from play
+        app.post("/intro", (req, res) => {
+            console.log(req.body.username)
+            res.render("pages/zero-contact/characterCreator.ejs", {
+                username: req.body.username
+            })
+        })
+
         //Display Character Creation
         app.get("/game", (req, res) => res.render("pages/zero-contact/characterCreator.ejs"));
         //Send Character creation to main
@@ -185,21 +186,23 @@ MongoClient.connect(DB_URL, {
                 playerNam: fName,
             })
         });
-
+        //get request to database to return user as object.
         app.get("/user", (req, res) => {
             // Req only has username
             console.log(req.query.username);
 
-            usersCollection.findOne({ username: req.query.username }, function(err, document) {
+            usersCollection.findOne({
+                username: req.query.username
+            }, function (err, document) {
                 retObj = {};
 
                 for (var prop in document) {
                     retObj[prop] = document[prop];
                 }
-                
+                //Removing id and pass
                 delete retObj["_id"];
                 delete retObj["password"]
-                
+                //Sends data to main
                 res.send(retObj);
             })
         });

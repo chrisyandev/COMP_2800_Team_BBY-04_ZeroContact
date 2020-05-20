@@ -145,7 +145,7 @@
         <div id="bottom" class="set-width">
             <div id="info">
                 <div id="player-name"><%= playerNam %></div>
-<!--Get Profile--------------------------------------------------------------------->           
+<!--Get Profile----------------------------------------------------------------------->           
                     <input id="getProfile" type="button" value="Profile" onclick=getP()>              
                 <div id="day">Day 1</div>
             </div>
@@ -195,6 +195,7 @@
     <script src="js/screen-size.js"></script>
 
     <script>
+        //Ajax request to get data from db using username as index
         function getUserDetails(username) {
             let result = $.ajax({
                 type: "GET",
@@ -209,7 +210,7 @@
         }
 
         let profileFlag = true;
-
+        //Displaying and hiding based on profile button
         function getP() {
             if(profileFlag) {
                 document.getElementById("profile").style = "display: block";
@@ -219,7 +220,7 @@
                 profileFlag = !profileFlag;
             }
         }
-
+        //Script tab is on this page to get username
         let username = "<%= username %>";
         let playerObj = getUserDetails(username);
         console.log(playerObj);
