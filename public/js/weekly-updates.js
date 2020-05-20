@@ -1,13 +1,16 @@
 let updatesData;
-let updateDay = 1;
+let weeklyUpdateDay = 1;
 let updateIndex = 0;
 let gameLost = false;
+let gameWon = false;
+let isLastWeek = false;
+let lastDay = undefined;
 
 $(document).ready(() => {
     $.getJSON('weekly-updates.json', data => {
         updatesData = data;
         console.log('Day: ', day);
-        if (day === updateDay) {
+        if (day === weeklyUpdateDay) {
             showUpdate(updateIndex);
             updateVariables();
         }
@@ -21,18 +24,26 @@ $(document).ready(() => {
  */
 $(document.body).on('new-card', () => {
     console.log('Day: ', day);
-    if (day === updateDay) {
+    if (day === weeklyUpdateDay) {
         showUpdate(updateIndex);
         updateVariables();
     }
 
     // 'cardNum' will be 0 before losing card is swiped, so
     // 'gameLost' flag is used so that it'll only show
-    // game over message on the second pass.
+    // game lost message on the second pass.
     if (cardNum === 0 && gameLost) {
-        showGameOver();
+        showGameLost();
     } else if (cardNum === 0 && !gameLost) {
         gameLost = true;
+    }
+
+    // Does the same thing as above, but for game won
+    let lastCardIndex = cardDataArray.length - 1;
+    if (cardNum === lastCardIndex && gameWon) {
+        showGameWon();
+    } else if (cardNum === lastCardIndex && !gameWon) {
+        gameWon = true;
     }
 });
 
@@ -48,6 +59,10 @@ function showUpdate(index) {
     let selected = update[randIndex(update.length)];
     $('#weekly-update .modal-title').text(selected.title);
     $('#weekly-update-text').text(selected.text);
+
+    if (index === updatesData.length - 1) {
+        isLastWeek = true;
+    }
 }
 
 /** Generates a random number. */
@@ -57,14 +72,14 @@ function randIndex(max) {
 
 /** 
  * Updates variables which determines when the next update
- * will appear and what text it displays. Currently just
- * looping from Week 1 to Week N.
+ * will appear and what text it displays.
  */
 function updateVariables() {
-    updateDay += 7;
-    updateIndex++;
-    if (updateIndex >= updatesData.length) {
-        updateIndex = 0;
+    if (!isLastWeek) {
+        weeklyUpdateDay += 7;
+        updateIndex++;
+    } else {
+        lastDay = weeklyUpdateDay + 7;
     }
 }
 
@@ -72,7 +87,7 @@ function updateVariables() {
  * Shows the game over modal. Prevents player from closing the modal.
  * Different messages are displayed depending on which stats are at 0.
  */
-function showGameOver() {
+function showGameLost() {
     $('#achievements-window-wrapper').modal('hide');
     $("#game-over-wrapper").modal({
         backdrop: 'static',
@@ -97,6 +112,25 @@ function showGameOver() {
     }
     $('#game-over .modal-body').html('');
     $('#game-over .modal-body').append(gameOverHtml);
+
+    $('#game-over-redirect').click(() => {
+        console.log('Clicked Next');
+        window.location.assign('#');
+    });
+}
+
+/** Shows the game over modal with game won message. */
+function showGameWon() {
+    $('#achievements-window-wrapper').modal('hide');
+    $("#game-over-wrapper").modal({
+        backdrop: 'static',
+        keyboard: false,
+        show: true
+    });
+
+    $('#game-over .modal-title').text('You survived!');
+    $('#game-over .modal-body').html('');
+    $('#game-over .modal-body').append('<p>A vaccine was discovered.</p>');
 
     $('#game-over-redirect').click(() => {
         console.log('Clicked Next');

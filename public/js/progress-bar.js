@@ -1,4 +1,4 @@
-// Creates the progress bars. When progress bar changes, checks if game is over.
+// Creates the progress bars with initial value at 50%.
 $('#physical').progressbar({
     value: 50
 });
@@ -17,7 +17,7 @@ $(document.body).on('update-resources', function (e, data) {
     updateProgressBars(data.effect);
     console.log(data.event);
     if (data.event === 'card-swiped') {
-        $(document.body).trigger('pick-next-card', checkGameOver());
+        $(document.body).trigger('pick-next-card', checkGameState());
     }
 });
 
@@ -77,19 +77,22 @@ function changeFillColor($fill, choiceStat) {
     }, 500);
 }
 
-/** If stat is 0, game over */
-function checkGameOver() {
+/** If stat is 0, game lost. If next day is last day, game won. */
+function checkGameState() {
     if ($('#physical').progressbar('value') <= 0) {
-        return true;
+        return 'lost';
     }
     if ($('#mental').progressbar('value') <= 0) {
-        return true;
+        return 'lost';
     }
     if ($('#wealth').progressbar('value') <= 0) {
-        return true;
+        return 'lost';
     }
     if ($('#supplies').progressbar('value') <= 0) {
-        return true;
+        return 'lost';
     }
-    return false;
+    if (day + 1 === lastDay) {
+        return 'won';
+    }
+    return 'none';
 }
