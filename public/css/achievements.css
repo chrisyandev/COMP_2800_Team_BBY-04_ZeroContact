@@ -21,3 +21,50 @@
     overflow-y: scroll;
     padding-right: 0 !important;
 }
+
+/* Customizing colors and font */
+.blue-background {
+    background-color: #222034;
+    color: white;
+}
+
+.greenish-background {
+    background-color: #dddfcb;
+    color: black;
+}
+
+.monospace-font {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    color: black;
+}
+
+#modal-tabs a.active {
+    background-color: #222034;
+    color: white;
+}
+
+#modal-tabs a:hover {
+    background-color: #222034;
+    opacity: 0.8;
+    color: white;
+}
+
+.close {
+    color: white;
+    opacity: 1;
+}
+
+.close:hover {
+    color: white;
+    opacity: 0.8;
+}
+
+#game-over-redirect {
+    background-color: #222034;
+    color: white;
+}
+
+#game-over-redirect:hover {
+    opacity: 0.8;
+}
