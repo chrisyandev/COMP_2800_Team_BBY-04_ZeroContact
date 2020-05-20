@@ -176,7 +176,8 @@ MongoClient.connect(DB_URL, {
                 $set: {
                     playerName: genName,
                     age: req.body.characterAge,
-                    gender: req.body.characterGender
+                    gender: req.body.characterGender,
+                    pandemic: req.body.pandemicName
                 }
             })
 

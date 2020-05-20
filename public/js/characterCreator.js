@@ -4,6 +4,7 @@ function Character() {
     this.playerGender = "M";
     this.playerAge = 20;
     this.playerSprite = "placeholder";
+    this.pandemic = "";
 }
 
 //Runtime------------------------------------------------------
@@ -12,10 +13,9 @@ let player;
 function loadCharacterPage() {
     document.getElementById("create").value = "Next Character";
     generateProfile();
-    drawCharacter();
     genPandemic();
+    drawCharacter();
     document.getElementById("profile").style = "display: block";
-    document.getElementById("seeFamily").style = "display: block";
 }
 //Creates main character
 function generateProfile() {
@@ -33,28 +33,13 @@ function drawCharacter() {
     document.getElementById("sendName").value = "" + player.playerName;
     document.getElementById("sendGender").value = "" + player.playerGender;
     document.getElementById("sendAge").value = "" + player.playerAge;
-    document.getElementById("sendPandemicName").value = "" + player.playerAge;
-}
-
-let displayFlag = true;
-
-function seeNext() {
-    if (displayFlag) {
-        displayFlag = !displayFlag;
-        document.getElementById("familyDisplay").style = "display: block";
-    } else {
-        displayFlag = !displayFlag;
-        document.getElementById("familyDisplay").style = "display: none";
-    }
-
+    document.getElementById("sendPandemicName").value = "" + player.pandemic;
 }
 
 //Informtion Generation---------------------------------------------------------------
 function genNum(base, range) {
     return Math.round(Math.random() * range + base);
 }
-//Variable used to check family member's gender based on relationship
-let genderCheck = 0;
 
 function getGender() {
     let gender = "";
@@ -94,7 +79,6 @@ function genPandemic() {
         //Start name with capital
         panName += lettersUpper[Math.round(Math.random() * (lettersUpper.length - 1))];
         //Attempting to add alternating vowels in an attempt to make a more realistic name
-        //Adding buffer to make less common letters appear less commonly
         for(let i = 0; i < (wordLength - 1); i ++) {
             if(i % 2 == 0) {
                 panName += vowels[Math.round(Math.random() * (vowels.length - 1))];
@@ -103,7 +87,7 @@ function genPandemic() {
             }
         }
     }
-
+    player.pandemic = panName;
     document.getElementById("pandemic").innerHTML = "Pandemic: " + panName;
 }
 //--------------- Dump ---------------------------------------------

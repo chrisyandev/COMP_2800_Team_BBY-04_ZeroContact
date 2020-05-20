@@ -173,6 +173,7 @@
         <p id="characterName">1</p>
         <p id="characterAge">2</p>
         <p id="characterGender">3</p>
+        <p id="pandemicGenerated">4</p>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"
@@ -193,42 +194,7 @@
     <script src="js/inventory-main.js"></script>
     <script src="js/achievements.js"></script>
     <script src="js/screen-size.js"></script>
-
-    <script>
-        //Ajax request to get data from db using username as index
-        function getUserDetails(username) {
-            let result = $.ajax({
-                type: "GET",
-                url: "/user",
-                data: {
-                    username: username
-                },
-                async: false
-            });
-
-            return result.responseJSON;
-        }
-
-        let profileFlag = true;
-        //Displaying and hiding based on profile button
-        function getP() {
-            if(profileFlag) {
-                document.getElementById("profile").style = "display: block";
-                profileFlag = !profileFlag;
-            } else {
-                document.getElementById("profile").style = "display: none";
-                profileFlag = !profileFlag;
-            }
-        }
-        //Script tab is on this page to get username
-        let username = "<%= username %>";
-        let playerObj = getUserDetails(username);
-        console.log(playerObj);
-
-        document.getElementById("characterName").innerHTML = "Name: " + playerObj.playerName;
-        document.getElementById("characterAge").innerHTML = "Age: " + playerObj.age;
-        document.getElementById("characterGender").innerHTML = "Gender: " + playerObj.gender;
-    </script>
+    <script src="js/profile.js"></script>
 </body>
 
 </html>
