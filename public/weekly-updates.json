@@ -1,0 +1,29 @@
+[
+    [{
+            "title": "Week 1",
+            "text": "The virus has continued to spread and has infected another 100 people in your city. People are getting upset and protests are starting to pop up demanding the lockdown be lifted and businesses re-opened."
+        },
+        {
+            "title": "Week 1",
+            "text": "The virus is spreading at a faster rate and has infected 95 more people in your city. Your neighbour is starting to cough a lot and you're worried."
+        }
+    ],
+    [{
+            "title": "Week 2",
+            "text": "The virus is spreading at an even faster rate. The government has ramped up its enforcement of self-isolation measures, introducing large fines for those not social distancing. People in the city are getting worried."
+        },
+        {
+            "title": "Week 2",
+            "text": "Option 2 placeholder"
+        }
+    ],
+    [{
+            "title": "Week 3",
+            "text": "The virus is spreading at an even faster rate. The government has ramped up its enforcement of self-isolation measures, introducing large fines for those not social distancing. People in the city are getting worried."
+        },
+        {
+            "title": "Week 3",
+            "text": "Option 2 placeholder"
+        }
+    ]
+]

@@ -123,6 +123,7 @@ function Card(leftChoice, rightChoice, image) {
         }
         this.$card.promise().done(function () {
             createCard(cardDataArray[cardNum]);
+            $(document.body).trigger('new-card');
         });
     }
 }

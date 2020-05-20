@@ -24,7 +24,27 @@
 
 <body>
     <p id="user"style="display: none"><%= username %></p>
-    <!-- Modal -->
+    
+    <!-- Weekly Update Modal -->
+    <div class="modal fade" id="weekly-update-wrapper" tabindex="-1" role="dialog" aria-labelledby="weeklyUpdateModal"
+        aria-hidden="true">
+        <div id="weekly-update" class=" modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="weekly-update-text"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- --------------- -->
+
+    <!-- Achievements Modal -->
     <div class="modal fade" id="achievements-window-wrapper" tabindex="-1" role="dialog"
         aria-labelledby="achievementsWindow" aria-hidden="true">
         <div id="achievements-window" class=" modal-dialog modal-dialog-centered" role="document">
@@ -174,6 +194,7 @@
 
     <script src="js/custom-bootstrap.js"></script>
     <script src="js/card.js"></script>
+    <script src="js/weekly-updates.js"></script>
     <script src="js/progress-bar.js"></script>
     <script src="js/inventory.js"></script>
     <script src="js/inventory-main.js"></script>
