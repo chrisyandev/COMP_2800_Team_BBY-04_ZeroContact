@@ -11,8 +11,13 @@ html, body{
     height: 40%;
     text-align: center;
     background-color: rgba(218, 218, 218, 0.281);
+    font-family: 'Courier New', Courier, monospace;
     font-size: 25px;
     z-index: 3;
+}
+
+.inventory-drop-zone h1{
+    font-weight: bold;
 }
 
 .inventory-drop-zone-hover{
@@ -36,6 +41,7 @@ html, body{
     box-sizing: border-box;
     color: #dddfcb;
     border-color: #dddfcb;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 #inventory-item-container{
@@ -60,6 +66,7 @@ html, body{
     border-radius: 20px;
     box-shadow: 0 0 0px rgb(255, 243, 79);
     text-align: center;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .inventory-item img {
@@ -75,6 +82,7 @@ html, body{
     color: white;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
     font-size: 30px;
+    font-weight: bold;
 }
 
 .inventory-item-placeholder{
@@ -82,19 +90,14 @@ html, body{
     border-radius: 20px;
 }
 
-.inventory-item .tooltip {
-    position: fixed; /** depends on how it handles the e.pageX and e.pageY **/
-    width: 80px;
-    height: 30px;
-    background: #06F;
-    z-index: 10;
-    display: none; /**let the tooltip be not visable, when startup **/
+.tooltip {
+    font-family: 'Courier New', Courier, monospace;
 }
 
 /*-------------------------------------------------------------------------------*/
 /*   Item usage prompt styling*/
 /*-------------------------------------------------------------------------------*/
-
+/*
 #item-use-prompt {
     position: absolute;
     display: flex;
@@ -109,44 +112,43 @@ html, body{
     background-color: rgba(185, 185, 185, 0.692);
     opacity: 0;
     z-index: 3;
+}*/
+.close{
+    color: white;
+    opacity: 1;
+    font-size: 30px;
+}
+
+#item-use-prompt{
+    padding-top: 5vh;
+    font-family: 'Courier New', Courier, monospace;
+    height: 95%;
+    background-color: rgba(0, 0, 0, 0.199);
 }
 
 #item-use-heading{
-    font-size: 40px;
+    font-size: 30px;
     color: white;
-    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    text-align: center;
 }
 
 #item-use-description{
-    font-size: 30px;
-    color: white;
-    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    font-size: 25px;
+    color: black;
+    text-align: center;
+    font-weight: 900;
 }
 
 #item-use-effect{
     font-size: 20px;
-    color: white;
-    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    color: black;
     margin-bottom: 50px;
-}
-
-#item-use-button-container{
-    display: flex;
-    justify-content: space-between;
-    height: 50px;
-    width: 50%;
+    text-align: center;
 }
 
 .item-use-button{
     width: 150px;
-}
-
-#item-use-close{
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    top: 0;
-    right: 0;
+    color: black;
 }
 
 #item-use-accept{
@@ -155,4 +157,90 @@ html, body{
 
 #item-use-decline{
     background-color: rgba(255, 155, 155, 0.788);
+}
+
+#item-use-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90%;
+    background-color: rgba(0, 0, 0, 0.205);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#item-use-body{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 450px;
+    overflow: scroll;
+}
+
+#item-use-body h1{
+    font-weight: bold;
+    font-size: 25px;
+}
+
+#item-use-header{
+    background-color: #222034;
+    color: white;
+}
+
+#item-use-header h2{
+    font-weight: bold;
+}
+
+#item-use-footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#item-use-footer button{
+    font-weight: bold;
+}
+
+#item-use-container h1{
+    text-align: center;
+    font-weight: bold;
+}
+
+#item-use-body{
+    overflow: auto;
+}
+
+#item-use-content{
+    height: 700px;
+}
+
+@media only screen and (max-width: 768px){
+    #item-use-content{
+        height: 500px;
+    }
+
+    #item-use-body{
+        height: 300px;
+    }
+
+    #item-use-header h2{
+        font-size: 25px
+    }
+
+    #item-use-header h2{
+        font-size: 25px;
+    }
+
+    #item-use-body p{
+        font-size: 20px;
+    }
+
+    #item-use-body img{
+        width: 100%;
+    }
+
+    #item-use-footer button{
+        width: 75px;
+    }
 }

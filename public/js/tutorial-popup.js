@@ -13,8 +13,8 @@ function TutorialPopUp(properties){
     $("#tutorial-body").append(this.$order);
     $("#tutorial-body").append(this.$message);
     $("#tutorial-body").append(this.$content);
-    $("#tutorial-header").append(this.$topCloseButton);
     $("#tutorial-header").append(this.$order);
+    $("#tutorial-header").append(this.$topCloseButton);
     $("#tutorial-footer").append(this.$skipButton);
     $("#tutorial-footer").append(this.$backButton);
     $("#tutorial-footer").append(this.$continueButton);

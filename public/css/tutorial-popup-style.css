@@ -7,8 +7,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    padding-top: 100px;
+    height: 90%;
     background-color: rgba(0, 0, 0, 0.205);
     font-family: 'Courier New', Courier, monospace;
 }
@@ -23,9 +22,11 @@
 
 #tutorial-body h1{
     font-weight: bold;
+    font-size: 25px;
 }
 
 #tutorial-header{
+    display: flex;
     background-color: #222034;
     color: white;
 }
@@ -34,17 +35,24 @@
     font-weight: bold;
 }
 
-#tutorial-footer button{
-    font-weight: bold;
+#tutorial-footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
-#skip-button{
-    float: left;
+#tutorial-footer button{
+    font-weight: bold;
 }
 
 #tutorial-container h1{
     text-align: center;
     font-weight: bold;
+}
+
+#tutorial-body{
+    overflow: auto;
 }
 
 @media only screen and (max-width: 768px){
