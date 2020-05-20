@@ -5,8 +5,8 @@ function TutorialPopUp(properties){
     this.$content = $("<img>");
     this.$topCloseButton = $('<button type="button" class="close" data-dismiss="modal">&times;</button>');
     this.$backButton = $("<button id='tutorial-back-button' type='button' class='btn btn-default'>Back</button>");
-    this.$continueButton = $("<button id='tutorial-cont-button' type='button' class='btn btn-default'>Continue</button>");
-    this.$skipButton = $("<button id='skip-button' type='button' class='btn btn-default' data-dismiss='modal'>Skip</button>");
+    this.$continueButton = $("<button id='tutorial-cont-button' type='button' class='btn btn-primary'>Continue</button>");
+    this.$skipButton = $("<button id='skip-button' type='button' class='btn btn-danger' data-dismiss='modal'>Skip</button>");
     this.$order = $("<h2></h2>");
     this.$message = $("<h1></h1>");
     

@@ -8,6 +8,77 @@ html, body{
 }
 
 /* ------------------------------------------------------------------- */
+/* Inventory and Item styling */
+/* ------------------------------------------------------------------- */
+
+#game-inventory-container {
+    position: absolute;
+    z-index: 3;
+    left: 25%;
+    top: 90%;
+    width: 50%;
+    display: flex;
+    height: 50px;
+    flex-direction: column;
+    transition: 0.3s;
+}
+
+#game-inventory-expand-button {
+    display: block;
+    height: 50px;
+    background-color: #222034;
+    box-sizing: border-box;
+    color: #dddfcb;
+    border-color: #dddfcb;
+}
+
+#inventory-item-container{
+    transition: 0.3s;
+    display: grid;
+    padding: 0px 0px;
+    justify-content: space-around;
+    grid-gap: 10px;
+    float: left;
+    grid-auto-rows: 100px;
+    grid-template-columns: repeat(auto-fill, 100px);
+    height: 0%;
+    background-color: grey;
+    overflow-y: auto;
+}
+
+.inventory-item {
+    position: relative;
+    float: left;
+    width: 100px;
+    height: 100px;
+    background-color: lightgray;
+    border-radius: 20px;
+    box-shadow: 0 0 0px rgb(255, 243, 79);
+    text-align: center;
+}
+
+.inventory-item img {
+    float: left;
+    width: 100px;
+    height: 100px;
+}
+
+.inventory-item h1{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+    font-size: 30px;
+}
+
+.inventory-item-placeholder{
+    background-color: rgb(68, 68, 68);
+    border-radius: 20px;
+}
+
+/* ------------------------------------------------------------------- */
 /* Game Screen styling */
 /* ------------------------------------------------------------------- */
 
@@ -65,7 +136,8 @@ body{
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
     z-index: 4;
-    background-color: white;
+    background-color: #222034;
+    color: white;
 }
 
 #minigame-message h1{
@@ -176,16 +248,29 @@ body{
 #end-results-screen{
     padding-top: 200px;
     background-color: rgba(0, 0, 0, 0.527);
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+    width: 100%;
+    height: 100%;
 }
 
 #end-results-screen h1{
-    color: black;
+    color: white;
     font-weight: bold;
 }
 
 #end-results-screen h2{
     color: black;
     font-weight: bold;
+}
+
+#end-results-screen h3{
+    color: black;
+    font-weight: bold;
+}
+
+#end-header{
+    background-color: #222034;
 }
 
 /*
@@ -205,10 +290,10 @@ body{
 
 .results-item{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    overflow: wrap;
+    text-align: center;
     width: 90%;
 }
 
@@ -218,17 +303,12 @@ body{
 }
 
 .results-item h2{
-    flex-grow: 2;
-    width: 50px;
-    height: 25px;
-    padding: 25px;
-    font-size: 18px;
+    flex-grow: 1;
+    font-size: 20px;
 }
 
 .results-item h3{
     flex-grow: 1;
-    height: 25px;
-    padding: 25px 10px 25px 10px;
     font-size: 18px;
 }
 
@@ -268,7 +348,7 @@ body{
 
 @media only screen and (max-width: 768px){
     .game-grid{
-        width: 330px;
+        width: 320px;
         height: 400px;
     }
 
@@ -277,8 +357,17 @@ body{
         height: 120px;
     }
 
-    #minigame-message{
-        font-size: 12px;
+    #minigame-message h1{
+        font-size: 18px;
+    }
+
+    #end-results-screen{
+        padding-top: 100px;
+    }
+
+    #items-list-container{
+        max-height: 250px;
+        overflow: auto;
     }
 
     @keyframes clockBounceAnimation{
@@ -334,6 +423,13 @@ body{
     }
 }
 
+@media only screen and (min-height: 640px){
+    #items-list-container{
+        max-height: 380px;
+        overflow: auto;
+    }
+}
+
 @media only screen and (min-width: 1024px) and (min-height: 1280px){
     #minigame-message{
         font-size: 24px;
@@ -342,5 +438,9 @@ body{
         top: -100px;
         width: 900px;
         height: 800px;
+    }
+    #items-list-container{
+        max-height: 800px;
+        overflow: auto;
     }
 }

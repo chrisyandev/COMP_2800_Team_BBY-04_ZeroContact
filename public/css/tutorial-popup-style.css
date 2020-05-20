@@ -10,6 +10,7 @@
     height: 100%;
     padding-top: 100px;
     background-color: rgba(0, 0, 0, 0.205);
+    font-family: 'Courier New', Courier, monospace;
 }
 
 #tutorial-body{
@@ -20,10 +21,46 @@
     height: 450px;
 }
 
+#tutorial-body h1{
+    font-weight: bold;
+}
+
+#tutorial-header{
+    background-color: #222034;
+    color: white;
+}
+
+#tutorial-header h2{
+    font-weight: bold;
+}
+
+#tutorial-footer button{
+    font-weight: bold;
+}
+
 #skip-button{
     float: left;
 }
 
 #tutorial-container h1{
     text-align: center;
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 768px){
+    #tutorial-body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 350px;
+    }
+
+    #tutorial-body h1{
+        font-size: 20px;
+    }
+
+    #tutorial-body img{
+        width: 100%;
+    }
 }
