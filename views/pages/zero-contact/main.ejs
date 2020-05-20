@@ -25,6 +25,23 @@
 <body>
     <p id="user"style="display: none"><%= username %></p>
     
+    <!-- Game Over Modal -->
+    <div class="modal fade" id="game-over-wrapper" tabindex="-1" role="dialog"
+        aria-labelledby="gameOverModal" aria-hidden="true">
+        <div id="game-over" class=" modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <button id="game-over-redirect" type="button" class="btn btn-primary">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- --------------- -->
+
     <!-- Weekly Update Modal -->
     <div class="modal fade" id="weekly-update-wrapper" tabindex="-1" role="dialog" aria-labelledby="weeklyUpdateModal"
         aria-hidden="true">

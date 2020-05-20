@@ -1,9 +1,9 @@
-.modal-dialog,
-.modal-content {
+#achievements-window-wrapper .modal-dialog,
+#achievements-window-wrapper .modal-content {
     height: 90%;
 }
 
-.modal-body {
+#achievements-window-wrapper .modal-body {
     max-height: calc(100vh - 120px);
     overflow-y: scroll;
 }
@@ -14,4 +14,10 @@
 
 #modal-tabs .list-group-item {
     padding: 0.4rem 0.6rem;
+}
+
+.modal-open {
+    overflow: hidden;
+    overflow-y: scroll;
+    padding-right: 0 !important;
 }
