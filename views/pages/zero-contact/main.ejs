@@ -23,8 +23,8 @@
 </head>
 
 <body>
-    <p id="user"style="display: none"><%= username %></p>
-    
+    <p id="user" style="display: none"><%= username %></p>
+
     <!-- Game Over Modal -->
     <div class="modal fade monospace-font" id="game-over-wrapper" tabindex="-1" role="dialog"
         aria-labelledby="gameOverModal" aria-hidden="true">
@@ -44,8 +44,7 @@
 
     <!-- Weekly Update Modal -->
     <div class="modal fade monospace-font" id="weekly-update-wrapper" tabindex="-1" role="dialog"
-        aria-labelledby="weeklyUpdateModal"
-        aria-hidden="true">
+        aria-labelledby="weeklyUpdateModal" aria-hidden="true">
         <div id="weekly-update" class=" modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content rounded-0 greenish-background">
                 <div class="modal-header rounded-0 blue-background">
@@ -81,13 +80,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="list-group-item list-group-item-action greenish-background" data-toggle="list"
-                            href="#panel-achievements" role="tab"><i
-                                class="fas fa-medal fa-lg"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="list-group-item list-group-item-action greenish-background" data-toggle="list"
-                            href="#panel-leaderboard" role="tab"><i
-                                class="fas fa-crown fa-lg"></i></a>
+                            href="#panel-leaderboard" role="tab"><i class="fas fa-crown fa-lg"></i></a>
                     </li>
                     <li class="nav-item">
                         <a class="list-group-item list-group-item-action greenish-background" data-toggle="list"
@@ -100,19 +93,8 @@
                         <div class="tab-pane active" id="panel-profile" role="tabpanel">
                             <p>No content</p>
                         </div>
-                        <div class="tab-pane" id="panel-achievements" role="tabpanel">
-                            <div id="achievements-list" class="list-group">
-                                <span
-                                    class="list-group-item list-group-item-action flex-column align-items-start active">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h5 id="survived-until" class="mb-1">You survived
-                                            until Day --</h5>
-                                    </div>
-                                </span>
-                            </div>
-                        </div>
                         <div class="tab-pane" id="panel-leaderboard" role="tabpanel">
-                            <table class="table table-dark">
+                            <table class="table">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
@@ -121,6 +103,36 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Jack</td>
+                                        <td>10</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>Bob</td>
+                                        <td>8</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>Joe</td>
+                                        <td>5</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Jack</td>
+                                        <td>10</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>Bob</td>
+                                        <td>8</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>Joe</td>
+                                        <td>5</td>
+                                    </tr>
                                     <tr>
                                         <th scope="row">1</th>
                                         <td>Jack</td>
@@ -217,7 +229,6 @@
     <script src="js/progress-bar.js"></script>
     <script src="js/inventory.js"></script>
     <script src="js/inventory-main.js"></script>
-    <script src="js/achievements.js"></script>
     <script src="js/screen-size.js"></script>
 </body>
 

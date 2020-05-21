@@ -12,22 +12,14 @@
     overflow-y: scroll;
 }
 
-.modal *, *::before, *::after {
-  box-sizing: border-box;
+.modal *,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
 #modal-tabs .list-group-item {
     padding: 0.4rem 0.6rem;
-}
-
-/* 
- * Prevents scrollbar from disappearing.
- * source: https://stackoverflow.com/questions/25070144/bootstrap-modal-removes-scroll-bar
- */
-.modal-open {
-    overflow: hidden;
-    overflow-y: scroll;
-    padding-right: 0 !important;
 }
 
 /* Customizing colors and font */
@@ -81,4 +73,11 @@ i.fa-lg {
 
 #game-over-redirect:hover {
     opacity: 0.8;
+}
+
+#panel-leaderboard table,
+#panel-leaderboard th,
+#panel-leaderboard tr,
+#panel-leaderboard td {
+    border-color: #222034;
 }

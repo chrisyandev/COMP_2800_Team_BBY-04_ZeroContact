@@ -70,7 +70,7 @@ function resizeAll() {
     setHeight($name, nameRatio * gameHeight - 5);
     setWidth($name, WIDTH_TO_HEIGHT * gameHeight);
 
-    setHeight($bottom, bottomRatio * gameHeight);
+    setHeight($bottom, bottomRatio * gameHeight - 5);
     setWidth($bottom, WIDTH_TO_HEIGHT * gameHeight);
 
     setWidth($inventoryContainer, WIDTH_TO_HEIGHT * gameHeight / 2);
