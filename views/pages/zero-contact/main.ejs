@@ -24,7 +24,7 @@
 </head>
 
 <body>
-    <p id="user"style="display: none"><%= username %></p>
+    <p id="user" style="display: none"><%= username %></p>
     <!-- Modal -->
     <div class="modal fade" id="achievements-window-wrapper" tabindex="-1" role="dialog"
         aria-labelledby="achievementsWindow" aria-hidden="true">
@@ -43,18 +43,16 @@
                             href="#panel-profile" role="tab"><i class="fas fa-user fa-lg"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="list-group-item list-group-item-action" data-toggle="list"
-                            href="#panel-achievements" role="tab"><i
-                                class="fas fa-medal fa-lg"></i></a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#panel-achievements"
+                            role="tab"><i class="fas fa-medal fa-lg"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="list-group-item list-group-item-action" data-toggle="list"
-                            href="#panel-leaderboard" role="tab"><i
-                                class="fas fa-crown fa-lg"></i></a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#panel-leaderboard"
+                            role="tab"><i class="fas fa-crown fa-lg"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="list-group-item list-group-item-action" data-toggle="list"
-                            href="#panel-settings" role="tab"><i class="fas fa-cog fa-lg"></i></a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#panel-settings"
+                            role="tab"><i class="fas fa-cog fa-lg"></i></a>
                     </li>
                 </ul>
                 <div class="modal-body">
@@ -141,12 +139,12 @@
         <div id="event-text" class="black-monospace set-width"><span></span></div>
         <div id="card-container" class="set-width"></div>
         <div id="name" class="set-width"><span class="black-monospace"></span></div>
-<!--Footer---------------------------------------------------------------------------->
+        <!--Footer---------------------------------------------------------------------------->
         <div id="bottom" class="set-width">
             <div id="info">
                 <div id="player-name"><%= playerNam %></div>
-<!--Get Profile----------------------------------------------------------------------->           
-                    <input id="getProfile" type="button" value="Profile" onclick=getP()>              
+                <!--Get Profile----------------------------------------------------------------------->
+                <input id="getProfile" type="button" value="Profile" onclick=getP()>
                 <div id="day">Day 1</div>
             </div>
         </div>
@@ -169,12 +167,15 @@
         </div>
     </div>
 
-    <div id="profile">
+    <div id="profile" style="display:none">
         <p id="characterName">1</p>
         <p id="characterAge">2</p>
         <p id="characterGender">3</p>
         <p id="pandemicGenerated">4</p>
     </div>
+    <a id="tweet" href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button"
+            data-show-count="false">Tweet</a>
+    <script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"
         integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
@@ -186,7 +187,8 @@
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha256-OFRAJNoaD8L3Br5lglV7VyLRf0itmoBzWUoM+Sji4/8=" crossorigin="anonymous"></script>
+        integrity="sha256-OFRAJNoaD8L3Br5lglV7VyLRf0itmoBzWUoM+Sji4/8=" crossorigin="anonymous">
+    </script>
 
     <script src="js/card.js"></script>
     <script src="js/progress-bar.js"></script>
