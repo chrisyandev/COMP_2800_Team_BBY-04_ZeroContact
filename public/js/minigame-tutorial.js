@@ -1,3 +1,7 @@
+/* ---------------------------------------------------------------------- */
+/* A function to start the tutorial for the minigame                      */
+/* -----------------------------------------------------------------------*/
+
 let tutorialData;
 
 function startMinigameTutorial(){

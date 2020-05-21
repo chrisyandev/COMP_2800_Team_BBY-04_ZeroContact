@@ -165,13 +165,17 @@ $(document.body).on('pick-next-card', function (event, isGameOver) {
     }
 
     // Highlights the items which are useful to the card
+    /*
     if (cardNum === 1) {
         let tempUseCases = ["Food"];
         highlightItem(tempUseCases);
     } else {
         let tempUseCases = ["Nothing"];
         highlightItem(tempUseCases);
-    }
+    }*/
+    let tempUseCases = [cardDataArray[cardNum].event];
+    console.log(tempUseCases);
+    highlightItem(tempUseCases);
 });
 
 /** Sets the size of each dot. */

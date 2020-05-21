@@ -13,9 +13,9 @@ $(document).ready(function () {
     createTimer(ctx, radius, 0);
 });
 
+// Starts the countdown of the clock
 function startClock(){
     let start = new Date;
-    let timeElapsed = (Math.round((new Date - start) / 1000));
 
     let clockTimer = setInterval(function(){
         let timeElapsed = (Math.round((new Date - start) / 1000));
@@ -67,7 +67,8 @@ function startClock(){
 }
 
 // Creates all the components of the clock 
-// Attribution: w3schools.com Canvas Clock
+// Adapted from w3school's canvas clock
+// Attribution: https://www.w3schools.com/graphics/canvas_clock.asp
 function createTimer(ctx, radius, second) {
     drawClock(ctx, radius, second);
     drawPoints(ctx, radius);
@@ -77,7 +78,8 @@ function createTimer(ctx, radius, second) {
 }
 
 // Draws the base of the clock
-// Attribution: w3schools.com Canvas Clock
+// Adapted from w3school's canvas clock
+// Attribution: https://www.w3schools.com/graphics/canvas_clock.asp
 function drawClock(ctx, radius, second) {
     ctx.beginPath();
     ctx.arc(0, 0, radius, 0, 2 * Math.PI);
@@ -102,7 +104,8 @@ function drawClock(ctx, radius, second) {
 }
 
 // Draws the number in the middle of the clock
-// Attribution: w3schools.com Canvas Clock
+// Adapted from w3school's canvas clock
+// Attribution: https://www.w3schools.com/graphics/canvas_clock.asp
 function drawNumber(ctx, radius, second){
     ctx.fillStyle = "#ffffff";
     ctx.font = radius * 0.3 + "px arial";
@@ -113,7 +116,8 @@ function drawNumber(ctx, radius, second){
 }
 
 // Draws the little squares in the clock
-// Attribution: w3schools.com Canvas Clock
+// Adapted from w3school's canvas clock
+// Attribution: https://www.w3schools.com/graphics/canvas_clock.asp
 function drawPoints(ctx, radius) {
     let ang;
     let num;
@@ -134,7 +138,8 @@ function drawPoints(ctx, radius) {
 }
 
 // Draws the hand
-// Attribution: w3schools.com Canvas Clock
+// Adapted from w3school's canvas clock
+// Attribution: https://www.w3schools.com/graphics/canvas_clock.asp
 function drawHand(ctx, pos, length, width) {
     ctx.beginPath();
     ctx.lineWidth = width;

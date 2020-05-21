@@ -1,5 +1,9 @@
 let itemDataArray = [];
 
+/* ------------------------------------------------------------------- */
+/* Functions for the inventory feature only included on the main page  */
+/* ------------------------------------------------------------------- */
+
 $(document).ready(function(){
     //-------------------------------------------------------------
     // Inventory prompt functions
@@ -25,6 +29,7 @@ $(document).ready(function(){
             // Sets dropped to true if a draggable element is over the drop zone
             overDropZone = true;
         },
+
         // When an inventory item hovers over and out of a droppable zone
         over: function(){
             $(".inventory-drop-zone").css("background-color", "rgba(23, 235, 23, 0.281)");
@@ -34,22 +39,17 @@ $(document).ready(function(){
         }
     });
 
-    //----------------------------------------------------------------
-    // Create initial inventory items
-    
-
     // Gets data from the json file and puts it into an array
     $.getJSON('items-data.json', function (data) {
         itemDataArray = data;
 
         // Gets the array of collected items from the minigame
-        
         let items = sessionStorage.getItem('collectedItems');
         let collectedItems = JSON.parse(items);
         console.log(collectedItems);
         console.log(itemDataArray);
 
-        // Creates the items within the collected items
+        // Creates the inventory items from the collected items
         for (let i = 0; i < collectedItems.length; i++){
             let itemCreateData = findItemData(collectedItems, i);
             let itemCreateNum = collectedItems[i].quantity;
@@ -57,11 +57,15 @@ $(document).ready(function(){
                         itemCreateNum);
 
         }
-        
-       
+        /*
         // Highlights the items which are useful to the card
         let tempUseCases = ["Water", "Food", "Health"];
         highlightItem(tempUseCases);
+        */
+
+       let tempUseCases = [cardDataArray[cardNum].event];
+       console.log(tempUseCases);
+       highlightItem(tempUseCases);
     });
 
 });

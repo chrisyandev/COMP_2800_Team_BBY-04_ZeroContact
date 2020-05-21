@@ -1,3 +1,6 @@
+/* ------------------------------------------------------------------- */
+/* Function class for creating a duplicate of items and animating it   */
+/* ------------------------------------------------------------------- */
 
 function ItemAnimation(item, toPosition, fromPosition, inventoryItemReceived){
     this.itemEntity = item.$itemContainer.clone();
@@ -5,6 +8,8 @@ function ItemAnimation(item, toPosition, fromPosition, inventoryItemReceived){
     this.fromPos = fromPosition;
 
     if (inventoryItemReceived){
+        // If the item in the minigame is clicked by the player
+
         $("#minigame-container").append(this.itemEntity);
 
         this.itemEntity.css({
@@ -14,6 +19,8 @@ function ItemAnimation(item, toPosition, fromPosition, inventoryItemReceived){
         this.toPos.top -= 120;
         this.toPos.left += 60;
     } else{
+        // If the item in the minigame is collected by other shoppers
+
         $("#inventory-grid-container").append(this.itemEntity);
 
         // Gets the scroll position of the minigame
@@ -45,6 +52,7 @@ function ItemAnimation(item, toPosition, fromPosition, inventoryItemReceived){
         left: toPosition.left,
     }, 500);
 
+    // Remove item after the animation is played
     let clone = this.itemEntity;
     this.timer = setTimeout(function(){
         clone.remove();

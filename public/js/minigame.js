@@ -9,6 +9,10 @@ let yLimit = 19;
 let validXSpawn = [1, 5, 9, 13, 17, 21, 25];
 let validYSpawn = [1, 4, 7, 10, 13, 16, 19];
 
+/* ---------------------------------------------------------------------- */
+/* A function to expand the inventory on the main page when it is clicked */
+/* -----------------------------------------------------------------------*/
+
 $(document).ready(function(){
     $("#end-results-screen").hide();
     $("#end-results-screen").css("opacity", 0);
@@ -19,15 +23,11 @@ $(document).ready(function(){
     $.getJSON('items-data.json', function (data) {
         itemDataArray = data;
 
-        
-
         startMinigameTutorial();
     });
 });
 
 function startGame(){
-    // Creates the last 2 items in the json file
-
     // Number of rows and columns of shelves
     let rowDimensions = 2;
     let columnDimensions = 3;

@@ -21,6 +21,7 @@ html, body{
     height: 50px;
     flex-direction: column;
     transition: 0.3s;
+    transform: translateX(0%);
 }
 
 #game-inventory-expand-button {
@@ -30,6 +31,7 @@ html, body{
     box-sizing: border-box;
     color: #dddfcb;
     border-color: #dddfcb;
+    left: 25%;
 }
 
 #inventory-item-container{

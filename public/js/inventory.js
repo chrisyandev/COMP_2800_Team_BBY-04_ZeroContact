@@ -1,19 +1,21 @@
 let overDropZone = false;
 let inventoryItems = [];
 
-
 // Expands the inventory when the button is clicked
 $(document).ready(() => {
     $(".inventory-drop-zone").hide();
 
     $("#inventory-container").width((280/530) * $(window).height() / 2 + "px");
+
     // Gets data from the json file and puts it into an array
     $.getJSON('items-data.json', function (data) {
         itemDataArray = data;
 
+        /*
         // Highlights the items which are useful to the card
         let tempUseCases = ["Water", "Food", "Health"];
         highlightItem(tempUseCases);
+        */
     });
 
     // Turns the children of this container into sortable elements
@@ -56,6 +58,7 @@ $(document).ready(() => {
     });
 });
 
+// Finds the item data associated with the item name and returns it
 function findItemData(collectedItems, i){
     for (let k = 0; k < itemDataArray.length; k++){
         let collectedItemName = collectedItems[i].itemData.itemName;
@@ -118,28 +121,12 @@ function InventoryItem(imageName, type, use, risk, effect, text, container, arra
     this.$itemContainer.append(this.$itemImg);
     this.$itemContainer.append(this.$itemDisplay);
 
+    // Creates a tooltip using the title of the html element
     this.$itemContainer.tooltip();
-
-    // Functions
-    /* Old jquery tooltip
-    if (tooltipOn) {
-        
-        this.$itemContainer.on({
-            "mousedown touchstart": function () {
-                $(this).tooltip({
-                    items: $(".inventory-item"),
-                    content: type + " - " + text,
-                });
-                $(this).tooltip("open");
-            },
-            "mouseup touchend": function () {
-                $(this).tooltip("disable");
-            },
-        });
-    }*/
 
     this.useItem = function () {
         console.log("Used Item: " + this.item);
+
         if (this.quantity == 1) {
             // Removes the item if there is only 1 left
             this.$itemContainer.remove();
@@ -152,6 +139,9 @@ function InventoryItem(imageName, type, use, risk, effect, text, container, arra
             effect: this.effect,
             event: 'item-used'
         });
+
+        let tempUseCases = [cardDataArray[cardNum].event];
+        highlightItem(tempUseCases);
     };
 
     this.increaseQuantity = function (num) {
@@ -228,7 +218,7 @@ function highlightItem(tempUse) {
     }
 }
 
-// Checks the item against all the usecases if it is useful
+// Checks the item against all the usecases if it is useful to the current event card
 function isItemUseful(item, useCase) {
     let isUseful = false;
     for (let i = 0; i < item.use.length; i++) {
@@ -242,7 +232,7 @@ function isItemUseful(item, useCase) {
     return (isUseful);
 }
 
-// Creates an item in the inventory or increases its quantity if it already
+// Creates an item in the inventory or increases its quantity if it already exists
 function createItem(itemData, container, array, tooltipOn, quantity){
     let itemExists = false;
     for (let i = 0; i < array.length; i++){
