@@ -27,10 +27,10 @@ MongoClient.connect(connectionString, {
 
         app.get("/", (req, res) => res.render("pages/landing-page/home.ejs"));
         app.get("/about", (req, res) => res.render("pages/landing-page/about.ejs"));
-        //Changed
+        //repath
         app.get("/game", (req, res) => res.render("pages/zero-contact/characterCreator.ejs"));
         app.get("/minigame", (req, res) => res.render("pages/zero-contact/minigame.ejs"));
-        //Changed
+        //repath
         app.get("/signup", (req, res) => res.render("pages/landing-page/signup.ejs"));
         app.get("/login", (req, res) => res.render("pages/landing-page/login.ejs"));
         app.get("/delete", (req, res) => res.render("pages/landing-page/home.ejs"));
@@ -217,7 +217,6 @@ MongoClient.connect(connectionString, {
         //Display Character Creation
         //Send Character creation to main
         app.post("/game", (req, res) => {
-            console.log("-----------------------------------------------------------")
             console.log(req.body);
             let usr = req.body.username;
             let genName = req.body.characterName;
@@ -251,10 +250,10 @@ MongoClient.connect(connectionString, {
                 for (var prop in document) {
                     retObj[prop] = document[prop];
                 }
-                //Removing id and pass
+                //Removing id and pass from object
                 delete retObj["_id"];
                 delete retObj["password"]
-                //Sends data to main
+                
                 res.send(retObj);
             })
         });
