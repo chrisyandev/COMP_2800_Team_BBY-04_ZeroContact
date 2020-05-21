@@ -1,0 +1,28 @@
+{
+  "name": "zerocontact",
+  "version": "1.0.0",
+  "description": "> A story-driven game where you survival as long as possible in pandemic quarantine by making choices in the day of a young adult's life.",
+  "main": "index.js",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "ejs": "^3.1.3",
+    "express": "^4.17.1",
+    "mongodb": "^3.5.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrisyandev/ZeroContact.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chrisyandev/ZeroContact/issues"
+  },
+  "homepage": "https://github.com/chrisyandev/ZeroContact#readme"
+}

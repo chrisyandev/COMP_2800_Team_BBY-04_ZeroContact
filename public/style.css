@@ -1,40 +1,28 @@
 * {
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
+    padding: 0px;
+    margin: 0px;
 }
 
 body {
         background-image: url("../images/city-bg.png");
         background-repeat: no-repeat;
         background-size: cover;
+        font-size: 15px;
 }
 
 @media (min-width: 1025px) {
-
-    header {
-        display: grid;
-        grid-template-rows: 100px 50px;
-        grid-template-areas:
-            "heading"
-            "navbar";
-    }
-
     #game-name {
         color: rgb(172, 23, 23);
-        background-color: rgb(64, 167, 199);
-        grid-area: heading;
-        padding: 20px;
-        margin: -8px;
-
+        background-color: rgb(47, 174, 72);
     }
 
     #navbar {
         display: flex;
         background-color: rgb(64, 167, 199);
         justify-content: space-around;
-        padding: 10px;
-        margin: -8px;
-        grid-area: navbar;
+        padding: 30px;
     }
 
     .links:link,
@@ -49,6 +37,11 @@ body {
 
     .nav {
         list-style: none;
+    }
+
+    p, h2 {
+        padding: 2%;
+        max-width: 90%;
     }
 
     #team-info {
@@ -175,14 +168,14 @@ body {
     }
 
     footer {
-        width: 100vw;
-        display: block;
         overflow: hidden;
-        padding: 70px 0;
+        padding: 30px 0;
         box-sizing: border-box;
         text-align: center;
         background-color: rgb(64, 167, 199);
-
+        position: relative;
+        bottom: 0;
+        width: 100%;
     }
 
     #footer-nav {
@@ -362,7 +355,7 @@ body {
     }
     
     footer {
-        width: 100vw;
+        width: 98vw;
         display: block;
         overflow: hidden;
         padding: 70px 0;
