@@ -53,7 +53,7 @@
     {
         "event": "hangout",
         "text": "We're going to hang out in the park",
-        "image": "images/man-with-mask.png",
+        "image": "images/bill.png",
         "name": "Bill",
         "left": {
             "text": "Not today, sorry.",
@@ -79,7 +79,7 @@
     {
         "event": "work",
         "text": "My Cousin needs some more people for a job. Interested?",
-        "image": "images/man-with-mask.png",
+        "image": "images/bill.png",
         "name": "Bill",
         "left": {
             "text": "No thanks.",
@@ -209,7 +209,7 @@
     {
         "event": "hangout",
         "text": "Aren't you bored at home? Lets hang out! Drinks are on me.",
-        "image": "images/man-with-mask.png",
+        "image": "images/bill.png",
         "name": "Bill",
         "left": {
             "text": "I don't know...",
@@ -281,6 +281,32 @@
                 "mental": 20,
                 "wealth": -15,
                 "supplies": -5
+            }
+        }
+    },
+    {
+        "event": "game-won",
+        "text": "A cure has been found.",
+        "image": "images/prime-minister.png",
+        "name": "Prime Minister",
+        "left": {
+            "text": "Hurray!",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": 0,
+                "wealth": 0,
+                "supplies": 0
+            }
+        },
+        "right": {
+            "text": "Hurray!",
+            "risk": 0.05,
+            "effect": {
+                "physical": 0,
+                "mental": 0,
+                "wealth": 0,
+                "supplies": 0
             }
         }
     }
