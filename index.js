@@ -22,12 +22,36 @@ MongoClient.connect(connectionString, {
     app.set("view engine", "ejs");
 
 
-    app.get("/", (req, res) => res.render("pages/landing-page/home.ejs"));
-    app.get("/about", (req, res) => res.render("pages/landing-page/about.ejs"));
+    app.get("/", (req, res) => {
+        usersCollection.find().sort({days: -1}).toArray().then((highscores) => {
+            console.log(highscores)
+            res.render("pages/landing-page/home.ejs", {highscores: highscores})
+        }).catch (error => console.error(error));
+    });
+    app.get("/about", (req, res) => {
+        usersCollection.find().sort({days: -1}).toArray().then((highscores) => {
+            console.log(highscores)
+            res.render("pages/landing-page/about.ejs", {highscores: highscores})
+        }).catch (error => console.error(error));
+    });
+
     app.get("/game", (req, res) => res.render("pages/zero-contact/main.ejs"));
     app.get("/minigame", (req, res) => res.render("pages/zero-contact/minigame.ejs"));
-    app.get("/signup", (req, res) => res.render("pages/landing-page/signup.ejs"));
-    app.get("/login", (req, res) => res.render("pages/landing-page/login.ejs"));
+
+    app.get("/signup", (req, res) => {
+        usersCollection.find().sort({days: -1}).toArray().then((highscores) => {
+            console.log(highscores)
+            res.render("pages/landing-page/signup.ejs", {highscores: highscores})
+        }).catch (error => console.error(error));
+    });
+
+    app.get("/login", (req, res) => {
+        usersCollection.find().sort({days: -1}).toArray().then((highscores) => {
+            console.log(highscores)
+            res.render("pages/landing-page/login.ejs", {highscores: highscores})
+        }).catch (error => console.error(error));
+    });
+
     app.get("/delete", (req, res) => res.render("pages/landing-page/home.ejs"));
     app.get("/error", (req, res) => res.render("pages/landing-page/error.ejs"));
     app.get("/privacy", (req, res) => res.render("pages/landing-page/privacy.ejs"));
@@ -54,7 +78,10 @@ MongoClient.connect(connectionString, {
               days: 0
           })
       }).catch(err => console.error(err.message))
-      res.render("pages/landing-page/login.ejs")
+      usersCollection.find().sort({days: -1}).toArray().then((highscores) => {
+        console.log(highscores)
+        res.render("pages/landing-page/login.ejs", {highscores: highscores})
+        }).catch (error => console.error(error));
     })
 
     app.post("/login", (req, res) => {
@@ -71,10 +98,16 @@ MongoClient.connect(connectionString, {
                   console.log(result);
                   
                   if (result == true) {
-                      res.render("pages/landing-page/profile.ejs", {
-                          username: req.body.username,
-                          user: user
-                    })
+                    usersCollection.find().sort({days: -1}).toArray().then((highscores) => {
+                        console.log(highscores);
+                        console.log("SUCCESS");
+
+                        res.render("pages/landing-page/profile.ejs", {
+                            highscores: highscores,
+                            username: req.body.username,
+                            user: user
+                        })
+                        }).catch (error => console.error(error));
                   } else {
                     console.error(err);
                   }
@@ -86,7 +119,6 @@ MongoClient.connect(connectionString, {
     app.post("/game", (req, res) => {
         console.log(req.body.username)
         console.log(req.body);
-        console.log("yes");
         res.render("pages/zero-contact/main.ejs", {username: req.body.username})
     })
 
@@ -134,5 +166,3 @@ MongoClient.connect(connectionString, {
     app.listen(3000);
   })
   .catch(console.error);
-
-    

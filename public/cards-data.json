@@ -5,22 +5,22 @@
         "name": "Carly",
         "left": {
             "text": "I...",
-            "risk": 1.00,
+            "risk": 0,
             "effect": {
-                "physical": -100,
-                "mental": -100,
-                "wealth": -100,
-                "supplies": -100
+                "physical": 0,
+                "mental": 0,
+                "wealth": 0,
+                "supplies": 0
             }
         },
         "right": {
             "text": "I...",
-            "risk": 1.00,
+            "risk": 0,
             "effect": {
-                "physical": -100,
-                "mental": -100,
-                "wealth": -100,
-                "supplies": -100
+                "physical": 0,
+                "mental": 0,
+                "wealth": 0,
+                "supplies": 0
             }
         }
     },

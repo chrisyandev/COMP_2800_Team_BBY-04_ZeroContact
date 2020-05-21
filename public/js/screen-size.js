@@ -1,10 +1,14 @@
 // Wrapper contains all the content. We want to scale the wrapper and
-// its content to fill the screen height. This value is simply the
-// height of the wrapper initially when everything was in proportion
+// its content to fill the screen height. These values are simply the
+// height and width of the wrapper initially when everything was in proportion
 // but the content did not scale to viewport size.
-const WRAPPER_HEIGHT = 530;
+let originalHeight = 530;
+let originalWidth = 280;
 
-// Set the width using WIDTH_RATIO for these
+const WIDTH_TO_HEIGHT = originalWidth / originalHeight;
+let gameHeight;
+
+// Set the width using WIDTH_TO_HEIGHT for these
 const $statsSpacer = $('#stats-spacer');
 const $dotsContainer = $('#dots-container');
 const $eventText = $('#event-text');
@@ -13,66 +17,77 @@ const $name = $('#name');
 const $bottom = $('#bottom');
 const $inventoryContainer = $('#inventory-container');
 
-// Set the height using WIDTH_RATIO for these
+// Set the height using WIDTH_TO_HEIGHT for these
 const $statsContainer = $('#stats-container');
 const $statsOverlay = $('#stats-overlay');
 const $statsContainerInner = $('#stats-container > div');
 
-const WIDTH_RATIO = 280 / WRAPPER_HEIGHT;
-
 // Height ratios
-const statsSpacerRatio = 110 / WRAPPER_HEIGHT;
-const dotsContainerRatio = 45 / WRAPPER_HEIGHT;
-const eventTextRatio = 110 / WRAPPER_HEIGHT;
-const cardContainerRatio = 200 / WRAPPER_HEIGHT;
-const nameRatio = 50 / WRAPPER_HEIGHT;
-const bottomRatio = 70 / WRAPPER_HEIGHT;
-const statsContainerRatio = 65 / WRAPPER_HEIGHT;
-const statsOverlayRatio = 65 / WRAPPER_HEIGHT;
-const statsContainerInnerRatio = 53 / WRAPPER_HEIGHT;
+const statsSpacerRatio = 110 / originalHeight;
+const dotsContainerRatio = 30 / originalHeight;
+const eventTextRatio = 110 / originalHeight;
+const cardContainerRatio = 200 / originalHeight;
+const nameRatio = 50 / originalHeight;
+const bottomRatio = 70 / originalHeight;
+const statsContainerRatio = 65 / originalHeight;
+const statsOverlayRatio = 65 / originalHeight;
+const statsContainerInnerRatio = 53 / originalHeight;
 
-const progressBarWidthRatio = 62 / WRAPPER_HEIGHT;
-const progressBarHeightRatio = 41 / WRAPPER_HEIGHT;
+const progressBarWidthRatio = 62 / originalHeight;
+const progressBarHeightRatio = 41 / originalHeight;
 
 $(document).ready(function () {
+    initValues();
     resizeAll();
-    $(window).resize(resizeAll);
+    $(window).resize(() => {
+        initValues();
+        resizeAll();
+    });
 });
 
+// Initializes values that should be initialized after window loads.
+function initValues() {
+    if (WIDTH_TO_HEIGHT * $(window).height() > $(window).width()) {
+        gameHeight = ($(window).width()) / WIDTH_TO_HEIGHT;
+    } else {
+        gameHeight = $(window).height();
+    }
+}
+
 function resizeAll() {
-    setHeight($statsSpacer, statsSpacerRatio * $(window).height() - 5);
-    setWidth($statsSpacer, WIDTH_RATIO * $(window).height());
+    setHeight($statsSpacer, statsSpacerRatio * gameHeight - 5);
+    setWidth($statsSpacer, WIDTH_TO_HEIGHT * gameHeight);
 
-    setHeight($dotsContainer, dotsContainerRatio * $(window).height());
-    setWidth($dotsContainer, WIDTH_RATIO * $(window).height());
+    setHeight($dotsContainer, dotsContainerRatio * gameHeight);
+    setWidth($dotsContainer, WIDTH_TO_HEIGHT * gameHeight);
 
-    setHeight($eventText, eventTextRatio * $(window).height() - 5);
-    setWidth($eventText, WIDTH_RATIO * $(window).height());
+    setHeight($eventText, eventTextRatio * gameHeight - 5);
+    setWidth($eventText, WIDTH_TO_HEIGHT * gameHeight);
 
-    setHeight($cardContainer, cardContainerRatio * $(window).height());
-    setWidth($cardContainer, WIDTH_RATIO * $(window).height());
+    setHeight($cardContainer, cardContainerRatio * gameHeight);
+    setWidth($cardContainer, WIDTH_TO_HEIGHT * gameHeight);
 
-    setHeight($name, nameRatio * $(window).height() - 5);
-    setWidth($name, WIDTH_RATIO * $(window).height());
+    setHeight($name, nameRatio * gameHeight - 5);
+    setWidth($name, WIDTH_TO_HEIGHT * gameHeight);
 
-    setHeight($bottom, bottomRatio * $(window).height());
-    setWidth($bottom, WIDTH_RATIO * $(window).height());
+    setHeight($bottom, bottomRatio * gameHeight - 5);
+    setWidth($bottom, WIDTH_TO_HEIGHT * gameHeight);
 
-    setWidth($inventoryContainer, WIDTH_RATIO * $(window).height() / 2);
+    setWidth($inventoryContainer, WIDTH_TO_HEIGHT * gameHeight / 2);
 
-    setHeight($statsContainer, WIDTH_RATIO * $(window).height());
-    setWidth($statsContainer, statsContainerRatio * $(window).height());
+    setHeight($statsContainer, WIDTH_TO_HEIGHT * gameHeight);
+    setWidth($statsContainer, statsContainerRatio * gameHeight);
 
-    setHeight($statsOverlay, WIDTH_RATIO * $(window).height());
-    setWidth($statsOverlay, statsOverlayRatio * $(window).height());
+    setHeight($statsOverlay, WIDTH_TO_HEIGHT * gameHeight);
+    setWidth($statsOverlay, statsOverlayRatio * gameHeight);
 
-    setHeight($statsContainerInner, WIDTH_RATIO * $(window).height());
-    setWidth($statsContainerInner, statsContainerInnerRatio * $(window).height());
+    setHeight($statsContainerInner, WIDTH_TO_HEIGHT * gameHeight);
+    setWidth($statsContainerInner, statsContainerInnerRatio * gameHeight);
     
     const progressBars = $('.progress-bar');
     $.each(progressBars, function (index, bar) {
-        setHeight($(bar), progressBarWidthRatio * $(window).height());
-        setWidth($(bar), progressBarHeightRatio * $(window).height());
+        setHeight($(bar), progressBarWidthRatio * gameHeight);
+        setWidth($(bar), progressBarHeightRatio * gameHeight);
     });
     
     $('#card').position({
