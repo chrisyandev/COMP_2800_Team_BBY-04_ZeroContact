@@ -203,6 +203,51 @@ body {
     height: 280px;
 }
 
+#title-splash {
+    margin: auto;
+}
+
+.landing-button {
+    border: 1px solid #222034;  
+    border-radius: 2px;
+    background-color:#807caf;
+    padding:3px;
+    position: absolute;
+    left:50%;
+    transform: translate(-50%, 200%);
+    z-index: 5;
+    
+}
+
+#play-button{
+    border: 1px solid #222034;  
+    border-radius: 2px;
+    background-color:#807caf;
+    padding:3px;
+    position: absolute;
+    left:50%;
+    top:30%;
+    transform: translate(-50%, -50%);
+}
+
+#sign-up {
+    margin-top:40px;
+}
+
+#field1, #field2{
+    z-index: 10;
+    border: 1px solid #dddfcb;
+    border-radius: 2px;
+    height:30px;
+    color:black;
+}
+#submit {
+    position: absolute;
+    left:50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
 @media (max-width: 380px) {
 
     .white-monospace,
