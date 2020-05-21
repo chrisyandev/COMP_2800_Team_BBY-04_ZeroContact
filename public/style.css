@@ -53,13 +53,14 @@ body {
 
     #team-info {
         display: grid;
-        grid-template-rows: repeat(4, 200px);
+        grid-template-rows: repeat(5, 200px);
         grid-template-columns: repeat(4, 1fr);
         grid-template-areas:
             "team team team team"
             "pic1 gabe pic2 chris"
             "pic3 matt pic4 tim"
             "pic5 micheal micheal micheal"
+            "footer footer footer footer"
         ;
         margin: 2%;
         padding: 5%;
@@ -173,6 +174,28 @@ body {
 
         margin: 75px;
     }
+
+    footer {
+        /* width: 100vw; */
+        display: block;
+        overflow: hidden;
+        padding: 70px 0;
+        box-sizing: border-box;
+        text-align: center;
+        background-color: rgb(64, 167, 199);
+        grid-area: footer;
+    }
+
+    #footer-nav {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .footer-item {
+        list-style: none;
+        padding: 20px;
+    }
+
 }
 
 @media (min-width: 400px) and (max-width: 1024px) {
@@ -217,7 +240,7 @@ body {
 
     #team-info {
         display: grid;
-        grid-template-rows: 40% repeat(5, 20%);
+        grid-template-rows: 40% repeat(6, 20%);
         grid-template-columns: 50% 50%;
         grid-template-areas:
             "team team"
@@ -226,6 +249,7 @@ body {
             "pic3 matt"
             "pic4 tim"
             "pic5 micheal"
+            "footer footer"
         ;
         gap: 25px;
     }
@@ -336,6 +360,27 @@ body {
         ;
 
         margin: 75px;
+    }
+/* addded */
+    footer {
+        width: 100vw;
+        display: block;
+        overflow: hidden;
+        padding: 70px 0;
+        box-sizing: border-box;
+        text-align: center;
+        background-color: rgb(64, 167, 199);
+        grid-area: footer;
+    }
+
+    #footer-nav {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .footer-item {
+        list-style: none;
+        padding: 20px;
     }
 }
 
@@ -383,7 +428,7 @@ body {
 
     #team-info {
         display: grid;
-        grid-template-rows: 40% repeat(5, 20%);
+        grid-template-rows: 40% repeat(6, 20%);
         grid-template-columns: 50% 50%;
         grid-template-areas:
             "team team"
@@ -392,6 +437,7 @@ body {
             "pic3 matt"
             "pic4 tim"
             "pic5 micheal"
+            "footer footer"
         ;
         gap: 25px;
     }
@@ -502,5 +548,26 @@ body {
         ;
 
         margin: 75px;
+    }
+/* added */
+    footer {
+        width: 100vw;
+        display: block;
+        overflow: hidden;
+        padding: 70px 0;
+        box-sizing: border-box;
+        text-align: center;
+        background-color: rgb(64, 167, 199);
+        grid-area: footer;
+    }
+
+    #footer-nav {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .footer-item {
+        list-style: none;
+        padding: 20px;
     }
 }

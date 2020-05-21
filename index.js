@@ -1,21 +1,49 @@
 const express = require("express");
 const MongoClient = require("mongodb").MongoClient;
-const {
-    DB_URL
-} = require("./credentials")
-
-const bcrypt = require("bcrypt");
+const { DB_URL } = require("./credentials")
+const connectionString = DB_URL;
+const bcrypt = require("bcryptjs");
 const saltRounds = 10;
 
 let app = express();
 
-MongoClient.connect(DB_URL, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    }).then(client => {
-        console.log("Connected to database.");
-        const db = client.db("zero-contact");
-        const usersCollection = db.collection("users");
+MongoClient.connect(connectionString, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  }).then(client => {
+    console.log("Connected to database.");
+    const db = client.db("zero-contact");
+    const usersCollection = db.collection("users");
+
+    app.use(express.urlencoded({
+      extended: true
+    }));
+    app.use(express.static("public"));
+    app.use(express.json());
+    app.set("view engine", "ejs");
+
+
+    app.get("/", (req, res) => res.render("pages/landing-page/home.ejs"));
+    app.get("/about", (req, res) => res.render("pages/landing-page/about.ejs"));
+    // app.get("/game", (req, res) => res.render("pages/zero-contact/main.ejs"));
+    
+    pp.get("/game", (req, res) => res.render("pages/zero-contact/characterCreator.ejs"));
+
+    app.get("/minigame", (req, res) => res.render("pages/zero-contact/minigame.ejs"));
+    app.get("/signup", (req, res) => res.render("pages/landing-page/signup.ejs"));
+    app.get("/login", (req, res) => res.render("pages/landing-page/login.ejs"));
+    app.get("/delete", (req, res) => res.render("pages/landing-page/home.ejs"));
+    app.get("/error", (req, res) => res.render("pages/landing-page/error.ejs"));
+    app.get("/privacy", (req, res) => res.render("pages/landing-page/privacy.ejs"));
+    app.get("/attributions", (req, res) => res.render("pages/landing-page/attributions.ejs"));
+    app.get("/contact", (req, res) => res.render("pages/landing-page/contact.ejs"));
+
+    app.get("/leaderboard", (req, res) => {
+        usersCollection.find().sort({days: -1}).toArray().then((highscores) => {
+            console.log(highscores)
+            res.render("pages/landing-page/leaderboard.ejs", {highscores: highscores})
+        }).catch (error => console.error(error));
+    })
 
         app.use(express.urlencoded({
             extended: true
@@ -33,24 +61,24 @@ MongoClient.connect(DB_URL, {
         app.get("/login", (req, res) => res.render("pages/landing-page/login.ejs"));
         app.get("/delete", (req, res) => res.render("pages/landing-page/home.ejs"));
 
-        app.get("/leaderboard", (req, res) => {
-            usersCollection.find().sort({
-                days: -1
-            }).toArray().then((highscores) => {
-                console.log(highscores)
-                res.render("pages/landing-page/leaderboard.ejs", {
-                    highscores: highscores
-                })
-            }).catch(error => console.error(error));
-        })
+    app.post("/game", (req, res) => {
+        console.log(req.body.username)
+        console.log(req.body);
+        console.log("yes");
+        res.render("pages/zero-contact/main.ejs", {username: req.body.username})
+    })
 
+    app.post("/minigame", (req, res) => {
+        console.log(req.body.username)
+        res.render("pages/zero-contact/minigame.ejs", {username: req.body.username})
+    })
 
-        app.post('/signup', (req, res) => {
-            bcrypt.genSalt(saltRounds).then(salt => {
-                console.log("salt " + salt)
-                return bcrypt.hash(req.body.password, salt)
-            }).then(hash => {
-                console.log("hash " + hash)
+    app.put("/longest-days", (req, res) => {
+        usersCollection.find({
+            username: req.body.username
+        }).toArray().then((user) => {
+            if (user.length == 0) {
+                console.log("No user found")
                 usersCollection.insertOne({
                     username: req.body.username,
                     password: hash,

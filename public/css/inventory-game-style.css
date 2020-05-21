@@ -2,17 +2,47 @@ html, body{
     margin: 0;
     padding: 0;
     user-select: none;
+    image-rendering: auto;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
 }
 
-#inventory-grid-container{
+body{
+    background-image: url("/images/parking-lot.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+.game-grid{
     display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
-    width: 280px;
+    position: relative;
+    grid-template-rows: repeat(19, 120px);
+    grid-template-columns: repeat(25, 120px);
+    width: 400px;
     height: 500px;
-    padding: 0px 50px;
-    overflow: scroll;
-    outline: 10px double black;
+    overflow: hidden;
+    outline: 10px double rgb(156, 135, 16);
+    top: -75px;
+    background-color: transparent;
+}
+
+#background-image{
+    position: absolute;
+    overflow: hidden;
+    height: 2400px;
+    width: 3120px;
+    background-image: url("/images/store-tile.png");
+    background-size: 240px 240px;
+    z-index: -1;
+}
+
+#canvas{
+    position: relative;
+    z-index: 3;
+    width: 180px;
+    height: 180px;
+    top: 0px;
 }
 
 #minigame-container{
@@ -20,25 +50,282 @@ html, body{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    padding: 0 50px;
+}
+
+#minigame-message{
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    z-index: 4;
+    background-color: white;
+}
+
+#minigame-message h1{
+    flex-grow: 999;
+}
+
+#help-button-container{
+    position: relative;
+    right: 0px;
+    z-index: 5;
+    flex-grow: 1;
 }
 
 .store-shelf-container{  
     display: grid;
-    background-color: grey;
-    margin: 50px;
-    padding: 20px;
-    outline: 2px double black;
+    background-color: rgb(196, 128, 26);
+    outline: 2px double brown;
     outline-width:5px;
     width: 100%;
     height: 100%;
+    padding: 5px;
 }
 
-.inventory-container{
-    display: fixed;
-    position: absolute;
-    bottom: 100;
+.store-shelf-container .inventory-item{
+    box-shadow: 0 5px rgb(184, 119, 34);
+    background-color: rgb(255, 195, 106);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.store-shelf-container .inventory-item img{
+    position: relative;
+    width: 75%;
+    height: 75%;
+    animation-name: itemBounceAnimation;
+    animation-timing-function: ease-in-out;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+}
+
+.store-shelf-container .inventory-item:active{
+    transform: translateY(3px);
+    box-shadow: 0 2px rgb(0, 0, 0);
 }
 
 #inventory-grid-container::-webkit-scrollbar {
     display: none;
+}
+
+.shopper-container{
+    position: relative;
+    top: 0px;
+    left: 0px;
+    /*background-color: black;*/
+    /*border-radius: 50px;*/
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    grid-area: 4 / 1 / span 1 / span 1;
+    z-index: 2;
+    transition: all 0.5s;
+}
+
+#hand-swipe{
+    position: absolute;
+    top: 50%;
+    pointer-events: none;
+    z-index: 3;
+    opacity: 0;
+    animation-name: swipeBounceAnimation;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    transition: opacity 0.5s;
+}
+
+#handswipe-container{
+    position: absolute;
+    width: 100%;
+    height: 70%;
+    pointer-events: none;
+    z-index: 3;
+}
+
+/* ------------------------------------------------------------------- */
+/* End Results Screen styling */
+/* ------------------------------------------------------------------- */
+
+#end-results-screen{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 80%;
+    top: 10%;
+    left: 0;
+    background-color: rgba(185, 185, 185, 0.692);
+    opacity: 0;
+    z-index: 3;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15px;
+    word-wrap: break-word;
+}
+
+#end-results-screen h1, h2{
+    color: white;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
+
+#items-list-container{
+    width: 70%;
+    height: 50%;
+    overflow: auto;
+    background-color: white;
+    padding: 20px;
+    outline: 2px double black;
+}
+
+.results-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid black;
+    overflow: wrap;
+}
+
+.results-item img{
+    width: 25px;
+    height: 25px;
+    background-color: lightgrey;
+    padding: 25px;
+}
+
+.results-item h2{
+    flex-grow: 3;
+    width: 50px;
+    height: 25px;
+    background-color: rgb(226, 226, 226);
+    padding: 25px;
+    font-size: 18px;
+}
+
+.results-item h3{
+    flex-grow: 1;
+    height: 25px;
+    background-color: rgb(236, 236, 236);
+    padding: 25px 10px 25px 10px;
+    font-size: 18px;
+}
+
+#continue-button{
+    margin-top: 20px;
+    width: 100px;
+    height: 50px;
+    background-color: rgba(155, 255, 155, 0.788);
+}
+
+/* ------------------------------------------------------------------- */
+/* Keyframes */
+/* ------------------------------------------------------------------- */
+
+@keyframes swipeBounceAnimation{
+    from {width: 100px; left: 40%}
+    45% {width: 90px}
+    90% {width: 100px; left: 50%}
+    to {width: 100px; left: 40%}
+}
+
+@keyframes clockBounceAnimation{
+    from {width: 180px; height: 180px}
+    90% {width: 185px; height: 185px}
+    to {width: 180px; height: 180px}
+}
+
+@keyframes itemBounceAnimation{
+    from {top: 0px}
+    50% {top: -10px}
+    to {top: 0px}
+}
+
+/* ------------------------------------------------------------------- */
+/* Media Queries */
+/* ------------------------------------------------------------------- */
+
+@media only screen and (max-width: 768px){
+    .game-grid{
+        width: 330px;
+        height: 400px;
+    }
+
+    #canvas{
+        width: 120px;
+        height: 120px;
+    }
+
+    #minigame-message{
+        font-size: 12px;
+    }
+
+    @keyframes clockBounceAnimation{
+        from {width: 120px; height: 120px}
+        90% {width: 125px; height: 125px}
+        to {width: 120px; height: 120px}
+    }
+}
+
+@media only screen and (min-width: 768px){
+    .game-grid{
+        top: -25px;
+        width: 450px;
+        height: 500px;
+    }
+
+    #canvas{
+        width: 160px;
+        height: 160px;
+    }
+
+    #minigame-message{
+        font-size: 12px;
+    }
+
+    @keyframes clockBounceAnimation{
+        from {width: 160px; height: 160px}
+        90% {width: 165px; height: 165px}
+        to {width: 160px; height: 160px}
+    }
+}
+
+@media only screen and (min-width: 1024px){
+    .game-grid{
+        top: -100px;
+        width: 800px;
+        height: 480px;
+    }
+
+    #canvas{
+        width: 180px;
+        height: 180px;
+    }
+
+    #minigame-message{
+        font-size: 15px;
+    }
+
+    @keyframes clockBounceAnimation{
+        from {width: 180px; height:180px}
+        90% {width: 185px; height:185px}
+        to {width: 180px; height: 180px}
+    }
+}
+
+@media only screen and (min-width: 1024px) and (min-height: 1280px){
+    #minigame-message{
+        font-size: 24px;
+    }
+    .game-grid{
+        top: -100px;
+        width: 900px;
+        height: 800px;
+    }
 }
