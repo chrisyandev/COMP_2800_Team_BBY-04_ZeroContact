@@ -19,6 +19,7 @@ body {
     height: 110px;
     margin: auto;
     background-color: #222034;
+    position: relative;
 }
 
 #stats-container {
@@ -52,7 +53,8 @@ body {
     align-items: center;
     grid-template-columns: repeat(4, 1fr);
     width: 280px;
-    height: 45px;
+    height: 30px;
+    top: 3vh;
 }
 
 .dot-wrapper {
@@ -73,6 +75,20 @@ body {
 /* Automatically applied to progress bars */
 .ui-progressbar-value {
     background-color: tan;
+}
+
+#open-menu-hint {
+    position: absolute;
+    width: inherit;
+    text-align: center;
+    z-index: 3;
+    top: 0;
+    padding-top: 0.4vh;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: calc(6px + 0.9vh);
 }
 
 #event-text {

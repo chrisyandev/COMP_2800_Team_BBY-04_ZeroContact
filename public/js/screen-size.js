@@ -24,7 +24,7 @@ const $statsContainerInner = $('#stats-container > div');
 
 // Height ratios
 const statsSpacerRatio = 110 / originalHeight;
-const dotsContainerRatio = 45 / originalHeight;
+const dotsContainerRatio = 30 / originalHeight;
 const eventTextRatio = 110 / originalHeight;
 const cardContainerRatio = 200 / originalHeight;
 const nameRatio = 50 / originalHeight;
