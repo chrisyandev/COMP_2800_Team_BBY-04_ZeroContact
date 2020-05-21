@@ -81,3 +81,13 @@ i.fa-lg {
 #panel-leaderboard td {
     border-color: #222034;
 }
+
+#panel-navigation a {
+    background-color: #222034;
+    color: white;
+    border-color: #dddfcb;
+}
+
+#panel-navigation a:hover {
+    opacity: 0.8;
+}
