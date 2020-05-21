@@ -27,12 +27,10 @@ MongoClient.connect(connectionString, {
 
         app.get("/", (req, res) => res.render("pages/landing-page/home.ejs"));
         app.get("/about", (req, res) => res.render("pages/landing-page/about.ejs"));
-        // app.get("/game", (req, res) => res.render("pages/zero-contact/main.ejs"));
-
+        //Changed
         app.get("/game", (req, res) => res.render("pages/zero-contact/characterCreator.ejs"));
-
         app.get("/minigame", (req, res) => res.render("pages/zero-contact/minigame.ejs"));
-
+        //Changed
         app.get("/signup", (req, res) => res.render("pages/landing-page/signup.ejs"));
         app.get("/login", (req, res) => res.render("pages/landing-page/login.ejs"));
         app.get("/delete", (req, res) => res.render("pages/landing-page/home.ejs"));
@@ -235,7 +233,6 @@ MongoClient.connect(connectionString, {
                     pandemic: req.body.pandemicName
                 }
             })
-
 
             res.render("pages/zero-contact/minigame.ejs", {
                 username: usr

@@ -15,7 +15,7 @@ function loadCharacterPage() {
     generateProfile();
     genPandemic();
     drawCharacter();
-    document.getElementById("profile").style = "display: block";
+    document.getElementById("profile").style = "display: inline-block";
 }
 //Creates main character
 function generateProfile() {

@@ -30,7 +30,7 @@ html, body{
     transition: 0.3s;
 }
 
-#inventory-expand-button {
+#inventory-expand-button, #getProfile {
     height: 50px;
     background-color: #222034;
     box-sizing: border-box;
