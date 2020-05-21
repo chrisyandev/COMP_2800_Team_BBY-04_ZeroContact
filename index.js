@@ -27,9 +27,10 @@ MongoClient.connect(connectionString, {
     app.get("/about", (req, res) => res.render("pages/landing-page/about.ejs"));
     // app.get("/game", (req, res) => res.render("pages/zero-contact/main.ejs"));
     
-    pp.get("/game", (req, res) => res.render("pages/zero-contact/characterCreator.ejs"));
+    app.get("/game", (req, res) => res.render("pages/zero-contact/characterCreator.ejs"));
 
     app.get("/minigame", (req, res) => res.render("pages/zero-contact/minigame.ejs"));
+
     app.get("/signup", (req, res) => res.render("pages/landing-page/signup.ejs"));
     app.get("/login", (req, res) => res.render("pages/landing-page/login.ejs"));
     app.get("/delete", (req, res) => res.render("pages/landing-page/home.ejs"));
@@ -56,6 +57,7 @@ MongoClient.connect(connectionString, {
         app.get("/", (req, res) => res.render("pages/landing-page/home.ejs"));
         app.get("/about", (req, res) => res.render("pages/landing-page/about.ejs"));
         app.get("/game", (req, res) => res.render("pages/zero-contact/main.ejs"));
+        
         app.get("/minigame", (req, res) => res.render("pages/zero-contact/minigame.ejs"));
         app.get("/signup", (req, res) => res.render("pages/landing-page/signup.ejs"));
         app.get("/login", (req, res) => res.render("pages/landing-page/login.ejs"));
@@ -84,7 +86,7 @@ MongoClient.connect(connectionString, {
                     password: hash,
                     days: 0
                 })
-            }).catch(err => console.error(err.message))
+            }}).catch(err => console.error(err.message))
             res.render("pages/landing-page/login.ejs")
         })
 
@@ -191,7 +193,6 @@ MongoClient.connect(connectionString, {
         })
 
         //Display Character Creation
-        app.get("/game", (req, res) => res.render("pages/zero-contact/characterCreator.ejs"));
         //Send Character creation to main
         app.post("/game", (req, res) => {
             let usr = req.body.username;
