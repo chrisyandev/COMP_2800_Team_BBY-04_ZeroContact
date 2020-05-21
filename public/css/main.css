@@ -185,27 +185,27 @@ body {
 
 /* Profile stuff */
 
-.modal {
-    display: none; 
-    position: absolute; 
+div#myProfile.modal {
+    display: none;
+    position: absolute;
     z-index: 1;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 290px; 
-    height: 290px; 
+    width: 290px;
+    height: 290px;
     overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0); 
-  }
-  
-  .modal-content {
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+}
+
+#myProfileContent {
     background-color: #dddfcb;
     border: 1px solid red;
     font-family: 'Courier New', Courier, monospace;
     color: black;
     font-size: 2.8vh;
-    padding-left: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
     padding-top: 20px;
-  }
-  
+}
