@@ -1,7 +1,6 @@
 const audioBackground = document.querySelector('#audio-background');
-const audioCardSwipe = document.querySelector('#audio-card-swipe');
-
-audioCardSwipe.volume = 0.5;
+const audioCardSwipeLeft = document.querySelector('#audio-card-swipe-left');
+const audioCardSwipeRight = document.querySelector('#audio-card-swipe-right');
 
 $(document).ready(() => {
     audioBackground.play();
@@ -9,6 +8,10 @@ $(document).ready(() => {
 
 $(document.body).on('update-resources', (e, data) => {
     if (data.event === 'card-swiped') {
-        audioCardSwipe.play();
+        if (data.side === 'left') {
+            audioCardSwipeLeft.play();
+        } else if (data.side === 'right') {
+            audioCardSwipeRight.play();
+        }
     }
 })

@@ -117,9 +117,14 @@ MongoClient.connect(connectionString, {
     })
 
     app.post("/game", (req, res) => {
-        console.log(req.body.username)
-        console.log(req.body);
-        res.render("pages/zero-contact/main.ejs", {username: req.body.username})
+        usersCollection.find().sort({ days: -1 }).toArray().then(highscores => {
+            console.log(highscores);
+            console.log(req.body.username);
+            res.render("pages/zero-contact/main.ejs", {
+                highscores: highscores,
+                username: req.body.username
+            });
+        }).catch(error => console.error(error));
     })
 
     app.post("/minigame", (req, res) => {

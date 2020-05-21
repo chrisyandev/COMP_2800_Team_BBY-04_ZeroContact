@@ -113,12 +113,14 @@ function Card(leftChoice, rightChoice, image) {
         if (side === 'left') {
             $(document.body).trigger('update-resources', {
                 effect: this.leftChoice.effect,
-                event: 'card-swiped'
+                event: 'card-swiped',
+                side: 'left'
             });
         } else if (side === 'right') {
             $(document.body).trigger('update-resources', {
                 effect: this.rightChoice.effect,
-                event: 'card-swiped'
+                event: 'card-swiped',
+                side: 'right'
             });
         }
         this.$card.promise().done(function () {
