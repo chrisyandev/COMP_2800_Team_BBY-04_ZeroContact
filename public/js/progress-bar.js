@@ -60,18 +60,18 @@ function add(a, b) {
 function changeFillColor($fill, choiceStat) {
     if (choiceStat < 0) {
         $fill.css({
-            'background-color': '#761F1A',
+            'background-color': '#af807c',
             'transition': 'width 0.5s'
         });
     } else if (choiceStat > 0) {
         $fill.css({
-            'background-color': '#639A7F',
+            'background-color': '#7caf80',
             'transition': 'width 0.5s'
         });
     }
     setTimeout(function() {
         $fill.css({
-            'background-color': 'tan',
+            'background-color': '#807caf',
             'transition': 'background-color 0.2s ease'
         });
     }, 500);

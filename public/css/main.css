@@ -72,7 +72,7 @@ body {
 
 /* Automatically applied to progress bars */
 .ui-progressbar-value {
-    background-color: tan;
+    background-color: #807caf;
 }
 
 #open-menu-hint {
