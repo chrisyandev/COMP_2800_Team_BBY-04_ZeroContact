@@ -74,8 +74,7 @@ MongoClient.connect(connectionString, {
             console.log(req.body);
             console.log("yes");
             res.render("pages/zero-contact/main.ejs", {
-                username: req.body.username,
-                playerNam: req.body.playerNam
+                username: req.body.username
             })
         })
 
@@ -237,10 +236,9 @@ MongoClient.connect(connectionString, {
                 }
             })
 
-            let fName = getFirstName(genName);
+
             res.render("pages/zero-contact/minigame.ejs", {
-                username: usr,
-                playerNam: fName,
+                username: usr
             })
         });
         //get request to database to return user as object.
@@ -267,9 +265,3 @@ MongoClient.connect(connectionString, {
         app.listen(3000);
     })
     .catch(console.error);
-
-//splitting name for spacing
-function getFirstName(name) {
-    let nameArray = name.split(" ");
-    return nameArray[0];
-}
