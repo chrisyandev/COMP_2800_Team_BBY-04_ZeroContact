@@ -102,51 +102,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Jack</td>
-                                        <td>10</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Bob</td>
-                                        <td>8</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Joe</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Jack</td>
-                                        <td>10</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Bob</td>
-                                        <td>8</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Joe</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Jack</td>
-                                        <td>10</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Bob</td>
-                                        <td>8</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Joe</td>
-                                        <td>5</td>
-                                    </tr>
+                                    <% for (let i = 0; i < Math.min(highscores.length, 10) ; i++) { %>
+                                        <tr>
+                                            <th scope="row"><%= i + 1 %></th>
+                                            <td><%= highscores[i].username %></td>
+                                            <td><%= highscores[i].days %></td>
+                                        </tr>
+                                    <% } %>
                                 </tbody>
                             </table>
                         </div>
