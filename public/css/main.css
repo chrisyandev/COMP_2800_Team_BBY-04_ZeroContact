@@ -108,6 +108,8 @@ body {
     margin: auto;
     position: relative;
     background-color: #dddfcb;
+    background-image: url("../images/left-right-arrows.png");
+    background-size: contain;
 }
 
 #card {
