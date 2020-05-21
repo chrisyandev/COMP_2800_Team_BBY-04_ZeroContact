@@ -170,30 +170,45 @@ MongoClient.connect(connectionString, {
         app.get("/login", (req, res) => res.render("pages/landing-page/login.ejs"));
 
         app.post('/signup', (req, res) => {
-            bcrypt.hash(req.body.password, saltRounds).then(function (hash) {
-                highScoreCollection.insertOne({
-                        username: req.body.username,
-                        password: hash
-                    })
-                    .then(result => {
-                        console.log("Username " + req.body.username + " and password " + req.body.password + " were sent to server.");
-                    })
-                    .catch(error => console.error(error))
-            })
-
-        })
-
-        app.post("/login", (req, res) => {
-            bcrypt.compare(req.body.password, db.highScoreCollection.find({
-                username: req.body.username
-            })).then(function (err, result) {
-                if (result == true) {
-                    res.render("/zero-contact/main", );
+            bcrypt.genSalt(saltRounds).then(salt => {
+                console.log("salt " + salt)
+                return bcrypt.hash(req.body.password, salt)
+            }).then(hash => {
+                console.log("hash " + hash)
+                usersCollection.insertOne({
+                    username: req.body.username,
+                    password: hash,
+                    days: 0
+                })
+            }).catch(err => console.error(err.message))
+            res.render("pages/landing-page/login.ejs")
+          })
+      
+          app.post("/login", (req, res) => {
+            usersCollection.find({
+                    username: req.body.username
+            }).toArray().then((user) => {
+                console.log(user)
+                console.log("Attempting login")
+                if (user.length == 0) {
+                    res.redirect("/");
+                    console.log("User not found")
                 } else {
-                    console.log("Passwords don't match.");
-                }
-            })
-        })
+                    bcrypt.compare(req.body.password, user[0].password, (err, result) => {
+                        console.log(result);
+                        
+                        if (result == true) {
+                            res.render("pages/landing-page/profile.ejs", {
+                                username: req.body.username,
+                                user: user
+                          })
+                        } else {
+                          console.error(err);
+                        }
+                    }) 
+                  }
+            }).catch((error) => console.error(error))
+          })
 
         //Rendering character creation first from play
         app.post("/intro", (req, res) => {
