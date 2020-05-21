@@ -1,6 +1,8 @@
 const express = require("express");
 const MongoClient = require("mongodb").MongoClient;
-const { DB_URL } = require("./credentials")
+const {
+    DB_URL
+} = require("./credentials")
 const connectionString = DB_URL;
 const bcrypt = require("bcryptjs");
 const saltRounds = 10;
@@ -8,43 +10,12 @@ const saltRounds = 10;
 let app = express();
 
 MongoClient.connect(connectionString, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  }).then(client => {
-    console.log("Connected to database.");
-    const db = client.db("zero-contact");
-    const usersCollection = db.collection("users");
-
-    app.use(express.urlencoded({
-      extended: true
-    }));
-    app.use(express.static("public"));
-    app.use(express.json());
-    app.set("view engine", "ejs");
-
-
-    app.get("/", (req, res) => res.render("pages/landing-page/home.ejs"));
-    app.get("/about", (req, res) => res.render("pages/landing-page/about.ejs"));
-    // app.get("/game", (req, res) => res.render("pages/zero-contact/main.ejs"));
-    
-    app.get("/game", (req, res) => res.render("pages/zero-contact/characterCreator.ejs"));
-
-    app.get("/minigame", (req, res) => res.render("pages/zero-contact/minigame.ejs"));
-
-    app.get("/signup", (req, res) => res.render("pages/landing-page/signup.ejs"));
-    app.get("/login", (req, res) => res.render("pages/landing-page/login.ejs"));
-    app.get("/delete", (req, res) => res.render("pages/landing-page/home.ejs"));
-    app.get("/error", (req, res) => res.render("pages/landing-page/error.ejs"));
-    app.get("/privacy", (req, res) => res.render("pages/landing-page/privacy.ejs"));
-    app.get("/attributions", (req, res) => res.render("pages/landing-page/attributions.ejs"));
-    app.get("/contact", (req, res) => res.render("pages/landing-page/contact.ejs"));
-
-    app.get("/leaderboard", (req, res) => {
-        usersCollection.find().sort({days: -1}).toArray().then((highscores) => {
-            console.log(highscores)
-            res.render("pages/landing-page/leaderboard.ejs", {highscores: highscores})
-        }).catch (error => console.error(error));
-    })
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }).then(client => {
+        console.log("Connected to database.");
+        const db = client.db("zero-contact");
+        const usersCollection = db.collection("users");
 
         app.use(express.urlencoded({
             extended: true
@@ -56,37 +27,78 @@ MongoClient.connect(connectionString, {
 
         app.get("/", (req, res) => res.render("pages/landing-page/home.ejs"));
         app.get("/about", (req, res) => res.render("pages/landing-page/about.ejs"));
-        app.get("/game", (req, res) => res.render("pages/zero-contact/main.ejs"));
-        
+        // app.get("/game", (req, res) => res.render("pages/zero-contact/main.ejs"));
+
+        app.get("/game", (req, res) => res.render("pages/zero-contact/characterCreator.ejs"));
+
+        app.get("/minigame", (req, res) => res.render("pages/zero-contact/minigame.ejs"));
+
+        app.get("/signup", (req, res) => res.render("pages/landing-page/signup.ejs"));
+        app.get("/login", (req, res) => res.render("pages/landing-page/login.ejs"));
+        app.get("/delete", (req, res) => res.render("pages/landing-page/home.ejs"));
+        app.get("/error", (req, res) => res.render("pages/landing-page/error.ejs"));
+        app.get("/privacy", (req, res) => res.render("pages/landing-page/privacy.ejs"));
+        app.get("/attributions", (req, res) => res.render("pages/landing-page/attributions.ejs"));
+        app.get("/contact", (req, res) => res.render("pages/landing-page/contact.ejs"));
+
+        app.get("/leaderboard", (req, res) => {
+            usersCollection.find().sort({
+                days: -1
+            }).toArray().then((highscores) => {
+                console.log(highscores)
+                res.render("pages/landing-page/leaderboard.ejs", {
+                    highscores: highscores
+                })
+            }).catch(error => console.error(error));
+        })
+
+        app.use(express.urlencoded({
+            extended: true
+        }));
+        app.use(express.static("public"));
+        app.use(express.json());
+        app.set("view engine", "ejs");
+
+
+        app.get("/", (req, res) => res.render("pages/landing-page/home.ejs"));
+        app.get("/about", (req, res) => res.render("pages/landing-page/about.ejs"));
+        app.get("/main", (req, res) => res.render("pages/zero-contact/main.ejs"));
+
         app.get("/minigame", (req, res) => res.render("pages/zero-contact/minigame.ejs"));
         app.get("/signup", (req, res) => res.render("pages/landing-page/signup.ejs"));
         app.get("/login", (req, res) => res.render("pages/landing-page/login.ejs"));
         app.get("/delete", (req, res) => res.render("pages/landing-page/home.ejs"));
+        //-------------------------
+        app.post("/main", (req, res) => {
+            console.log(req.body.username)
+            console.log(req.body);
+            console.log("yes");
+            res.render("pages/zero-contact/main.ejs", {
+                username: req.body.username,
+                playerNam: req.body.playerNam
+            })
+        })
 
-    app.post("/game", (req, res) => {
-        console.log(req.body.username)
-        console.log(req.body);
-        console.log("yes");
-        res.render("pages/zero-contact/main.ejs", {username: req.body.username})
-    })
+        app.post("/minigame", (req, res) => {
+            console.log(req.body.username)
+            res.render("pages/zero-contact/minigame.ejs", {
+                username: req.body.username
+            })
+        })
 
-    app.post("/minigame", (req, res) => {
-        console.log(req.body.username)
-        res.render("pages/zero-contact/minigame.ejs", {username: req.body.username})
-    })
-
-    app.put("/longest-days", (req, res) => {
-        usersCollection.find({
-            username: req.body.username
-        }).toArray().then((user) => {
-            if (user.length == 0) {
-                console.log("No user found")
-                usersCollection.insertOne({
-                    username: req.body.username,
-                    password: hash,
-                    days: 0
-                })
-            }}).catch(err => console.error(err.message))
+        app.put("/longest-days", (req, res) => {
+            usersCollection.find({
+                username: req.body.username
+            }).toArray().then((user) => {
+                if (user.length == 0) {
+                    console.log("No user found")
+                    usersCollection.insertOne({
+                        username: req.body.username,
+                        password: hash,
+                        days: 0
+                    })
+                }
+            }).catch(err => console.error(err.message))
             res.render("pages/landing-page/login.ejs")
         })
 
@@ -102,7 +114,6 @@ MongoClient.connect(connectionString, {
                 } else {
                     bcrypt.compare(req.body.password, user[0].password, (err, result) => {
                         console.log(result);
-
                         if (result == true) {
                             res.render("pages/landing-page/profile.ejs", {
                                 username: req.body.username,
@@ -186,7 +197,6 @@ MongoClient.connect(connectionString, {
 
         //Rendering character creation first from play
         app.post("/intro", (req, res) => {
-            console.log(req.body.username)
             res.render("pages/zero-contact/characterCreator.ejs", {
                 username: req.body.username
             })
@@ -195,6 +205,8 @@ MongoClient.connect(connectionString, {
         //Display Character Creation
         //Send Character creation to main
         app.post("/game", (req, res) => {
+            console.log("-----------------------------------------------------------")
+            console.log(req.body);
             let usr = req.body.username;
             let genName = req.body.characterName;
 
@@ -211,7 +223,7 @@ MongoClient.connect(connectionString, {
             })
 
             let fName = getFirstName(genName);
-            res.render("pages/zero-contact/main.ejs", {
+            res.render("pages/zero-contact/minigame.ejs", {
                 username: usr,
                 playerNam: fName,
             })
