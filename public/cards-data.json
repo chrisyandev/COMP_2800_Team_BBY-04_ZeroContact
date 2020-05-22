@@ -862,6 +862,240 @@
         }
     },
     {
+        "event": "work",
+        "text": "We need volunteers down at the office NOW. Anyone brave enough will get free food and bonuses.",
+        "image": "images/bill.png",
+        "name": "Prok Mayunnaise",
+        "left": {
+            "text": "I ain't joining this zero-sum game.",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": -5,
+                "wealth": 0,
+                "supplies": -5
+            }
+        },
+        "right": {
+            "text": "I will be right there sir!",
+            "risk": 0.05,
+            "effect": {
+                "physical": -5,
+                "mental": -5,
+                "wealth": 10,
+                "supplies": 10
+            }
+        }
+    },
+    {
+        "event": "work",
+        "text": "Plastic bananas are on the rise and we need someone on scene to manage supplies. Are you in?",
+        "image": "images/bill.png",
+        "name": "Prok Mayunnaise",
+        "left": {
+            "text": "I'd rather die than leave my house.",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": -5,
+                "wealth": 0,
+                "supplies": -5
+            }
+        },
+        "right": {
+            "text": "This looks profitable.",
+            "risk": 0.05,
+            "effect": {
+                "physical": -5,
+                "mental": 0,
+                "wealth": 10,
+                "supplies": 0
+            }
+        }
+    },
+    {
+        "event": "work",
+        "text": "One of our machines went down in the office, there will be a bonus for whoever goes in to reset it.",
+        "image": "images/bill.png",
+        "name": "Prok Mayunnaise",
+        "left": {
+            "text": "This isn't even related to my section.",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": 0,
+                "wealth": 0,
+                "supplies": -10
+            }
+        },
+        "right": {
+            "text": "I'm coming boss.",
+            "risk": 0.05,
+            "effect": {
+                "physical": -5,
+                "mental": -5,
+                "wealth": 15,
+                "supplies": 0
+            }
+        }
+    },
+    {
+        "event": "food",
+        "text": "Wanna buy some bananas? In fact, I'll give them to you for free! Just come out here to pick them up.",
+        "image": "images/little-tim.png",
+        "name": "Mephistopheles",
+        "left": {
+            "text": "No thanks strange boy.",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": 10,
+                "wealth": 0,
+                "supplies": -10
+            }
+        },
+        "right": {
+            "text": "Bananas bananas bananas bananas bananas...",
+            "risk": 0.05,
+            "effect": {
+                "physical": 0,
+                "mental": -10,
+                "wealth": 0,
+                "supplies": 15
+            }
+        }
+    },
+    {
+        "event": "food",
+        "text": "I really want to eat bananas right now, let's buy some from the grocery store!",
+        "image": "images/little-timmy.png",
+        "name": "Little Timmy",
+        "left": {
+            "text": "I got bananas (peels and eats invisible air banana).",
+            "risk": 0.00,
+            "effect": {
+                "physical": 5,
+                "mental": -10,
+                "wealth": 0,
+                "supplies": -5
+            }
+        },
+        "right": {
+            "text": "Weird craving, but okay.",
+            "risk": 0.05,
+            "effect": {
+                "physical": -5,
+                "mental": 5,
+                "wealth": -10,
+                "supplies": 10
+            }
+        }
+    },
+    {
+        "event": "food",
+        "text": "Let's get from KFSea, I heard they're still open!",
+        "image": "images/little-timmy.png",
+        "name": "Little Timmy",
+        "left": {
+            "text": "KFSorry but no.",
+            "risk": 0.00,
+            "effect": {
+                "physical": 5,
+                "mental": -5,
+                "wealth": 0,
+                "supplies": -10
+            }
+        },
+        "right": {
+            "text": "I don't see how this is a bad idea at all.",
+            "risk": 0.05,
+            "effect": {
+                "physical": 0,
+                "mental": 5,
+                "wealth": -10,
+                "supplies": 10
+            }
+        }
+    },
+    {
+        "event": "appointment",
+        "text": "You look paler than I remember, how about a message session? I know some masseurs still working.",
+        "image": "images/hadi.png",
+        "name": "Doctor Green",
+        "left": {
+            "text": "I'd rather not let others into my house.",
+            "risk": 0.00,
+            "effect": {
+                "physical": -5,
+                "mental": -5,
+                "wealth": 0,
+                "supplies": -5
+            }
+        },
+        "right": {
+            "text": "I am ready to feel relaxed.",
+            "risk": 0.05,
+            "effect": {
+                "physical": 10,
+                "mental": 10,
+                "wealth": -10,
+                "supplies": -5
+            }
+        }
+    },
+    {
+        "event": "appointment",
+        "text": "You look paler than I remember, are you eating properly? How about I schedule a massage for you.",
+        "image": "images/little-tim.png",
+        "name": "Doctor Green?",
+        "left": {
+            "text": "No massage, no massage, no massage...",
+            "risk": 0.00,
+            "effect": {
+                "physical": -5,
+                "mental": 5,
+                "wealth": 0,
+                "supplies": -5
+            }
+        },
+        "right": {
+            "text": "A massage sounds good, thanks trustworthy doctor!",
+            "risk": 0.05,
+            "effect": {
+                "physical": 20,
+                "mental": -10,
+                "wealth": -10,
+                "supplies": 0
+            }
+        }
+    },
+    {
+        "event": "appointment",
+        "text": "Are you still coming to visit me at the end of the month? I miss seeing my grandchild's face...",
+        "image": "images/granny.png",
+        "name": "Granny?",
+        "left": {
+            "text": "That's what the internet's for.",
+            "risk": 0.00,
+            "effect": {
+                "physical": -5,
+                "mental": 5,
+                "wealth": 0,
+                "supplies": -5
+            }
+        },
+        "right": {
+            "text": "I'm already half-way there!",
+            "risk": 0.05,
+            "effect": {
+                "physical": 0,
+                "mental": 15,
+                "wealth": -5,
+                "supplies": 0
+            }
+        }
+    },
+    {
         "event": "game-won",
         "text": "The wait is over, a clinically tested vaccine is being released as I speak, humanity has won.",
         "image": "images/prime-minister.png",
