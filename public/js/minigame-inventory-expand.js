@@ -11,7 +11,7 @@ $("#game-inventory-expand-button").on("click", () => {
     let leftValue;
     let inventoryHeight;
     let transform;
-    if (height == 50){
+    if (height == 50) {
         height = "80%";
         buttonText = "Close";
         topValue = "20%";
@@ -19,7 +19,7 @@ $("#game-inventory-expand-button").on("click", () => {
         inventoryHeight = "100%";
         width = $("#inventory-grid-container").width() + "px";
         transform = "translateX(-50%)";
-    } else{
+    } else {
         height = "50px";
         buttonText = "Inventory";
         topValue = "90%";

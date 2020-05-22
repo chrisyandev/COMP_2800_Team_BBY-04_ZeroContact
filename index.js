@@ -168,22 +168,23 @@ MongoClient.connect(connectionString, {
                     })
                 } else {
                     if (user[0].days < req.body.days) {
-                        usersCollection.findOneAndUpdate(
-                            {username: req.body.username},
-                            {
-                                $set: {
-                                    days: req.body.days
-                                }
+                        usersCollection.findOneAndUpdate({
+                            username: req.body.username
+                        }, {
+                            $set: {
+                                days: req.body.days
                             }
-                        )
+                        })
                     }
                 }
-            }).catch((error) => console.error(error)) 
+            }).catch((error) => console.error(error))
         })
 
         // get request for game over page.
         app.get("/game-over", (req, res) => {
-            usersCollection.find().sort({ days: -1 }).toArray().then(highscores => {
+            usersCollection.find().sort({
+                days: -1
+            }).toArray().then(highscores => {
                 let userhighest = highscores.find(element => element.username == req.query.username)
                 res.render("pages/zero-contact/gameover.ejs", {
                     highscores: highscores,
@@ -192,21 +193,21 @@ MongoClient.connect(connectionString, {
                     highest: userhighest
                 });
             }).catch(error => console.error(error));
-            
+
         })
-        
+
         //Post request for deleting accounts.
         app.post("/delete", (req, res) => {
             console.log(req.body)
-            usersCollection.deleteOne(
-                {username: req.body.username},
-            ).then(
+            usersCollection.deleteOne({
+                username: req.body.username
+            }, ).then(
                 res.redirect("/")
-                
+
             )
             console.log("User Deleted.")
         })
-        
+
         //Play again button to redirect to character creation
         app.post("/minigame", (req, res) => {
             console.log(req.body.username)

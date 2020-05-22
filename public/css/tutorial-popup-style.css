@@ -2,7 +2,7 @@
 /* Tutorial Screen styling */
 /* ------------------------------------------------------------------- */
 
-#tutorial-container{
+#tutorial-container {
     position: absolute;
     top: 0;
     left: 0;
@@ -10,18 +10,18 @@
     font-family: 'Courier New', Courier, monospace;
 }
 
-#tutorial-body{
+#tutorial-body {
     text-align: center;
     overflow: auto;
     height: 50vh;
 }
 
-#tutorial-body h1{
+#tutorial-body h1 {
     font-weight: bold;
     font-size: 30px;
 }
 
-#tutorial-header{
+#tutorial-header {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -30,33 +30,33 @@
     height: 20vh;
 }
 
-#tutorial-header h2{
+#tutorial-header h2 {
     font-weight: bold;
 }
 
-#tutorial-footer{
+#tutorial-footer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
 
-#tutorial-footer button{
+#tutorial-footer button {
     font-weight: bold;
 }
 
-#tutorial-container h1{
+#tutorial-container h1 {
     text-align: center;
     font-weight: bold;
 }
 
-.img-fluid{
+.img-fluid {
     max-width: 75%;
     height: auto;
 }
 
-@media only screen and (max-width: 768px){
-    #tutorial-body h1{
+@media only screen and (max-width: 768px) {
+    #tutorial-body h1 {
         font-size: 20px;
     }
 

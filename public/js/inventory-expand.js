@@ -9,15 +9,15 @@ $("#inventory-expand-button").on("click", () => {
     let buttonText;
     let topValue;
     let transform;
-    if (height == 20){
+    if (height == 20) {
         height = "80%";
         width = $("#card-container").width() + "px";
         buttonText = "Close";
         topValue = "20%"
         transform = "translateX(-50%)";
-    } else{
+    } else {
         height = "20px";
-        width = (280/530) * $(window).height() / 2 + "px";
+        width = (280 / 530) * $(window).height() / 2 + "px";
         buttonText = "Inventory";
         topValue = "95%";
         transform = "translateX(-15%)";

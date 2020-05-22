@@ -26,7 +26,7 @@
                 <div id="top">
                     <input id="create" type="button" value="Create Character" onclick=loadCharacterPage()>
                 </div>
-    
+
                 <div id="profile">
                     <!-- contains text -->
                     <div id="main" style="background-color:#dddfcb; ">
@@ -36,23 +36,26 @@
                         <p id="pandemic"></p>
                     </div>
                     <br>
-    
+
                     <input id="chooseProfile" type="submit" style="position:relative; width:100%" value="Select">
-                    <p> <!--empty space--> </p>
-                    
-    
+                    <p>
+                        <!--empty space-->
+                    </p>
+
+
                     <!--Username-->
                     <input style="display:none" type="text" value="<%= username %>" name="username">
                     <!--Randomly generated data to send-->
                     <input id="sendName" style="display:none" type="text" value="failedName" name="characterName">
                     <input id="sendAge" style="display:none" type="text" value="failedAge" name="characterAge">
                     <input id="sendGender" style="display:none" type="text" value="failedGender" name="characterGender">
-                    <input id="sendPandemicName" style="display:none" type="text" value="failedPanName" name="pandemicName">
+                    <input id="sendPandemicName" style="display:none" type="text" value="failedPanName"
+                        name="pandemicName">
                 </div>
-    
+
             </form>
         </div>
-        
+
     </body>
 
     </html>

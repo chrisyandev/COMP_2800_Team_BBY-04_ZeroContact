@@ -85,13 +85,13 @@ function resizeAll() {
 
     setHeight($statsContainerInner, WIDTH_TO_HEIGHT * gameHeight);
     setWidth($statsContainerInner, statsContainerInnerRatio * gameHeight);
-    
+
     const progressBars = $('.progress-bar');
     $.each(progressBars, function (index, bar) {
         setHeight($(bar), progressBarWidthRatio * gameHeight);
         setWidth($(bar), progressBarHeightRatio * gameHeight);
     });
-    
+
     $('#card').position({
         my: 'center',
         at: 'center',

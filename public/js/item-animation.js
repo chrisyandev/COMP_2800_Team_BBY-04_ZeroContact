@@ -2,12 +2,12 @@
 /* Function class for creating a duplicate of items and animating it   */
 /* ------------------------------------------------------------------- */
 
-function ItemAnimation(item, toPosition, fromPosition, inventoryItemReceived){
+function ItemAnimation(item, toPosition, fromPosition, inventoryItemReceived) {
     this.itemEntity = item.$itemContainer.clone();
     this.toPos = toPosition;
     this.fromPos = fromPosition;
 
-    if (inventoryItemReceived){
+    if (inventoryItemReceived) {
         // If the item in the minigame is clicked by the player
 
         $("#minigame-container").append(this.itemEntity);
@@ -18,7 +18,7 @@ function ItemAnimation(item, toPosition, fromPosition, inventoryItemReceived){
 
         this.toPos.top -= 120;
         this.toPos.left += 60;
-    } else{
+    } else {
         // If the item in the minigame is collected by other shoppers
 
         $("#inventory-grid-container").append(this.itemEntity);
@@ -38,7 +38,7 @@ function ItemAnimation(item, toPosition, fromPosition, inventoryItemReceived){
     }
 
     this.itemEntity.css({
-        "position":"absolute",
+        "position": "absolute",
         "pointer-events": "none",
         "top": fromPosition.top,
         "left": fromPosition.left,
@@ -54,7 +54,7 @@ function ItemAnimation(item, toPosition, fromPosition, inventoryItemReceived){
 
     // Remove item after the animation is played
     let clone = this.itemEntity;
-    this.timer = setTimeout(function(){
+    this.timer = setTimeout(function () {
         clone.remove();
     }, 500);
 

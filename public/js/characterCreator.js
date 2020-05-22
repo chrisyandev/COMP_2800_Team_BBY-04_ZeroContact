@@ -64,11 +64,11 @@ function genPandemic() {
 
     let panName = "";
     //Two different types of naming
-    if(nameType > 0.5) {
+    if (nameType > 0.5) {
         wordLength = 4;
         //[Letter][Number][Letter][Number]
-        for (let i = 0; i < wordLength; i ++) {
-            if(i % 2 == 0) {
+        for (let i = 0; i < wordLength; i++) {
+            if (i % 2 == 0) {
                 panName += lettersUpper[Math.round(Math.random() * (lettersUpper.length - 1))];
             } else {
                 panName += Math.round(Math.random() * 9)
@@ -79,8 +79,8 @@ function genPandemic() {
         //Start name with capital
         panName += lettersUpper[Math.round(Math.random() * (lettersUpper.length - 1))];
         //Attempting to add alternating vowels in an attempt to make a more realistic name
-        for(let i = 0; i < (wordLength - 1); i ++) {
-            if(i % 2 == 0) {
+        for (let i = 0; i < (wordLength - 1); i++) {
+            if (i % 2 == 0) {
                 panName += vowels[Math.round(Math.random() * (vowels.length - 1))];
             } else {
                 panName += lettersLower[Math.round(Math.random() * (lettersLower.length - 1))];

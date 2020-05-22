@@ -204,59 +204,61 @@ body {
 }
 
 .landing-button {
-    border: 1px solid #222034;  
+    border: 1px solid #222034;
     border-radius: 2px;
-    background-color:#807caf;
-    padding:3px;
-    margin-top:40px;
+    background-color: #807caf;
+    padding: 3px;
+    margin-top: 40px;
     position: absolute;
-    left:50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     z-index: 5;
-    
+
 }
 
-#play-button{
-    border: 1px solid #222034;  
+#play-button {
+    border: 1px solid #222034;
     border-radius: 2px;
-    background-color:#807caf;
-    padding:3px;
+    background-color: #807caf;
+    padding: 3px;
     position: absolute;
-    left:50%;
-    top:30%;
+    left: 50%;
+    top: 30%;
     transform: translate(-50%, -50%);
 }
 
 #sign-up {
-    margin-top:40px;
+    margin-top: 40px;
 }
 
 #about-us {
     margin-top: 80px;
 }
 
-#field1, #field2{
+#field1,
+#field2 {
     z-index: 10;
     border: 1px solid #dddfcb;
     border-radius: 2px;
-    height:30px;
+    height: 30px;
     width: 50%;
-    color:black;
+    color: black;
 }
+
 #submit {
     position: absolute;
-    left:50%;
+    left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
 }
 
-#profile-pictures > img {
+#profile-pictures>img {
     border: 1px solid #807caf;
     border-radius: 40px;
     position: relative;
-    bottom:1%;
-    z-index:10;
-    margin:7px;
+    bottom: 1%;
+    z-index: 10;
+    margin: 7px;
 }
 
 #tweet {

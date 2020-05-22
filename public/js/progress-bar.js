@@ -35,7 +35,7 @@ function updateProgressBars(effect) {
     $('#wealth').progressbar('value', newWealth);
     changeFillColor($('#wealth').find('.ui-progressbar-value'), effect.wealth);
 
-    let newSupplies = add($('#supplies').progressbar('value'),effect.supplies);
+    let newSupplies = add($('#supplies').progressbar('value'), effect.supplies);
     $('#supplies').progressbar('value', newSupplies);
     changeFillColor($('#supplies').find('.ui-progressbar-value'), effect.supplies);
 }
@@ -69,7 +69,7 @@ function changeFillColor($fill, choiceStat) {
             'transition': 'width 0.5s'
         });
     }
-    setTimeout(function() {
+    setTimeout(function () {
         $fill.css({
             'background-color': '#807caf',
             'transition': 'background-color 0.2s ease'
