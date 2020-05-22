@@ -109,8 +109,9 @@ function setWidth($element, value) {
 
 function resizeModals() {
     let screenWidth = $(window).width();
-    $('.modal').css('width', screenWidth + 'px');
-    $('.modal-dialog').css('width', (screenWidth * 0.9) + 'px');
+    // $('.modal').css('width', screenWidth + 'px');
+    // $('.modal-dialog').css('width', (screenWidth * 0.9) + 'px');
+    $('achievements-window').css('width', screenWidth);
 }
 
 // function setViewportWidth() {
