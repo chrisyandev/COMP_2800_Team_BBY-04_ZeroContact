@@ -7,7 +7,7 @@
     "infectionRisk":-0.02,
     "effect": {
         "physical": 0,
-        "mental": 0,
+        "mental": 10,
         "wealth": 0,
         "supplies": 0
         }
@@ -19,7 +19,7 @@
         "useableOn": ["hangout", "appointment"],
         "infectionRisk":-0.04,
         "effect": {
-            "physical": 0,
+            "physical": 10,
             "mental": 0,
             "wealth": 0,
             "supplies": 0

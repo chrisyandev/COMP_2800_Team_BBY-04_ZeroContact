@@ -116,8 +116,10 @@ function showGameLost() {
 
     $('#game-over-redirect').click(() => {
         console.log('Clicked Next');
-        window.location.assign('#');
+        let redirectURL = "/game-over?username=" + document.getElementById("user").innerHTML + "&score=" + day;
+        window.location.assign(redirectURL);
     });
+
 }
 
 /** Shows the game over modal with game won message. */
