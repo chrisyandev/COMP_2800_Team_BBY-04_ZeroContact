@@ -40,9 +40,11 @@ $(document).ready(function () {
     setViewportWidth();
     initValues();
     resizeAll();
+    resizeModals();
     $(window).resize(() => {
         initValues();
         resizeAll();
+        resizeModals();
     });
 });
 
@@ -112,6 +114,6 @@ function resizeModals() {
 }
 
 function setViewportWidth() {
-    let content = `width=${$(window).width()}, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no`;
-    document.querySelector('meta[name="viewport"]').setAttribute("content", content);
+    let content = `width=${$(window).width()}, initial-scale=1.0, user-scalable=no, shrink-to-fit=no`;
+    document.querySelector('meta[name="viewport"]').setAttribute('content', content);
 }
