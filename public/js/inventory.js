@@ -11,11 +11,6 @@ $(document).ready(() => {
     $.getJSON('items-data.json', function (data) {
         itemDataArray = data;
 
-        /*
-        // Highlights the items which are useful to the card
-        let tempUseCases = ["Water", "Food", "Health"];
-        highlightItem(tempUseCases);
-        */
     });
 
     // Turns the children of this container into sortable elements

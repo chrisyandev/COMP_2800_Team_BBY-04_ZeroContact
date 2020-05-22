@@ -57,11 +57,6 @@ $(document).ready(function(){
                         itemCreateNum);
 
         }
-        /*
-        // Highlights the items which are useful to the card
-        let tempUseCases = ["Water", "Food", "Health"];
-        highlightItem(tempUseCases);
-        */
 
        let tempUseCases = [cardDataArray[cardNum].event];
        console.log(tempUseCases);
