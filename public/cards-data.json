@@ -283,5 +283,57 @@
                 "supplies": -5
             }
         }
+    },
+    {
+        "event": "home-entertainment",
+        "text": "Mortal, do you want unlimited power?",
+        "image": "images/little-timmy.png",
+        "name": "Mephistopheles",
+        "left": {
+            "text": "Hahaha ULTIMATE POWER!",
+            "risk": 0.00,
+            "effect": {
+                "physical": -5,
+                "mental": 5,
+                "wealth": 0,
+                "supplies":0
+            }
+        },
+        "right": {
+            "text": "Is the dream I had...",
+            "risk": 0.00,
+            "effect": {
+                "physical": 5,
+                "mental": -5,
+                "wealth": 0,
+                "supplies": 0
+            }
+        }
+    },
+    {
+        "event": "home-entertainment",
+        "text": "A strange boy is staring at you from outside your window.",
+        "image": "images/little-timmy.png",
+        "name": "Mephistopheles",
+        "left": {
+            "text": "Begone DEMON!",
+            "risk": 0.00,
+            "effect": {
+                "physical": -10,
+                "mental": 5,
+                "wealth": 0,
+                "supplies":0
+            }
+        },
+        "right": {
+            "text": "Who's letting their child out?",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": 0,
+                "wealth": 0,
+                "supplies": 0
+            }
+        }
     }
 ]
