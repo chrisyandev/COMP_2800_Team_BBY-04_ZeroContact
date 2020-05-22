@@ -98,22 +98,7 @@ html, body{
 /*-------------------------------------------------------------------------------*/
 /*   Item usage prompt styling*/
 /*-------------------------------------------------------------------------------*/
-/*
-#item-use-prompt {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    top: 10%;
-    left: 0;
-    background-color: rgba(185, 185, 185, 0.692);
-    opacity: 0;
-    z-index: 3;
-}*/
+
 .close{
     color: white;
     opacity: 1;
@@ -143,7 +128,7 @@ html, body{
 #item-use-effect{
     font-size: 20px;
     color: black;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
     text-align: center;
 }
 
@@ -218,7 +203,7 @@ html, body{
 
 @media only screen and (max-width: 768px){
     #item-use-content{
-        height: 500px;
+        height: 80vh;
     }
 
     #item-use-body{
@@ -235,6 +220,40 @@ html, body{
 
     #item-use-body p{
         font-size: 20px;
+    }
+
+    #item-use-body img{
+        width: 100%;
+    }
+
+    #item-use-footer button{
+        width: 75px;
+    }
+}
+
+@media only screen and (max-height: 768px){
+    #item-use-content{
+        height: 80vh;
+    }
+
+    #item-use-body{
+        height: 90vh;
+    }
+
+    #item-use-header h2{
+        font-size: 15px
+    }
+
+    #item-use-header h2{
+        font-size: 15px;
+    }
+
+    #item-use-body p{
+        font-size: 13px;
+    }
+
+    #item-use-effect{
+        margin-bottom: 25px;
     }
 
     #item-use-body img{
