@@ -82,6 +82,9 @@ function removeShelfItem(item, itemData, itemReceived, quantity, shopper){
         let itemAnimation = new ItemAnimation(item, $inventory.offset(),
                                                 item.$itemContainer.offset(), true);
         itemAnimationArray.push(itemAnimation);
+
+        // Play the clock ticking audio
+        document.querySelector("#audio-item-taken").cloneNode(true).play();
     } else{
         if(shopper != undefined){
             let itemAnimation = new ItemAnimation(item, shopper.position(),

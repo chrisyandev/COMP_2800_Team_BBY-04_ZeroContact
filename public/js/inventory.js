@@ -110,7 +110,7 @@ function InventoryItem(imageName, type, use, risk, effect, text, container, arra
     // HTML tags
     this.$itemContainer = $('<div data-id="' + this.index + '" class="inventory-item" ' +
                             'data-html="true" data-toggle="tooltip" title="'+
-                            "<b>" + this.item + ":</b>" + "<br>" + this.desc+ '"></div>');
+                            this.item + ":" + this.desc+ '"></div>');
     this.$itemImg = $("<img src='" + this.imageUrl + "'>");
     this.$itemDisplay = $("<h1>" + this.quantity + "</h1>");
 

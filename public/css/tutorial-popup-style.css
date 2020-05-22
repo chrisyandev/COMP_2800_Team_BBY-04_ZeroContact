@@ -16,7 +16,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: row;
+    flex-direction: column;
     height: 550px;
 }
 
@@ -54,26 +54,6 @@
     overflow: auto;
 }
 
-@media only screen and (max-width: 768px){
-    #tutorial-body{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: row;
-        height: 350px;
-        text-align: center;
-    }
-
-    #tutorial-body h1{
-        font-size: 20px;
-    }
-
-    #tutorial-body img{
-        max-width: 50%;
-        height: auto;
-    }
-}
-
 @media only screen and (max-height: 768px){
     #tutorial-body{
         display: flex;
@@ -86,6 +66,26 @@
 
     #tutorial-body h1{
         font-size: 16px;
+    }
+
+    #tutorial-body img{
+        max-width: 50%;
+        height: auto;
+    }
+}
+
+@media only screen and (max-width: 768px){
+    #tutorial-body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 350px;
+        text-align: center;
+    }
+
+    #tutorial-body h1{
+        font-size: 20px;
     }
 
     #tutorial-body img{
