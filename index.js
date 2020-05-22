@@ -253,6 +253,11 @@ MongoClient.connect(connectionString, {
             console.log("User Deleted.")
         })
 
+        app.post("/minigame", (req, res) => {
+            console.log(req.body.username)
+            res.render("pages/zero-contact/minigame.ejs", {username: req.body.username})
+        })
+
         //Rendering character creation first from play
         app.post("/intro", (req, res) => {
             res.render("pages/zero-contact/characterCreator.ejs", {
