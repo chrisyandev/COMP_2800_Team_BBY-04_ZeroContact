@@ -255,7 +255,9 @@ MongoClient.connect(connectionString, {
 
         app.post("/minigame", (req, res) => {
             console.log(req.body.username)
-            res.render("pages/zero-contact/minigame.ejs", {username: req.body.username})
+            res.render("pages/zero-contact/characterCreator.ejs", {
+                username: req.body.username
+            })
         })
 
         //Rendering character creation first from play
