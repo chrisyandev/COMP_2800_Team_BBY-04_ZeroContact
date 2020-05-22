@@ -56,6 +56,7 @@ function startGame(){
     }, 3000);
 
     // Adds drag scrolling to the container and allows items to be clicked
+    // Attribution: http://davetayls.github.io/jquery.kinetic/
     $("#inventory-grid-container").kinetic({
         stopped: function(){
             timer = setTimeout(function(){

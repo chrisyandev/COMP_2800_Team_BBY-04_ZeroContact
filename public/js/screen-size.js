@@ -104,3 +104,13 @@ function setHeight($element, value) {
 function setWidth($element, value) {
     $element.css('width', value + 'px');
 }
+
+// function resizeModals() {
+//     let currentGameWidth = $('#stats-spacer').width() + 'px';
+//     $('.modal-dialog').css('width', currentGameWidth);
+// }
+
+// function setViewportWidth() {
+//     let content = `width=${$(window).width()}, initial-scale=1.0, user-scalable=no, shrink-to-fit=no`;
+//     document.querySelector('meta[name="viewport"]').setAttribute('content', content);
+// }

@@ -3,7 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
     <title>Zero Contact</title>
 
     <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
@@ -14,7 +16,7 @@
         integrity="sha256-rByPlHULObEjJ6XQxW/flG2r+22R5dKiAoef+aXWfik=" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
         integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
- 
+
     <link rel="stylesheet" href="css/custom-bootstrap.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/inventory-style.css">
@@ -155,11 +157,11 @@
                                 </thead>
                                 <tbody>
                                     <% for (let i = 0; i < Math.min(highscores.length, 10); i++) { %>
-                                        <tr>
-                                            <th scope="row"><%= i + 1 %></th>
-                                            <td><%= highscores[i].username %></td>
-                                            <td><%= highscores[i].days %></td>
-                                        </tr>
+                                    <tr>
+                                        <th scope="row"><%= i + 1 %></th>
+                                        <td><%= highscores[i].username %></td>
+                                        <td><%= highscores[i].days %></td>
+                                    </tr>
                                     <% } %>
                                 </tbody>
                             </table>
@@ -185,7 +187,7 @@
 
                 </div>
                 <div id="tutorial-body" class="modal-body">
-                    
+
                 </div>
                 <div id="tutorial-footer" class="modal-footer">
 
@@ -242,7 +244,7 @@
         <div class="inventory-drop-zone">
             <h1>Drag item here to use it</h1>
         </div>
-        
+
         <div class="modal fade" id="item-use-prompt" role="dialog">
             <div class="modal-dialog">
                 <!-- Content -->
@@ -256,7 +258,6 @@
                         <p id="item-use-effect"></p>
                     </div>
                     <div id="item-use-footer" class="modal-footer">
-                        
                         <button class='item-use-button btn btn-primary' id="item-use-accept">Yes</button>
                         <button class='item-use-button btn btn-danger' id="item-use-decline">No</button>
                     </div>
@@ -274,16 +275,16 @@
             </div>
             <button class="item-use-button" id="item-use-close">X</button>
         </div>
-        --> 
+        -->
     </div>
-    
+
     <div id="myProfile" class="modal">
         <div id="myProfileContent" class="modal-content">
             <b>
                 <p id="characterName">1</p>
                 <p id="characterAge">2</p>
                 <p id="characterGender">3</p>
-                <p id="pandemicGenerated">4</p>  
+                <p id="pandemicGenerated">4</p>
             </b>
             <input type='button' id="closeProfile" value="Close" onclick="closeProfile()">
         </div>
