@@ -16,7 +16,7 @@ body {
     width: 305.35px;
     height: 290px;
     padding-top: 20px;
-    border: 1px solid red;
+    border: 1px solid #222034;
     display: none;
     background-color: #dddfcb;
 }
@@ -36,6 +36,11 @@ body {
 }
 
 #create, #chooseProfile {
-    border-radius: 4px;
-    font-size: 120%;
+    border: 1px solid #222034;
+    border-radius: 2px;
+    font-family: 'Courier New', Courier, monospace;
+    color: black;
+    font-weight: bold;
+    font-size: 2.8vh;
+    background-color: #807caf;
 }
