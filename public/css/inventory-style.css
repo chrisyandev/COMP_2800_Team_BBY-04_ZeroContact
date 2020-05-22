@@ -193,7 +193,7 @@ html, body{
     font-weight: bold;
 }
 
-#item-use-body{
+#item-use-body.modal-body{
     overflow: auto;
 }
 
