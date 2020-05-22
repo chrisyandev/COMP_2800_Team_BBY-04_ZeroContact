@@ -157,8 +157,8 @@
     {
         "event": "hangout",
         "text": "Let's play a video game together.",
-        "image": "images/cindy-lou.png",
-        "name": "Cindy Lou",
+        "image": "images/cindy.png",
+        "name": "Cindy",
         "left": {
             "text": "Not today.",
             "risk": 0.00,
@@ -261,8 +261,8 @@
     {
         "event": "hangout",
         "text": "I haven't seen you in a while. Lets go out tonight! Please?",
-        "image": "images/blonde-woman.png",
-        "name": "Hadi Coates",
+        "image": "images/hadi.png",
+        "name": "Hadi",
         "left": {
             "text": "Not tonight.",
             "risk": 0.00,
