@@ -39,9 +39,11 @@ const progressBarHeightRatio = 41 / originalHeight;
 $(document).ready(function () {
     initValues();
     resizeAll();
+    resizeModals();
     $(window).resize(() => {
         initValues();
         resizeAll();
+        resizeModals();
     });
 });
 
@@ -105,10 +107,11 @@ function setWidth($element, value) {
     $element.css('width', value + 'px');
 }
 
-// function resizeModals() {
-//     let currentGameWidth = $('#stats-spacer').width() + 'px';
-//     $('.modal-dialog').css('width', currentGameWidth);
-// }
+function resizeModals() {
+    let screenWidth = $(window).width();
+    $('.modal').css('width', screenWidth + 'px');
+    $('.modal-dialog').css('width', (screenWidth * 0.9) + 'px');
+}
 
 // function setViewportWidth() {
 //     let content = `width=${$(window).width()}, initial-scale=1.0, user-scalable=no, shrink-to-fit=no`;
