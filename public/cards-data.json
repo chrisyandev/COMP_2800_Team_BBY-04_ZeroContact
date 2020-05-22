@@ -364,7 +364,7 @@
     },
     {
         "event": "home-entertainment",
-        "text": "It sounds like there's a party going on outside! You grab your wallet and...",
+        "text": "It sounds like there's a party going on just outside! BUt when you look the street is empty. You grab your wallet and...",
         "image": "images/little-tim.png",
         "name": "Mephistopheles",
         "left": {
@@ -389,8 +389,216 @@
         }
     },
     {
+        "event": "home-entertainment",
+        "text": "Your wallet is looking a little empty. How about I fill it up for you... heh... heh...",
+        "image": "images/little-tim.png",
+        "name": "Mephistopheles",
+        "left": {
+            "text": "BEGONE DEMON.",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": 5,
+                "wealth": 0,
+                "supplies":0
+            }
+        },
+        "right": {
+            "text": "CASH MONEY CASH MONEY CASH.",
+            "risk": 0.00,
+            "effect": {
+                "physical": -5,
+                "mental": -5,
+                "wealth": 15,
+                "supplies": -5
+            }
+        }
+    },
+    {
+        "event": "hangout",
+        "text": "Have you seen than freaky kid going around? Me and the boys think he might be related to this pandemic mess and are planning to track him down.",
+        "image": "images/flynn.png",
+        "name": "Faust Goethe",
+        "left": {
+            "text": "What kid?",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": 0,
+                "wealth": 0,
+                "supplies": -5
+            }
+        },
+        "right": {
+            "text": "I'm in (grabs silver cross).",
+            "risk": 0.10,
+            "effect": {
+                "physical": -10,
+                "mental": 10,
+                "wealth": 0,
+                "supplies": 0
+            }
+        }
+    },
+    {
+        "event": "hangout",
+        "text": "Bro, you wanna come down the club and get wasted with me?",
+        "image": "images/flynn.png",
+        "name": "Jaque Danielle",
+        "left": {
+            "text": "Yeeee boy, sign me UP!",
+            "risk": 0.05,
+            "effect": {
+                "physical": -10,
+                "mental": 10,
+                "wealth": -10,
+                "supplies": 5
+            }
+        },
+        "right": {
+            "text": "Sorry, I'd rather not.",
+            "risk": 0.00,
+            "effect": {
+                "physical": 5,
+                "mental": -5,
+                "wealth": 0,
+                "supplies": -5
+            }
+        }
+    },
+    {
+        "event": "home-entertainment",
+        "text": "If you don't sell your toilet paper to this young master then I will make you unable to eat and walk.",
+        "image": "images/flynn.png",
+        "name": "Shen Tu Nantian",
+        "left": {
+            "text": "Take this offerin young master Shen.",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": 0,
+                "wealth": 10,
+                "supplies": -10
+            }
+        },
+        "right": {
+            "text": "Over my dead body.",
+            "risk": 0.00,
+            "effect": {
+                "physical": -5,
+                "mental": -5,
+                "wealth": -5,
+                "supplies": 10
+            }
+        }
+    },
+    {
+        "event": "hangout",
+        "text": "Wanna go for a walk outside together? Together meaning 6 feet away from each other that is.",
+        "image": "images/annie.png",
+        "name": "May Clover",
+        "left": {
+            "text": "Let's go, I've been meaning to stretch my legs.",
+            "risk": 0.02,
+            "effect": {
+                "physical": 5,
+                "mental": 5,
+                "wealth": 0,
+                "supplies": -10
+            }
+        },
+        "right": {
+            "text": "Maybe when this whole thing clears up.",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": 0,
+                "wealth": 0,
+                "supplies": -5
+            }
+        }
+    },
+    {
+        "event": "hangout",
+        "text": "Hey, I'm a little tipsy right now, you mind coming to pick me up?",
+        "image": "images/flynn.png",
+        "name": "Lennie Doppelginger",
+        "left": {
+            "text": "I'm on my way bud.",
+            "risk": 0.05,
+            "effect": {
+                "physical": -5,
+                "mental": 10,
+                "wealth": -5,
+                "supplies": 0
+            }
+        },
+        "right": {
+            "text": "Sorry but it's every person for themselves.",
+            "risk": 0.00,
+            "effect": {
+                "physical": 5,
+                "mental": -5,
+                "wealth": 0,
+                "supplies": -5
+            }
+        }
+    },
+    {
+        "event": "food",
+        "text": "Hey, we've been pretty good neighbours for years already, right? Wanna sell me some food?",
+        "image": "images/bill.png",
+        "name": "Prok Mayunnaise",
+        "left": {
+            "text": "On the account of our relationship, sure thing.",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": 10,
+                "wealth": 10,
+                "supplies": -20
+            }
+        },
+        "right": {
+            "text": "I need every morsel I have.",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": -5,
+                "wealth": 0,
+                "supplies": 0
+            }
+        }
+    },
+    {
+        "event": "home-entertainment",
+        "text": "Want to actually get some work on this webpage done today?",
+        "image": "images/bill.png",
+        "name": "Prok Mayunnaise",
+        "left": {
+            "text": "I think I'll sleep all day instead.",
+            "risk": 0.00,
+            "effect": {
+                "physical": 5,
+                "mental": 5,
+                "wealth": 0,
+                "supplies": -5
+            }
+        },
+        "right": {
+            "text": "Oh boy DO I!",
+            "risk": 0.00,
+            "effect": {
+                "physical": -5,
+                "mental": -5,
+                "wealth": 15,
+                "supplies": -5
+            }
+        }
+    },
+    {
         "event": "game-won",
-        "text": "A cure has been found.",
+        "text": "My citizens, the wait is over. A clinically tested vaccination is being released to the public as I speak, humanity has won and always will.",
         "image": "images/prime-minister.png",
         "name": "Prime Minister",
         "left": {
