@@ -425,24 +425,64 @@ body{
     }
 }
 
-@media only screen and (min-height: 640px){
-    #items-list-container{
-        max-height: 380px;
-        overflow: auto;
-    }
-}
-
 @media only screen and (min-width: 1024px) and (min-height: 1280px){
     #minigame-message{
         font-size: 24px;
     }
+    
     .game-grid{
         top: -100px;
         width: 900px;
         height: 800px;
     }
+
     #items-list-container{
         max-height: 800px;
         overflow: auto;
+    }
+}
+
+@media only screen and (max-height: 860px){
+    .game-grid{
+        height: 280px;
+    }
+
+    #end-results-screen{
+        padding-top: 70px;
+    }
+
+    #items-list-container{
+        max-height: 180px;
+        overflow: auto;
+    }
+}
+
+@media only screen and (max-height: 468px){
+    #end-results-screen{
+        padding-top: 50px;
+    }
+
+    #end-results-screen h2{
+        font-size: 20px;
+    }
+
+    #items-list-container{
+        max-height: 100px;
+    }
+
+    .results-item h2{
+        font-size: 15px;
+    }
+
+    .results-item h2{
+        font-size: 10px;
+    }
+
+    #end-body{
+        height: 150px;
+    }
+
+    #minigame-container{
+        padding: 0 0;
     }
 }

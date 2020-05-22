@@ -47,6 +47,9 @@ function startClock(){
                     "box-shadow": "0 0 30px rgb(125, 25, 25)",
                     "outline": "15px double rgb(125, 25, 25)",
                 });
+
+                // Play the clock ticking audio
+                document.querySelector("#audio-low-time-tick").play();
             } 
 
             if (timeElapsed == 1){
@@ -61,6 +64,9 @@ function startClock(){
             }
 
             createTimer(ctx, radius, timeElapsed);
+
+            // Play the clock ticking audio
+            document.querySelector("#audio-clock-tick").play();
         }
 
     }, 1000);

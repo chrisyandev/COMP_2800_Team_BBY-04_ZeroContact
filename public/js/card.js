@@ -148,10 +148,11 @@ function createCard(cardData) {
 $(document.body).on('pick-next-card', function (event, gameState) {
     if (gameState === 'lost') {
         cardNum = 0;
-        storeHighScore();
+        storeHighScore(day);
     } else if (gameState === 'won') {
         cardNum = cardDataArray.length - 1;
-        storeHighScore();
+        storeHighScore(day + 1);
+        $('#day').text('Day ' + (day + 1));
     } else {
         cardNum = pickRandCard();
         updateDay();
@@ -185,7 +186,7 @@ function updateDay() {
 }
 
 /** Sends the day the player survived until. */
-function storeHighScore() {
+function storeHighScore(days) {
     fetch("/longest-days", {
         method: "put",
         headers: {
@@ -193,7 +194,7 @@ function storeHighScore() {
         },
         body: JSON.stringify({
             username: document.getElementById("user").innerHTML,
-            days: day
+            days: days
         })
     }).then(res => {
         if (res.ok) return res.json()
