@@ -599,6 +599,164 @@
         }
     },
     {
+        "event": "hangout",
+        "text": "You promised you would take fido to the park with me weeks ago!",
+        "image": "images/annie.png",
+        "name": "May Clover",
+        "left": {
+            "text": "Maybe when this whole thing clears up.",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": 0,
+                "wealth": 0,
+                "supplies": -5
+            }
+    
+        },
+        "right": {
+            "text": "Come here boy!",
+            "risk": 0.02,
+            "effect": {
+                "physical": 10,
+                "mental": 5,
+                "wealth": 0,
+                "supplies": -10
+            }
+        }
+    },
+    {
+        "event": "hangout",
+        "text": "I'm going to freak if I don't get a Yoga session in soon!",
+        "image": "images/hadi.png",
+        "name": "Hadi",
+        "left": {
+            "text": "Just do it at home!",
+            "risk": 0.00,
+            "effect": {
+                "physical": -2,
+                "mental": 5,
+                "wealth": 0,
+                "supplies": 0
+            }
+        },
+        "right": {
+            "text": "I'll channel my chakras.",
+            "risk": 0.05,
+            "effect": {
+                "physical": 15,
+                "mental": 20,
+                "wealth": -10,
+                "supplies": 0
+            }
+        }
+    },
+    {
+        "event": "hangout",
+        "text": "Lets go play soccer! Come on!",
+        "image": "images/amir.png",
+        "name": "Amir",
+        "left": {
+            "text": "I don't know...",
+            "risk": 0.00,
+            "effect": {
+                "physical": -5,
+                "mental": -10,
+                "wealth": 0,
+                "supplies": 0
+            }
+        },
+        "right": {
+            "text": "Batter up!",
+            "risk": 0.04,
+            "effect": {
+                "physical": 10,
+                "mental": 15,
+                "wealth": 0,
+                "supplies": 0
+            }
+        }
+    },
+    {
+        "event": "hangout",
+        "text": "JavaScript is not Java...",
+        "image": "images/amir.png",
+        "name": "Amir",
+        "left": {
+            "text": "Whatever you say...",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": -10,
+                "wealth": 0,
+                "supplies": 0
+            }
+        },
+        "right": {
+            "text": "You're darn right!",
+            "risk": 0.04,
+            "effect": {
+                "physical": 0,
+                "mental": 10,
+                "wealth": 0,
+                "supplies": 0
+            }
+        }
+    },
+    {
+        "event": "home-entertainment",
+        "text": "We're having a fun team building event on slack today. Want to join?",
+        "image": "images/chris-dtc.png",
+        "name": "Chris",
+        "left": {
+            "text": "Yeah, I'm busy.",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": -5,
+                "wealth": 0,
+                "supplies": 0
+            }
+            
+        },
+        "right": {
+            "text": "If I have to...",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": 10,
+                "wealth": 5,
+                "supplies": 0
+            }
+        }
+    },
+    {
+        "event": "food",
+        "text": "I made cookies!!!",
+        "image": "images/granny.png",
+        "name": "Granny",
+        "left": {
+            "text": "Looks Delicious",
+            "risk": 0.00,
+            "effect": {
+                "physical": -5,
+                "mental": 10,
+                "wealth": 0,
+                "supplies": 35
+            }
+        },
+        "right": {
+            "text": "I'm trying to watch my figure.",
+            "risk": 0.04,
+            "effect": {
+                "physical": 5,
+                "mental": -10,
+                "wealth": 0,
+                "supplies": 0
+            }
+        }
+    },
+    {
         "event": "game-won",
         "text": "The wait is over, a clinically tested vaccine is being released as I speak, humanity has won.",
         "image": "images/prime-minister.png",
