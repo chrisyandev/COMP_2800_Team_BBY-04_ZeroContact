@@ -92,29 +92,63 @@
                         <div class="tab-pane active" id="panel-profile" role="tabpanel">
                             <h3><b>About Our Game</b></h3>
                             <p>Do you have what it takes to survive a pandemic?</p>
-                            <p>Based off of COVID-19 (coronavirus), 
-                                Zero Contact puts you in the role of an average citizen in an beyond average life. 
-                                Can you make smart decisions for you and your family, stay safe, and survive until 
-                                a vaccine is created? Will you venture outside to grab supplies at the risk of 
-                                infection? Hang out with others against the orders of the government? Go out and 
+                            <p>Based off of COVID-19 (coronavirus),
+                                Zero Contact puts you in the role of an average citizen in an beyond average life.
+                                Can you make smart decisions for you and your family, stay safe, and survive until
+                                a vaccine is created? Will you venture outside to grab supplies at the risk of
+                                infection? Hang out with others against the orders of the government? Go out and
                                 exercise or stay at home? All of these choices play a role in deciding your fate.</p>
-                                <br>
-                                <h3><b>Privacy Policy</b></h3>
-                                <p>
-                                    Once you enter the site, you are already consenting to the use of cookies. For our entire site, we use
-                                    cookies for uniquely Identifying users and providing personalized features that require them.
-                                </p>
-                                <p>Your username is used to uniquely identify you so that your highscore (days survived), the stats that your
-                                    characters had, and tracking progression with achievements. </p>
-                                <p>Your password is hashed before being stored in the database and is unhashed when logging into the site. Your
-                                    password is never shared with anyone outside the Contact Zero development team.</p>
-                                <p>When you signup for our game through the account section of the site, you are automatically acknowledging
-                                    that you consent to having your username being visible to other users on the site. This is for the use of
-                                    the leaderboard, which displays player stats like how many day they survived.</p>
-                                <br>
-                                <h3><b>Contact Us</b></h3>
-                                <p>We at Zero Contact, we are always open to your feedback. Whether you want new features to be added, general feedback about the game, or want to ask us any questions, we are here.</p>
-                                <p>You can email us here: gbaluyut31@gmail.com</p>
+                            <br>
+                            <h3><b>Privacy Policy</b></h3>
+                            <p>
+                                Once you enter the site, you are already consenting to the use of cookies. For our
+                                entire site, we use
+                                cookies for uniquely Identifying users and providing personalized features that require
+                                them.
+                            </p>
+                            <p>Your username is used to uniquely identify you so that your highscore (days survived),
+                                the stats that your
+                                characters had, and tracking progression with achievements. </p>
+                            <p>Your password is hashed before being stored in the database and is unhashed when logging
+                                into the site. Your
+                                password is never shared with anyone outside the Contact Zero development team.</p>
+                            <p>When you signup for our game through the account section of the site, you are
+                                automatically acknowledging
+                                that you consent to having your username being visible to other users on the site. This
+                                is for the use of
+                                the leaderboard, which displays player stats like how many day they survived.</p>
+                            <br>
+                            <h3><b>Attributions of Assets</b></h3>
+                            <p>Background image used in landing page: "City Background" by reis. Original image can be
+                                found <a href="http://pixeljoint.com/pixelart/83915.htm">here.</a></p>
+                            <p>Background image used in the minigame was obtained from a Unity package.</p>
+                            <p>The images representing stats, all of the character sprites, the N95 mask, the gift card,
+                                and the hand sanitizer images are hand made by our
+                                designer, Chris Yan.</p>
+                            <p>Character sprites that are used in the minigame portion of the game are by Kyle Steven
+                                Schaff <a href="https://twitter.com/gamekrazzy">(@gamekrazzy on twitter)</a>. The
+                                sprites were orginally obtained <a
+                                    href="https://gamekrazzy.itch.io/8-direction-top-down-character?download">here.</a>
+                            </p>
+                            <p>Food pixel art used in the minigame were made by Unity developer <a
+                                    href="https://assetstore.unity.com/publishers/9216">Henry Software</a> and obtained
+                                from a free <a
+                                    href="https://assetstore.unity.com/packages/2d/environments/free-pixel-food-113523">Unity
+                                    package.</a> </p>
+                            <p>The coveted toilet paper used in the minigame section is posted on <a
+                                    href="http://pixelartmaker.com/art/b6180e16e66c589">this site.</a> </p>
+                            <h3><b>Disclaimer</b></h3>
+                            <p>
+                                Disclaimer: Any names and pictures in this game are purely fictional.
+                                And any relation to real-life names, persons, objects, concepts or otherwise
+                                similar sounding things is clearly coincidental and not representative of that
+                                person or thing.
+                            </p>
+                            <h3><b>Contact Us</b></h3>
+                            <p>We at Zero Contact, we are always open to your feedback. Whether you want new features to
+                                be added, general feedback about the game, or want to ask us any questions, we are here.
+                            </p>
+                            <p>You can email us here: gbaluyut31@gmail.com</p>
                         </div>
                         <div class="tab-pane" id="panel-leaderboard" role="tabpanel">
                             <table class="table">
@@ -148,8 +182,8 @@
             </div>
         </div>
     </div>
-    <!-- --------------- -->
 
+    <!-- Top bar -->
     <div id="wrapper">
         <div id="stats-spacer" class="set-width" data-toggle="modal" data-target="#achievements-window-wrapper">
             <div id="dots-container">
@@ -183,6 +217,7 @@
                 <b>ZeroContact</b>
             </h1>
         </div>
+        <!-- About us content -->
         <div id="card-container" class="set-width" style="background-image: none;">
             <div id="about-us-content" class="black-monospace" style="font-size:2vh">
                 <p id="culture" >We are a team interested in the way that narrative/storytelling can be used in games to entertain and
@@ -196,6 +231,7 @@
         </div>
         <div id="name" class="set-width"><span class="black-monospace"></span></div>
 
+        <!-- Profile pictures in bottom bar -->
         <div id="bottom" class="set-width">
             <div id="profile-pictures" style="display:flex; justify-content: center; padding-top: 10px;">
                 <img src="images/gabriel.jpg" width="60px" height="60px" id="pic1">
@@ -228,6 +264,7 @@
         </div>
     </div>
 
+    <!-- Audio -->
     <audio id="audio-background" loop>
         <source src="audio/sci-fi-ambience.wav" type="audio/wav">
     </audio>
@@ -235,6 +272,7 @@
         <source src="audio/button.wav" type="audio/wav">
     </audio>
 
+    <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"
         integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
@@ -242,15 +280,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"
         integrity="sha256-AAhU14J4Gv8bFupUUcHaPQfvrdNauRHMt+S4UVcaJb0=" crossorigin="anonymous"></script>
 
+    <!-- Custom JS -->
     <script src="js/custom-bootstrap.js"></script>
-<!-- 
-    <script src="js/audio.js"></script>
-    <script src="js/card.js"></script>
-    <script src="js/weekly-updates.js"></script>
-    <script src="js/progress-bar.js"></script>
-    <script src="js/inventory.js"></script>
-    <script src="js/inventory-main.js"></script>  
--->
     <script src="js/screen-size.js"></script>
 </body>
 
