@@ -151,8 +151,8 @@ $(document.body).on('pick-next-card', function (event, gameState) {
         storeHighScore(day);
     } else if (gameState === 'won') {
         cardNum = cardDataArray.length - 1;
-        updateDay();
-        storeHighScore(day);
+        storeHighScore(day + 1);
+        $('#day').text('Day ' + (day + 1));
     } else {
         cardNum = pickRandCard();
         updateDay();
