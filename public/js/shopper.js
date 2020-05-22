@@ -10,7 +10,7 @@ function Shopper(xStart, yStart, direction, moveRate, step) {
     this.direction = direction;
 
     this.$shopperContainer = $("<div class='shopper-container'></div>");
-    
+
     // The reset point of the shopper if it is moving right
     if (step > 0 && direction === "row") {
         this.xStart = yStart;
@@ -52,7 +52,7 @@ function Shopper(xStart, yStart, direction, moveRate, step) {
             "height": "120px",
         });
     } else {
-        
+
         if (step < 0 && direction === "column") {
             // The reset point of the shopper if it is moving up
             this.xStart = yLimit;

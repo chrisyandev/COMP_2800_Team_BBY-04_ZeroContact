@@ -1,4 +1,5 @@
-html, body{
+html,
+body {
     margin: 0;
     padding: 0;
 }
@@ -20,11 +21,11 @@ html, body{
     z-index: 3;
 }
 
-.inventory-drop-zone h1{
+.inventory-drop-zone h1 {
     font-weight: bold;
 }
 
-.inventory-drop-zone-hover{
+.inventory-drop-zone-hover {
     background-color: rgba(23, 235, 23, 0.445);
 }
 
@@ -40,7 +41,9 @@ html, body{
     transform: translateX(-15%);
 }
 
-#inventory-expand-button, #getProfile, #closeProfile {
+#inventory-expand-button,
+#getProfile,
+#closeProfile {
     height: 50px;
     background-color: #222034;
     box-sizing: border-box;
@@ -49,7 +52,7 @@ html, body{
     font-family: 'Courier New', Courier, monospace;
 }
 
-#inventory-item-container{
+#inventory-item-container {
     display: grid;
     padding: 0px 0px;
     justify-content: space-around;
@@ -80,7 +83,7 @@ html, body{
     height: 100px;
 }
 
-.inventory-item h1{
+.inventory-item h1 {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -90,7 +93,7 @@ html, body{
     font-weight: bold;
 }
 
-.inventory-item-placeholder{
+.inventory-item-placeholder {
     background-color: rgb(68, 68, 68);
     border-radius: 20px;
 }
@@ -103,53 +106,53 @@ html, body{
 /*   Item usage prompt styling*/
 /*-------------------------------------------------------------------------------*/
 
-.close{
+.close {
     color: white;
     opacity: 1;
     font-size: 30px;
 }
 
-#item-use-prompt{
+#item-use-prompt {
     padding-top: 5vh;
     font-family: 'Courier New', Courier, monospace;
     height: 95%;
     background-color: rgba(0, 0, 0, 0.199);
 }
 
-#item-use-heading{
+#item-use-heading {
     font-size: 30px;
     color: white;
     text-align: center;
 }
 
-#item-use-description{
+#item-use-description {
     font-size: 25px;
     color: black;
     text-align: center;
     font-weight: 900;
 }
 
-#item-use-effect{
+#item-use-effect {
     font-size: 20px;
     color: black;
     margin-bottom: 25px;
     text-align: center;
 }
 
-.item-use-button{
+.item-use-button {
     width: 150px;
     color: black;
 }
 
-#item-use-accept{
+#item-use-accept {
     background-color: rgba(155, 255, 155, 0.788);
 }
 
-#item-use-decline{
+#item-use-decline {
     background-color: rgba(255, 155, 155, 0.788);
 }
 
-#item-use-container{
+#item-use-container {
     position: absolute;
     top: 0;
     left: 0;
@@ -159,7 +162,7 @@ html, body{
     font-family: 'Courier New', Courier, monospace;
 }
 
-#item-use-body{
+#item-use-body {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -167,41 +170,41 @@ html, body{
     overflow: scroll;
 }
 
-#item-use-body h1{
+#item-use-body h1 {
     font-weight: bold;
     font-size: 25px;
 }
 
-#item-use-header{
+#item-use-header {
     background-color: #222034;
     color: white;
 }
 
-#item-use-header h2{
+#item-use-header h2 {
     font-weight: bold;
 }
 
-#item-use-footer{
+#item-use-footer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
 
-#item-use-footer button{
+#item-use-footer button {
     font-weight: bold;
 }
 
-#item-use-container h1{
+#item-use-container h1 {
     text-align: center;
     font-weight: bold;
 }
 
-#item-use-body.modal-body{
+#item-use-body.modal-body {
     overflow: auto;
 }
 
-#item-use-content{
+#item-use-content {
     height: 700px;
 }
 
@@ -214,61 +217,61 @@ html, body{
         height: 80vh;
     }
 
-    #item-use-body{
+    #item-use-body {
         height: 300px;
     }
 
-    #item-use-header h2{
+    #item-use-header h2 {
         font-size: 25px
     }
 
-    #item-use-header h2{
+    #item-use-header h2 {
         font-size: 25px;
     }
 
-    #item-use-body p{
+    #item-use-body p {
         font-size: 20px;
     }
 
-    #item-use-body img{
+    #item-use-body img {
         width: 100%;
     }
 
-    #item-use-footer button{
+    #item-use-footer button {
         width: 75px;
     }
 }
 
-@media only screen and (max-height: 768px){
-    #item-use-content{
+@media only screen and (max-height: 768px) {
+    #item-use-content {
         height: 80vh;
     }
 
-    #item-use-body{
+    #item-use-body {
         height: 90vh;
     }
 
-    #item-use-header h2{
+    #item-use-header h2 {
         font-size: 15px
     }
 
-    #item-use-header h2{
+    #item-use-header h2 {
         font-size: 15px;
     }
 
-    #item-use-body p{
+    #item-use-body p {
         font-size: 13px;
     }
 
-    #item-use-effect{
+    #item-use-effect {
         margin-bottom: 25px;
     }
 
-    #item-use-body img{
+    #item-use-body img {
         width: 100%;
     }
 
-    #item-use-footer button{
+    #item-use-footer button {
         width: 75px;
     }
 }

@@ -167,7 +167,7 @@
                                         <td><%= highscores[i].days %></td>
                                     </tr>
                                     <% } %>
-                                    
+
                                 </tbody>
                             </table>
                         </div>
@@ -220,15 +220,19 @@
 
         <!-- Fields and buttons for user log in. -->
         <div id="card-container" class="set-width" style="background-image:none;">
-        <section id="account" class="black-monospace">
-            <form action="/login" method="POST">
-                <label id="username">Username: </label>
-                <input type="text" id="field1" name="username">
-                <label id="password">Password: </label>
-                <input type="password" id="field2" name="password">
-                <button value="Login" id="submit" class="landing-button" style="position:absolute; bottom:15%;">Login</button>
-            </form>
-            <a href="/"><p id="sign-up" class="landing-button black-monospace" style="position:absolute; bottom:0%;">Return</p></a>
+            <section id="account" class="black-monospace">
+                <form action="/login" method="POST">
+                    <label id="username">Username: </label>
+                    <input type="text" id="field1" name="username">
+                    <label id="password">Password: </label>
+                    <input type="password" id="field2" name="password">
+                    <button value="Login" id="submit" class="landing-button"
+                        style="position:absolute; bottom:15%;">Login</button>
+                </form>
+                <a href="/">
+                    <p id="sign-up" class="landing-button black-monospace" style="position:absolute; bottom:0%;">Return
+                    </p>
+                </a>
 
             </section>
         </div>

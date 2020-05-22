@@ -96,7 +96,7 @@ function showGameLost() {
     });
     // Add here
     $('#game-over .modal-title').text('You failed to survive.');
-    
+
     let gameOverHtml = '';
     if ($('#physical').progressbar('value') <= 0) {
         gameOverHtml += '<p>You became too weak to stand.</p>';
@@ -110,7 +110,7 @@ function showGameLost() {
     if ($('#supplies').progressbar('value') <= 0) {
         gameOverHtml += '<p>You ran out of supplies.</p>';
     }
-    
+
     $('#game-over .modal-body').html('');
     $('#game-over .modal-body').append(gameOverHtml);
 

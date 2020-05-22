@@ -4,7 +4,7 @@ let tutorialData;
 /* A function to start the tutorial of the main page */
 /* -----------------------------------------------------------------------*/
 
-function startMainTutorial(){
+function startMainTutorial() {
     $.getJSON('main-tut-data.json', function (data) {
         tutorialData = data;
 
@@ -15,9 +15,9 @@ function startMainTutorial(){
     });
 }
 
-$(document).ready(function(){
+$(document).ready(function () {
     startMainTutorial();
 });
 
 // Tutorial-popup.js has a startgame function intended for the minigame, used here to avoid an error in other pages.
-function startGame(){}
+function startGame() {}

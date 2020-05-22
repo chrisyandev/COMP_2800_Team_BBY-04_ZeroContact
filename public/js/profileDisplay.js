@@ -1,12 +1,12 @@
 //getting request for info
 function getUserDetails(username) {
   let result = $.ajax({
-      type: "GET",
-      url: "/user",
-      data: {
-          username: username
-      },
-      async: false
+    type: "GET",
+    url: "/user",
+    data: {
+      username: username
+    },
+    async: false
   });
 
   return result.responseJSON;
@@ -42,4 +42,3 @@ document.getElementById("characterGender").innerHTML = "Gender: " + playerObj.ge
 document.getElementById("pandemicGenerated").innerHTML = "Pandemic: " + playerObj.pandemic;
 console.log(getFirstName("1" + playerName));
 document.getElementById("player-name").innerHTML = "" + getFirstName(playerName);
-

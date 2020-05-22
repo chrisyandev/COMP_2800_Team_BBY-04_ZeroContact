@@ -58,6 +58,8 @@ Contains the following subfolders:
     
 ``` 
    
+In the root folder, we have the public folder, views folder, .gitignore file, README file, creadentials.js, index.js, package-lock.json, and package.json files. Inside the views folder, there is a pages folder that contains all of the pages of the website. The public folder contains audio, CSS files, favicons, images, and JS files for the game.
+
 ## Inspiration
 
 This game was largely influenced by interactive story games such as Reigns and Sort the Court as well as survival games such as 60 Seconds.
@@ -77,7 +79,9 @@ To start, open a terminal in the root directory. You will need to install the de
 - express
 - mongodb
 
-Afterwards, you can change the DB_URL constant in the credentials.js file in the root directory to the connection string that points to the MongoDB database of your choice.
+Afterwards, you can change the DB_URL constant in the credentials.js file in the root directory to the connection string that points to the MongoDB database of your choice. You must also change the Collection and cluster name in the index.js file.
+
+We used Twitter share widget to share tweets to Twitter. No API key is required.
 
 ## Testing
 

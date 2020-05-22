@@ -14,12 +14,12 @@ $(document).ready(function () {
 });
 
 // Starts the countdown of the clock
-function startClock(){
+function startClock() {
     let start = new Date;
 
-    let clockTimer = setInterval(function(){
+    let clockTimer = setInterval(function () {
         let timeElapsed = (Math.round((new Date - start) / 1000));
-        if (timeElapsed == TIME_LIMIT){
+        if (timeElapsed == TIME_LIMIT) {
             $("#canvas").css({
                 "background-color": "transparent",
                 "border-radius": "100px",
@@ -28,12 +28,12 @@ function startClock(){
                 "animation-duration": "0.0s",
                 "animation-iteration-count": "infinite",
             });
-            
+
             clearInterval(clockTimer);
             createTimer(ctx, radius, timeElapsed);
             endGame();
-        } else{
-            if (timeElapsed >= TIME_LIMIT - 3 && timeElapsed < TIME_LIMIT){
+        } else {
+            if (timeElapsed >= TIME_LIMIT - 3 && timeElapsed < TIME_LIMIT) {
                 $("#canvas").css({
                     "background-color": "coral",
                     "border-radius": "100px",
@@ -50,16 +50,16 @@ function startClock(){
 
                 // Play the clock ticking audio
                 document.querySelector("#audio-low-time-tick").play();
-            } 
+            }
 
-            if (timeElapsed == 1){
-                $("#dbl-click-handler").on("click touchend", function(){
-                    $(".inventory-item img").each(function(){
+            if (timeElapsed == 1) {
+                $("#dbl-click-handler").on("click touchend", function () {
+                    $(".inventory-item img").each(function () {
                         this.src = "images/Paper.png";
                     });
                 });
             }
-            if (timeElapsed > 1){
+            if (timeElapsed > 1) {
                 $("#dbl-click-handler").off("click touchend");
             }
 
@@ -78,8 +78,8 @@ function startClock(){
 function createTimer(ctx, radius, second) {
     drawClock(ctx, radius, second);
     drawPoints(ctx, radius);
-    pos = (second*Math.PI/6);
-    drawHand(ctx, pos, radius*0.85, radius*0.05);
+    pos = (second * Math.PI / 6);
+    drawHand(ctx, pos, radius * 0.85, radius * 0.05);
     drawNumber(ctx, radius, TIME_LIMIT - second);
 }
 
@@ -112,12 +112,12 @@ function drawClock(ctx, radius, second) {
 // Draws the number in the middle of the clock
 // Adapted from w3school's canvas clock
 // Attribution: https://www.w3schools.com/graphics/canvas_clock.asp
-function drawNumber(ctx, radius, second){
+function drawNumber(ctx, radius, second) {
     ctx.fillStyle = "#ffffff";
     ctx.font = radius * 0.3 + "px arial";
     ctx.textBaseline = "middle";
     ctx.textAlign = "center";
-    
+
     ctx.fillText(second, 0, 2);
 }
 
@@ -150,9 +150,9 @@ function drawHand(ctx, pos, length, width) {
     ctx.beginPath();
     ctx.lineWidth = width;
     ctx.lineCap = "round";
-    ctx.moveTo(0,0);
+    ctx.moveTo(0, 0);
     ctx.rotate(pos);
     ctx.lineTo(0, -length);
     ctx.stroke();
     ctx.rotate(-pos);
-  }
+}

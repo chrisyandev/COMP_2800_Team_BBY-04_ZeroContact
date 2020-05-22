@@ -5,7 +5,7 @@ let inventoryItems = [];
 $(document).ready(() => {
     $(".inventory-drop-zone").hide();
 
-    $("#inventory-container").width((280/530) * $(window).height() / 2 + "px");
+    $("#inventory-container").width((280 / 530) * $(window).height() / 2 + "px");
 
     // Gets data from the json file and puts it into an array
     $.getJSON('items-data.json', function (data) {
@@ -55,13 +55,13 @@ $(document).ready(() => {
 });
 
 // Finds the item data associated with the item name and returns it
-function findItemData(collectedItems, i){
-    for (let k = 0; k < itemDataArray.length; k++){
+function findItemData(collectedItems, i) {
+    for (let k = 0; k < itemDataArray.length; k++) {
         let collectedItemName = collectedItems[i].itemData.itemName;
         let itemDataName = itemDataArray[k].itemName;
-        if (collectedItemName == itemDataName){
+        if (collectedItemName == itemDataName) {
             itemCreateData = itemDataArray[k];
-            return(itemCreateData);
+            return (itemCreateData);
         }
     }
 }
@@ -105,8 +105,8 @@ function InventoryItem(imageName, type, use, risk, effect, text, container, arra
 
     // HTML tags
     this.$itemContainer = $('<div data-id="' + this.index + '" class="inventory-item" ' +
-                            'data-html="true" data-toggle="tooltip" title="'+
-                            this.item + ":" + this.desc+ '"></div>');
+        'data-html="true" data-toggle="tooltip" title="' +
+        this.item + ":" + this.desc + '"></div>');
     this.$itemImg = $("<img src='" + this.imageUrl + "'>");
     this.$itemDisplay = $("<h1>" + this.quantity + "</h1>");
 
@@ -229,20 +229,20 @@ function isItemUseful(item, useCase) {
 }
 
 // Creates an item in the inventory or increases its quantity if it already exists
-function createItem(itemData, container, array, tooltipOn, quantity){
+function createItem(itemData, container, array, tooltipOn, quantity) {
     let itemExists = false;
-    for (let i = 0; i < array.length; i++){
-        if (itemData.itemName == array[i].item){
+    for (let i = 0; i < array.length; i++) {
+        if (itemData.itemName == array[i].item) {
             array[i].increaseQuantity(quantity);
             itemExists = true;
             break;
         }
     }
-    if (itemExists != true){
-        let item = new InventoryItem(itemData.itemSprite, itemData.itemName, 
-                                     itemData.useableOn, itemData.infectionRisk,
-                                     itemData.effect, itemData.itemText, container,
-                                     array, tooltipOn, quantity);
+    if (itemExists != true) {
+        let item = new InventoryItem(itemData.itemSprite, itemData.itemName,
+            itemData.useableOn, itemData.infectionRisk,
+            itemData.effect, itemData.itemText, container,
+            array, tooltipOn, quantity);
         array.push(item);
     }
 }
