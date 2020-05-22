@@ -1,4 +1,4 @@
-const TIME_LIMIT = 4;
+const TIME_LIMIT = 12;
 
 // Gets the canvas
 let canvas = document.getElementById("canvas");
