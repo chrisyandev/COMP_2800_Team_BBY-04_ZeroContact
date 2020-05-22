@@ -240,6 +240,7 @@ body {
     border: 1px solid #dddfcb;
     border-radius: 2px;
     height:30px;
+    width: 50%;
     color:black;
 }
 #submit {
