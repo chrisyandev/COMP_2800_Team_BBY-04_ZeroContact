@@ -9,6 +9,7 @@ const saltRounds = 10;
 
 let app = express();
 
+// Establish connection to MongoDB Server
 MongoClient.connect(connectionString, {
         useNewUrlParser: true,
         useUnifiedTopology: true
@@ -25,6 +26,7 @@ MongoClient.connect(connectionString, {
         app.set("view engine", "ejs");
 
 
+        // Get request for main page.
         app.get("/", (req, res) => {
             usersCollection.find().sort({
                 days: -1
@@ -35,6 +37,8 @@ MongoClient.connect(connectionString, {
                 })
             }).catch(error => console.error(error));
         });
+
+        // Get request for about page.
         app.get("/about", (req, res) => {
             usersCollection.find().sort({
                 days: -1
@@ -46,9 +50,13 @@ MongoClient.connect(connectionString, {
             }).catch(error => console.error(error));
         });
 
+        //Get request for main game.
         app.get("/game", (req, res) => res.render("pages/zero-contact/main.ejs"));
+
+        //Get request for minigame.
         app.get("/minigame", (req, res) => res.render("pages/zero-contact/minigame.ejs"));
 
+        //Get request for signup page.
         app.get("/signup", (req, res) => {
             usersCollection.find().sort({
                 days: -1
@@ -60,6 +68,7 @@ MongoClient.connect(connectionString, {
             }).catch(error => console.error(error));
         });
 
+        // Get request for login page.
         app.get("/login", (req, res) => {
             usersCollection.find().sort({
                 days: -1
@@ -71,23 +80,10 @@ MongoClient.connect(connectionString, {
             }).catch(error => console.error(error));
         });
 
+        // Get request for delete accounts.
         app.get("/delete", (req, res) => res.render("pages/landing-page/home.ejs"));
-        app.get("/error", (req, res) => res.render("pages/landing-page/error.ejs"));
-        app.get("/privacy", (req, res) => res.render("pages/landing-page/privacy.ejs"));
-        app.get("/attributions", (req, res) => res.render("pages/landing-page/attributions.ejs"));
-        app.get("/contact", (req, res) => res.render("pages/landing-page/contact.ejs"));
 
-        app.get("/leaderboard", (req, res) => {
-            usersCollection.find().sort({
-                days: -1
-            }).toArray().then((highscores) => {
-                console.log(highscores)
-                res.render("pages/landing-page/leaderboard.ejs", {
-                    highscores: highscores
-                })
-            }).catch(error => console.error(error));
-        })
-
+        // Post request for signup page.
         app.post('/signup', (req, res) => {
             bcrypt.genSalt(saltRounds).then(salt => {
                 console.log("salt " + salt)
@@ -110,6 +106,7 @@ MongoClient.connect(connectionString, {
             }).catch(error => console.error(error));
         })
 
+        // Post request for login page.
         app.post("/login", (req, res) => {
             usersCollection.find({
                 username: req.body.username
@@ -144,6 +141,7 @@ MongoClient.connect(connectionString, {
             }).catch((error) => console.error(error))
         })
 
+        // Post request for main page.
         app.post("/main", (req, res) => {
             usersCollection.find().sort({
                 days: -1
@@ -157,53 +155,7 @@ MongoClient.connect(connectionString, {
             }).catch(error => console.error(error));
         })
 
-
-        app.get("/", (req, res) => res.render("pages/landing-page/home.ejs"));
-        app.get("/about", (req, res) => res.render("pages/landing-page/about.ejs"));
-        app.get("/signup", (req, res) => res.render("pages/landing-page/signup.ejs"));
-        app.get("/login", (req, res) => res.render("pages/landing-page/login.ejs"));
-
-        app.post('/signup', (req, res) => {
-            bcrypt.genSalt(saltRounds).then(salt => {
-                console.log("salt " + salt)
-                return bcrypt.hash(req.body.password, salt)
-            }).then(hash => {
-                console.log("hash " + hash)
-                usersCollection.insertOne({
-                    username: req.body.username,
-                    password: hash,
-                    days: 0
-                })
-            }).catch(err => console.error(err.message))
-            res.render("pages/landing-page/login.ejs")
-        })
-
-        app.post("/login", (req, res) => {
-            usersCollection.find({
-                username: req.body.username
-            }).toArray().then((user) => {
-                console.log(user)
-                console.log("Attempting login")
-                if (user.length == 0) {
-                    res.redirect("/");
-                    console.log("User not found")
-                } else {
-                    bcrypt.compare(req.body.password, user[0].password, (err, result) => {
-                        console.log(result);
-
-                        if (result == true) {
-                            res.render("pages/landing-page/profile.ejs", {
-                                username: req.body.username,
-                                user: user
-                            })
-                        } else {
-                            console.error(err);
-                        }
-                    })
-                }
-            }).catch((error) => console.error(error))
-        })
-
+        // Put request to update longest days.
         app.put("/longest-days", (req, res) => {
             usersCollection.find({
                 username: req.body.username
@@ -229,6 +181,7 @@ MongoClient.connect(connectionString, {
             }).catch((error) => console.error(error)) 
         })
 
+        // get request for game over page.
         app.get("/game-over", (req, res) => {
             usersCollection.find().sort({ days: -1 }).toArray().then(highscores => {
                 let userhighest = highscores.find(element => element.username == req.query.username)
@@ -241,7 +194,8 @@ MongoClient.connect(connectionString, {
             }).catch(error => console.error(error));
             
         })
-    
+        
+        //Post request for deleting accounts.
         app.post("/delete", (req, res) => {
             console.log(req.body)
             usersCollection.deleteOne(
@@ -252,6 +206,7 @@ MongoClient.connect(connectionString, {
             )
             console.log("User Deleted.")
         })
+        
         //Play again button to redirect to character creation
         app.post("/minigame", (req, res) => {
             console.log(req.body.username)
