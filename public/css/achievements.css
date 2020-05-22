@@ -22,6 +22,12 @@
     padding: 0.4rem 0.6rem;
 }
 
+@media (min-width: 1px) {
+    .modal-dialog {
+        max-width: 100vw;
+    }
+}
+
 /* Customizing colors and font */
 .blue-background {
     background-color: #222034;
