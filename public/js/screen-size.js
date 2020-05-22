@@ -39,9 +39,11 @@ const progressBarHeightRatio = 41 / originalHeight;
 $(document).ready(function () {
     initValues();
     resizeAll();
+    resizeModals();
     $(window).resize(() => {
         initValues();
         resizeAll();
+        resizeModals();
     });
 });
 
@@ -103,4 +105,9 @@ function setHeight($element, value) {
 
 function setWidth($element, value) {
     $element.css('width', value + 'px');
+}
+
+function resizeModals() {
+    let currentGameWidth = $('#stats-spacer').width() + 'px';
+    $('.modal-dialog').css('width', currentGameWidth);
 }
