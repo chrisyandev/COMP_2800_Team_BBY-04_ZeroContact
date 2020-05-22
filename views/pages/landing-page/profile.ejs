@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
+=======
+>>>>>>> feature-character-creation
 <html lang="en">
 
 <head>
@@ -186,6 +189,7 @@
         <div id="card-container" class="set-width black-monospace" style="background-image: none;">
             <h2 id="login"><%= username %></h2>
         <section id="account">
+<<<<<<< HEAD
             <form action="/minigame" method="POST">
                 <input id="play-button" type="submit" value="Play">
                 <input style="display:none" type="text" value="<%= username %>" name="username">
@@ -251,3 +255,31 @@
 </body>
 
 </html>
+=======
+            <!-- wrong path -->
+            <form action="/intro" method="POST">
+                <input type="submit" value="Play">
+                <input style="display:none" type="text" value="<%= username %>" name="username">
+        </form>
+        <a href="/leaderboard">
+            <p>Leaderboard</p>
+        </a>
+        <form action="/delete" method="POST">
+            <input type="submit" value="Delete Account [CANNOT BE UNDONE]">
+            <input style="display:none" type="text" value="<%= username %>" name="username">
+        </form>
+        </section>
+
+        <footer>
+            <ul id="footer-nav">
+                <img src="favicons/favicon-32x32.png" alt="app logo" width="60px" height="60px">
+                <li class="footer-item"><a href="/privacy" class="links">Privacy Policy</a></li>
+                <li class="footer-item"><a href="/attributions" class="links">Attributions</a></li>
+                <li class="footer-item"><a href="/contact" class="links">Contact Us</a></li>
+            </ul>
+        </footer>
+        
+    </body>
+    
+    </html>
+>>>>>>> feature-character-creation

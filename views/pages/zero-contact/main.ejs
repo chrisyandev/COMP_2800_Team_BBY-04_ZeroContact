@@ -175,9 +175,12 @@
         <div id="event-text" class="black-monospace set-width"><span></span></div>
         <div id="card-container" class="set-width"></div>
         <div id="name" class="set-width"><span class="black-monospace"></span></div>
+        <!--Footer---------------------------------------------------------------------------->
         <div id="bottom" class="set-width">
             <div id="info">
-                <div id="player-name">John Doe</div>
+                <div id="player-name"></div>
+                <!--Get Profile----------------------------------------------------------------------->
+                <input id="getProfile" type="button" value="Profile" onclick=getP()>
                 <div id="day">Day 1</div>
             </div>
         </div>
@@ -222,6 +225,22 @@
         </div>
         --> 
     </div>
+    
+    <div id="myProfile" class="modal">
+        <div id="myProfileContent" class="modal-content">
+            <b>
+                <p id="characterName">1</p>
+                <p id="characterAge">2</p>
+                <p id="characterGender">3</p>
+                <p id="pandemicGenerated">4</p>  
+            </b>
+            <input type='button' id="closeProfile" value="Close" onclick="closeProfile()">
+        </div>
+    </div>
+
+    <a id="tweet" href="https://twitter.com/share?text=filler" class="twitter-share-button"
+        data-show-count="false">Tweet</a>
+    <script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
     <audio id="audio-background" loop>
         <source src="audio/sci-fi-ambience.wav" type="audio/wav">
@@ -251,6 +270,7 @@
     <script src="js/screen-size.js"></script>
     <script src="/js/tutorial-popup.js"></script>
     <script src="/js/main-tutorial.js"></script>
+    <script src="js/profileDisplay.js"></script>
 </body>
 
 </html>

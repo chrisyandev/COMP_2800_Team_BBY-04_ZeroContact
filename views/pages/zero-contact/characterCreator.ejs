@@ -1,0 +1,50 @@
+<DOCTYPE html>
+    <html>
+
+    <head>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <link rel="stylesheet" type="text/css" href="css/CharacterStyle.css">
+        <!-- Filler title, fit with the rest -->
+        <title>Zero Contact</title>
+    </head>
+
+    <body>
+        <script src="js/characterCreator.js"></script>
+        <script src="index.js"></script>
+        <p style="display: none"><%= username %></p>
+        <div id="wrap">
+            <form action="/game" method="post">
+                <div id="top">
+                    <input id="create" type="button" value="Create Character" onclick=loadCharacterPage()>
+                </div>
+    
+                <div id="profile">
+                    <!-- contains text -->
+                    <div id="main">
+                        <p id="name"></p>
+                        <p id="gender"></p>
+                        <p id="age"></p>
+                        <p id="pandemic"></p>
+                    </div>
+                    <br>
+    
+                    <input id="chooseProfile" type="submit" value="Choose this Character">
+                    <p> <!--empty space--> </p>
+                    
+    
+                    <!--Username-->
+                    <input style="display:none" type="text" value="<%= username %>" name="username">
+                    <!--Randomly generated data to send-->
+                    <input id="sendName" style="display:none" type="text" value="failedName" name="characterName">
+                    <input id="sendAge" style="display:none" type="text" value="failedAge" name="characterAge">
+                    <input id="sendGender" style="display:none" type="text" value="failedGender" name="characterGender">
+                    <input id="sendPandemicName" style="display:none" type="text" value="failedPanName" name="pandemicName">
+                </div>
+    
+            </form>
+        </div>
+        
+    </body>
+
+    </html>
+</DOCTYPE>
