@@ -183,19 +183,17 @@
                 <b>Game Over!</b>
             </h1>
         </div>
-        <div id="card-container" class="set-width" style="background-image: none;">
+        <div id="card-container" class="set-width black-monospace" style="background-image: none;">
             <p>You lasted <%= score %> days.</p>
             <p>Your highest score so far is <%= highest.days %></p>
-            <a id="tweet" href="https://twitter.com/share?text=filler" class="twitter-share-button" data-show-count="false">Tweet</a>
+            <a id="tweet" href="https://twitter.com/share?text=I just played ZeroContact: Pandemic Survival! Play here:" class="twitter-share-button" data-show-count="false">Tweet</a>
             <script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             <div id="sign-button-container">
                 <form action="/minigame" method="POST">
-                    <input id="play-button" type="submit" value="Play">
+                    <input id="play-button" type="submit" style="top:70%" value="Play Again">
                     <input style="display:none" type="text" value="<%= username %>" name="username">
                 </form>
                 <a href="/"><p id="sign-up" class="landing-button black-monospace">Log out</p></a>
-                <br>
-                <a href="/about"><p id="about-us" class="landing-button black-monospace">About Us</p></a>
             </div>
         </div>
         <div id="name" class="set-width"><span class="black-monospace"></span></div>
