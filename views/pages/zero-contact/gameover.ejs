@@ -190,7 +190,7 @@
             <script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             <div id="sign-button-container">
                 <form action="/minigame" method="POST">
-                    <input id="play-button" type="submit" style="top:70%" value="Play Again">
+                    <input id="play-button" type="submit" style="top:70%" value="Play Again" style="z-index: 20;">
                     <input style="display:none" type="text" value="<%= username %>" name="username">
                 </form>
                 <a href="/"><p id="sign-up" class="landing-button black-monospace">Log out</p></a>
@@ -205,10 +205,10 @@
             </div>
         </div>
         <div id="inventory-container" class="set-width">
-            <button id="inventory-expand-button" style="visibility: hidden;">Inventory</button>
+            <button id="inventory-expand-button" style="display: none;">Inventory</button>
             <div id="inventory-item-container"></div>
         </div>
-        <div class="inventory-drop-zone">
+        <div class="inventory-drop-zone" style="display:none">
             <h1>Drag item here to use it</h1>
         </div>
         <div id="item-use-prompt" style="display:none">
