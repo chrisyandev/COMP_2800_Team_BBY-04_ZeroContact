@@ -290,16 +290,6 @@
         "image": "images/little-tim.png",
         "name": "Mephistopheles",
         "left": {
-            "text": "Hahaha POWER!",
-            "risk": 0.00,
-            "effect": {
-                "physical": 20,
-                "mental": -20,
-                "wealth": 0,
-                "supplies":0
-            }
-        },
-        "right": {
             "text": "Is the dream I had...",
             "risk": 0.00,
             "effect": {
@@ -307,6 +297,16 @@
                 "mental": -5,
                 "wealth": 0,
                 "supplies": 0
+            }
+        },
+        "right": {
+            "text": "Hahaha POWER!",
+            "risk": 0.00,
+            "effect": {
+                "physical": 20,
+                "mental": -20,
+                "wealth": 0,
+                "supplies":0
             }
         }
     },
@@ -364,7 +364,7 @@
     },
     {
         "event": "home-entertainment",
-        "text": "It sounds like there's a party going on just outside! BUt when you look the street is empty. You grab your wallet and...",
+        "text": "It sounds like there's a party going on just outside! But when you look the street is empty. You grab your wallet and...",
         "image": "images/little-tim.png",
         "name": "Mephistopheles",
         "left": {
@@ -416,7 +416,7 @@
     },
     {
         "event": "hangout",
-        "text": "Have you seen than freaky kid going around? Me and the boys think he might be related to this pandemic business.",
+        "text": "Have you seen that freaky kid going around? Me and the boys think he might be related to this pandemic business.",
         "image": "images/flynn.png",
         "name": "Faust Goethe",
         "left": {
@@ -446,16 +446,6 @@
         "image": "images/flynn.png",
         "name": "Jaque Danielle",
         "left": {
-            "text": "Yeeee boy, sign me UP!",
-            "risk": 0.05,
-            "effect": {
-                "physical": -10,
-                "mental": 10,
-                "wealth": -10,
-                "supplies": 5
-            }
-        },
-        "right": {
             "text": "Sorry, I'd rather not.",
             "risk": 0.00,
             "effect": {
@@ -463,6 +453,16 @@
                 "mental": -5,
                 "wealth": 0,
                 "supplies": -5
+            }
+        },
+        "right": {
+            "text": "Yeeee boy, sign me UP!",
+            "risk": 0.05,
+            "effect": {
+                "physical": -10,
+                "mental": 10,
+                "wealth": -10,
+                "supplies": 5
             }
         }
     },
@@ -472,16 +472,6 @@
         "image": "images/flynn.png",
         "name": "Shen Tu Nantian",
         "left": {
-            "text": "Take this offering young master Shen.",
-            "risk": 0.00,
-            "effect": {
-                "physical": 0,
-                "mental": 0,
-                "wealth": 10,
-                "supplies": -10
-            }
-        },
-        "right": {
             "text": "Over my dead body.",
             "risk": 0.00,
             "effect": {
@@ -489,6 +479,17 @@
                 "mental": -5,
                 "wealth": -5,
                 "supplies": 10
+            }
+            
+        },
+        "right": {
+            "text": "Take this offering young master Shen.",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": 0,
+                "wealth": 10,
+                "supplies": -10
             }
         }
     },
@@ -498,16 +499,6 @@
         "image": "images/annie.png",
         "name": "May Clover",
         "left": {
-            "text": "Let's go, I've been meaning to stretch my legs.",
-            "risk": 0.02,
-            "effect": {
-                "physical": 5,
-                "mental": 5,
-                "wealth": 0,
-                "supplies": -10
-            }
-        },
-        "right": {
             "text": "Maybe when this whole thing clears up.",
             "risk": 0.00,
             "effect": {
@@ -515,6 +506,17 @@
                 "mental": 0,
                 "wealth": 0,
                 "supplies": -5
+            }
+
+        },
+        "right": {
+            "text": "Let's go, I've been meaning to stretch my legs.",
+            "risk": 0.02,
+            "effect": {
+                "physical": 5,
+                "mental": 5,
+                "wealth": 0,
+                "supplies": -10
             }
         }
     },
@@ -524,16 +526,6 @@
         "image": "images/flynn.png",
         "name": "Lennie Doppelginger",
         "left": {
-            "text": "I'm on my way bud.",
-            "risk": 0.05,
-            "effect": {
-                "physical": -5,
-                "mental": 10,
-                "wealth": -5,
-                "supplies": 0
-            }
-        },
-        "right": {
             "text": "Sorry but it's every person for themselves.",
             "risk": 0.00,
             "effect": {
@@ -541,6 +533,16 @@
                 "mental": -5,
                 "wealth": 0,
                 "supplies": -5
+            }
+        },
+        "right": {
+            "text": "I'm on my way bud.",
+            "risk": 0.05,
+            "effect": {
+                "physical": -5,
+                "mental": 10,
+                "wealth": -5,
+                "supplies": 0
             }
         }
     },
@@ -550,16 +552,6 @@
         "image": "images/bill.png",
         "name": "Prok Mayunnaise",
         "left": {
-            "text": "On the account of our relationship, sure thing.",
-            "risk": 0.00,
-            "effect": {
-                "physical": 0,
-                "mental": 10,
-                "wealth": 10,
-                "supplies": -20
-            }
-        },
-        "right": {
             "text": "I need every morsel I have.",
             "risk": 0.00,
             "effect": {
@@ -567,6 +559,16 @@
                 "mental": -5,
                 "wealth": 0,
                 "supplies": 0
+            }
+        },
+        "right": {
+            "text": "On the account of our relationship, sure thing.",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": 10,
+                "wealth": 10,
+                "supplies": -20
             }
         }
     },
