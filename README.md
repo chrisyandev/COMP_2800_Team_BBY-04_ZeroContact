@@ -19,7 +19,8 @@ Technologies that were used for this project:
 - HTML
 - CSS
 - JavaScript
-- React
+- MongoDB
+- Bootstrap
 - jQuery
 
 ## Features
@@ -31,10 +32,21 @@ Organization and structure of files:
 
 ```
  Top level of project folder: 
+├── public                   # Folder containing game assets
+├── views/pages              # Folder containing ejs files
 ├── .gitignore               # Git ignore file
+├── README.md                # Readme file
+├── credentials.js           # API key to mongoDB
+├── index.js                 # Handles routing and server requests
+├── package-lock.json        # List of library dependencies
+├── package.json             # List of library dependencies
 
 Contains the following subfolders:
-├── 
+├── audio                    # Stores game audio
+├── css                      # Stores the game's styling
+├── favicons                 # Stores the game favicon images
+├── images                   # Stores the game asset images
+├── js                       # Stores the game's Javascript files
     
 ``` 
    
