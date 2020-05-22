@@ -96,8 +96,8 @@ body{
     position: relative;
     grid-template-rows: repeat(19, 120px);
     grid-template-columns: repeat(25, 120px);
-    width: 400px;
-    height: 500px;
+    width: 90vw;
+    height: 50vh;
     overflow: hidden;
     outline: 10px double rgb(156, 135, 16);
     top: -75px;
@@ -223,37 +223,16 @@ body{
     z-index: 3;
 }
 
+
 /* ------------------------------------------------------------------- */
 /* End Results Screen styling */
 /* ------------------------------------------------------------------- */
 
-/*
 #end-results-screen{
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    width: 100%;
-    height: 80%;
-    top: 10%;
-    left: 0;
-    background-color: rgba(185, 185, 185, 0.692);
-    opacity: 0;
-    z-index: 3;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 15px;
-    word-wrap: break-word;
-}*/
-
-#end-results-screen{
-    padding-top: 200px;
     background-color: rgba(0, 0, 0, 0.527);
     font-family: 'Courier New', Courier, monospace;
     font-weight: 900;
-    width: 100%;
-    height: 100%;
+    padding-top: 25vh;
 }
 
 #end-results-screen h1{
@@ -272,21 +251,26 @@ body{
 }
 
 #end-header{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     background-color: #222034;
+    height: 20vh;
 }
 
-/*
-#items-list-container{
-    width: 70%;
-    height: 50%;
-    overflow: auto;
-    background-color: white;
-    padding: 20px;
-    outline: 2px double black;
-}*/
+#end-body{
+    height: 50vh;
+}
+
+#end-footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
 
 #items-list-container{
-    max-height: 500px;
+    max-height: 35vh;
     overflow: auto;
 }
 
@@ -349,11 +333,6 @@ body{
 /* ------------------------------------------------------------------- */
 
 @media only screen and (max-width: 768px){
-    .game-grid{
-        width: 320px;
-        height: 400px;
-    }
-
     #canvas{
         width: 120px;
         height: 120px;
@@ -361,15 +340,6 @@ body{
 
     #minigame-message h1{
         font-size: 18px;
-    }
-
-    #end-results-screen{
-        padding-top: 100px;
-    }
-
-    #items-list-container{
-        max-height: 250px;
-        overflow: auto;
     }
 
     @keyframes clockBounceAnimation{
@@ -380,12 +350,6 @@ body{
 }
 
 @media only screen and (min-width: 768px){
-    .game-grid{
-        top: -25px;
-        width: 450px;
-        height: 500px;
-    }
-
     #canvas{
         width: 160px;
         height: 160px;
@@ -403,12 +367,6 @@ body{
 }
 
 @media only screen and (min-width: 1024px){
-    .game-grid{
-        top: -100px;
-        width: 800px;
-        height: 480px;
-    }
-
     #canvas{
         width: 180px;
         height: 180px;
@@ -429,45 +387,11 @@ body{
     #minigame-message{
         font-size: 24px;
     }
-    
-    .game-grid{
-        top: -100px;
-        width: 900px;
-        height: 800px;
-    }
-
-    #items-list-container{
-        max-height: 800px;
-        overflow: auto;
-    }
-}
-
-@media only screen and (max-height: 860px){
-    .game-grid{
-        height: 280px;
-    }
-
-    #end-results-screen{
-        padding-top: 70px;
-    }
-
-    #items-list-container{
-        max-height: 180px;
-        overflow: auto;
-    }
 }
 
 @media only screen and (max-height: 468px){
-    #end-results-screen{
-        padding-top: 50px;
-    }
-
     #end-results-screen h2{
         font-size: 20px;
-    }
-
-    #items-list-container{
-        max-height: 100px;
     }
 
     .results-item h2{
@@ -476,10 +400,6 @@ body{
 
     .results-item h2{
         font-size: 10px;
-    }
-
-    #end-body{
-        height: 150px;
     }
 
     #minigame-container{

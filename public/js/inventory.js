@@ -14,6 +14,7 @@ $(document).ready(() => {
     });
 
     // Turns the children of this container into sortable elements
+    // Attribution: https://jqueryui.com/sortable/
     $("#inventory-item-container").sortable({
         scroll: false,
         opacity: 1,

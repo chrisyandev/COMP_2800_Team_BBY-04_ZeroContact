@@ -6,28 +6,28 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 90%;
     background-color: rgba(0, 0, 0, 0.205);
     font-family: 'Courier New', Courier, monospace;
 }
 
 #tutorial-body{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 550px;
+    text-align: center;
+    overflow: auto;
+    height: 50vh;
 }
 
 #tutorial-body h1{
     font-weight: bold;
-    font-size: 20px;
+    font-size: 30px;
 }
 
 #tutorial-header{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     background-color: #222034;
     color: white;
+    height: 20vh;
 }
 
 #tutorial-header h2{
@@ -50,46 +50,14 @@
     font-weight: bold;
 }
 
-#tutorial-body{
-    overflow: auto;
-}
-
-@media only screen and (max-height: 768px){
-    #tutorial-body{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: row;
-        height: 300px;
-        text-align: center;
-    }
-
-    #tutorial-body h1{
-        font-size: 16px;
-    }
-
-    #tutorial-body img{
-        max-width: 50%;
-        height: auto;
-    }
+.img-fluid{
+    max-width: 75%;
+    height: auto;
 }
 
 @media only screen and (max-width: 768px){
-    #tutorial-body{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        height: 350px;
-        text-align: center;
-    }
-
     #tutorial-body h1{
         font-size: 20px;
     }
 
-    #tutorial-body img{
-        max-width: 50%;
-        height: auto;
-    }
 }
