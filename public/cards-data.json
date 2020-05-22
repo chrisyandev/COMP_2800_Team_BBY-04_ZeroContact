@@ -286,11 +286,11 @@
     },
     {
         "event": "home-entertainment",
-        "text": "Mortal, do you want unlimited power?",
+        "text": "Mortal, aren't you bored staying home all day? How about I grant you unlimited power?",
         "image": "images/little-tim.png",
         "name": "Mephistopheles",
         "left": {
-            "text": "Hahaha ULTIMATE POWER!",
+            "text": "Hahaha POWER!",
             "risk": 0.00,
             "effect": {
                 "physical": 20,
@@ -416,7 +416,7 @@
     },
     {
         "event": "hangout",
-        "text": "Have you seen than freaky kid going around? Me and the boys think he might be related to this pandemic mess and are planning to track him down.",
+        "text": "Have you seen than freaky kid going around? Me and the boys think he might be related to this pandemic business.",
         "image": "images/flynn.png",
         "name": "Faust Goethe",
         "left": {
@@ -472,7 +472,7 @@
         "image": "images/flynn.png",
         "name": "Shen Tu Nantian",
         "left": {
-            "text": "Take this offerin young master Shen.",
+            "text": "Take this offering young master Shen.",
             "risk": 0.00,
             "effect": {
                 "physical": 0,
@@ -598,7 +598,7 @@
     },
     {
         "event": "game-won",
-        "text": "My citizens, the wait is over. A clinically tested vaccination is being released to the public as I speak, humanity has won and always will.",
+        "text": "The wait is over, a clinically tested vaccine is being released as I speak, humanity has won.",
         "image": "images/prime-minister.png",
         "name": "Prime Minister",
         "left": {
