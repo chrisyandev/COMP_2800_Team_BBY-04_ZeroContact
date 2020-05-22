@@ -252,7 +252,7 @@ MongoClient.connect(connectionString, {
             )
             console.log("User Deleted.")
         })
-
+        //Play again button to redirect to character creation
         app.post("/minigame", (req, res) => {
             console.log(req.body.username)
             res.render("pages/zero-contact/characterCreator.ejs", {
