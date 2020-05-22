@@ -190,7 +190,7 @@ div#myProfile.modal {
     position: absolute;
     z-index: 1;
     left: 50%;
-    top: 50%;
+    top: 78%;
     transform: translate(-50%, -50%);
     width: 290px;
     height: 290px;
