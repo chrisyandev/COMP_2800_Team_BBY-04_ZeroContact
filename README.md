@@ -11,6 +11,8 @@
 * [Testing](#testing)
 
 ## General Info
+Zero Contact is a game that will challenge players to survive in a world affected by a global pandemic. Each decision made in the game will have an impact on the player's physical health, mental health, wealth and supplies. The goal of the game is to provide entertainment and to educate on keeping safe in a pandemic. 
+
 This game was a group project made in BCIT's COMP 2800 course in the span of 5 weeks.
 
 ## Technologies
@@ -25,9 +27,15 @@ Technologies that were used for this project:
 
 ## Features
 List of features:
-- 
+- Main gameplay with 50+ event cards
+- An inventory system to use items
+- A minigame to collect items
+- Character profile creation
 
 ## Content
+
+Our app is organized in 3 layers. The root folder contains much of the backend with routing and server-side programming in index.js. Inside views/pages/zero-contact are the ejs files used to serve content to the user. Inside the public folder are the assets of the game which includes js, css, images and sounds.
+
 Organization and structure of files:
 
 ```
@@ -57,6 +65,9 @@ In the root folder, we have the public folder, views folder, .gitignore file, RE
 This game was largely influenced by interactive story games such as Reigns and Sort the Court as well as survival games such as 60 Seconds.
 
 ## Setup
+
+The languages we used for our app are HTML, CSS and JS. 
+
 We recommend using a IDE with a built in terminal (Visual Studio Code or IntellliJ IDEA for example) to simplify the installation of the dependencies. You can also use the command line built into your operating system and navigate to the project folder.
 
 MongoDB was used for this project and we recommend that a cluster is created before moving forward.

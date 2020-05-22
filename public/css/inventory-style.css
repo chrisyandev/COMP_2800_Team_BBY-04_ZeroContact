@@ -4,7 +4,11 @@ body {
     padding: 0;
 }
 
-.inventory-drop-zone {
+/*-------------------------------------------------------------------------------*/
+/*  Inventory and drop zone styling */
+/*-------------------------------------------------------------------------------*/
+
+.inventory-drop-zone{
     position: fixed;
     bottom: 0;
     opacity: 0;
@@ -204,8 +208,12 @@ body {
     height: 700px;
 }
 
-@media only screen and (max-width: 768px) {
-    #item-use-content {
+/*-------------------------------------------------------------------------------*/
+/*  Media queries */
+/*-------------------------------------------------------------------------------*/
+
+@media only screen and (max-width: 768px){
+    #item-use-content{
         height: 80vh;
     }
 
