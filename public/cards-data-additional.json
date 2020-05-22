@@ -1,0 +1,392 @@
+[ 
+    {
+        "event": "food",
+        "text": "Do you want to try some of my world-famous cookies?",
+        "image": "images/granny.png",
+        "name": "Granny",
+        "left": {
+            "text": "Sure!",
+            "risk": 0.00,
+            "effect": {
+                "physical": -10,
+                "mental": 10,
+                "wealth": -10,
+                "supplies": 25
+            }
+        },
+        "right": {
+            "text": "I'll pass",
+            "risk": 0.04,
+            "effect": {
+                "physical": 0,
+                "mental": -10,
+                "wealth": 0,
+                "supplies": -5
+            }
+        }
+    },
+    {
+        "event": "home-entertainment",
+        "text": "Mortal, would you trade your life force for riches and fortune?",
+        "image": "images/little-tim.png",
+        "name": "Mephistopheles",
+        "left": {
+            "text": "Not in my lifetime!",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": 0,
+                "wealth": 0,
+                "supplies": 0
+            }
+        },
+        "right": {
+            "text": "Hahaha MONEY!",
+            "risk": 0.00,
+            "effect": {
+                "physical": -50,
+                "mental": 0,
+                "wealth": 50,
+                "supplies":0
+            }
+        }
+    },
+    {
+        "event": "home-entertainment",
+        "text": "Mortal, accept my request for your emotion essence or feel my wrath!",
+        "image": "images/little-tim.png",
+        "name": "Mephistopheles",
+        "left": {
+            "text": "Not in my lifetime!",
+            "risk": 0.00,
+            "effect": {
+                "physical": -25,
+                "mental": 0,
+                "wealth": 0,
+                "supplies": 0
+            }
+        },
+        "right": {
+            "text": "Of course",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": -25,
+                "wealth": 0,
+                "supplies":0
+            }
+        }
+    },
+    {
+        "event": "hangout",
+        "text": "Bro, I'm strugglin' over here. Spare me some money?",
+        "image": "images/flynn.png",
+        "name": "Jaque Danielle",
+        "left": {
+            "text": "Sorry, I'd rather not.",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": -5,
+                "wealth": 0,
+                "supplies": -5
+            }
+        },
+        "right": {
+            "text": "Yeeee gotchu my boy!",
+            "risk": 0.05,
+            "effect": {
+                "physical": 0,
+                "mental": 5,
+                "wealth": -10,
+                "supplies": 0
+            }
+        }
+    },
+    {
+        "event": "hangout",
+        "text": "Hey! I'm home alone at the moment...",
+        "image": "images/hadi.png",
+        "name": "Hadi",
+        "left": {
+            "text": "I will be there in an instant!",
+            "risk": 0.00,
+            "effect": {
+                "physical": -5,
+                "mental": 10,
+                "wealth": 0,
+                "supplies": -5
+            }
+        },
+        "right": {
+            "text": "OK",
+            "risk": 0.05,
+            "effect": {
+                "physical": 0,
+                "mental": -5,
+                "wealth": 0,
+                "supplies": -5
+            }
+        }
+    },
+    {
+        "event": "hangout",
+        "text": "Hey! Matt and I are having a LAN party today! Come join us!",
+        "image": "images/bill.png",
+        "name": "Bill",
+        "left": {
+            "text": "I don't know...",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": -10,
+                "wealth": 0,
+                "supplies": -5
+            }
+        },
+        "right": {
+            "text": "I'm going to win at Superb Break Buds. this time!",
+            "risk": 0.04,
+            "effect": {
+                "physical": 0,
+                "mental": 15,
+                "wealth": 0,
+                "supplies": -5
+            }
+        }
+    },
+    {
+        "event": "home-entertainment",
+        "text": "Can you read me a bedtime story?",
+        "image": "images/little-timmy.png",
+        "name": "Little Timmy",
+        "left": {
+            "text": "Of course Little Timmy!",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": 10,
+                "wealth": 0,
+                "supplies": 0
+            }
+        },
+        "right": {
+            "text": "You're better and bigger than this Timmy.",
+            "risk": 0.02,
+            "effect": {
+                "physical": 0,
+                "mental": -10,
+                "wealth": 0,
+                "supplies": 0
+            }
+        }
+    },
+    {
+        "event": "home-entertainment",
+        "text": "I saw this big toy at the store yesterday! Can you go buy it?",
+        "image": "images/little-timmy.png",
+        "name": "Little Timmy",
+        "left": {
+            "text": "We can't afford it.",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": -5,
+                "wealth": 0,
+                "supplies": -10
+            }
+        },
+        "right": {
+            "text": "Only for you!",
+            "risk": 0.00,
+            "effect": {
+                "physical": -5,
+                "mental": 10,
+                "wealth": -5,
+                "supplies": -5
+            }
+        }
+    },
+    {
+        "event": "appointment",
+        "text": "Have you brought an apple today for our appointment?",
+        "image": "images/doctor-green.png",
+        "name": "Doctor Green",
+        "left": {
+            "text": "No?",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": -5,
+                "wealth": 0,
+                "supplies": -5
+            }
+        },
+        "right": {
+            "text": "Enjoy your apple!",
+            "risk": 0.05,
+            "effect": {
+                "physical": 0,
+                "mental": 5,
+                "wealth": 0,
+                "supplies": -10
+            }
+        }
+    },
+    {
+        "event": "hangout",
+        "text": "Hey I bet you can't jump over a 5 meter gap blindfolded after spinning around 50 times!",
+        "image": "images/flynn.png",
+        "name": "Lennie Doppelginger",
+        "left": {
+            "text": "Yeah I can't",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": -15,
+                "wealth": 0,
+                "supplies": -5
+            }
+        },
+        "right": {
+            "text": "I bet I can do it twice!",
+            "risk": 0.05,
+            "effect": {
+                "physical": -20,
+                "mental": 15,
+                "wealth": 0,
+                "supplies": -5
+            }
+        }
+    },
+    {
+        "event": "hangout",
+        "text": "Hey I bet you can't do a double backflip upside-down over hard concrete!",
+        "image": "images/flynn.png",
+        "name": "Lennie Doppelginger",
+        "left": {
+            "text": ".....No",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": -15,
+                "wealth": 0,
+                "supplies": -5
+            }
+        },
+        "right": {
+            "text": "I bet I can do it over needles!.",
+            "risk": 0.05,
+            "effect": {
+                "physical": -20,
+                "mental": 15,
+                "wealth": 0,
+                "supplies": -5
+            }
+        }
+    },
+    {
+        "event": "hangout",
+        "text": "Hey I bet you can't spend 50 bucks on drinks tonight!",
+        "image": "images/flynn.png",
+        "name": "Lennie Doppelginger",
+        "left": {
+            "text": "Why?",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": -15,
+                "wealth": 0,
+                "supplies": -5
+            }
+        },
+        "right": {
+            "text": "I bet I can spend 100 bucks!.",
+            "risk": 0.05,
+            "effect": {
+                "physical": 0,
+                "mental": 15,
+                "wealth": -15,
+                "supplies": -5
+            }
+        }
+    },
+    {
+        "event": "hangout",
+        "text": "Hey I bet you can't prove that the world is a square!",
+        "image": "images/flynn.png",
+        "name": "Lennie Doppelginger",
+        "left": {
+            "text": "Really?",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": 5,
+                "wealth": 0,
+                "supplies": -5
+            }
+        },
+        "right": {
+            "text": "So according to Einstein...",
+            "risk": 0.05,
+            "effect": {
+                "physical": 0,
+                "mental": -15,
+                "wealth": 0,
+                "supplies": -5
+            }
+        }
+    },
+    {
+        "event": "appointment",
+        "text": "Hey I would like to recommend some activities for you to do!",
+        "image": "images/doctor-green.png",
+        "name": "Doctor Green",
+        "left": {
+            "text": "I'll pass.",
+            "risk": 0.00,
+            "effect": {
+                "physical": -5,
+                "mental": -5,
+                "wealth": 0,
+                "supplies": -5
+            }
+        },
+        "right": {
+            "text": "I will come by on Saturday!",
+            "risk": 0.05,
+            "effect": {
+                "physical": 5,
+                "mental": 5,
+                "wealth": -5,
+                "supplies": -5
+            }
+        }
+    },
+    {
+        "event": "hangout",
+        "text": "Hey brother! I got some food for you if you want some!",
+        "image": "images/flynn.png",
+        "name": "Lennie Doppelginger",
+        "left": {
+            "text": "Thanks bro!",
+            "risk": 0.00,
+            "effect": {
+                "physical": 0,
+                "mental": -5,
+                "wealth": 0,
+                "supplies": 15
+            }
+        },
+        "right": {
+            "text": "Thanks but I like to pay for my own food.",
+            "risk": 0.05,
+            "effect": {
+                "physical": 0,
+                "mental": 5,
+                "wealth": 0,
+                "supplies": -5
+            }
+        }
+    }
+]
