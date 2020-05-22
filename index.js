@@ -204,6 +204,31 @@ MongoClient.connect(connectionString, {
             }).catch((error) => console.error(error))
         })
 
+        app.put("/longest-days", (req, res) => {
+            usersCollection.find({
+                username: req.body.username
+            }).toArray().then((user) => {
+                if (user.length == 0) {
+                    console.log("No user found")
+                    usersCollection.insertOne({
+                        username: req.body.username,
+                        days: req.body.days
+                    })
+                } else {
+                    if (user[0].days < req.body.days) {
+                        usersCollection.findOneAndUpdate(
+                            {username: req.body.username},
+                            {
+                                $set: {
+                                    days: req.body.days
+                                }
+                            }
+                        )
+                    }
+                }
+            }).catch((error) => console.error(error)) 
+        })
+
         app.get("/game-over", (req, res) => {
             usersCollection.find().sort({ days: -1 }).toArray().then(highscores => {
                 let userhighest = highscores.find(element => element.username == req.query.username)
