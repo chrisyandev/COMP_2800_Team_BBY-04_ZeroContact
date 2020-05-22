@@ -108,22 +108,5 @@ function setWidth($element, value) {
 }
 
 function resizeModals() {
-    // let screenWidth = $(window).width();
-    // $('.modal').css('width', screenWidth + 'px');
-    // if (screenWidth < 500) {
-    //     $('.modal-dialog').css('width', (screenWidth * 0.95) + 'px');
-    // } else {
-    //     $('.modal-dialog').css('width', (screenWidth * 0.75) + 'px');
-    // }
-    
     $('.modal-dialog').css('width', $('#stats-spacer').width() + 'px');
-
-    // $('achievements-window').css('max-width', screenWidth + 'px');
-    // $('achievements-window').css('width', screenWidth + 'px');
-    // $('achievements-window .modal-content').css('width', screenWidth + 'px');
 }
-
-// function setViewportWidth() {
-//     let content = `width=${$(window).width()}, initial-scale=1.0, user-scalable=no, shrink-to-fit=no`;
-//     document.querySelector('meta[name="viewport"]').setAttribute('content', content);
-// }
