@@ -94,7 +94,7 @@ function showGameLost() {
         keyboard: false,
         show: true
     });
-    
+    // Add here
     $('#game-over .modal-title').text('You failed to survive.');
     
     let gameOverHtml = '';
@@ -110,6 +110,10 @@ function showGameLost() {
     if ($('#supplies').progressbar('value') <= 0) {
         gameOverHtml += '<p>You ran out of supplies.</p>';
     }
+    // $('#game-over .modal-title').html(
+    //     '<a id="tweet" href="https://twitter.com/share?text=filler" class="twitter-share-button" data-show-count="false">Tweet</a>'
+    // );
+    
     $('#game-over .modal-body').html('');
     $('#game-over .modal-body').append(gameOverHtml);
 
