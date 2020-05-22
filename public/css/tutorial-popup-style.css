@@ -16,7 +16,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
     height: 450px;
 }
 
@@ -26,7 +26,6 @@
 }
 
 #tutorial-header{
-    display: flex;
     background-color: #222034;
     color: white;
 }
@@ -60,8 +59,9 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        flex-direction: column;
+        flex-direction: row;
         height: 350px;
+        text-align: center;
     }
 
     #tutorial-body h1{
@@ -69,6 +69,27 @@
     }
 
     #tutorial-body img{
-        width: 100%;
+        max-width: 50%;
+        height: auto;
+    }
+}
+
+@media only screen and (max-height: 768px){
+    #tutorial-body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        height: 200px;
+        text-align: center;
+    }
+
+    #tutorial-body h1{
+        font-size: 20px;
+    }
+
+    #tutorial-body img{
+        max-width: 50%;
+        height: auto;
     }
 }

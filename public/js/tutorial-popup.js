@@ -2,7 +2,7 @@ function TutorialPopUp(properties){
     this.properties = properties;
     console.log(properties);
     this.index = 0;
-    this.$content = $("<img>");
+    this.$content = $("<img class='img-fluid'>");
     this.$topCloseButton = $('<button type="button" class="close" data-dismiss="modal">&times;</button>');
     this.$backButton = $("<button id='tutorial-back-button' type='button' class='btn btn-default'>Back</button>");
     this.$continueButton = $("<button id='tutorial-cont-button' type='button' class='btn btn-primary'>Continue</button>");
