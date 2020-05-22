@@ -17,12 +17,12 @@
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    height: 450px;
+    height: 550px;
 }
 
 #tutorial-body h1{
     font-weight: bold;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 #tutorial-header{
@@ -80,12 +80,12 @@
         align-items: center;
         justify-content: center;
         flex-direction: row;
-        height: 200px;
+        height: 300px;
         text-align: center;
     }
 
     #tutorial-body h1{
-        font-size: 20px;
+        font-size: 16px;
     }
 
     #tutorial-body img{
