@@ -64,6 +64,20 @@ Contains the following subfolders:
 
 This game was largely influenced by interactive story games such as Reigns and Sort the Court as well as survival games such as 60 Seconds.
 
+## Attributions
+
+Landing page background: http://pixeljoint.com/pixelart/83915.htm
+
+Stat, characters, N95 mask, gift card, and hand sanitizer images: Made by Chris Yan
+
+Minigame sprites by Kyle Steven Schaff: https://gamekrazzy.itch.io/8-direction-top-down-character?download 
+
+Food pixel art by developer Henry Software: https://assetstore.unity.com/publishers/9216
+
+Toilet paper: http://pixelartmaker.com/art/b6180e16e66c589
+
+Music and sounds obtained from: https://sonniss.com/gameaudiogdc19/
+
 ## Setup
 
 The languages we used for our app are HTML, CSS and JS. 
@@ -88,16 +102,4 @@ We used Twitter share widget to share tweets to Twitter. No API key is required.
 Here is a link to our testing plan where you can see how our features are tested: 
 https://docs.google.com/spreadsheets/d/1FHQnLDFm_F-65WaTcSt2oTP1zsCGz0HJynuOaNg1uOM/edit?usp=sharing
 
-## Attributions
 
-Landing page background: http://pixeljoint.com/pixelart/83915.htm
-
-Stat, characters, N95 mask, gift card, and hand sanitizer images: Made by Chris Yan
-
-Minigame sprites by Kyle Steven Schaff: https://gamekrazzy.itch.io/8-direction-top-down-character?download 
-
-Food pixel art by developer Henry Software: https://assetstore.unity.com/publishers/9216
-
-Toilet paper: http://pixelartmaker.com/art/b6180e16e66c589
-
-Music and sounds obtained from: https://sonniss.com/gameaudiogdc19/
