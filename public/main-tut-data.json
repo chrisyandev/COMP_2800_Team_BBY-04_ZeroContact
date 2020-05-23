@@ -1,0 +1,44 @@
+[
+    {
+        "message": "This is where you will be making your choices to stay alive in a pandemic.",
+        "order": "(1/ 6) Tutorial",
+        "top": "10",
+        "left": "0",
+        "content": ""
+    },
+    {
+        "message": "You will be presented with a choice from a character each day.",
+        "order": "(2/ 6) Tutorial",
+        "top": "10",
+        "left": "0",
+        "content": "images/game-tutorial-1.gif"
+    },
+    {
+        "message": "Drag the card in the middle to see your choices and swipe all the way to the left or right to pick one.",
+        "order": "(3/ 6) Tutorial",
+        "top": "10",
+        "left": "0",
+        "content": "images/game-tutorial-2.gif"
+    },
+    {
+        "message": "Your choices will affect your status bars (Physical Health, Mental Health, Wealth, Supplies) at the top.",
+        "order": "(4/ 6) Tutorial",
+        "top": "10",
+        "left": "0",
+        "content": "images/game-tutorial-3.gif"
+    },
+    {
+        "message": "You can also use your items from the inventory to increase your resources if they are highlighted",
+        "order": "(5/ 6) Tutorial",
+        "top": "10",
+        "left": "0",
+        "content": "images/game-tutorial-4.gif"
+    },
+    {
+        "message": "Surivive as long as possible. Good luck!",
+        "order": "(6/ 6) Tutorial",
+        "top": "10",
+        "left": "0",
+        "content": ""
+    }
+]

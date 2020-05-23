@@ -3,13 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
     <title>Zero Contact</title>
 
     <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
-    <link rel="manifest" href="favicons/webmanifest.json">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"
         integrity="sha256-rByPlHULObEjJ6XQxW/flG2r+22R5dKiAoef+aXWfik=" crossorigin="anonymous" />
@@ -20,16 +21,54 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/inventory-style.css">
     <link rel="stylesheet" href="css/achievements.css">
+    <link rel="stylesheet" href="css/tutorial-popup-style.css">
 </head>
 
 <body>
-    <p id="user"style="display: none"><%= username %></p>
-    <!-- Modal -->
-    <div class="modal fade" id="achievements-window-wrapper" tabindex="-1" role="dialog"
+    <p id="user" style="display: none"><%= username %></p>
+
+    <!-- Game Over Modal -->
+    <div class="modal fade monospace-font" id="game-over-wrapper" tabindex="-1" role="dialog"
+        aria-labelledby="gameOverModal" aria-hidden="true">
+        <div id="game-over" class=" modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content rounded-0 greenish-background">
+                <div class="modal-header rounded-0 blue-background">
+                    <h5 class="modal-title"></h5>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <button id="game-over-redirect" type="button" class="btn btn-primary">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- --------------- -->
+
+    <!-- Weekly Update Modal -->
+    <div class="modal fade monospace-font" id="weekly-update-wrapper" tabindex="-1" role="dialog"
+        aria-labelledby="weeklyUpdateModal" aria-hidden="true">
+        <div id="weekly-update" class=" modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content rounded-0 greenish-background">
+                <div class="modal-header rounded-0 blue-background">
+                    <h5 class="modal-title"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="weekly-update-text"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- --------------- -->
+
+    <!-- Achievements Modal -->
+    <div class="modal fade monospace-font" id="achievements-window-wrapper" tabindex="-1" role="dialog"
         aria-labelledby="achievementsWindow" aria-hidden="true">
         <div id="achievements-window" class=" modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
+            <div class="modal-content rounded-0 greenish-background">
+                <div class="modal-header rounded-0 blue-background">
                     <h5 class="modal-title" id="exampleModalLongTitle"></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -38,43 +77,84 @@
                 <!-- Tabs -->
                 <ul id="modal-tabs" class="nav nav-pills nav-fill">
                     <li class="nav-item">
-                        <a class="list-group-item list-group-item-action active" data-toggle="list"
-                            href="#panel-profile" role="tab"><i class="fas fa-user fa-lg"></i></a>
+                        <a class="list-group-item list-group-item-action active greenish-background" data-toggle="list"
+                            href="#panel-profile" role="tab"><i class="fas fa-users fa-lg"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="list-group-item list-group-item-action" data-toggle="list"
-                            href="#panel-achievements" role="tab"><i
-                                class="fas fa-medal fa-lg"></i></a>
+                        <a class="list-group-item list-group-item-action greenish-background" data-toggle="list"
+                            href="#panel-leaderboard" role="tab"><i class="fas fa-crown fa-lg"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="list-group-item list-group-item-action" data-toggle="list"
-                            href="#panel-leaderboard" role="tab"><i
-                                class="fas fa-crown fa-lg"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="list-group-item list-group-item-action" data-toggle="list"
-                            href="#panel-settings" role="tab"><i class="fas fa-cog fa-lg"></i></a>
+                        <a class="list-group-item list-group-item-action greenish-background" data-toggle="list"
+                            href="#panel-navigation" role="tab"><i class="fas fa-bars fa-lg"></i></a>
                     </li>
                 </ul>
                 <div class="modal-body">
                     <!-- Tab panes -->
                     <div class="tab-content">
                         <div class="tab-pane active" id="panel-profile" role="tabpanel">
-                            <p>No content</p>
-                        </div>
-                        <div class="tab-pane" id="panel-achievements" role="tabpanel">
-                            <div id="achievements-list" class="list-group">
-                                <span
-                                    class="list-group-item list-group-item-action flex-column align-items-start active">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h5 id="survived-until" class="mb-1">You survived
-                                            until Day --</h5>
-                                    </div>
-                                </span>
-                            </div>
+                            <h3><b>About Our Game</b></h3>
+                            <p>Do you have what it takes to survive a pandemic?</p>
+                            <p>Based off of COVID-19 (coronavirus),
+                                Zero Contact puts you in the role of an average citizen in an beyond average life.
+                                Can you make smart decisions for you and your family, stay safe, and survive until
+                                a vaccine is created? Will you venture outside to grab supplies at the risk of
+                                infection? Hang out with others against the orders of the government? Go out and
+                                exercise or stay at home? All of these choices play a role in deciding your fate.</p>
+                            <br>
+                            <h3><b>Privacy Policy</b></h3>
+                            <p>
+                                Once you enter the site, you are already consenting to the use of cookies. For our
+                                entire site, we use
+                                cookies for uniquely Identifying users and providing personalized features that require
+                                them.
+                            </p>
+                            <p>Your username is used to uniquely identify you so that your highscore (days survived),
+                                the stats that your
+                                characters had, and tracking progression with achievements. </p>
+                            <p>Your password is hashed before being stored in the database and is unhashed when logging
+                                into the site. Your
+                                password is never shared with anyone outside the Contact Zero development team.</p>
+                            <p>When you signup for our game through the account section of the site, you are
+                                automatically acknowledging
+                                that you consent to having your username being visible to other users on the site. This
+                                is for the use of
+                                the leaderboard, which displays player stats like how many day they survived.</p>
+                            <br>
+                            <h3><b>Attributions of Assets</b></h3>
+                            <p>Background image used in landing page: "City Background" by reis. Original image can be
+                                found <a href="http://pixeljoint.com/pixelart/83915.htm">here.</a></p>
+                            <p>Background image used in the minigame was obtained from a Unity package.</p>
+                            <p>The images representing stats, all of the character sprites, the N95 mask, the gift card,
+                                and the hand sanitizer images are hand made by our
+                                designer, Chris Yan.</p>
+                            <p>Character sprites that are used in the minigame portion of the game are by Kyle Steven
+                                Schaff <a href="https://twitter.com/gamekrazzy">(@gamekrazzy on twitter)</a>. The
+                                sprites were orginally obtained <a
+                                    href="https://gamekrazzy.itch.io/8-direction-top-down-character?download">here.</a>
+                            </p>
+                            <p>Food pixel art used in the minigame were made by Unity developer <a
+                                    href="https://assetstore.unity.com/publishers/9216">Henry Software</a> and obtained
+                                from a free <a
+                                    href="https://assetstore.unity.com/packages/2d/environments/free-pixel-food-113523">Unity
+                                    package.</a> </p>
+                            <p>The coveted toilet paper used in the minigame section is posted on <a
+                                    href="http://pixelartmaker.com/art/b6180e16e66c589">this site.</a> </p>
+                            <h3><b>Disclaimer</b></h3>
+                            <p>
+                                Disclaimer: Any names and pictures in this game are purely fictional.
+                                And any relation to real-life names, persons, objects, concepts or otherwise
+                                similar sounding things is clearly coincidental and not representative of that
+                                person or thing.
+                            </p>
+                            <h3><b>Contact Us</b></h3>
+                            <p>We at Zero Contact, we are always open to your feedback. Whether you want new features to
+                                be added, general feedback about the game, or want to ask us any questions, we are here.
+                            </p>
+                            <p>You can email us here: gbaluyut31@gmail.com</p>
                         </div>
                         <div class="tab-pane" id="panel-leaderboard" role="tabpanel">
-                            <table class="table table-dark">
+                            <table class="table">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
@@ -83,33 +163,47 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <% for (let i = 0; i < Math.min(highscores.length, 10); i++) { %>
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>Jack</td>
-                                        <td>10</td>
+                                        <th scope="row"><%= i + 1 %></th>
+                                        <td><%= highscores[i].username %></td>
+                                        <td><%= highscores[i].days %></td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Bob</td>
-                                        <td>8</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Joe</td>
-                                        <td>5</td>
-                                    </tr>
+                                    <% } %>
                                 </tbody>
                             </table>
                         </div>
-                        <div class="tab-pane" id="panel-settings" role="tabpanel">
-                            <p>No content</p>
+                        <div class="tab-pane" id="panel-navigation" role="tabpanel">
+                            <div class="list-group list-group-flush">
+                                <a href="/" class="list-group-item list-group-item-action">Logout</a>
+                                <a href="/signup" class="list-group-item list-group-item-action">Sign up</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- --------------- -->
+
+    <!-- Tut Modal -->
+    <div class="modal fade" id="tutorial-container" role="dialog">
+        <div class="modal-dialog">
+            <!-- Content -->
+            <div id="tutorial-content" class="modal-content">
+                <div id="tutorial-header" class="modal-header">
+
+                </div>
+                <div id="tutorial-body" class="modal-body">
+
+                </div>
+                <div id="tutorial-footer" class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top bar -->
 
     <div id="wrapper">
         <div id="stats-spacer" class="set-width" data-toggle="modal" data-target="#achievements-window-wrapper">
@@ -130,20 +224,23 @@
             <div id="stats-container" class="set-height">
                 <img src="images/stats-overlay.png" id="stats-overlay" class="set-height">
                 <div class="set-height">
-                    <div id="physical" class="progress-bar"></div>
-                    <div id="mental" class="progress-bar"></div>
-                    <div id="wealth" class="progress-bar"></div>
-                    <div id="supplies" class="progress-bar"></div>
+                    <div id="physical" class="progress-bar" title="Physical Health Bar"></div>
+                    <div id="mental" class="progress-bar" title="Mental Health Bar"></div>
+                    <div id="wealth" class="progress-bar" title="Wealth Bar"></div>
+                    <div id="supplies" class="progress-bar" title="Supplies Bar"></div>
                 </div>
             </div>
+            <span id="open-menu-hint">Click for Menu</span>
         </div>
         <div id="event-text" class="black-monospace set-width"><span></span></div>
         <div id="card-container" class="set-width"></div>
         <div id="name" class="set-width"><span class="black-monospace"></span></div>
+        <!--Footer---------------------------------------------------------------------------->
         <div id="bottom" class="set-width">
             <div id="info">
-                <div id="player-name">John Doe</div>
                 <div id="day">Day 1</div>
+                <!--Get Profile----------------------------------------------------------------------->
+                <input id="getProfile" type="button" value="Profile" onclick=getP()>
             </div>
         </div>
         <div id="inventory-container" class="set-width">
@@ -153,6 +250,27 @@
         <div class="inventory-drop-zone">
             <h1>Drag item here to use it</h1>
         </div>
+
+        <div class="modal fade" id="item-use-prompt" role="dialog">
+            <div class="modal-dialog">
+                <!-- Content -->
+                <div id="item-use-content" class="modal-content">
+                    <div id="item-use-header" class="modal-header">
+                        <h2 id="item-use-heading">Use: </h2>
+                        <button type="button" class="close" id="item-use-close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div id="item-use-body" class="modal-body">
+                        <p id="item-use-description"></p>
+                        <p id="item-use-effect"></p>
+                    </div>
+                    <div id="item-use-footer" class="modal-footer">
+                        <button class='item-use-button btn btn-primary' id="item-use-accept">Yes</button>
+                        <button class='item-use-button btn btn-danger' id="item-use-decline">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--
         <div id="item-use-prompt">
             <h2 id="item-use-heading">Use: </h2>
             <p id="item-use-description"></p>
@@ -163,7 +281,30 @@
             </div>
             <button class="item-use-button" id="item-use-close">X</button>
         </div>
+        -->
     </div>
+
+    <div id="myProfile" class="modal">
+        <div id="myProfileContent" class="modal-content">
+            <b>
+                <p id="characterName">1</p>
+                <p id="characterAge">2</p>
+                <p id="characterGender">3</p>
+                <p id="pandemicGenerated">4</p>
+            </b>
+            <input type='button' id="closeProfile" value="Close" onclick="closeProfile()">
+        </div>
+    </div>
+
+    <audio id="audio-background" loop>
+        <source src="audio/sci-fi-ambience.wav" type="audio/wav">
+    </audio>
+    <audio id="audio-card-swipe-left">
+        <source src="audio/pop-left.wav" type="audio/wav">
+    </audio>
+    <audio id="audio-card-swipe-right">
+        <source src="audio/pop-right.wav" type="audio/wav">
+    </audio>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"
         integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
@@ -171,19 +312,19 @@
         integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"
         integrity="sha256-AAhU14J4Gv8bFupUUcHaPQfvrdNauRHMt+S4UVcaJb0=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
-    <!--
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha256-OFRAJNoaD8L3Br5lglV7VyLRf0itmoBzWUoM+Sji4/8=" crossorigin="anonymous"></script>
-    -->
+
+    <script src="js/custom-bootstrap.js"></script>
+    <script src="js/audio.js"></script>
     <script src="js/card.js"></script>
+    <script src="js/weekly-updates.js"></script>
     <script src="js/progress-bar.js"></script>
     <script src="js/inventory.js"></script>
+    <script src="js/inventory-expand.js"></script>
     <script src="js/inventory-main.js"></script>
-    <script src="js/achievements.js"></script>
     <script src="js/screen-size.js"></script>
+    <script src="/js/tutorial-popup.js"></script>
+    <script src="/js/main-tutorial.js"></script>
+    <script src="js/profileDisplay.js"></script>
 </body>
 
 </html>

@@ -1,31 +1,63 @@
-#tutorial-container{
+/* ------------------------------------------------------------------- */
+/* Tutorial Screen styling */
+/* ------------------------------------------------------------------- */
+
+#tutorial-container {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-#message-container{
-    display: flex;
-    flex-direction:column;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    background-color: white;
-    width: 500px;
-    height: 250px;
-    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.205);
     font-family: 'Courier New', Courier, monospace;
 }
 
-#message-container h2{
-    position: absolute;
-    top: 0;
-    left: 10px;
+#tutorial-body {
+    text-align: center;
+    overflow: auto;
+    height: 50vh;
 }
 
-#message-container button{
-    position: absolute;
-    bottom: 20px;
+#tutorial-body h1 {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+#tutorial-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #222034;
+    color: white;
+    height: 20vh;
+}
+
+#tutorial-header h2 {
+    font-weight: bold;
+}
+
+#tutorial-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#tutorial-footer button {
+    font-weight: bold;
+}
+
+#tutorial-container h1 {
+    text-align: center;
+    font-weight: bold;
+}
+
+.img-fluid {
+    max-width: 75%;
+    height: auto;
+}
+
+@media only screen and (max-width: 768px) {
+    #tutorial-body h1 {
+        font-size: 20px;
+    }
+
 }

@@ -1,0 +1,47 @@
+body {
+    background-image: url("../images/city-bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    image-rendering: auto;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+}
+
+#wrap {
+    text-align: center;
+}
+
+#profile {
+    width: 305.35px;
+    height: 290px;
+    padding-top: 20px;
+    border: 1px solid #222034;
+    display: none;
+    background-color: #dddfcb;
+}
+
+#top {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    padding-bottom: 30px;
+}
+
+#main p {
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 125%;
+    text-align: left;
+}
+
+#create,
+#chooseProfile {
+    border: 1px solid #222034;
+    border-radius: 2px;
+    font-family: 'Courier New', Courier, monospace;
+    color: black;
+    font-weight: bold;
+    font-size: 2.8vh;
+    background-color: #807caf;
+}

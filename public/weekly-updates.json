@@ -1,0 +1,53 @@
+[
+    [{
+        "title": "Week 1 - Beginning",
+        "text": "The world is growing fearful as a new virus has been detected, and is quickly spreading across the world. The government has put out recommendation for all who are able to self isolate, and distance themselves from one another to help slow the spread. After grabbing what supplies you can from the grocery store, you hunker down at home and prepare for the long haul."
+    }],
+
+    [{
+            "title": "Week 2 - Arrival",
+            "text": "After a week of self isolating, the virus has finally arrived in your city, with 3 known cases being detected. Keeping locked up hasn't been that hard so far, and your family seems to be managing just fine."
+        },
+        {
+            "title": "Week 2 - Arrival",
+            "text": "The virus has finally arrived in your city. As far as health officials are aware, 2 people have been infected. Everyone in the house is doing fine so far."
+        }
+    ],
+    [{
+        "title": "Week 3 - Spread",
+        "text": "The virus is spreading in your city. It's estimated that there are at least 90 cases in the city so far. Health authorities are working on trying to improve testing measures. The governmenthas ramped up its enforcement of self-isolation measures, introducing large fines for those not social distancing, and closing all non-essential businesses. People in the city are getting worried."
+    }],
+    [{
+        "title": "Week 4 - Continued Spread",
+        "text": "Even more people have become infected in the city. With testing starting to become more frequent, it's revealed that over 300 people in your city have or have had the virus. Self isolating is starting to take its toll on you and your family, but at least you're getting to play a lot of videogames with Little Timmy."
+    }],
+    [{
+            "title": "Week 5 - Getting Worse",
+            "text": "The count of infected people in your city has eclipsed 700. The doubling rate is alarming, and the government is putting forward its best effort in trying to combat the disease. People are starting to feel the economic effects of businesses closing everywhere. In response there is a plan for a stimulus to help people get by. You hope that you can qualify..."
+        },
+        {
+            "title": "Week 5 - Getting Worse",
+            "text": "Option 2 Placeholder"
+        }
+    ],
+    [{
+        "title": "Week 6 - Isolation working",
+        "text": "The count of infected people in your city is still increasing, and has surpassed 1100. Health officials are optimistic that the rate of spread is decreasing, but stess the necessity to maintain social distance. Little Timmy keeps staring out the window, and is bored of being locked up inside."
+    }],
+    [{
+        "title": "Week 7 - Economic relief",
+        "text": "The government's cash injection program takes effect this week! Unfortunately, you didn't make the cut -- maybe next time. The money is helping people but isn't enough for many. People continue to get infected despite the rate of spread lowering. This week 1700 people are counted as being infected."
+    }],
+    [{
+        "title": "Week 8 - Restlessness",
+        "text": "People are starting to get upset after being told to stay inside for 2 nearly months. Protests have started to pop up in your city and in others demanding the government stop infringing on their rights and allow things to go back to normal. With over 2200 people known to be infected in the city, officials hope that this movement doesn't contribute to a resurgence in infections."
+    }],
+    [{
+        "title": "Week 9 - Promise",
+        "text": "You are really starting to get sick of being stuck with the same scenery every single day, and so are Granny and Little Timmy as well. With 2500 known cases this week, you're hoping that reports of headway being made on a vaccine are true."
+    }],
+    [{
+        "title": "Week 10 - Relief",
+        "text": "Reports are coming in that a vaccine is nearly ready for early distribution. Hooray! With news on this progress fighting the virus, the government has begun phases of re-opening businesses and restaurants to the public provided they meet requirements for safety. You've also gotten word from work that they're going to need you back to help with this reopening. Things are looking good."
+    }]
+]

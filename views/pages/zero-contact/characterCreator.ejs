@@ -1,0 +1,62 @@
+<DOCTYPE html>
+    <html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, shrink-to-fit=no">
+        <title>Zero Contact</title>
+
+        <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"
+            integrity="sha256-rByPlHULObEjJ6XQxW/flG2r+22R5dKiAoef+aXWfik=" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+            integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+
+        <link rel="stylesheet" href="css/characterStyle.css">
+    </head>
+
+    <body>
+        <script src="js/characterCreator.js"></script>
+        <p style="display: none"><%= username %></p>
+        <div id="wrap">
+            <form action="/game" method="post">
+                <div id="top">
+                    <input id="create" type="button" value="Create Character" onclick=loadCharacterPage()>
+                </div>
+
+                <div id="profile">
+                    <!-- contains text -->
+                    <div id="main" style="background-color:#dddfcb; ">
+                        <p id="name"></p>
+                        <p id="gender"></p>
+                        <p id="age"></p>
+                        <p id="pandemic"></p>
+                    </div>
+                    <br>
+
+                    <input id="chooseProfile" type="submit" style="position:relative; width:100%" value="Select">
+                    <p>
+                        <!--empty space-->
+                    </p>
+
+
+                    <!--Username-->
+                    <input style="display:none" type="text" value="<%= username %>" name="username">
+                    <!--Randomly generated data to send-->
+                    <input id="sendName" style="display:none" type="text" value="failedName" name="characterName">
+                    <input id="sendAge" style="display:none" type="text" value="failedAge" name="characterAge">
+                    <input id="sendGender" style="display:none" type="text" value="failedGender" name="characterGender">
+                    <input id="sendPandemicName" style="display:none" type="text" value="failedPanName"
+                        name="pandemicName">
+                </div>
+
+            </form>
+        </div>
+
+    </body>
+
+    </html>
+</DOCTYPE>

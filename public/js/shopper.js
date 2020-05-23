@@ -1,3 +1,7 @@
+/* ----------------------------------------------------------------------------*/
+/* A function class to create shopper objects that walk around in the minigame */
+/* ----------------------------------------------------------------------------*/
+
 function Shopper(xStart, yStart, direction, moveRate, step) {
     // Indicates how fast the shopper should move
     this.moveRate = moveRate;
@@ -6,7 +10,7 @@ function Shopper(xStart, yStart, direction, moveRate, step) {
     this.direction = direction;
 
     this.$shopperContainer = $("<div class='shopper-container'></div>");
-    
+
     // The reset point of the shopper if it is moving right
     if (step > 0 && direction === "row") {
         this.xStart = yStart;
@@ -48,7 +52,7 @@ function Shopper(xStart, yStart, direction, moveRate, step) {
             "height": "120px",
         });
     } else {
-        
+
         if (step < 0 && direction === "column") {
             // The reset point of the shopper if it is moving up
             this.xStart = yLimit;
@@ -134,6 +138,7 @@ function Shopper(xStart, yStart, direction, moveRate, step) {
     $("#inventory-grid-container").append(this.$shopperContainer);
 }
 
+// Moves the shopper in a certain direction in the grid
 function moveShopper(shopper) {
     // Moves the shopper entities
     shopper.moveTimer = setInterval(function () {

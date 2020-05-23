@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <title>Zero Contact</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"
+        integrity="sha256-rByPlHULObEjJ6XQxW/flG2r+22R5dKiAoef+aXWfik=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+        integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="css/custom-bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/inventory-style.css">
+    <link rel="stylesheet" href="css/achievements.css">
+</head>
+
+<body>
+    <p id="user" style="display: none"></p>
+
+    <!-- Game Over Modal -->
+    <div class="modal fade monospace-font" id="game-over-wrapper" tabindex="-1" role="dialog"
+        aria-labelledby="gameOverModal" aria-hidden="true">
+        <div id="game-over" class=" modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content rounded-0 greenish-background">
+                <div class="modal-header rounded-0 blue-background">
+                    <h5 class="modal-title"></h5>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <button id="game-over-redirect" type="button" class="btn btn-primary">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- --------------- -->
+
+    <!-- Weekly Update Modal -->
+    <div class="modal fade monospace-font" id="weekly-update-wrapper" tabindex="-1" role="dialog"
+        aria-labelledby="weeklyUpdateModal" aria-hidden="true">
+        <div id="weekly-update" class=" modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content rounded-0 greenish-background">
+                <div class="modal-header rounded-0 blue-background">
+                    <h5 class="modal-title"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="weekly-update-text"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- --------------- -->
+
+    <!-- Achievements Modal -->
+    <div class="modal fade monospace-font" id="achievements-window-wrapper" tabindex="-1" role="dialog"
+        aria-labelledby="achievementsWindow" aria-hidden="true">
+        <div id="achievements-window" class=" modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content rounded-0 greenish-background">
+                <div class="modal-header rounded-0 blue-background">
+                    <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!-- Tabs -->
+                <ul id="modal-tabs" class="nav nav-pills nav-fill">
+                    <li class="nav-item">
+                        <a class="list-group-item list-group-item-action active greenish-background" data-toggle="list"
+                            href="#panel-profile" role="tab"><i class="fas fa-users fa-lg"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="list-group-item list-group-item-action greenish-background" data-toggle="list"
+                            href="#panel-leaderboard" role="tab"><i class="fas fa-crown fa-lg"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="list-group-item list-group-item-action greenish-background" data-toggle="list"
+                            href="#panel-navigation" role="tab"><i class="fas fa-bars fa-lg"></i></a>
+                    </li>
+                </ul>
+                <div class="modal-body">
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="panel-profile" role="tabpanel">
+                            <h3><b>About Our Game</b></h3>
+                            <p>Do you have what it takes to survive a pandemic?</p>
+                            <p>Based off of COVID-19 (coronavirus),
+                                Zero Contact puts you in the role of an average citizen in an beyond average life.
+                                Can you make smart decisions for you and your family, stay safe, and survive until
+                                a vaccine is created? Will you venture outside to grab supplies at the risk of
+                                infection? Hang out with others against the orders of the government? Go out and
+                                exercise or stay at home? All of these choices play a role in deciding your fate.</p>
+                            <br>
+                            <h3><b>Privacy Policy</b></h3>
+                            <p>
+                                Once you enter the site, you are already consenting to the use of cookies. For our
+                                entire site, we use
+                                cookies for uniquely Identifying users and providing personalized features that require
+                                them.
+                            </p>
+                            <p>Your username is used to uniquely identify you so that your highscore (days survived),
+                                the stats that your
+                                characters had, and tracking progression with achievements. </p>
+                            <p>Your password is hashed before being stored in the database and is unhashed when logging
+                                into the site. Your
+                                password is never shared with anyone outside the Contact Zero development team.</p>
+                            <p>When you signup for our game through the account section of the site, you are
+                                automatically acknowledging
+                                that you consent to having your username being visible to other users on the site. This
+                                is for the use of
+                                the leaderboard, which displays player stats like how many day they survived.</p>
+                            <br>
+                            <h3><b>Contact Us</b></h3>
+                            <p>We at Zero Contact, we are always open to your feedback. Whether you want new features to
+                                be added, general feedback about the game, or want to ask us any questions, we are here.
+                            </p>
+                            <p>You can email us here: gbaluyut31@gmail.com</p>
+                        </div>
+                        <div class="tab-pane" id="panel-leaderboard" role="tabpanel">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Survived Until Day</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for (let i = 0; i < Math.min(highscores.length, 10) ; i++) { %>
+                                    <tr>
+                                        <th scope="row"><%= i + 1 %></th>
+                                        <td><%= highscores[i].username %></td>
+                                        <td><%= highscores[i].days %></td>
+                                    </tr>
+                                    <% } %>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane" id="panel-navigation" role="tabpanel">
+                            <div class="list-group list-group-flush">
+                                <a href="/" class="list-group-item list-group-item-action">Logout</a>
+                                <a href="/signup" class="list-group-item list-group-item-action">Sign up</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header -->
+
+    <div id="wrapper">
+        <div id="stats-spacer" class="set-width" data-toggle="modal" data-target="#achievements-window-wrapper">
+            <div id="dots-container">
+                <div class="dot-wrapper">
+                    <div id="dot-physical" class="dot"></div>
+                </div>
+                <div class="dot-wrapper">
+                    <div id="dot-mental" class="dot"></div>
+                </div>
+                <div class="dot-wrapper">
+                    <div id="dot-wealth" class="dot"></div>
+                </div>
+                <div class="dot-wrapper">
+                    <div id="dot-supplies" class="dot"></div>
+                </div>
+            </div>
+            <div id="stats-container" class="set-height">
+                <img src="images/stats-overlay.png" id="stats-overlay" class="set-height">
+                <div class="set-height">
+                    <div id="physical" class="progress-bar" style="background-color: #807caf"></div>
+                    <div id="mental" class="progress-bar" style="background-color: #807caf"></div>
+                    <div id="wealth" class="progress-bar" style="background-color: #807caf"></div>
+                    <div id="supplies" class="progress-bar" style="background-color: #807caf"></div>
+                </div>
+            </div>
+            <span id="open-menu-hint">Click for Menu</span>
+        </div>
+
+        <div id="event-text" class="black-monospace set-width">
+            <h1 id="title-splash">
+                <b>Game Over!</b>
+            </h1>
+        </div>
+
+        <!-- End game content -->
+        <div id="card-container" class="set-width black-monospace" style="background-image: none;">
+            <p>You lasted <%= score %> days.</p>
+            <p>Your highest score so far is <%= highest.days %></p>
+
+            <!-- Twitter widget -->
+                
+            <a id="tweet" data-size="large" href="https://twitter.com/share?text=I just played ZeroContact: Pandemic Survival! Play here:" class="twitter-share-button" data-show-count="false">Tweet</a>
+                <script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+            <div id="sign-button-container">
+                <form action="/minigame" method="POST">
+                    <input id="play-button" type="submit" style="position:absolute; top:60%" value="Play Again" style="z-index: 20;">
+                    <input style="display:none" type="text" value="<%= username %>" name="username">
+                </form>
+                <a href="/">
+                    <p id="sign-up" class="landing-button black-monospace" style="position:absolute; top:70%">Log out</p>
+                </a>
+            </div>
+        </div>
+        <div id="name" class="set-width"><span class="black-monospace"></span></div>
+
+        <!-- Bottom bar and inventory framework -->
+        <div id="bottom" class="set-width">
+            <div id="info">
+                <div id="player-name"></div>
+                <div id="day"></div>
+            </div>
+        </div>
+        <div id="inventory-container" class="set-width">
+            <button id="inventory-expand-button" style="display: none;">Inventory</button>
+            <div id="inventory-item-container"></div>
+        </div>
+        <div class="inventory-drop-zone" style="display:none">
+            <h1>Drag item here to use it</h1>
+        </div>
+        <div id="item-use-prompt" style="display:none">
+            <h2 id="item-use-heading">Use: </h2>
+            <p id="item-use-description"></p>
+            <p id="item-use-effect"></p>
+            <div id="item-use-button-container">
+                <button class="item-use-button" id="item-use-accept">Yes</button>
+                <button class="item-use-button" id="item-use-decline">No</button>
+            </div>
+            <button class="item-use-button" id="item-use-close">X</button>
+        </div>
+    </div>
+
+    <!-- Custom Audio -->
+
+    <audio id="audio-background" loop>
+        <source src="audio/sci-fi-ambience.wav" type="audio/wav">
+    </audio>
+    <audio id="audio-card-swipe">
+        <source src="audio/button.wav" type="audio/wav">
+    </audio>
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"
+        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"
+        integrity="sha256-AAhU14J4Gv8bFupUUcHaPQfvrdNauRHMt+S4UVcaJb0=" crossorigin="anonymous"></script>
+
+    <!-- Custom JS -->
+    <script src="js/custom-bootstrap.js"></script>
+    <script src="js/screen-size.js"></script>
+</body>
+
+</html>

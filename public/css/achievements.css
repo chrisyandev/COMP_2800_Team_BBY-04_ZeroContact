@@ -1,17 +1,99 @@
-.modal-dialog,
-.modal-content {
+#achievements-window-wrapper .modal-dialog,
+#achievements-window-wrapper .modal-content {
     height: 90%;
 }
 
-.modal-body {
+/* 
+ * Sets modal height based on viewport height
+ * source: https://stackoverflow.com/questions/19140702/bootstrap-3-set-height-of-modal-window-according-to-screen-size
+ */
+#achievements-window-wrapper .modal-body {
     max-height: calc(100vh - 120px);
     overflow-y: scroll;
 }
 
-.modal *, *::before, *::after {
-  box-sizing: border-box;
+.modal *,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
 #modal-tabs .list-group-item {
     padding: 0.4rem 0.6rem;
+}
+
+@media (min-width: 1px) {
+    .modal-dialog {
+        max-width: 100vw;
+    }
+}
+
+/* Customizing colors and font */
+.blue-background {
+    background-color: #222034;
+    color: white;
+}
+
+.greenish-background {
+    background-color: #dddfcb;
+    color: black;
+}
+
+.monospace-font {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    color: black;
+    font-size: calc(16px + 0.5vh);
+}
+
+i.fa-lg {
+    font-size: 1.33em;
+    vertical-align: middle;
+}
+
+#modal-tabs a.active {
+    background-color: #222034;
+    color: white;
+}
+
+#modal-tabs a:hover {
+    background-color: #222034;
+    opacity: 0.8;
+    color: white;
+}
+
+.close {
+    color: white;
+    opacity: 1;
+}
+
+.close:hover {
+    color: white;
+    opacity: 0.8;
+}
+
+#game-over-redirect {
+    background-color: #222034;
+    color: white;
+}
+
+#game-over-redirect:hover {
+    opacity: 0.8;
+}
+
+#panel-leaderboard table,
+#panel-leaderboard th,
+#panel-leaderboard tr,
+#panel-leaderboard td {
+    border-color: #222034;
+}
+
+#panel-navigation a {
+    background-color: #222034;
+    color: white;
+    border-color: #dddfcb;
+}
+
+#panel-navigation a:hover {
+    opacity: 0.8;
 }

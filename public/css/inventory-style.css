@@ -1,7 +1,12 @@
-html, body{
+html,
+body {
     margin: 0;
     padding: 0;
 }
+
+/*-------------------------------------------------------------------------------*/
+/*  Inventory and drop zone styling */
+/*-------------------------------------------------------------------------------*/
 
 .inventory-drop-zone{
     position: fixed;
@@ -11,34 +16,42 @@ html, body{
     height: 40%;
     text-align: center;
     background-color: rgba(218, 218, 218, 0.281);
+    font-family: 'Courier New', Courier, monospace;
     font-size: 25px;
     z-index: 3;
 }
 
-.inventory-drop-zone-hover{
+.inventory-drop-zone h1 {
+    font-weight: bold;
+}
+
+.inventory-drop-zone-hover {
     background-color: rgba(23, 235, 23, 0.445);
 }
 
 #inventory-container {
     position: absolute;
     z-index: 3;
-    left: 48%;
+    left: 50%;
     top: 95%;
     display: flex;
     height: 20px;
     flex-direction: column;
     transition: 0.3s;
+    transform: translateX(-15%);
 }
 
-#inventory-expand-button {
+#inventory-expand-button,
+#closeProfile {
     height: 50px;
     background-color: #222034;
     box-sizing: border-box;
     color: #dddfcb;
     border-color: #dddfcb;
+    font-family: 'Courier New', Courier, monospace;
 }
 
-#inventory-item-container{
+#inventory-item-container {
     display: grid;
     padding: 0px 0px;
     justify-content: space-around;
@@ -60,6 +73,7 @@ html, body{
     border-radius: 20px;
     box-shadow: 0 0 0px rgb(255, 243, 79);
     text-align: center;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .inventory-item img {
@@ -68,91 +82,195 @@ html, body{
     height: 100px;
 }
 
-.inventory-item h1{
+.inventory-item h1 {
     position: absolute;
     bottom: 0;
     right: 0;
     color: white;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
     font-size: 30px;
+    font-weight: bold;
 }
 
-.inventory-item-placeholder{
+.inventory-item-placeholder {
     background-color: rgb(68, 68, 68);
     border-radius: 20px;
 }
 
-.inventory-item .tooltip {
-    position: fixed; /** depends on how it handles the e.pageX and e.pageY **/
-    width: 80px;
-    height: 30px;
-    background: #06F;
-    z-index: 10;
-    display: none; /**let the tooltip be not visable, when startup **/
+.tooltip {
+    font-family: 'Courier New', Courier, monospace;
 }
 
 /*-------------------------------------------------------------------------------*/
 /*   Item usage prompt styling*/
 /*-------------------------------------------------------------------------------*/
 
-#item-use-prompt {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    top: 10%;
-    left: 0;
-    background-color: rgba(185, 185, 185, 0.692);
-    opacity: 0;
-    z-index: 3;
-}
-
-#item-use-heading{
-    font-size: 40px;
+.close {
     color: white;
-    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    opacity: 1;
+    font-size: 30px;
 }
 
-#item-use-description{
+#item-use-prompt {
+    padding-top: 5vh;
+    font-family: 'Courier New', Courier, monospace;
+    height: 95%;
+    background-color: rgba(0, 0, 0, 0.199);
+}
+
+#item-use-heading {
     font-size: 30px;
     color: white;
-    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    text-align: center;
 }
 
-#item-use-effect{
+#item-use-description {
+    font-size: 25px;
+    color: black;
+    text-align: center;
+    font-weight: 900;
+}
+
+#item-use-effect {
     font-size: 20px;
-    color: white;
-    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-    margin-bottom: 50px;
+    color: black;
+    margin-bottom: 25px;
+    text-align: center;
 }
 
-#item-use-button-container{
-    display: flex;
-    justify-content: space-between;
-    height: 50px;
-    width: 50%;
-}
-
-.item-use-button{
+.item-use-button {
     width: 150px;
+    color: black;
 }
 
-#item-use-close{
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
-#item-use-accept{
+#item-use-accept {
     background-color: rgba(155, 255, 155, 0.788);
 }
 
-#item-use-decline{
+#item-use-decline {
     background-color: rgba(255, 155, 155, 0.788);
+}
+
+#item-use-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90%;
+    background-color: rgba(0, 0, 0, 0.205);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#item-use-body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 450px;
+    overflow: scroll;
+}
+
+#item-use-body h1 {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+#item-use-header {
+    background-color: #222034;
+    color: white;
+}
+
+#item-use-header h2 {
+    font-weight: bold;
+}
+
+#item-use-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#item-use-footer button {
+    font-weight: bold;
+}
+
+#item-use-container h1 {
+    text-align: center;
+    font-weight: bold;
+}
+
+#item-use-body.modal-body {
+    overflow: auto;
+}
+
+#item-use-content {
+    height: 700px;
+}
+
+/*-------------------------------------------------------------------------------*/
+/*  Media queries */
+/*-------------------------------------------------------------------------------*/
+
+@media only screen and (max-width: 768px){
+    #item-use-content{
+        height: 80vh;
+    }
+
+    #item-use-body {
+        height: 300px;
+    }
+
+    #item-use-header h2 {
+        font-size: 25px
+    }
+
+    #item-use-header h2 {
+        font-size: 25px;
+    }
+
+    #item-use-body p {
+        font-size: 20px;
+    }
+
+    #item-use-body img {
+        width: 100%;
+    }
+
+    #item-use-footer button {
+        width: 75px;
+    }
+}
+
+@media only screen and (max-height: 768px) {
+    #item-use-content {
+        height: 80vh;
+    }
+
+    #item-use-body {
+        height: 90vh;
+    }
+
+    #item-use-header h2 {
+        font-size: 15px
+    }
+
+    #item-use-header h2 {
+        font-size: 15px;
+    }
+
+    #item-use-body p {
+        font-size: 13px;
+    }
+
+    #item-use-effect {
+        margin-bottom: 25px;
+    }
+
+    #item-use-body img {
+        width: 100%;
+    }
+
+    #item-use-footer button {
+        width: 75px;
+    }
 }

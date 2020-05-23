@@ -113,16 +113,19 @@ function Card(leftChoice, rightChoice, image) {
         if (side === 'left') {
             $(document.body).trigger('update-resources', {
                 effect: this.leftChoice.effect,
-                event: 'card-swiped'
+                event: 'card-swiped',
+                side: 'left'
             });
         } else if (side === 'right') {
             $(document.body).trigger('update-resources', {
                 effect: this.rightChoice.effect,
-                event: 'card-swiped'
+                event: 'card-swiped',
+                side: 'right'
             });
         }
         this.$card.promise().done(function () {
             createCard(cardDataArray[cardNum]);
+            $(document.body).trigger('new-card');
         });
     }
 }
@@ -137,42 +140,66 @@ function createCard(cardData) {
 
 /** 
  * Determines what the next card should be based on player choice 
- * for the current card. Currently we're just looping through all cards.
- * If game over, the next card changes to the "losing" card.
+ * for the current card.
+ * If game lost, the next card changes to the "losing" card.
+ * If game won, the next card changes to the "winning" card.
+ * Else a random card is picked.
  */
-$(document.body).on('pick-next-card', function (event, isGameOver) {
-    if (isGameOver) {
+$(document.body).on('pick-next-card', function (event, gameState) {
+    if (gameState === 'lost') {
         cardNum = 0;
-        fetch("/longest-days", {
-            method: "put",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                username: document.getElementById("user").innerHTML,
-                days: day
-            })
-        }).then(res => {
-            if (res.ok) return res.json()
-        })
+        storeHighScore(day);
+    } else if (gameState === 'won') {
+        cardNum = cardDataArray.length - 1;
+        storeHighScore(day + 1);
+        $('#day').text('Day ' + (day + 1));
     } else {
-        cardNum++;
-        if (cardNum >= cardDataArray.length) {
-            cardNum = 1;
-        }
-        day++;
-        $('#day').text('Day ' + day);
+        cardNum = pickRandCard();
+        updateDay();
     }
 
     // Highlights the items which are useful to the card
+    /*
     if (cardNum === 1) {
         let tempUseCases = ["Food"];
         highlightItem(tempUseCases);
     } else {
         let tempUseCases = ["Nothing"];
         highlightItem(tempUseCases);
-    }
+    }*/
+    let tempUseCases = [cardDataArray[cardNum].event];
+    console.log(tempUseCases);
+    highlightItem(tempUseCases);
 });
+
+/** Picks a random card. Does not pick the first or last card in the array. */
+function pickRandCard() {
+    const min = 1;
+    const max = cardDataArray.length - 1;
+    return Math.floor(Math.random() * (max - min) + min);
+}
+
+/** Increments day and updates the HTML. */
+function updateDay() {
+    day++;
+    $('#day').text('Day ' + day);
+}
+
+/** Sends the day the player survived until. */
+function storeHighScore(days) {
+    fetch("/longest-days", {
+        method: "put",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            username: document.getElementById("user").innerHTML,
+            days: days
+        })
+    }).then(res => {
+        if (res.ok) return res.json()
+    })
+}
 
 /** Sets the size of each dot. */
 function updateDots(choice) {
