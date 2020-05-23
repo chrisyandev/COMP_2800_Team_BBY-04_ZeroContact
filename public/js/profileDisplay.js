@@ -41,4 +41,4 @@ document.getElementById("characterAge").innerHTML = "Age: " + playerObj.age;
 document.getElementById("characterGender").innerHTML = "Gender: " + playerObj.gender;
 document.getElementById("pandemicGenerated").innerHTML = "Pandemic: " + playerObj.pandemic;
 console.log(getFirstName("1" + playerName));
-document.getElementById("player-name").innerHTML = "" + getFirstName(playerName);
+document.getElementById("getProfile").value = "" + getFirstName(playerName);

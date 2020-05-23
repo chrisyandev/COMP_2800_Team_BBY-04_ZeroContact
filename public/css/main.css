@@ -169,6 +169,10 @@ body {
     justify-content: center;
 }
 
+#day {
+    padding-bottom: 1vh;
+}
+
 .large-font {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 2em;
@@ -291,6 +295,15 @@ div#myProfile.modal {
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 20px;
+}
+
+#getProfile {
+    height: 5vh;
+    background-color: #222034;
+    box-sizing: border-box;
+    color: #dddfcb;
+    border-color: #dddfcb;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 @media (max-width: 380px) {
