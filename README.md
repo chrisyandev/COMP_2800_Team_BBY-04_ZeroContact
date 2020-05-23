@@ -57,8 +57,7 @@ Contains the following subfolders:
 ├── js                       # Stores the game's Javascript files
     
 ``` 
-   
-In the root folder, we have the public folder, views folder, .gitignore file, README file, creadentials.js, index.js, package-lock.json, and package.json files. Inside the views folder, there is a pages folder that contains all of the pages of the website. The public folder contains audio, CSS files, favicons, images, and JS files for the game.
+
 
 ## Inspiration
 

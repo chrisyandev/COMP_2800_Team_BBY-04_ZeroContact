@@ -196,12 +196,7 @@
         <div id="card-container" class="set-width black-monospace" style="background-image: none;">
             <p>You lasted <%= score %> days.</p>
             <p>Your highest score so far is <%= highest.days %></p>
-
-            <!-- Twitter widget -->
-            <a id="tweet" data-size="large" href="https://twitter.com/share?text=I just played ZeroContact: Pandemic Survival! Play here:" class="twitter-share-button" data-show-count="false">Tweet</a>
-            <script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-
+            
             <div id="sign-button-container">
                 <form action="/minigame" method="POST">
                     <input id="play-button" type="submit" style="position:absolute; top:60%" value="Play Again" style="z-index: 20;">
