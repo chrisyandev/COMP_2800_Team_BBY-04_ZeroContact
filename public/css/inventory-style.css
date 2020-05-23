@@ -42,7 +42,6 @@ body {
 }
 
 #inventory-expand-button,
-#getProfile,
 #closeProfile {
     height: 50px;
     background-color: #222034;
